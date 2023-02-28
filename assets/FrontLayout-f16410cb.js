@@ -1,1 +1,0 @@
-import{_ as e,R as t,r as n,o as r,c as s}from"./index-e187d331.js";const c={components:{RouterView:t}};function a(p,_,u,i,f,m){const o=n("RouterView");return r(),s(o)}const l=e(c,[["render",a]]);export{l as default};
