@@ -9,7 +9,7 @@ export default{
 
 <template>
     <!-- navbar -->
-    <nav class="navbar navbar-dark navbar-expand-lg navbar-light bg-dark">
+    <nav class="navbar navbar-dark navbar-expand-lg navbar-light bg-dark px-5">
     <RouterLink to="Home" class="navbar-brand"><img src="../assets/專題作品圖/logo.png" alt="MRT-Delicious"></RouterLink>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" >
         <span class="navbar-toggler-icon"></span>

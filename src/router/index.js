@@ -5,11 +5,12 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      component:()=>import ("../FrontLayout.vue"),
+      redirect:'Home',
       children:[
         {
         path :'Home',
-        component:()=>import("../views/HomeView.vue")
+        component:()=>import("../views/HomeView.vue"),
+        children:[]
         },
         {
           path:'Cart',
