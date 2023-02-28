@@ -36,6 +36,16 @@ export default{
   </div>
   </div>
   </div>
+  <nav  id="question" class="d-flex align-items-center justify-content-center bg-warning">
+    <div class="container">
+    <h3 class="text-center mb-5">總是在懊惱下一餐要吃什麼嗎?</h3>
+      <div class="row d-flex">
+        <div  class="col-lg text-center">想了很久卻怕不好吃?</div>
+        <div class="col-lg text-center">害怕美食昂貴?</div>
+        <div class="col-lg text-center">總是在等待排隊等待美食?</div>
+      </div>
+    </div>
+  </nav>
     <footer class='text-center py-3 bg-dark text-white' >
       <p class="my-0">johnson@2023 All World 純屬練習使用，無商業目的</p>
     </footer>
@@ -54,9 +64,15 @@ export default{
 input{
   padding-right:100px ;
 }
+#question{
+    min-height: 493px;
+  }
 @media(max-width: 375px){
   .background{
     min-height:666px;
+  }
+  #question{
+    min-height: 732px;
   }
 }
 </style>
