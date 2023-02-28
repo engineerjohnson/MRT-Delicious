@@ -1,5 +1,62 @@
-<template>
-我是首頁
-</template>
+<script >
+import { RouterLink} from 'vue-router'
+export default{
+  components:{
+    RouterLink,
+  }
+}
+</script>
 
-<script></script>
+<template>
+<div class="background">
+  <div class="container">
+    <!-- navbar -->
+    <nav class="navbar navbar-dark navbar-expand-lg navbar-light">
+    <RouterLink to="Home" class="navbar-brand"><img src="../assets/專題作品圖/logo.png" alt="MRT-Delicious"></RouterLink>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end " id="navbarNav">
+      <div class="navbar-nav ps-2">
+          <RouterLink to="Cart" class="nav-link nav-item text-white me-4" data-toggle><img src="../assets/專題作品圖/car.png" alt="cashopping cartt">購物車</RouterLink>
+          <RouterLink to="Keep" class="nav-link nav-item text-white me-4" data-toggle><img src="../assets/專題作品圖/love.png" alt="Keep">收藏</RouterLink>
+      </div>
+    </div>
+</nav>
+  </div>
+  <div class="caption d-flex justify-content-center align-items-center">
+    <div>
+  <h1 class="text-white display-5 d-flex justify-content-center"><dt>專屬吃貨的世界。</dt></h1>
+    <h2 class="text-white  d-flex justify-content-center"><dt>讓您輕鬆搜尋、收藏與訂購美食。</dt></h2>
+    <div class="mt-5">
+      <div class=" d-flex justify-content-center">
+    <input type="text" placeholder=" 請輸入站名" class="rounded-pill  py-2 ">
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+    <footer class='text-center py-3 bg-dark text-white' >
+      <p class="my-0">johnson@2023 All World 純屬練習使用，無商業目的</p>
+    </footer>
+  </template>
+
+<style>
+.background{
+  min-height: 820px;
+  background-image: url("@/assets/專題作品圖/ethan-chan.png");
+  background-size: cover;
+  background-position: center;
+}
+.caption{
+  min-height: 520px;
+}
+input{
+  padding-right:100px ;
+}
+@media(max-width: 375px){
+  .background{
+    min-height:666px;
+  }
+}
+</style>
