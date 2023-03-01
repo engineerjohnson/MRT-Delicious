@@ -38,11 +38,20 @@ export default{
   </div>
   <nav  id="question" class="d-flex align-items-center justify-content-center bg-warning">
     <div class="container">
-    <h3 class="text-center mb-5">總是在懊惱下一餐要吃什麼嗎?</h3>
-      <div class="row d-flex">
-        <div  class="col-lg text-center">想了很久卻怕不好吃?</div>
-        <div class="col-lg text-center">害怕美食昂貴?</div>
-        <div class="col-lg text-center">總是在等待排隊等待美食?</div>
+    <h3 class="text-center mb-5 text-white ">總是在懊惱下一餐要吃什麼嗎?</h3>
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg w-75 text-center mx-lg-3 question-box bg-light rounded mb-4">
+          <img class="my-4" src="../assets/專題作品圖/sentiment_very_dissatisfied_black_24dp 1.png">
+          <p>想了很久卻怕不好吃?</p>
+        </div>
+        <div class="col-lg w-75 text-center mx-lg-3 question-box bg-light rounded mb-4">
+          <img class="my-4" src="../assets/專題作品圖/paid_black_24dp 1.png">
+          <p>害怕美食昂貴?</p>
+        </div>
+        <div class="col-lg w-75 text-center mx-lg-3 question-box bg-light rounded mb-4">
+          <img class="my-4" src="../assets/專題作品圖/watch_later_black_24dp 1.png">
+          <p>總是在等待排隊等待美食?</p>
+        </div>
       </div>
     </div>
   </nav>
@@ -64,15 +73,28 @@ export default{
 input{
   padding-right:100px ;
 }
+.question-box{
+  font-size: 24px;
+  min-height: 205px;
+}
+h3{
+  font-size: 40px;
+}
 #question{
     min-height: 493px;
   }
-@media(max-width: 375px){
+@media(max-width: 376px){
   .background{
     min-height:666px;
   }
   #question{
     min-height: 732px;
   }
+  h3{
+    font-size: 32px;
+  }
+  .question-box{
+    min-height: 165px;
+}
 }
 </style>
