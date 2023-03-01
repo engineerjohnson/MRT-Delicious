@@ -38,7 +38,7 @@ export default{
   </div>
   <nav  id="question" class="d-flex align-items-center justify-content-center bg-warning">
     <div class="container">
-    <h3 class="text-center mb-5 text-white ">總是在懊惱下一餐要吃什麼嗎?</h3>
+    <h3 class="text-center my-5 text-white ">總是在懊惱下一餐要吃什麼嗎?</h3>
       <div class="row d-flex justify-content-center">
         <div class="col-lg w-75 text-center mx-lg-3 question-box bg-light rounded mb-4">
           <img class="my-4" src="../assets/專題作品圖/sentiment.png">
