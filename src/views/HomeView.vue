@@ -141,8 +141,8 @@ export default{
                 <p>商品描述:採用芭樂加檸檬的新吃法，提鮮了芭樂的鮮甜跟檸檬的香氣。</p>
                 <p>營業時段:</p>
                 <p>三 、五、六、日 : 1700~0000</p>
-                <button type="button" class="btn btn-danger me-3"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
-                <button type="button" class="btn btn-secondary"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
+                <button type="button" class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
+                <button type="button" class="btn btn-secondary p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
             </div>
           </swiper-slide>
           <swiper-slide>
@@ -152,8 +152,8 @@ export default{
               <p>商品描述:平價牛排，搭配特殊醬料，感覺像是牛排整個帶動起來~~</p>
               <p>營業時段:</p>
               <p>一到日 : 11:00~13:30，17:00~21:00</p>
-              <button type="button" class="btn btn-danger me-3"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
-              <button type="button" class="btn btn-secondary"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
+              <button type="button" class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
+              <button type="button" class="btn btn-secondary p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
             </div>
           </swiper-slide>
           <swiper-slide>
@@ -163,8 +163,8 @@ export default{
               <p>商品描述:平價牛排，搭配特殊醬料，感覺像是牛排整個帶動起來~~</p>
               <p>營業時段:</p>
               <p>一到日 : 11:00~13:30，17:00~21:00</p>
-              <button type="button" class="btn btn-danger me-3"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
-              <button type="button" class="btn btn-secondary"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
+              <button type="button" class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
+              <button type="button" class="btn btn-secondary p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
             </div>
           </swiper-slide>
         </Swiper>
@@ -187,8 +187,8 @@ export default{
                 <p>商品描述:採用芭樂加檸檬的新吃法，提鮮了芭樂的鮮甜跟檸檬的香氣。</p>
                 <p>營業時段:</p>
                 <p>三 、五、六、日 : 1700~0000</p>
-                <button type="button" class="btn btn-danger me-3"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
-                <button type="button" class="btn btn-secondary"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
+                <button type="button" class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
+                <button type="button" class="btn btn-secondary p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
             </div>
           </swiper-slide>
           <swiper-slide>
@@ -198,8 +198,8 @@ export default{
               <p>商品描述:平價牛排，搭配特殊醬料，感覺像是牛排整個帶動起來~~</p>
               <p>營業時段:</p>
               <p>一到日 : 11:00~13:30，17:00~21:00</p>
-              <button type="button" class="btn btn-danger me-3"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
-              <button type="button" class="btn btn-secondary"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
+              <button type="button" class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
+              <button type="button" class="btn btn-secondary p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
             </div>
           </swiper-slide>
           <swiper-slide>
@@ -209,8 +209,8 @@ export default{
               <p>商品描述:平價牛排，搭配特殊醬料，感覺像是牛排整個帶動起來~~</p>
               <p>營業時段:</p>
               <p>一到日 : 11:00~13:30，17:00~21:00</p>
-              <button type="button" class="btn btn-danger me-3"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
-              <button type="button" class="btn btn-secondary"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
+              <button type="button" class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
+              <button type="button" class="btn btn-secondary p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
             </div>
           </swiper-slide>
         </Swiper>
@@ -233,8 +233,8 @@ export default{
                 <p>商品描述:採用芭樂加檸檬的新吃法，提鮮了芭樂的鮮甜跟檸檬的香氣。</p>
                 <p>營業時段:</p>
                 <p>三 、五、六、日 : 1700~0000</p>
-                <button type="button" class="btn btn-danger me-3"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
-                <button type="button" class="btn btn-secondary"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
+                <button type="button" class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
+                <button type="button" class="btn btn-secondary p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
             </div>
           </swiper-slide>
           <swiper-slide>
@@ -244,8 +244,8 @@ export default{
               <p>商品描述:平價牛排，搭配特殊醬料，感覺像是牛排整個帶動起來~~</p>
               <p>營業時段:</p>
               <p>一到日 : 11:00~13:30，17:00~21:00</p>
-              <button type="button" class="btn btn-danger me-3"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
-              <button type="button" class="btn btn-secondary"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
+              <button type="button" class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
+              <button type="button" class="btn btn-secondary p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
             </div>
           </swiper-slide>
           <swiper-slide>
@@ -255,8 +255,8 @@ export default{
               <p>商品描述:平價牛排，搭配特殊醬料，感覺像是牛排整個帶動起來~~</p>
               <p>營業時段:</p>
               <p>一到日 : 11:00~13:30，17:00~21:00</p>
-              <button type="button" class="btn btn-danger me-3"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
-              <button type="button" class="btn btn-secondary"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
+              <button type="button" class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
+              <button type="button" class="btn btn-secondary p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
             </div>
           </swiper-slide>
         </Swiper>
@@ -304,8 +304,8 @@ export default{
                 <p>商品描述:採用一鴨三吃，有片皮鴨、鹽酥鴨架、醬爆鴨架。</p>
                 <p>營業時段:</p>
                 <p> 一到日 : 11:00–15:00, 17:00–21:30</p>
-                <button type="button" class="btn btn-danger me-3"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
-                <button type="button" class="btn btn-secondary"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
+                <button type="button" class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
+                <button type="button" class="btn btn-secondary p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
             </div>
           </swiper-slide>
           <swiper-slide>
@@ -315,8 +315,8 @@ export default{
               <p>商品描述:焦香雞腿加上奶油味的鮮甜高麗菜，簡直是最完美的套餐。</p>
               <p>營業時段:</p>
               <p>一到日 : 11:00~13:30，17:00~21:00</p>
-              <button type="button" class="btn btn-danger me-3"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
-              <button type="button" class="btn btn-secondary"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
+              <button type="button" class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
+              <button type="button" class="btn btn-secondary p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
             </div>
           </swiper-slide>
           <swiper-slide>
@@ -326,8 +326,8 @@ export default{
               <p>商品描述:焦香雞腿加上奶油味的鮮甜高麗菜，簡直是最完美的套餐。</p>
               <p>營業時段:</p>
               <p>一到日 : 11:00~13:30，17:00~21:00</p>
-              <button type="button" class="btn btn-danger me-3"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
-              <button type="button" class="btn btn-secondary"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
+              <button type="button" class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
+              <button type="button" class="btn btn-secondary p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
             </div>
           </swiper-slide>
         </Swiper>
@@ -469,9 +469,6 @@ font-size: 28px;
 }
 #swiper-car{
   max-width: 225px;
-}
-.btn-danger{
-  margin-right: 8px;
 }
   #swiper-car img{
   max-width: 220px;
