@@ -10,7 +10,23 @@ import 'swiper/css/autoplay'
 export default{
   data() {
         return {
-          modules: [Navigation, Pagination, Autoplay]
+          modules: [Navigation, Pagination, Autoplay],
+          swiperOptions: {
+                breakpoints: {       
+            280: {       
+                slidesPerView: 1,
+                spaceBetween: 10
+            },
+            1310: {       
+              slidesPerView: 3,       
+                spaceBetween: 20  
+            },  
+            577:{
+              slidesPerView: 2,       
+                spaceBetween: 50 
+            }
+            }   
+          }
         };
     },
   components:{
@@ -89,38 +105,37 @@ export default{
             <p>收藏美食下次享用</p>
         </div>
     </div>
-  </section>
+  </section >
   <!-- 推薦美食前三站 -->
-  <section>
+  <section id="top-3">
   <h3 class="text-center">推薦美食前三站</h3>
   <div class="d-flex justify-content-center">
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
       <li class="nav-item" role="presentation">
-        <button class="nav-link active rounded-pill " id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">大慶站</button>
+        <button class="nav-link active rounded-pill " id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-daqing" type="button" role="tab" aria-controls="pills-home" aria-selected="true">大慶站</button>
       </li>
       <li class="nav-item" role="presentation">
-        <button class="nav-link rounded-pill" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">文心崇德</button>
+        <button class="nav-link rounded-pill" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-wenxin-chongde" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">文心崇德</button>
       </li>
       <li class="nav-item" role="presentation">
-        <button class="nav-link rounded-pill" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">豐樂公園</button>
+        <button class="nav-link rounded-pill" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-fengle-park" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">豐樂公園</button>
       </li>
     </ul>
   </div>
     <div class="tab-content d-flex justify-content-center" id="pills-tabContent">
-      <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+      <div class="tab-pane fade show active" id="pills-daqing" role="tabpanel" aria-labelledby="pills-home-tab">
         <Swiper 
-        :slides-per-view="1" 
-        :space-between="50"
+        :breakpoints="swiperOptions.breakpoints"
         :modules="modules"
         :centeredSlides="false"
         navigation
     :autoplay="{
-      delay: 500000000,
+      delay: 5000000000,
       disableOnInteraction: false,
     }"
         >
           <swiper-slide>
-            <div id="test" >
+            <div id="swiper-car" >
               <img class="rounded" src="../assets/專題作品圖/芭樂.png" alt="" >
                 <dt class="my-2 fs-4">芭樂撞檸檬</dt>
                 <p>商品描述:採用芭樂加檸檬的新吃法，提鮮了芭樂的鮮甜跟檸檬的香氣。</p>
@@ -131,7 +146,18 @@ export default{
             </div>
           </swiper-slide>
           <swiper-slide>
-            <div id="test">
+            <div id="swiper-car" >
+              <img class="rounded" src="../assets/專題作品圖/牛排.png" alt="" >
+              <dt class="my-2 fs-4">來一客牛排-厚切牛排</dt>
+              <p>商品描述:平價牛排，搭配特殊醬料，感覺像是牛排整個帶動起來~~</p>
+              <p>營業時段:</p>
+              <p>一到日 : 11:00~13:30，17:00~21:00</p>
+              <button type="button" class="btn btn-danger me-3"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
+              <button type="button" class="btn btn-secondary"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
+            </div>
+          </swiper-slide>
+          <swiper-slide>
+            <div id="swiper-car" >
               <img class="rounded" src="../assets/專題作品圖/牛排.png" alt="" >
               <dt class="my-2 fs-4">來一客牛排-厚切牛排</dt>
               <p>商品描述:平價牛排，搭配特殊醬料，感覺像是牛排整個帶動起來~~</p>
@@ -143,11 +169,175 @@ export default{
           </swiper-slide>
         </Swiper>
       </div>
-      <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
-      <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+      <div class="tab-pane fade" id="pills-wenxin-chongde" role="tabpanel" aria-labelledby="pills-profile-tab">
+        <Swiper 
+        :breakpoints="swiperOptions.breakpoints"
+        :modules="modules"
+        :centeredSlides="false"
+        navigation
+    :autoplay="{
+      delay: 5000,
+      disableOnInteraction: false,
+    }"
+        >
+          <swiper-slide>
+            <div id="swiper-car" >
+              <img class="rounded" src="../assets/專題作品圖/芭樂.png" alt="" >
+                <dt class="my-2 fs-4">芭樂撞檸檬</dt>
+                <p>商品描述:採用芭樂加檸檬的新吃法，提鮮了芭樂的鮮甜跟檸檬的香氣。</p>
+                <p>營業時段:</p>
+                <p>三 、五、六、日 : 1700~0000</p>
+                <button type="button" class="btn btn-danger me-3"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
+                <button type="button" class="btn btn-secondary"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
+            </div>
+          </swiper-slide>
+          <swiper-slide>
+            <div id="swiper-car">
+              <img class="rounded" src="../assets/專題作品圖/牛排.png" alt="" >
+              <dt class="my-2 fs-4">來一客牛排-厚切牛排</dt>
+              <p>商品描述:平價牛排，搭配特殊醬料，感覺像是牛排整個帶動起來~~</p>
+              <p>營業時段:</p>
+              <p>一到日 : 11:00~13:30，17:00~21:00</p>
+              <button type="button" class="btn btn-danger me-3"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
+              <button type="button" class="btn btn-secondary"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
+            </div>
+          </swiper-slide>
+          <swiper-slide>
+            <div id="swiper-car" >
+              <img class="rounded" src="../assets/專題作品圖/牛排.png" alt="" >
+              <dt class="my-2 fs-4">來一客牛排-厚切牛排</dt>
+              <p>商品描述:平價牛排，搭配特殊醬料，感覺像是牛排整個帶動起來~~</p>
+              <p>營業時段:</p>
+              <p>一到日 : 11:00~13:30，17:00~21:00</p>
+              <button type="button" class="btn btn-danger me-3"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
+              <button type="button" class="btn btn-secondary"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
+            </div>
+          </swiper-slide>
+        </Swiper>
+      </div>
+      <div class="tab-pane fade" id="pills-fengle-park" role="tabpanel" aria-labelledby="pills-contact-tab">
+        <Swiper 
+        :breakpoints="swiperOptions.breakpoints"
+        :modules="modules"
+        :centeredSlides="false"
+        navigation
+    :autoplay="{
+      delay: 5000,
+      disableOnInteraction: false,
+    }"
+        >
+          <swiper-slide>
+            <div id="swiper-car" >
+              <img class="rounded" src="../assets/專題作品圖/芭樂.png" alt="" >
+                <dt class="my-2 fs-4">芭樂撞檸檬</dt>
+                <p>商品描述:採用芭樂加檸檬的新吃法，提鮮了芭樂的鮮甜跟檸檬的香氣。</p>
+                <p>營業時段:</p>
+                <p>三 、五、六、日 : 1700~0000</p>
+                <button type="button" class="btn btn-danger me-3"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
+                <button type="button" class="btn btn-secondary"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
+            </div>
+          </swiper-slide>
+          <swiper-slide>
+            <div id="swiper-car">
+              <img class="rounded" src="../assets/專題作品圖/牛排.png" alt="" >
+              <dt class="my-2 fs-4">來一客牛排-厚切牛排</dt>
+              <p>商品描述:平價牛排，搭配特殊醬料，感覺像是牛排整個帶動起來~~</p>
+              <p>營業時段:</p>
+              <p>一到日 : 11:00~13:30，17:00~21:00</p>
+              <button type="button" class="btn btn-danger me-3"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
+              <button type="button" class="btn btn-secondary"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
+            </div>
+          </swiper-slide>
+          <swiper-slide>
+            <div id="swiper-car" >
+              <img class="rounded" src="../assets/專題作品圖/牛排.png" alt="" >
+              <dt class="my-2 fs-4">來一客牛排-厚切牛排</dt>
+              <p>商品描述:平價牛排，搭配特殊醬料，感覺像是牛排整個帶動起來~~</p>
+              <p>營業時段:</p>
+              <p>一到日 : 11:00~13:30，17:00~21:00</p>
+              <button type="button" class="btn btn-danger me-3"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
+              <button type="button" class="btn btn-secondary"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
+            </div>
+          </swiper-slide>
+        </Swiper>
+      </div>
     </div>
-
-</section>
+  </section>
+  <!-- 想吃什麼 -->
+  <section id="want-eat">
+    <h3 class="text-center">想吃什麼</h3>
+    <div class="d-flex justify-content-center">
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active rounded-pill" id="japanese-style-tab" data-bs-toggle="pill" data-bs-target="#japanese-style" type="button" role="tab" aria-controls="japanese-style" aria-selected="true">日式</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link rounded-pill" id="western-food-tab" data-bs-toggle="pill" data-bs-target="#western-food" type="button" role="tab" aria-controls="western-food" aria-selected="false">西餐</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link rounded-pill" id="sweets-tab" data-bs-toggle="pill" data-bs-target="#sweets" type="button" role="tab" aria-controls="sweets" aria-selected="false">甜食</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link rounded-pill" id="breakfast-tab" data-bs-toggle="pill" data-bs-target="#breakfast" type="button" role="tab" aria-controls="breakfast" aria-selected="false">早餐</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link rounded-pill" id="chinese-style-tab" data-bs-toggle="pill" data-bs-target="#chinese-style" type="button" role="tab" aria-controls="chinese-style" aria-selected="false">中式</button>
+      </li>
+    </ul>
+    </div>
+    <div class="tab-content d-flex justify-content-center" id="pills-tabContent">
+      <div class="tab-pane fade show active" id="japanese-style" role="tabpanel" aria-labelledby="japanese-style-tab">
+        <Swiper 
+        :breakpoints="swiperOptions.breakpoints"
+        :modules="modules"
+        :centeredSlides="false"
+        navigation
+    :autoplay="{
+      delay: 5000,
+      disableOnInteraction: false,
+    }"
+        >
+          <swiper-slide>
+            <div id="swiper-car" >
+              <img class="rounded" src="../assets/專題作品圖/烤鴨.png" alt="" >
+                <dt class="my-2 fs-4">鴨片館-北平烤鴨</dt>
+                <p>商品描述:採用一鴨三吃，有片皮鴨、鹽酥鴨架、醬爆鴨架。</p>
+                <p>營業時段:</p>
+                <p> 一到日 : 11:00–15:00, 17:00–21:30</p>
+                <button type="button" class="btn btn-danger me-3"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
+                <button type="button" class="btn btn-secondary"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
+            </div>
+          </swiper-slide>
+          <swiper-slide>
+            <div id="swiper-car">
+              <img class="rounded" src="../assets/專題作品圖/雞腿排.png" alt="" >
+              <dt class="my-2 fs-4">微風鐵板燒-雞腿排餐</dt>
+              <p>商品描述:焦香雞腿加上奶油味的鮮甜高麗菜，簡直是最完美的套餐。</p>
+              <p>營業時段:</p>
+              <p>一到日 : 11:00~13:30，17:00~21:00</p>
+              <button type="button" class="btn btn-danger me-3"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
+              <button type="button" class="btn btn-secondary"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
+            </div>
+          </swiper-slide>
+          <swiper-slide>
+            <div id="swiper-car">
+              <img class="rounded" src="../assets/專題作品圖/雞腿排.png" alt="" >
+              <dt class="my-2 fs-4">微風鐵板燒-雞腿排餐</dt>
+              <p>商品描述:焦香雞腿加上奶油味的鮮甜高麗菜，簡直是最完美的套餐。</p>
+              <p>營業時段:</p>
+              <p>一到日 : 11:00~13:30，17:00~21:00</p>
+              <button type="button" class="btn btn-danger me-3"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
+              <button type="button" class="btn btn-secondary"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
+            </div>
+          </swiper-slide>
+        </Swiper>
+      </div>
+      <div class="tab-pane fade" id="western-food" role="tabpanel" aria-labelledby="western-food-tab">西餐</div>
+      <div class="tab-pane fade" id="sweets" role="tabpanel" aria-labelledby="sweets-tab">甜食</div>
+      <div class="tab-pane fade" id="breakfast" role="tabpanel" aria-labelledby="breakfast-tab">早餐</div>
+      <div class="tab-pane fade" id="chinese-style" role="tabpanel" aria-labelledby="chinese-style-tab">中式</div>
+    </div>
+  </section>
 </article>
   <!-- 表尾 -->
     <footer class='text-center py-3 bg-dark text-white' >
@@ -160,11 +350,13 @@ export default{
   --swiper-navigation-size:25px;
 }
 .swiper {
-  width: 420px;
-  height: 614px;
+  max-width: 1296px;
 }
-#test img{
-  width: 412px;
+#swiper-car{
+  max-width: 412px;
+}
+#swiper-car img{
+  max-width: 412px;
   height: 290px;
   object-fit: cover;
 }
@@ -190,7 +382,7 @@ h3{
 #question{
     min-height: 493px;
   }
-#solution{
+#solution, #top-3, #want-eat{
   margin-top: 120px;
 }
 #solution-box-sushi{
@@ -229,6 +421,18 @@ h3{
   color: #919191;
   font-size: 24px;
 }
+@media(max-width:1310px){
+  .swiper {
+  max-width: 550px;
+}
+#swiper-car{
+  max-width: 275px;
+}
+  #swiper-car img{
+  max-width: 250px;
+  height: 180px;
+}
+}
 @media(max-width: 376px){
   .background{
     min-height:666px;
@@ -242,7 +446,7 @@ h3{
   #question-box{
     min-height: 165px;
 }
-#solution{
+#solution, #top-3, #want-eat{
   margin-top: 60px;
 }
 #solution-box-sushi, #solution-box-noodle, #solution-box-Parmesan, #solution-box-cookie{
@@ -255,19 +459,21 @@ font-size: 28px;
 .nav-link{
   font-size: 20px;
 }
-
 }
 @media(max-width: 576px){
   #solution-box-sushi, #solution-box-noodle, #solution-box-Parmesan, #solution-box-cookie{
   width: 95%;
   }
   .swiper {
-  width: 257px;
-  height: 520px;
+ max-width: 220px;
 }
-  #test img{
-  width: 250px;
+#swiper-car{
+  max-width: 225px;
+}
+  #swiper-car img{
+  max-width: 220px;
   height: 180px;
 }
 }
+
 </style>
