@@ -1,8 +1,22 @@
-<script >
+<script  >
 import { RouterLink} from 'vue-router'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+//導入swiper的Modules效果 如Autoplay(自動撥放),Pagination(下方顯示剩幾頁),Navigation(箭頭)
+import { Navigation, Pagination, Autoplay } from 'swiper'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+import 'swiper/css/autoplay'
 export default{
+  data() {
+        return {
+          modules: [Navigation, Pagination, Autoplay]
+        };
+    },
   components:{
     RouterLink,
+    Swiper,
+    SwiperSlide,
   }
 }
 </script>
@@ -93,7 +107,41 @@ export default{
     </ul>
   </div>
     <div class="tab-content d-flex justify-content-center" id="pills-tabContent">
-      <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">...</div>
+      <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+        <Swiper 
+        :slides-per-view="1" 
+        :modules="modules"
+        :centeredSlides="false"
+        navigation
+    :autoplay="{
+      delay: 500000000,
+      disableOnInteraction: false,
+    }"
+        >
+          <swiper-slide>
+            <div id="test">
+              <img class="rounded" src="../assets/專題作品圖/芭樂.png" alt="" >
+              <dt class="my-2 fs-4">芭樂撞檸檬</dt>
+              <p>商品描述:採用芭樂加檸檬的新吃法，提鮮了芭樂的鮮甜跟檸檬的香氣。</p>
+              <p>營業時段:</p>
+              <p>三 、五、六、日 : 1700~0000</p>
+              <button type="button" class="btn btn-danger me-3"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
+              <button type="button" class="btn btn-secondary"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
+            </div>
+          </swiper-slide>
+          <swiper-slide>
+            <div id="test">
+              <img class="rounded" src="../assets/專題作品圖/牛排.png" alt="" >
+              <dt class="my-2 fs-4">來一客牛排-厚切牛排</dt>
+              <p>商品描述:平價牛排，搭配特殊醬料，感覺像是牛排整個帶動起來~~</p>
+              <p>營業時段:</p>
+              <p>一到日 : 11:00~13:30，17:00~21:00</p>
+              <button type="button" class="btn btn-danger me-3"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
+              <button type="button" class="btn btn-secondary"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
+            </div>
+          </swiper-slide>
+        </Swiper>
+      </div>
       <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
       <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
     </div>
@@ -107,6 +155,18 @@ export default{
   </template>
 
 <style>
+:root{
+  --swiper-navigation-size:25px;
+}
+.swiper {
+  width: 416px;
+  height: 614px;
+}
+#test img{
+  width: 412px;
+  height: 290px;
+  object-fit: cover;
+}
 .background{
   min-height: 820px;
   background-image: url("@/assets/專題作品圖/ethan-chan.png");
@@ -193,6 +253,15 @@ font-size: 28px;
 }
 .nav-link{
   font-size: 20px;
+}
+.swiper {
+  width: 257px;
+  height: 520px;
+}
+#test img{
+  width: 225px;
+  height: 180px;
+  object-fit: cover;
 }
 }
 @media(max-width: 576px){
