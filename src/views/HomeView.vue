@@ -110,6 +110,7 @@ export default{
       <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
         <Swiper 
         :slides-per-view="1" 
+        :space-between="50"
         :modules="modules"
         :centeredSlides="false"
         navigation
@@ -119,14 +120,14 @@ export default{
     }"
         >
           <swiper-slide>
-            <div id="test">
+            <div id="test" >
               <img class="rounded" src="../assets/專題作品圖/芭樂.png" alt="" >
-              <dt class="my-2 fs-4">芭樂撞檸檬</dt>
-              <p>商品描述:採用芭樂加檸檬的新吃法，提鮮了芭樂的鮮甜跟檸檬的香氣。</p>
-              <p>營業時段:</p>
-              <p>三 、五、六、日 : 1700~0000</p>
-              <button type="button" class="btn btn-danger me-3"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
-              <button type="button" class="btn btn-secondary"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
+                <dt class="my-2 fs-4">芭樂撞檸檬</dt>
+                <p>商品描述:採用芭樂加檸檬的新吃法，提鮮了芭樂的鮮甜跟檸檬的香氣。</p>
+                <p>營業時段:</p>
+                <p>三 、五、六、日 : 1700~0000</p>
+                <button type="button" class="btn btn-danger me-3"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
+                <button type="button" class="btn btn-secondary"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
             </div>
           </swiper-slide>
           <swiper-slide>
@@ -159,7 +160,7 @@ export default{
   --swiper-navigation-size:25px;
 }
 .swiper {
-  width: 416px;
+  width: 420px;
   height: 614px;
 }
 #test img{
@@ -254,19 +255,19 @@ font-size: 28px;
 .nav-link{
   font-size: 20px;
 }
-.swiper {
-  width: 257px;
-  height: 520px;
-}
-#test img{
-  width: 225px;
-  height: 180px;
-  object-fit: cover;
-}
+
 }
 @media(max-width: 576px){
   #solution-box-sushi, #solution-box-noodle, #solution-box-Parmesan, #solution-box-cookie{
   width: 95%;
   }
+  .swiper {
+  width: 257px;
+  height: 520px;
+}
+  #test img{
+  width: 250px;
+  height: 180px;
+}
 }
 </style>
