@@ -130,7 +130,7 @@ export default{
         :centeredSlides="false"
         navigation
     :autoplay="{
-      delay: 5000000000,
+      delay: 9000,
       disableOnInteraction: false,
     }"
         >
@@ -176,7 +176,7 @@ export default{
         :centeredSlides="false"
         navigation
     :autoplay="{
-      delay: 5000,
+      delay: 9000,
       disableOnInteraction: false,
     }"
         >
@@ -469,6 +469,9 @@ font-size: 28px;
 }
 #swiper-car{
   max-width: 225px;
+}
+.btn-danger{
+  margin-right: 8px;
 }
   #swiper-car img{
   max-width: 220px;
