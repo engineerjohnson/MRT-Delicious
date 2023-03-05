@@ -303,7 +303,7 @@ export default{
                 <dt class="my-2 fs-4">鴨片館-北平烤鴨</dt>
                 <p>商品描述:採用一鴨三吃，有片皮鴨、鹽酥鴨架、醬爆鴨架。</p>
                 <p>營業時段:</p>
-                <p> 一到日 : 11:00–15:00, 17:00–21:30</p>
+                <p> 一到日 : 11:00~15:00, 17:00~21:30</p>
                 <button type="button" class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
                 <button type="button" class="btn btn-secondary p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
             </div>
@@ -338,10 +338,28 @@ export default{
       <div class="tab-pane fade" id="chinese-style" role="tabpanel" aria-labelledby="chinese-style-tab">中式</div>
     </div>
   </section>
+  <!-- 獲取優惠券 -->
+  <section id="coupon">
+    <h3 class="text-center">獲取優惠券</h3>
+    <div class="d-flex justify-content-center row">
+      <div id="coupon-percent" class="col-5 rounded p-0 mx-3 my-3">
+        <p class="mt-5 text-center">首次訂購打9折</p>
+        <button type="button" class="btn btn-light px-sm-5 py-sm-3 mt-sm-4">領取</button>
+      </div>
+      <div id="coupon-cash" class="col-5 rounded p-0 mx-3 my-3">
+        <p class="mt-5 text-center">訂購滿100元折10元</p>
+        <button type="button" class="btn btn-light px-sm-5 py-sm-3 mt-sm-4">領取</button>
+      </div>
+    </div>
+  </section>
 </article>
   <!-- 表尾 -->
-    <footer class='text-center py-3 bg-dark text-white' >
+    <footer >
+      <div id="footer-background" class="bg-warning">
+      </div>
+      <div class='text-center py-3 bg-dark text-white' >
       <p class="my-0">johnson@2023 All World 純屬練習使用，無商業目的</p>
+      </div>
     </footer>
   </template>
 
@@ -382,7 +400,7 @@ h3{
 #question{
     min-height: 493px;
   }
-#solution, #top-3, #want-eat{
+#solution, #top-3, #want-eat, #coupon{
   margin-top: 120px;
 }
 #solution-box-sushi{
@@ -421,6 +439,40 @@ h3{
   color: #919191;
   font-size: 24px;
 }
+#coupon{
+  position: relative;
+  z-index: 3;
+}
+footer{
+  width: 100%;
+  transform: translateY(-50%);
+  position: absolute;
+  z-index: 2;
+}
+#footer-background{
+  height: 322px;
+}
+#coupon-percent{
+  width: 47%;
+  height: 290px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/專題作品圖/折扣.png');
+  background-size: cover;
+  background-position: center;
+  color: aliceblue;
+  font-size: 40px;
+}
+#coupon-cash{
+  width: 47%;
+  height: 290px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/專題作品圖/折讓.png');
+  background-size: cover;
+  background-position: center;
+  color: aliceblue;
+  font-size: 40px;
+}
+.btn-light{
+  margin-left: 70%;
+}
 @media(max-width:1310px){
   .swiper {
   max-width: 550px;
@@ -431,6 +483,51 @@ h3{
   #swiper-car img{
   max-width: 250px;
   height: 180px;
+}
+#coupon-percent,#coupon-cash{
+  width: 80%;
+  font-size: 36px;
+}
+.btn-light{
+  width: 148px;
+  height: 62px;
+  padding: 20px 56px;
+  margin: 40px auto;
+  display: flex;
+  justify-content: center;
+}
+}
+@media(max-width: 576px){
+  #solution-box-sushi, #solution-box-noodle, #solution-box-Parmesan, #solution-box-cookie{
+  width: 95%;
+  }
+  .swiper {
+  max-width: 220px;
+}
+#swiper-car{
+  max-width: 225px;
+}
+  #swiper-car img{
+  max-width: 220px;
+  height: 180px;
+}
+#coupon-percent,#coupon-cash{
+  width: 95%;
+  font-size: 30px;
+}
+.btn-light{
+  width: 148px;
+  height: 62px;
+  padding: 20px 56px;
+  margin: 40px auto;
+  display: flex;
+  justify-content: center;
+}
+footer{
+  transform: translateY(-80%);
+}
+#footer-background{
+  height: 550px;
 }
 }
 @media(max-width: 376px){
@@ -446,7 +543,7 @@ h3{
   #question-box{
     min-height: 165px;
 }
-#solution, #top-3, #want-eat{
+#solution, #top-3, #want-eat,#coupon{
   margin-top: 60px;
 }
 #solution-box-sushi, #solution-box-noodle, #solution-box-Parmesan, #solution-box-cookie{
@@ -459,21 +556,27 @@ font-size: 28px;
 .nav-link{
   font-size: 20px;
 }
-}
-@media(max-width: 576px){
-  #solution-box-sushi, #solution-box-noodle, #solution-box-Parmesan, #solution-box-cookie{
+#coupon-percent,#coupon-cash{
   width: 95%;
-  }
-  .swiper {
- max-width: 220px;
+  height: 242px;
+  font-size: 28px;
 }
-#swiper-car{
-  max-width: 225px;
+.btn-light{
+  width: 148px;
+  height: 62px;
+  padding: 20px 56px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
 }
-  #swiper-car img{
-  max-width: 220px;
-  height: 180px;
+#coupon-percent{
+  margin-bottom: 11px;
+}
+footer{
+  transform: translateY(-80%);
+}
+#footer-background{
+  height: 463px;
 }
 }
-
 </style>
