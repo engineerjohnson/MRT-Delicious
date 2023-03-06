@@ -437,7 +437,7 @@ h3{
 #solution-box-sushi{
   height: 200px;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/專題作品圖/壽司.png');
-  background-size: 100%;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   transition-duration:0.7s; 
@@ -447,7 +447,7 @@ h3{
 #solution-box-noodle{
   height: 200px;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/專題作品圖/鮮蝦麵.png');
-  background-size: 100%;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   transition-duration:0.7s; 
@@ -457,7 +457,7 @@ h3{
 #solution-box-Parmesan{
   height: 200px;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/專題作品圖/帕瑪森.png');
-  background-size: 100%;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   transition-duration:0.7s; 
@@ -467,7 +467,7 @@ h3{
 #solution-box-cookie{
   height: 200px;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/專題作品圖/蔬果餅乾.png');
-  background-size: 100%;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   transition-duration:0.7s; 
@@ -520,7 +520,7 @@ footer{
   background-size: 120%;
 }
 #coupon-percent:hover,#coupon-cash:hover{
-  background-size: 130%;
+  background-size: 120%;
 }
 #swiper-car-img:hover img{
   transform: scale(1.1);
@@ -554,6 +554,12 @@ footer{
   display: flex;
   justify-content: center;
 }
+#solution-box-sushi:hover,#solution-box-noodle:hover,#solution-box-Parmesan:hover,#solution-box-cookie:hover{
+  background-size: 170%;
+}
+#coupon-percent:hover,#coupon-cash:hover{
+  background-size: 170%;
+}
 }
 @media(max-width:768px){
   #coupon-percent,#coupon-cash{
@@ -561,6 +567,12 @@ footer{
   height: 40%;
   font-size: 36px;
   font-size: 24px;
+}
+#solution-box-sushi:hover,#solution-box-noodle:hover,#solution-box-Parmesan:hover,#solution-box-cookie:hover{
+  background-size: 110%;
+}
+#coupon-percent:hover,#coupon-cash:hover{
+  background-size: 250%;
 }
 }
 @media(max-width: 576px){
@@ -594,6 +606,12 @@ footer{
 }
 #footer-background{
   height: 550px;
+}
+#solution-box-sushi:hover,#solution-box-noodle:hover,#solution-box-Parmesan:hover,#solution-box-cookie:hover{
+  background-size: 120%;
+}
+#coupon-percent:hover,#coupon-cash:hover{
+  background-size: 120%;
 }
 }
 @media(max-width: 376px){
@@ -643,6 +661,12 @@ footer{
 }
 #footer-background{
   height: 463px;
+}
+#solution-box-sushi:hover,#solution-box-noodle:hover,#solution-box-Parmesan:hover,#solution-box-cookie:hover{
+  background-size: 140%;
+}
+#coupon-percent:hover,#coupon-cash:hover{
+  background-size: 170%;
 }
 }
 </style>
