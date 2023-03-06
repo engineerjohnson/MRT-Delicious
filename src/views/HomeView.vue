@@ -136,7 +136,9 @@ export default{
         >
           <swiper-slide>
             <div id="swiper-car" >
-              <img class="rounded" src="../assets/專題作品圖/芭樂.png" alt="" >
+              <div id="swiper-car-img">
+              <img src="../assets/專題作品圖/芭樂.png" alt="" >
+              </div>
                 <dt class="my-2 fs-4">芭樂撞檸檬</dt>
                 <p>商品描述:採用芭樂加檸檬的新吃法，提鮮了芭樂的鮮甜跟檸檬的香氣。</p>
                 <p>營業時段:</p>
@@ -147,7 +149,9 @@ export default{
           </swiper-slide>
           <swiper-slide>
             <div id="swiper-car" >
-              <img class="rounded" src="../assets/專題作品圖/牛排.png" alt="" >
+              <div id="swiper-car-img">
+              <img src="../assets/專題作品圖/牛排.png" alt="" >
+              </div>
               <dt class="my-2 fs-4">來一客牛排-厚切牛排</dt>
               <p>商品描述:平價牛排，搭配特殊醬料，感覺像是牛排整個帶動起來~~</p>
               <p>營業時段:</p>
@@ -158,7 +162,9 @@ export default{
           </swiper-slide>
           <swiper-slide>
             <div id="swiper-car" >
-              <img class="rounded" src="../assets/專題作品圖/牛排.png" alt="" >
+              <div id="swiper-car-img">
+              <img   src="../assets/專題作品圖/牛排.png" alt="" >
+              </div>
               <dt class="my-2 fs-4">來一客牛排-厚切牛排</dt>
               <p>商品描述:平價牛排，搭配特殊醬料，感覺像是牛排整個帶動起來~~</p>
               <p>營業時段:</p>
@@ -182,7 +188,9 @@ export default{
         >
           <swiper-slide>
             <div id="swiper-car" >
-              <img class="rounded" src="../assets/專題作品圖/芭樂.png" alt="" >
+              <div id="swiper-car-img">
+              <img src="../assets/專題作品圖/芭樂.png" alt="" >
+              </div>
                 <dt class="my-2 fs-4">芭樂撞檸檬</dt>
                 <p>商品描述:採用芭樂加檸檬的新吃法，提鮮了芭樂的鮮甜跟檸檬的香氣。</p>
                 <p>營業時段:</p>
@@ -193,7 +201,9 @@ export default{
           </swiper-slide>
           <swiper-slide>
             <div id="swiper-car">
-              <img class="rounded" src="../assets/專題作品圖/牛排.png" alt="" >
+              <div id="swiper-car-img">
+              <img src="../assets/專題作品圖/牛排.png" alt="" >
+              </div>
               <dt class="my-2 fs-4">來一客牛排-厚切牛排</dt>
               <p>商品描述:平價牛排，搭配特殊醬料，感覺像是牛排整個帶動起來~~</p>
               <p>營業時段:</p>
@@ -204,7 +214,9 @@ export default{
           </swiper-slide>
           <swiper-slide>
             <div id="swiper-car" >
-              <img class="rounded" src="../assets/專題作品圖/牛排.png" alt="" >
+              <div id="swiper-car-img">
+              <img src="../assets/專題作品圖/牛排.png" alt="" >
+              </div>
               <dt class="my-2 fs-4">來一客牛排-厚切牛排</dt>
               <p>商品描述:平價牛排，搭配特殊醬料，感覺像是牛排整個帶動起來~~</p>
               <p>營業時段:</p>
@@ -228,7 +240,9 @@ export default{
         >
           <swiper-slide>
             <div id="swiper-car" >
-              <img class="rounded" src="../assets/專題作品圖/芭樂.png" alt="" >
+              <div id="swiper-car-img">
+              <img src="../assets/專題作品圖/芭樂.png" alt="" >
+              </div>
                 <dt class="my-2 fs-4">芭樂撞檸檬</dt>
                 <p>商品描述:採用芭樂加檸檬的新吃法，提鮮了芭樂的鮮甜跟檸檬的香氣。</p>
                 <p>營業時段:</p>
@@ -239,7 +253,9 @@ export default{
           </swiper-slide>
           <swiper-slide>
             <div id="swiper-car">
-              <img class="rounded" src="../assets/專題作品圖/牛排.png" alt="" >
+              <div id="swiper-car-img">
+              <img src="../assets/專題作品圖/牛排.png" alt="" >
+              </div>
               <dt class="my-2 fs-4">來一客牛排-厚切牛排</dt>
               <p>商品描述:平價牛排，搭配特殊醬料，感覺像是牛排整個帶動起來~~</p>
               <p>營業時段:</p>
@@ -250,7 +266,9 @@ export default{
           </swiper-slide>
           <swiper-slide>
             <div id="swiper-car" >
-              <img class="rounded" src="../assets/專題作品圖/牛排.png" alt="" >
+              <div id="swiper-car-img">
+              <img src="../assets/專題作品圖/牛排.png" alt="" >
+              </div>
               <dt class="my-2 fs-4">來一客牛排-厚切牛排</dt>
               <p>商品描述:平價牛排，搭配特殊醬料，感覺像是牛排整個帶動起來~~</p>
               <p>營業時段:</p>
@@ -298,8 +316,10 @@ export default{
     }"
         >
           <swiper-slide>
-            <div id="swiper-car" >
-              <img class="rounded" src="../assets/專題作品圖/烤鴨.png" alt="" >
+            <div id="swiper-car">
+              <div id="swiper-car-img">
+              <img src="../assets/專題作品圖/烤鴨.png" alt="" >
+              </div>
                 <dt class="my-2 fs-4">鴨片館-北平烤鴨</dt>
                 <p>商品描述:採用一鴨三吃，有片皮鴨、鹽酥鴨架、醬爆鴨架。</p>
                 <p>營業時段:</p>
@@ -310,7 +330,9 @@ export default{
           </swiper-slide>
           <swiper-slide>
             <div id="swiper-car">
-              <img class="rounded" src="../assets/專題作品圖/雞腿排.png" alt="" >
+              <div id="swiper-car-img">
+              <img src="../assets/專題作品圖/雞腿排.png" alt="" >
+              </div>
               <dt class="my-2 fs-4">微風鐵板燒-雞腿排餐</dt>
               <p>商品描述:焦香雞腿加上奶油味的鮮甜高麗菜，簡直是最完美的套餐。</p>
               <p>營業時段:</p>
@@ -321,7 +343,9 @@ export default{
           </swiper-slide>
           <swiper-slide>
             <div id="swiper-car">
-              <img class="rounded" src="../assets/專題作品圖/雞腿排.png" alt="" >
+              <div id="swiper-car-img">
+              <img src="../assets/專題作品圖/雞腿排.png" alt="" >
+              </div>
               <dt class="my-2 fs-4">微風鐵板燒-雞腿排餐</dt>
               <p>商品描述:焦香雞腿加上奶油味的鮮甜高麗菜，簡直是最完美的套餐。</p>
               <p>營業時段:</p>
@@ -373,10 +397,17 @@ export default{
 #swiper-car{
   max-width: 412px;
 }
-#swiper-car img{
+#swiper-car-img{
   max-width: 412px;
   height: 290px;
+  border-radius: 10px;  /* 在這使用border-radius，才不會因為transform: scale(1.1)而變得沒有圓角 */
+  overflow: hidden; /* 維持大小 */
+}
+#swiper-car-img img{
+  width: 100%;
+  height:100%;
   object-fit: cover;
+  transition: transform 0.7s;
 }
 .background{
   min-height: 820px;
@@ -406,32 +437,40 @@ h3{
 #solution-box-sushi{
   height: 200px;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/專題作品圖/壽司.png');
-  background-size: cover;
+  background-size: 100%;
   background-position: center;
+  background-repeat: no-repeat;
+  transition-duration:0.7s; 
   color: aliceblue;
   font-size: 32px;
 }
 #solution-box-noodle{
   height: 200px;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/專題作品圖/鮮蝦麵.png');
-  background-size: cover;
+  background-size: 100%;
   background-position: center;
+  background-repeat: no-repeat;
+  transition-duration:0.7s; 
   color: aliceblue;
   font-size: 32px;
 }
 #solution-box-Parmesan{
   height: 200px;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/專題作品圖/帕瑪森.png');
-  background-size: cover;
+  background-size: 100%;
   background-position: center;
+  background-repeat: no-repeat;
+  transition-duration:0.7s; 
   color: aliceblue;
   font-size: 32px;
 }
 #solution-box-cookie{
   height: 200px;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/專題作品圖/蔬果餅乾.png');
-  background-size: cover;
+  background-size: 100%;
   background-position: center;
+  background-repeat: no-repeat;
+  transition-duration:0.7s; 
   color: aliceblue;
   font-size: 32px;
 }
@@ -456,8 +495,10 @@ footer{
   width: 47%;
   height: 290px;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/專題作品圖/折扣.png');
-  background-size: cover;
+  background-size: 110%;
   background-position: center;
+  background-repeat: no-repeat;
+  transition-duration:0.7s; 
   color: aliceblue;
   font-size: 40px;
 }
@@ -465,13 +506,24 @@ footer{
   width: 47%;
   height: 290px;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/專題作品圖/折讓.png');
-  background-size: cover;
+  background-size: 110%;
   background-position: center;
+  background-repeat: no-repeat;
+  transition-duration:0.7s; 
   color: aliceblue;
   font-size: 40px;
 }
 .btn-light{
   margin-left: 70%;
+}
+#solution-box-sushi:hover,#solution-box-noodle:hover,#solution-box-Parmesan:hover,#solution-box-cookie:hover{
+  background-size: 120%;
+}
+#coupon-percent:hover,#coupon-cash:hover{
+  background-size: 130%;
+}
+#swiper-car-img:hover img{
+  transform: scale(1.1);
 }
 @media(max-width:1310px){
   .swiper {
@@ -480,7 +532,12 @@ footer{
 #swiper-car{
   max-width: 275px;
 }
-  #swiper-car img{
+#swiper-car-img{
+  max-width: 412px;
+  height: 180px;
+  border-radius: 10px;
+}
+#swiper-car-img img{
   max-width: 250px;
   height: 180px;
 }
