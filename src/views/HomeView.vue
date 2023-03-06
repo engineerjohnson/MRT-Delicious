@@ -608,10 +608,10 @@ footer{
   height: 550px;
 }
 #solution-box-sushi:hover,#solution-box-noodle:hover,#solution-box-Parmesan:hover,#solution-box-cookie:hover{
-  background-size: 120%;
+  background-size: 130%;
 }
 #coupon-percent:hover,#coupon-cash:hover{
-  background-size: 120%;
+  background-size: 150%;
 }
 }
 @media(max-width: 376px){
