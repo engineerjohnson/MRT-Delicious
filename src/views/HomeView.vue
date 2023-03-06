@@ -495,7 +495,7 @@ footer{
   width: 47%;
   height: 290px;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/專題作品圖/折扣.png');
-  background-size: 110%;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   transition-duration:0.7s; 
@@ -506,7 +506,7 @@ footer{
   width: 47%;
   height: 290px;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/專題作品圖/折讓.png');
-  background-size: 110%;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   transition-duration:0.7s; 
@@ -542,7 +542,8 @@ footer{
   height: 180px;
 }
 #coupon-percent,#coupon-cash{
-  width: 80%;
+  width: 45%;
+  height: 45%;
   font-size: 36px;
 }
 .btn-light{
@@ -552,6 +553,14 @@ footer{
   margin: 40px auto;
   display: flex;
   justify-content: center;
+}
+}
+@media(max-width:768px){
+  #coupon-percent,#coupon-cash{
+  width: 40%;
+  height: 40%;
+  font-size: 36px;
+  font-size: 24px;
 }
 }
 @media(max-width: 576px){
