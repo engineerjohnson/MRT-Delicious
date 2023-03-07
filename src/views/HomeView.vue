@@ -89,22 +89,20 @@ export default{
   
   <article class="container">
     <!-- 美食超人在此幫您解決下一餐的問題 -->
-  <section id="solution" >
+  <section id="solution" class="row d-flex justify-content-center">
     <h3 class="text-center">美食超人在此幫您解決下一餐的問題!!</h3>
-    <div class="row d-flex justify-content-center">
-          <div id='solution-box-sushi' class="col-md-5 mx-2 my-3 p-0 rounded d-flex justify-content-center align-items-center" >
-              <p >推薦美食前三站</p>
+          <div id='solution-box-sushi' class="col-md-5 mx-2 my-3 p-0 rounded " >
+              <p class="text-center">推薦美食前三站</p>
           </div>
-        <div id='solution-box-noodle' class="col-md-5 mx-2 my-3 p-0 rounded d-flex justify-content-center align-items-center">
-              <p>想的美食種類</p>
+        <div id='solution-box-noodle' class="col-md-5 mx-2 my-3 p-0 rounded ">
+              <p class="text-center">想的美食種類</p>
         </div>
-        <div id='solution-box-Parmesan' class="col-md-5 mx-2 my-3 p-0 rounded d-flex justify-content-center align-items-center">
-            <p>獲取優惠券</p>
+        <div id='solution-box-Parmesan' class="col-md-5 mx-2 my-3 p-0 rounded">
+            <p class="text-center">獲取優惠券</p>
         </div>
-        <div id='solution-box-cookie' class="col-md-5 mx-2 my-3 p-0  rounded d-flex justify-content-center align-items-center" >
-            <p>收藏美食下次享用</p>
+        <div id='solution-box-cookie' class="col-md-5 mx-2 my-3 p-0 rounded" >
+            <p class="text-center">收藏美食下次享用</p>
         </div>
-    </div>
   </section >
   <!-- 推薦美食前三站 -->
   <section id="top-3">
@@ -363,310 +361,23 @@ export default{
     </div>
   </section>
   <!-- 獲取優惠券 -->
-  <section id="coupon">
-    <h3 class="text-center">獲取優惠券</h3>
-    <div class="d-flex justify-content-center row">
-      <div id="coupon-percent" class="col-5 rounded p-0 mx-3 my-3">
+  <h3 class="text-center mt-sm-5 mt-3">獲取優惠券</h3>
+</article>
+  <section id="coupon" class="bg-warning">
+    <div class="row d-flex justify-content-center gx-0">
+      <div id="coupon-percent" class="col-sm-5 rounded me-sm-3 mb-3">
         <p class="mt-5 text-center">首次訂購打9折</p>
-        <button type="button" class="btn btn-light px-sm-5 py-sm-3 mt-sm-4">領取</button>
+        <div class="coupon-button">
+        <button type="button" class="btn btn-light px-4 py-2 me-md-5">領取</button>
+        </div>
       </div>
-      <div id="coupon-cash" class="col-5 rounded p-0 mx-3 my-3">
+      <div id="coupon-cash" class="col-sm-5 rounded mb-3">
         <p class="mt-5 text-center">訂購滿100元折10元</p>
-        <button type="button" class="btn btn-light px-sm-5 py-sm-3 mt-sm-4">領取</button>
+        <div class="coupon-button">
+        <button type="button" class="btn btn-light px-4 py-2 me-md-5">領取</button>
+        </div>
       </div>
     </div>
   </section>
-</article>
-  <!-- 表尾 -->
-    <footer >
-      <div id="footer-background" class="bg-warning">
-      </div>
-      <div class='text-center py-3 bg-dark text-white' >
-      <p class="my-0">johnson@2023 All World 純屬練習使用，無商業目的</p>
-      </div>
-    </footer>
   </template>
 
-<style>
-:root{
-  --swiper-navigation-size:25px;
-}
-.swiper {
-  max-width: 1296px;
-}
-#swiper-car{
-  max-width: 412px;
-}
-#swiper-car-img{
-  max-width: 412px;
-  height: 290px;
-  border-radius: 10px;  /* 在這使用border-radius，才不會因為transform: scale(1.1)而變得沒有圓角 */
-  overflow: hidden; /* 維持大小 */
-}
-#swiper-car-img img{
-  width: 100%;
-  height:100%;
-  object-fit: cover;
-  transition: transform 0.7s;
-}
-.background{
-  min-height: 820px;
-  background-image: url("@/assets/專題作品圖/ethan-chan.png");
-  background-size: cover;
-  background-position: center;
-}
-.caption{
-  min-height: 520px;
-}
-input{
-  padding-right:100px ;
-}
-#question-box{
-  font-size: 24px;
-  min-height: 205px;
-}
-h3{
-  font-size: 40px;
-}
-#question{
-    min-height: 493px;
-  }
-#solution, #top-3, #want-eat, #coupon{
-  margin-top: 120px;
-}
-#solution-box-sushi{
-  height: 200px;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/專題作品圖/壽司.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  transition-duration:0.7s; 
-  color: aliceblue;
-  font-size: 32px;
-}
-#solution-box-noodle{
-  height: 200px;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/專題作品圖/鮮蝦麵.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  transition-duration:0.7s; 
-  color: aliceblue;
-  font-size: 32px;
-}
-#solution-box-Parmesan{
-  height: 200px;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/專題作品圖/帕瑪森.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  transition-duration:0.7s; 
-  color: aliceblue;
-  font-size: 32px;
-}
-#solution-box-cookie{
-  height: 200px;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/專題作品圖/蔬果餅乾.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  transition-duration:0.7s; 
-  color: aliceblue;
-  font-size: 32px;
-}
-.nav-link{
-  color: #919191;
-  font-size: 24px;
-}
-#coupon{
-  position: relative;
-  z-index: 3;
-}
-footer{
-  width: 100%;
-  transform: translateY(-50%);
-  position: absolute;
-  z-index: 2;
-}
-#footer-background{
-  height: 322px;
-}
-#coupon-percent{
-  width: 47%;
-  height: 290px;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/專題作品圖/折扣.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  transition-duration:0.7s; 
-  color: aliceblue;
-  font-size: 40px;
-}
-#coupon-cash{
-  width: 47%;
-  height: 290px;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/專題作品圖/折讓.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  transition-duration:0.7s; 
-  color: aliceblue;
-  font-size: 40px;
-}
-.btn-light{
-  margin-left: 70%;
-}
-#solution-box-sushi:hover,#solution-box-noodle:hover,#solution-box-Parmesan:hover,#solution-box-cookie:hover{
-  background-size: 120%;
-}
-#coupon-percent:hover,#coupon-cash:hover{
-  background-size: 120%;
-}
-#swiper-car-img:hover img{
-  transform: scale(1.1);
-}
-@media(max-width:1310px){
-  .swiper {
-  max-width: 550px;
-}
-#swiper-car{
-  max-width: 275px;
-}
-#swiper-car-img{
-  max-width: 412px;
-  height: 180px;
-  border-radius: 10px;
-}
-#swiper-car-img img{
-  max-width: 250px;
-  height: 180px;
-}
-#coupon-percent,#coupon-cash{
-  width: 45%;
-  height: 45%;
-  font-size: 36px;
-}
-.btn-light{
-  width: 148px;
-  height: 62px;
-  padding: 20px 56px;
-  margin: 40px auto;
-  display: flex;
-  justify-content: center;
-}
-#solution-box-sushi:hover,#solution-box-noodle:hover,#solution-box-Parmesan:hover,#solution-box-cookie:hover{
-  background-size: 170%;
-}
-#coupon-percent:hover,#coupon-cash:hover{
-  background-size: 170%;
-}
-}
-@media(max-width:768px){
-  #coupon-percent,#coupon-cash{
-  width: 40%;
-  height: 40%;
-  font-size: 36px;
-  font-size: 24px;
-}
-#solution-box-sushi:hover,#solution-box-noodle:hover,#solution-box-Parmesan:hover,#solution-box-cookie:hover{
-  background-size: 110%;
-}
-#coupon-percent:hover,#coupon-cash:hover{
-  background-size: 250%;
-}
-}
-@media(max-width: 576px){
-  #solution-box-sushi, #solution-box-noodle, #solution-box-Parmesan, #solution-box-cookie{
-  width: 95%;
-  }
-  .swiper {
-  max-width: 220px;
-}
-#swiper-car{
-  max-width: 225px;
-}
-  #swiper-car img{
-  max-width: 220px;
-  height: 180px;
-}
-#coupon-percent,#coupon-cash{
-  width: 95%;
-  font-size: 30px;
-}
-.btn-light{
-  width: 148px;
-  height: 62px;
-  padding: 20px 56px;
-  margin: 40px auto;
-  display: flex;
-  justify-content: center;
-}
-footer{
-  transform: translateY(-80%);
-}
-#footer-background{
-  height: 550px;
-}
-#solution-box-sushi:hover,#solution-box-noodle:hover,#solution-box-Parmesan:hover,#solution-box-cookie:hover{
-  background-size: 130%;
-}
-#coupon-percent:hover,#coupon-cash:hover{
-  background-size: 150%;
-}
-}
-@media(max-width: 376px){
-  .background{
-    min-height:666px;
-  }
-  #question{
-    min-height: 732px;
-  }
-  h3{
-    font-size: 32px;
-  }
-  #question-box{
-    min-height: 165px;
-}
-#solution, #top-3, #want-eat,#coupon{
-  margin-top: 60px;
-}
-#solution-box-sushi, #solution-box-noodle, #solution-box-Parmesan, #solution-box-cookie{
-  min-height: 154px;
-}
-#solution-box p, #solution-box-noodle p, #solution-box-Parmesan p, #solution-box-cookie p{
-color: aliceblue;
-font-size: 28px;
-}
-.nav-link{
-  font-size: 20px;
-}
-#coupon-percent,#coupon-cash{
-  width: 95%;
-  height: 242px;
-  font-size: 28px;
-}
-.btn-light{
-  width: 148px;
-  height: 62px;
-  padding: 20px 56px;
-  margin: auto;
-  display: flex;
-  justify-content: center;
-}
-#coupon-percent{
-  margin-bottom: 11px;
-}
-footer{
-  transform: translateY(-80%);
-}
-#footer-background{
-  height: 463px;
-}
-#solution-box-sushi:hover,#solution-box-noodle:hover,#solution-box-Parmesan:hover,#solution-box-cookie:hover{
-  background-size: 140%;
-}
-#coupon-percent:hover,#coupon-cash:hover{
-  background-size: 170%;
-}
-}
-</style>

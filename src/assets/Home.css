@@ -1,0 +1,351 @@
+:root {
+    --swiper-navigation-size: 25px;
+}
+
+.swiper {
+    max-width: 1296px;
+}
+
+#swiper-car {
+    max-width: 412px;
+}
+
+#swiper-car-img {
+    max-width: 412px;
+    height: 290px;
+    border-radius: 10px;
+    /* 在這使用border-radius，才不會因為transform: scale(1.1)而變得沒有圓角 */
+    overflow: hidden;
+    /* 維持大小 */
+}
+
+#swiper-car-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s;
+}
+
+.background {
+    min-height: 820px;
+    background-image: url("@/assets/專題作品圖/ethan-chan.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.caption {
+    min-height: 520px;
+}
+
+.coupon-button {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+input {
+    padding-right: 100px;
+}
+
+#question-box {
+    font-size: 24px;
+    min-height: 205px;
+}
+
+h3 {
+    font-size: 40px;
+}
+
+#question {
+    min-height: 493px;
+}
+
+#solution,
+#top-3,
+#want-eat {
+    margin-top: 120px;
+}
+
+#coupon {
+    margin-top: 5%;
+}
+
+#coupon-percent,
+#coupon-cash {
+    width: 30%;
+    transform: translateY(-30%);
+    z-index: 30;
+}
+
+#solution-box-sushi {
+    height: 200px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/專題作品圖/壽司.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition-duration: 0.7s;
+    color: aliceblue;
+    font-size: 32px;
+}
+
+#solution-box-noodle {
+    height: 200px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/專題作品圖/鮮蝦麵.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition-duration: 0.7s;
+    color: aliceblue;
+    font-size: 32px;
+}
+
+#solution-box-Parmesan {
+    height: 200px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/專題作品圖/帕瑪森.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition-duration: 0.7s;
+    color: aliceblue;
+    font-size: 32px;
+}
+
+#solution-box-cookie {
+    height: 200px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/專題作品圖/蔬果餅乾.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition-duration: 0.7s;
+    color: aliceblue;
+    font-size: 32px;
+}
+
+.nav-link {
+    color: #919191;
+    font-size: 24px;
+}
+
+#coupon {
+    position: relative;
+    z-index: 3;
+}
+
+#coupon-percent {
+    height: 200px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/專題作品圖/折扣.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition-duration: 0.7s;
+    color: aliceblue;
+    font-size: 40px;
+}
+
+#coupon-cash {
+    height: 200px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/專題作品圖/折讓.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition-duration: 0.7s;
+    color: aliceblue;
+    font-size: 40px;
+}
+
+#solution-box-sushi:hover,
+#solution-box-noodle:hover,
+#solution-box-Parmesan:hover,
+#solution-box-cookie:hover {
+    background-size: 120%;
+}
+
+#coupon-percent:hover,
+#coupon-cash:hover {
+    background-size: 120%;
+}
+
+#swiper-car-img:hover img {
+    transform: scale(1.1);
+}
+
+@media(max-width:1310px) {
+    .swiper {
+        max-width: 550px;
+    }
+
+    #swiper-car {
+        max-width: 275px;
+    }
+
+    #swiper-car-img {
+        max-width: 412px;
+        height: 180px;
+        border-radius: 10px;
+    }
+
+    #swiper-car-img img {
+        max-width: 250px;
+        height: 180px;
+    }
+
+    #coupon {
+        margin-top: 8%;
+    }
+
+    #coupon-percent,
+    #coupon-cash {
+        font-size: 30px;
+    }
+
+    #solution-box-sushi:hover,
+    #solution-box-noodle:hover,
+    #solution-box-Parmesan:hover,
+    #solution-box-cookie:hover {
+        background-size: 170%;
+    }
+
+    #coupon-percent:hover,
+    #coupon-cash:hover {
+        background-size: 170%;
+    }
+}
+
+@media(max-width:768px) {
+
+    #coupon {
+        margin-top: 12%;
+    }
+
+    #coupon-percent,
+    #coupon-cash {
+        font-size: 22px;
+    }
+
+    #solution-box-sushi:hover,
+    #solution-box-noodle:hover,
+    #solution-box-Parmesan:hover,
+    #solution-box-cookie:hover {
+        background-size: 110%;
+    }
+
+    #coupon-percent:hover,
+    #coupon-cash:hover {
+        background-size: 250%;
+    }
+}
+
+@media(max-width: 576px) {
+
+    #coupon {
+        margin-top: 16%;
+    }
+
+    #coupon-percent,#coupon-cash{
+        width: 80%;
+    }
+
+    #solution-box-sushi,
+    #solution-box-noodle,
+    #solution-box-Parmesan,
+    #solution-box-cookie {
+        width: 95%;
+    }
+
+    .swiper {
+        max-width: 220px;
+    }
+
+    #swiper-car {
+        max-width: 225px;
+    }
+
+    #swiper-car img {
+        max-width: 220px;
+        height: 180px;
+    }
+
+    #coupon-percent,
+    #coupon-cash {
+        font-size: 30px;
+    }
+
+    .coupon-button {
+        justify-content: center;
+    }
+
+    #solution-box-sushi:hover,
+    #solution-box-noodle:hover,
+    #solution-box-Parmesan:hover,
+    #solution-box-cookie:hover {
+        background-size: 130%;
+    }
+
+    #coupon-percent:hover,
+    #coupon-cash:hover {
+        background-size: 150%;
+    }
+}
+
+@media(max-width: 376px) {
+    .background {
+        min-height: 666px;
+    }
+
+    #question {
+        min-height: 732px;
+    }
+
+    h3 {
+        font-size: 32px;
+    }
+
+    #question-box {
+        min-height: 165px;
+    }
+
+    #coupon {
+        margin-top: 25%;
+    }
+
+    #solution,
+    #top-3,
+    #want-eat{
+        margin-top: 60px;
+    }
+
+    #solution-box-sushi,
+    #solution-box-noodle,
+    #solution-box-Parmesan,
+    #solution-box-cookie {
+        min-height: 154px;
+    }
+
+    #solution-box p,
+    #solution-box-noodle p,
+    #solution-box-Parmesan p,
+    #solution-box-cookie p {
+        color: aliceblue;
+        font-size: 28px;
+    }
+
+    .nav-link {
+        font-size: 20px;
+    }
+
+    #coupon-percent,
+    #coupon-cash {
+        font-size: 28px;
+    }
+
+    #solution-box-sushi:hover,
+    #solution-box-noodle:hover,
+    #solution-box-Parmesan:hover,
+    #solution-box-cookie:hover {
+        background-size: 140%;
+    }
+
+    #coupon-percent:hover,
+    #coupon-cash:hover {
+        background-size: 170%;
+    }
+}
