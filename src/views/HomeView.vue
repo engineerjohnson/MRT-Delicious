@@ -89,18 +89,18 @@ export default{
   
   <article class="container">
     <!-- 美食超人在此幫您解決下一餐的問題 -->
-  <section id="solution" class="row d-flex justify-content-center">
+  <section id="solution" class="row d-flex  justify-content-center">
     <h3 class="text-center">美食超人在此幫您解決下一餐的問題!!</h3>
-          <div id='solution-box-sushi' class="col-md-5 mx-2 my-3 p-0 rounded " >
+          <div id='solution-box-sushi' class="col-md-5 mx-2 my-3 p-0 rounded d-flex align-items-center justify-content-center" >
               <p class="text-center">推薦美食前三站</p>
           </div>
-        <div id='solution-box-noodle' class="col-md-5 mx-2 my-3 p-0 rounded ">
+        <div id='solution-box-noodle' class="col-md-5 mx-2 my-3 p-0 rounded d-flex align-items-center justify-content-center">
               <p class="text-center">想的美食種類</p>
         </div>
-        <div id='solution-box-Parmesan' class="col-md-5 mx-2 my-3 p-0 rounded">
+        <div id='solution-box-Parmesan' class="col-md-5 mx-2 my-3 p-0 rounded d-flex align-items-center justify-content-center">
             <p class="text-center">獲取優惠券</p>
         </div>
-        <div id='solution-box-cookie' class="col-md-5 mx-2 my-3 p-0 rounded" >
+        <div id='solution-box-cookie' class="col-md-5 mx-2 my-3 p-0 rounded d-flex align-items-center justify-content-center" >
             <p class="text-center">收藏美食下次享用</p>
         </div>
   </section >
