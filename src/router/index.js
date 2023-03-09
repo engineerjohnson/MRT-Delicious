@@ -22,7 +22,7 @@ const router = createRouter({
         },
         {
           path:"Stand",
-          component:()=>import("../views/standProduct.vue")
+          component:()=>import("../views/standProducts.vue")
         }
       ]
     },
