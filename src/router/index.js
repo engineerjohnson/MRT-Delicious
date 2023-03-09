@@ -1,28 +1,32 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from "vue-router";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
-      redirect:'Home',
+      path: "/",
+      redirect:"Home",
       children:[
         {
-        path :'Home',
+        path :"Home",
         component:()=>import("../views/HomeView.vue"),
         children:[]
         },
         {
-          path:'Cart',
+          path:"Cart",
           component:()=>import("../views/CartView.vue")
         },
         {
-          path:'Keep',
+          path:"Keep",
           component:()=>import("../views/KeepView.vue")
+        },
+        {
+          path:"Stand",
+          component:()=>import("../views/standProduct.vue")
         }
       ]
     },
   ]
-})
+});
 
-export default router
+export default router;

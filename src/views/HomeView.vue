@@ -1,12 +1,12 @@
 <script  >
-import { RouterLink} from 'vue-router'
-import { Swiper, SwiperSlide } from 'swiper/vue'
+import { RouterLink} from "vue-router";
+import { Swiper, SwiperSlide } from "swiper/vue";
 //導入swiper的Modules效果 如Autoplay(自動撥放),Pagination(下方顯示剩幾頁),Navigation(箭頭)
-import { Navigation, Pagination, Autoplay } from 'swiper'
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
-import 'swiper/css/autoplay'
+import { Navigation, Pagination, Autoplay } from "swiper";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/autoplay";
 export default{
   data() {
         return {
@@ -34,7 +34,7 @@ export default{
     Swiper,
     SwiperSlide,
   }
-}
+};
 </script>
 
 <template>
@@ -49,20 +49,27 @@ export default{
     </button>
     <div class="collapse navbar-collapse justify-content-end " id="navbarNav">
       <div class="navbar-nav ps-2">
-          <RouterLink to="Cart" class="nav-link nav-item text-white me-4" data-toggle><img src="../assets/專題作品圖/car.png" alt="cashopping cartt">購物車</RouterLink>
-          <RouterLink to="Keep" class="nav-link nav-item text-white me-4" data-toggle><img src="../assets/專題作品圖/love.png" alt="Keep">收藏</RouterLink>
+          <RouterLink to="Stand" class="nav-link nav-item text-white me-4" data-toggle>
+              各站美食
+          </RouterLink>
+          <RouterLink to="Cart" class="nav-link nav-item text-white me-4" data-toggle>
+            <img src="../assets/專題作品圖/car.png" alt="cashopping cartt">
+            購物車
+            <span class="badge rounded-pill bg-danger py-2">10</span>
+          </RouterLink>
+          <RouterLink to="Keep" class="nav-link nav-item text-white me-4" data-toggle>
+            <img src="../assets/專題作品圖/love.png" alt="Keep">
+            收藏
+          </RouterLink>
       </div>
     </div>
 </nav>
   </div>
   <div class="caption d-flex justify-content-center align-items-center">
     <div>
-  <h1 class="text-white display-5 d-flex justify-content-center"><dt>專屬吃貨的世界。</dt></h1>
-    <h2 class="text-white  d-flex justify-content-center"><dt>讓您輕鬆搜尋、收藏與訂購美食。</dt></h2>
+  <h1 class="text-white display-5 d-flex justify-content-center"><dt class="text-center px-2 pb-2">專屬吃貨的世界，讓您輕鬆搜尋、收藏與訂購美食。</dt></h1>
+    <h2 class="text-white  d-flex justify-content-center"><dt class="text-center px-3">讓您在任何情況下都可以輕鬆選擇想吃的一餐。</dt></h2>
     <div class="mt-5">
-      <div class=" d-flex justify-content-center">
-    <input type="text" placeholder=" 請輸入站名" class="rounded-pill  py-2 ">
-      </div>
     </div>
   </div>
   </div>
