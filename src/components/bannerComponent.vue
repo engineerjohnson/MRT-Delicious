@@ -8,7 +8,7 @@
         <div class="collapse navbar-collapse justify-content-end " id="navbarNav">
         <div class="navbar-nav ps-2">
             <RouterLink to="Stand" class="nav-link nav-item text-white me-4" data-toggle>
-                站別美食
+                各站美食
             </RouterLink>
             <RouterLink to="/Cart" class="nav-link nav-item text-white me-4" data-toggle>
                 <img src="../assets/專題作品圖/car.png" alt="cashopping cartt">
