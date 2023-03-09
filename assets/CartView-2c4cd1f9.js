@@ -1,0 +1,1 @@
+import{b as n}from"./bannerComponent-0411383c.js";import{_ as o,e as t,f as r,g as a,j as s,m as c,F as p}from"./index-38251c16.js";import"./love-800bc7a0.js";const m={components:{banner:n}};function _(f,i,l,d,u,b){const e=t("banner");return r(),a(p,null,[s(e),c(" cart ")],64)}const g=o(m,[["render",_]]);export{g as default};
