@@ -1,14 +1,16 @@
 <script>
-import banner from "../components/bannerComponent.vue";
+import banner from "../../components/bannerComponent.vue";
+import footerComponter from "../../components/footerComponter.vue";
 export default {
     components: {
-        banner
+        banner,
+        footerComponter
     }
 };
 </script>
 
 <template>
-    <banner id="banner"></banner>
+    <banner id="banner" class="bg-dark"></banner>
     <div class="container mt-5">
         <div class="row">
             <div class="col-lg-2 col-md-3 my-5">
@@ -36,7 +38,7 @@ export default {
                             <div class="col-lg-4 col-md-6 mb-4">
                                 <div>
                                     <div class="image-hover">
-                                        <img src="../assets/專題作品圖/鍋貼.png" alt="">
+                                        <img src="./專題作品圖/鍋貼.png" alt="">
                                     </div>
                                         <div>
                                             <span class="badge rounded-pill bg-warning fs-6 my-2">顯示單位</span>
@@ -44,8 +46,8 @@ export default {
                                             <p>商品描述</p>
                                             <p>營業時段</p>
                                             <div class="d-flex justify-content-around">
-                                            <button type="button" class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
-                                            <button type="button" class="btn btn-secondary p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
+                                            <button type="button" class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="./專題作品圖/love.png" alt="">收藏</button>
+                                            <button type="button" class="btn btn-secondary p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="./專題作品圖/car.png" alt="">加入購物車</button>
                                             </div>
                                         </div>
                                 </div>
@@ -53,7 +55,7 @@ export default {
                             <div class="col-lg-4 col-md-6 mb-4">
                                 <div>
                                     <div class="image-hover">
-                                        <img src="../assets/專題作品圖/鍋貼.png" alt="">
+                                        <img src="./專題作品圖/鍋貼.png" alt="">
                                     </div>
                                         <div>
                                             <span class="badge rounded-pill bg-warning fs-6 my-2">顯示單位</span>
@@ -61,8 +63,8 @@ export default {
                                             <p>商品描述</p>
                                             <p>營業時段</p>
                                             <div class="d-flex justify-content-around">
-                                            <button type="button" class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
-                                            <button type="button" class="btn btn-secondary p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
+                                            <button type="button" class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="./專題作品圖/love.png" alt="">收藏</button>
+                                            <button type="button" class="btn btn-secondary p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="./專題作品圖/car.png" alt="">加入購物車</button>
                                             </div>
                                         </div>
                                 </div>
@@ -70,7 +72,7 @@ export default {
                             <div class="col-lg-4 col-md-6 mb-4">
                                 <div>
                                     <div class="image-hover">
-                                        <img src="../assets/專題作品圖/鍋貼.png" alt="">
+                                        <img src="./專題作品圖/鍋貼.png" alt="">
                                     </div>
                                         <div>
                                             <span class="badge rounded-pill bg-warning fs-6 my-2">顯示單位</span>
@@ -78,8 +80,8 @@ export default {
                                             <p>商品描述</p>
                                             <p>營業時段</p>
                                             <div class="d-flex justify-content-around">
-                                            <button type="button" class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
-                                            <button type="button" class="btn btn-secondary p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
+                                            <button type="button" class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="./專題作品圖/love.png" alt="">收藏</button>
+                                            <button type="button" class="btn btn-secondary p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="./專題作品圖/car.png" alt="">加入購物車</button>
                                             </div>
                                         </div>
                                 </div>
@@ -87,7 +89,7 @@ export default {
                             <div class="col-lg-4 col-md-6 mb-4">
                                 <div>
                                     <div class="image-hover">
-                                        <img src="../assets/專題作品圖/鍋貼.png" alt="">
+                                        <img src="./專題作品圖/鍋貼.png" alt="">
                                     </div>
                                         <div>
                                             <span class="badge rounded-pill bg-warning fs-6 my-2">顯示單位</span>
@@ -95,8 +97,8 @@ export default {
                                             <p>商品描述</p>
                                             <p>營業時段</p>
                                             <div class="d-flex justify-content-around">
-                                            <button type="button" class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/love.png" alt="">收藏</button>
-                                            <button type="button" class="btn btn-secondary p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="../assets/專題作品圖/car.png" alt="">加入購物車</button>
+                                            <button type="button" class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="./專題作品圖/love.png" alt="">收藏</button>
+                                            <button type="button" class="btn btn-secondary p-1 p-lg-2"><img style="width: 20px; height: 20px;" src="./專題作品圖/car.png" alt="">加入購物車</button>
                                             </div>
                                         </div>
                                 </div>
@@ -118,6 +120,7 @@ export default {
             </div>
         </div>
     </div>
+    <footerComponter id="footer"></footerComponter>
 </template>
 
 <style>

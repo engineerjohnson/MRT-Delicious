@@ -9,20 +9,24 @@ const router = createRouter({
       children:[
         {
         path :"Home",
-        component:()=>import("../views/HomeView.vue"),
+        component:()=>import("../views/FontLayout/HomeView.vue"),
         children:[]
         },
         {
           path:"Cart",
-          component:()=>import("../views/CartView.vue")
+          component:()=>import("../views/FontLayout/CartView.vue")
         },
         {
           path:"Keep",
-          component:()=>import("../views/KeepView.vue")
+          component:()=>import("../views/FontLayout/KeepView.vue")
         },
         {
           path:"Stand",
-          component:()=>import("../views/standProducts.vue")
+          component:()=>import("../views/FontLayout/standProducts.vue")
+        },
+        {
+          path:"Check",
+          component:()=>import("../views/FontLayout/CheckList.vue")
         }
       ]
     },
