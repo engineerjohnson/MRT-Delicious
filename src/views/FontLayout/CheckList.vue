@@ -21,7 +21,6 @@ export default {
   <banner class="bg-dark" id="banner"></banner>
     <div class="content">
       <div class="container">
-        <div class="mt-5">
           <div class="pt-5">
             <div class="breadcrumb">
               <nav aria-label="breadcrumb">
@@ -101,6 +100,5 @@ export default {
         </div>
 
       </div>
-    </div>
   <footerComponter id="footer"></footerComponter>
 </template>

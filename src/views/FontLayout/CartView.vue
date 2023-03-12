@@ -12,7 +12,7 @@ export default{
 <template>
   <banner class="bg-dark" id="banner"></banner>
   <div class="content">
-  <div class="container my-5">
+  <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-10 py-5">
         <div class="breadcrumb">

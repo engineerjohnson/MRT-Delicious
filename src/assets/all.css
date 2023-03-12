@@ -4,10 +4,9 @@ html{
 body{
     margin: 0;
     min-height: 100%;
-    display: grid;
 }
 .content{
-    min-height: calc(100% - 50px); /*減去footer高度*/
+    min-height: calc(100vh - 50px); /*減去footer高度*/
 }
 #banner{
     position: fixed;
