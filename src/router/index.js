@@ -27,6 +27,10 @@ const router = createRouter({
         {
           path:"Check",
           component:()=>import("../views/FontLayout/CheckList.vue")
+        },
+        {
+          path:"Checkouts",
+          component:()=>import("../views/FontLayout/CheckoutsView.vue")
         }
       ]
     },

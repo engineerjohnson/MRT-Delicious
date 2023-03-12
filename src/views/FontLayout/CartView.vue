@@ -1,18 +1,17 @@
 <script >
 import banner from "../../components/bannerComponent.vue";
-import { RouterLink } from "vue-router";
 import footerComponter from "../../components/footerComponter.vue";
 export default{
   components:{
     banner,
     footerComponter,
-    RouterLink
   }
 };
 </script>
 
 <template>
   <banner class="bg-dark" id="banner"></banner>
+  <div class="content">
   <div class="container my-5">
     <div class="row justify-content-center">
       <div class="col-lg-10 py-5">
@@ -20,7 +19,7 @@ export default{
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item text-warning active fs-5 fw-bold">購物車資料</li>
-              <li class="breadcrumb-item fs-5">訂單資訊</li>
+              <li class="breadcrumb-item fs-5">填寫訂單資料</li>
               <li class="breadcrumb-item fs-5" aria-current="page">結帳</li>
             </ol>
           </nav>
@@ -65,7 +64,7 @@ export default{
                         </tr>
                     </tbody>
                 </table>
-                <div class="d-flex justify-content-around">
+                <div class="d-flex justify-content-around mt-5">
                   <button type="button" class="btn btn-warning">
                     <RouterLink to="Stand" class="nav-link text-white">
                       <span style="font-size: 20px;">←</span>繼續選購
@@ -73,12 +72,13 @@ export default{
                   </button>
                   <button type="button" class="btn btn-warning">
                     <RouterLink to="Check" class="nav-link text-white">
-                      確認訂單<span style="font-size: 20px;">→</span>
+                      填寫資料<span style="font-size: 20px;">→</span>
                     </RouterLink>
                   </button>
                 </div>
       </div>
     </div>
+  </div>
   </div>
   <footerComponter id="footer"></footerComponter>
 </template>
