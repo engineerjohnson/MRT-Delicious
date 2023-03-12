@@ -5,6 +5,16 @@ export default{
   components:{
     banner,
     footerComponter,
+  },
+  methods:{
+    //去填寫資料
+    Check(){
+      this.$router.push("/Check");
+    },
+    //繼續選購
+    Stand(){
+      this.$router.push("/Stand");
+    }
   }
 };
 </script>
@@ -65,15 +75,11 @@ export default{
                     </tbody>
                 </table>
                 <div class="d-flex justify-content-around mt-5">
-                  <button type="button" class="btn btn-warning">
-                    <RouterLink to="Stand" class="nav-link text-white">
-                      <span style="font-size: 20px;">←</span>繼續選購
-                    </RouterLink>
+                  <button type="button" class="btn btn-warning text-white" @click="Stand()">
+                    繼續選購
                   </button>
-                  <button type="button" class="btn btn-warning">
-                    <RouterLink to="Check" class="nav-link text-white">
-                      填寫資料<span style="font-size: 20px;">→</span>
-                    </RouterLink>
+                  <button type="button" class="btn btn-warning text-white" @click="Check()">
+                    填寫資料
                   </button>
                 </div>
       </div>

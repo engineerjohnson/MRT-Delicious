@@ -12,7 +12,7 @@ export default {
       return phoneNumber.test(value) ? true : "需要正確的電話號碼";
     },
     createOrder(){
-      // this.$router.push("/Checkouts");
+      this.$router.push("/Checkouts");
     }
   },
 };
