@@ -117,4 +117,10 @@ img {
 tbody {
   border-color: black;
 }
+@media(max-width:576px){
+  #Cart-img{
+    width:80px;
+    max-height:80px;
+  }
+}
 </style>

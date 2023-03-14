@@ -62,31 +62,34 @@ export default {
         </div>
       </div>
     </div>
-    <div class="container mb-5">
+    <div class="container mb-4">
       <div class="row justify-content-center">
-        <div class="col-lg-9 mt-4 bg-lightOrange">
+        <div class="col-lg-9 py-5 bg-lightOrange">
           <p class="text-center py-md-2 py-1 fs-3 mb-0 fw-bold">
             訂購人資料確認
           </p>
 
           <ul class="row text-center align-items-center justify-content-center">
             <li class="fs-5 col-4">姓名:</li>
-            <li class="col-4">123</li>
+            <li class="col-4 ms-5 ms-lg-0">123</li>
           </ul>
           <ul class="row text-center justify-content-center">
             <li class="fs-5 col-4">電話:</li>
-            <li class="col-4">123</li>
+            <li class="col-4 ms-5 ms-lg-0">123</li>
           </ul>
           <ul class="row text-center justify-content-center">
             <li class="fs-5 col-4">信箱:</li>
-            <li class="col-4">123</li>
+            <li class="col-4 ms-5 ms-lg-0">123</li>
           </ul>
           <ul class="row text-center justify-content-center">
             <li class="fs-5 col-4">留言:</li>
-            <li class="col-4">123</li>
+            <li class="col-4 ms-5 ms-lg-0">123</li>
           </ul>
         </div>
       </div>
+    </div>
+    <div class="d-flex justify-content-center mb-5">
+        <button class="btn btn-warning text-white py-3 px-5">結帳</button>
     </div>
   </div>
   <footerComponter id="footer"></footerComponter>
