@@ -94,14 +94,14 @@ export default {
                   <div class="image-hover">
                     <img src="./專題作品圖/鍋貼.png" alt="" />
                   </div>
-                  <div>
-                    <span class="badge rounded-pill bg-warning fs-6 my-2"
-                      >顯示單位</span
-                    >
-                    <h5>小六鍋貼</h5>
+                  <div class="product_box">
+                    <span class="badge rounded-pill bg-warning fs-6 my-2">顯示單位</span>
+                    <p class="fs-5">小六鍋貼 
+                    <span class="fs-6" style="float: right;">90元</span>
+                    </p>
                     <p>商品描述</p>
                     <p>營業時段</p>
-                    <div class="d-flex justify-content-around">
+                    <div class="d-flex justify-content-between">
                       <button
                         type="button"
                         class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
@@ -131,14 +131,16 @@ export default {
                   <div class="image-hover">
                     <img src="./專題作品圖/鍋貼.png" alt="" />
                   </div>
-                  <div>
+                  <div class="product_box">
                     <span class="badge rounded-pill bg-warning fs-6 my-2"
                       >顯示單位</span
                     >
-                    <h5>小六鍋貼</h5>
+                    <p class="fs-5">小六鍋貼 
+                    <span class="fs-6" style="float: right;">90元</span>
+                    </p>
                     <p>商品描述</p>
                     <p>營業時段</p>
-                    <div class="d-flex justify-content-around">
+                    <div class="d-flex justify-content-between">
                       <button
                         type="button"
                         class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
@@ -168,14 +170,16 @@ export default {
                   <div class="image-hover">
                     <img src="./專題作品圖/鍋貼.png" alt="" />
                   </div>
-                  <div>
+                  <div class="product_box">
                     <span class="badge rounded-pill bg-warning fs-6 my-2"
                       >顯示單位</span
                     >
-                    <h5>小六鍋貼</h5>
+                    <p class="fs-5">小六鍋貼 
+                    <span class="fs-6" style="float: right;">90元</span>
+                    </p>
                     <p>商品描述</p>
                     <p>營業時段</p>
-                    <div class="d-flex justify-content-around">
+                    <div class="d-flex justify-content-between">
                       <button
                         type="button"
                         class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
@@ -205,14 +209,16 @@ export default {
                   <div class="image-hover">
                     <img src="./專題作品圖/鍋貼.png" alt="" />
                   </div>
-                  <div>
+                  <div class="product_box">
                     <span class="badge rounded-pill bg-warning fs-6 my-2"
                       >顯示單位</span
                     >
-                    <h5>小六鍋貼</h5>
+                    <p class="fs-5">小六鍋貼 
+                    <span class="fs-6" style="float: right;">90元</span>
+                    </p>
                     <p>商品描述</p>
                     <p>營業時段</p>
-                    <div class="d-flex justify-content-around">
+                    <div class="d-flex justify-content-between">
                       <button
                         type="button"
                         class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
@@ -314,5 +320,9 @@ img {
 }
 img:hover {
   transform: scale(120%);
+}
+.product_box{
+  width: 85%;
+  margin: auto;
 }
 </style>
