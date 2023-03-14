@@ -1,100 +1,120 @@
-<script >
+<script>
 import banner from "../../components/bannerComponent.vue";
 import footerComponter from "../../components/footerComponter.vue";
-export default{
-  components:{
+export default {
+  components: {
     banner,
     footerComponter,
   },
-  methods:{
+  methods: {
     //去填寫資料
-    Check(){
+    Check() {
       this.$router.push("/Check");
     },
     //繼續選購
-    Stand(){
+    Stand() {
       this.$router.push("/Stand");
-    }
-  }
+    },
+  },
 };
 </script>
 
 <template>
   <banner class="bg-dark" id="banner"></banner>
   <div class="content">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-10 pt-5">
-        <div class="breadcrumb mt-5">
-          <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item text-warning active fs-5 fw-bold">購物車資料</li>
-              <li class="breadcrumb-item fs-5">填寫訂單資料</li>
-              <li class="breadcrumb-item fs-5" aria-current="page">結帳</li>
-            </ol>
-          </nav>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10 pt-5">
+          <div class="breadcrumb mt-5">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item text-warning active fs-5 fw-bold">
+                  購物車資料
+                </li>
+                <li class="breadcrumb-item fs-5">填寫訂單資料</li>
+                <li class="breadcrumb-item fs-5" aria-current="page">結帳</li>
+              </ol>
+            </nav>
+          </div>
         </div>
-        <div class="d-flex justify-content-between align-items-center">
-          <h1 class="m-0">購物車</h1>
-            <div>
-              <button class="btn"><p class="fs-1 m-0">X</p></button>
-            </div>
-        </div>
-        <table class="table align-middle">
-                    <thead>
-                        <tr>
-                            <th>圖片</th>
-                            <th>商品名稱</th>
-                            <th>價格</th>
-                            <th>數量</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div id="Cart-img">
-                                <img src="./專題作品圖/鍋貼.png" alt="">
-                                </div>
-                            </td>
-                            <td>
-                                小六鍋貼
-                            </td>
-                            <td>
-                                  90元
-                            </td>
-                            <td>
-                              <select class="form-select">
-                                <option :value="i" v-for=' i in 10' :key='i+1'> {{ i }}</option>
-                              </select>
-                            </td>
-                            <td>
-                              <button type="button" class="btn">X</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="d-flex justify-content-around mt-5">
-                  <button type="button" class="btn btn-warning text-white" @click="Stand()">
-                    繼續選購
-                  </button>
-                  <button type="button" class="btn btn-warning text-white" @click="Check()">
-                    填寫資料
-                  </button>
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-9 mt-4 bg-lightOrange">
+              <div
+                class="d-flex justify-content-between align-items-center bg-lightOrange"
+              >
+                <p class="w-50 py-md-2 py-1 fs-3 mb-0">購物車</p>
+                <div>
+                  <button type="button" class="btn fs-1">X</button>
                 </div>
+              </div>
+              <table class="table align-middle bg-lightOrange">
+                <thead>
+                  <tr class="bg-warning">
+                    <th>圖片</th>
+                    <th>商品名稱</th>
+                    <th>價格</th>
+                    <th>數量</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div id="Cart-img">
+                        <img src="./專題作品圖/鍋貼.png" alt="" />
+                      </div>
+                    </td>
+                    <td>小六鍋貼</td>
+                    <td>90元</td>
+                    <td>
+                      <select class="form-select">
+                        <option :value="i" v-for="i in 10" :key="i + 1">
+                          {{ i }}
+                        </option>
+                      </select>
+                    </td>
+                    <td>
+                      <button type="button" class="btn">X</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="text-end fs-4">總計:</p>
+            </div>
+            <div class="d-flex justify-content-around mt-5">
+              <button
+                type="button"
+                class="btn btn-warning text-white"
+                @click="Stand()"
+              >
+                繼續選購
+              </button>
+              <button
+                type="button"
+                class="btn btn-warning text-white"
+                @click="Check()"
+              >
+                填寫資料
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
   </div>
   <footerComponter id="footer"></footerComponter>
 </template>
 
 <style>
-#Cart-img{
+#Cart-img {
   width: 130px;
   max-height: 130px;
 }
-img{
+img {
   max-width: 100%;
+}
+tbody {
+  border-color: black;
 }
 </style>
