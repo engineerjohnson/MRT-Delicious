@@ -24,8 +24,8 @@ export default{
   <div class="content">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-lg-10 py-5">
-        <div class="breadcrumb">
+      <div class="col-lg-10 pt-5">
+        <div class="breadcrumb mt-5">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item text-warning active fs-5 fw-bold">購物車資料</li>
