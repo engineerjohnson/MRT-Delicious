@@ -32,7 +32,8 @@ export default {
         },
       },
       product:[],
-      type:"大慶站",
+      standType:"大慶站",
+      wantEatType:"日式",
     };
   },
   components: {
@@ -50,17 +51,26 @@ export default {
       }
       );
     },
-    changeType(item){
-      this.type = item;
-      console.log(this.type);
+    //變更「standType」篩選內容
+    changeStandType(item){
+      this.standType = item;
+    },
+    //變更「wantEatType」篩選內容
+    changeWantEatType(item){
+      this.wantEatType = item;
     }
   },
   mounted(){
     this.getProduct();
   },
   computed:{
-    typeProduct(){
-      return this.product.filter(item=>item.unit === this.type);
+    //篩選「美食前三站商品」
+    standProduct(){
+      return this.product.filter(item => item.unit === this.standType);
+    },
+    //篩選「想吃什麼」
+    WantEatProduct(){
+      return this.product.filter(item => item.category === this.wantEatType);
     }
   },
 };
@@ -173,7 +183,7 @@ export default {
               role="tab"
               aria-controls="pills-home"
               aria-selected="true"
-              @click="changeType('大慶站')"
+              @click="changeStandType('大慶站')"
             >
               大慶站
             </button>
@@ -188,7 +198,7 @@ export default {
               role="tab"
               aria-controls="pills-profile"
               aria-selected="false"
-              @click="changeType('文心崇德站')"
+              @click="changeStandType('文心崇德站')"
             >
               文心崇德
             </button>
@@ -203,7 +213,7 @@ export default {
               role="tab"
               aria-controls="pills-contact"
               aria-selected="false"
-              @click="changeType('豐樂公園站')"
+              @click="changeStandType('豐樂公園站')"
             >
               豐樂公園
             </button>
@@ -231,17 +241,17 @@ export default {
                   disableOnInteraction: false,
                 }"
               >
-              <swiper-slide v-for="item in typeProduct" :key="item.id">
+              <swiper-slide v-for="standProduct in standProduct" :key="standProduct.id">
               <div id="swiper-car">
                 <div id="swiper-car-img" >
-                  <img :src=item.imageUrl alt="" />
+                  <img :src=standProduct.imageUrl alt="" />
                 </div>
-                <dt class="my-2 fs-4">{{ item.title }}</dt>
+                <dt class="my-2 fs-4">{{ standProduct.title }}</dt>
                 <p>
-                  商品描述:<span>{{ item.description }}</span>
+                  商品描述:<span>{{ standProduct.description }}</span>
                 </p>
                 <p>營業時段:</p>
-                <p>{{ item.content }}</p>
+                <p>{{ standProduct.content }}</p>
                 <button
                   type="button"
                   class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
@@ -280,17 +290,17 @@ export default {
               disableOnInteraction: false,
             }"
           >
-          <swiper-slide v-for="item in typeProduct" :key="item.id">
+          <swiper-slide v-for="standProduct in standProduct" :key="standProduct.id">
               <div id="swiper-car">
                 <div id="swiper-car-img" >
-                  <img :src=item.imageUrl alt="" />
+                  <img :src=standProduct.imageUrl alt="" />
                 </div>
-                <dt class="my-2 fs-4">{{ item.title }}</dt>
+                <dt class="my-2 fs-4">{{ standProduct.title }}</dt>
                 <p>
-                  商品描述:<span>{{ item.description }}</span>
+                  商品描述:<span>{{ standProduct.description }}</span>
                 </p>
                 <p>營業時段:</p>
-                <p>{{ item.content }}</p>
+                <p>{{ standProduct.content }}</p>
                 <button
                   type="button"
                   class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
@@ -329,17 +339,17 @@ export default {
               disableOnInteraction: false,
             }"
           >
-          <swiper-slide v-for="item in typeProduct" :key="item.id">
+          <swiper-slide v-for="standProduct in standProduct" :key="standProduct.id">
               <div id="swiper-car">
                 <div id="swiper-car-img" >
-                  <img :src=item.imageUrl alt="" />
+                  <img :src=standProduct.imageUrl alt="" />
                 </div>
-                <dt class="my-2 fs-4">{{ item.title }}</dt>
+                <dt class="my-2 fs-4">{{ standProduct.title }}</dt>
                 <p>
-                  商品描述:<span>{{ item.description }}</span>
+                  商品描述:<span>{{ standProduct.description }}</span>
                 </p>
                 <p>營業時段:</p>
-                <p>{{ item.content }}</p>
+                <p>{{ standProduct.content }}</p>
                 <button
                   type="button"
                   class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
@@ -378,6 +388,7 @@ export default {
               role="tab"
               aria-controls="japanese-style"
               aria-selected="true"
+              @click="changeWantEatType('日式')"
             >
               日式
             </button>
@@ -392,6 +403,7 @@ export default {
               role="tab"
               aria-controls="western-food"
               aria-selected="false"
+              @click="changeWantEatType('西餐')"
             >
               西餐
             </button>
@@ -406,22 +418,9 @@ export default {
               role="tab"
               aria-controls="sweets"
               aria-selected="false"
+              @click="changeWantEatType('甜食')"
             >
               甜食
-            </button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button
-              class="nav-link rounded-pill"
-              id="breakfast-tab"
-              data-bs-toggle="pill"
-              data-bs-target="#breakfast"
-              type="button"
-              role="tab"
-              aria-controls="breakfast"
-              aria-selected="false"
-            >
-              早餐
             </button>
           </li>
           <li class="nav-item" role="presentation">
@@ -434,6 +433,7 @@ export default {
               role="tab"
               aria-controls="chinese-style"
               aria-selected="false"
+              @click="changeWantEatType('中式')"
             >
               中式
             </button>
@@ -460,75 +460,15 @@ export default {
               disableOnInteraction: false,
             }"
           >
-            <swiper-slide>
+            <swiper-slide v-for="WantEatProduct in WantEatProduct" :key="WantEatProduct.id">
               <div id="swiper-car">
                 <div id="swiper-car-img">
-                  <img src="./專題作品圖/烤鴨.png" alt="" />
+                  <img :src=WantEatProduct.imageUrl alt="" />
                 </div>
-                <dt class="my-2 fs-4">鴨片館-北平烤鴨</dt>
-                <p>商品描述:採用一鴨三吃，有片皮鴨、鹽酥鴨架、醬爆鴨架。</p>
+                <dt class="my-2 fs-4">{{ WantEatProduct.title }}</dt>
+                <p>商品描述:<span>{{ WantEatProduct.description }}</span></p>
                 <p>營業時段:</p>
-                <p>一到日 : 11:00~15:00, 17:00~21:30</p>
-                <button
-                  type="button"
-                  class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
-                >
-                  <img
-                    style="width: 20px; height: 20px"
-                    src="./專題作品圖/love.png"
-                    alt=""
-                  />收藏
-                </button>
-                <button type="button" class="btn btn-secondary p-1 p-lg-2">
-                  <img
-                    style="width: 20px; height: 20px"
-                    src="./專題作品圖/car.png"
-                    alt=""
-                  />加入購物車
-                </button>
-              </div>
-            </swiper-slide>
-            <swiper-slide>
-              <div id="swiper-car">
-                <div id="swiper-car-img">
-                  <img src="./專題作品圖/雞腿排.png" alt="" />
-                </div>
-                <dt class="my-2 fs-4">微風鐵板燒-雞腿排餐</dt>
-                <p>
-                  商品描述:焦香雞腿加上奶油味的鮮甜高麗菜，簡直是最完美的套餐。
-                </p>
-                <p>營業時段:</p>
-                <p>一到日 : 11:00~13:30，17:00~21:00</p>
-                <button
-                  type="button"
-                  class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
-                >
-                  <img
-                    style="width: 20px; height: 20px"
-                    src="./專題作品圖/love.png"
-                    alt=""
-                  />收藏
-                </button>
-                <button type="button" class="btn btn-secondary p-1 p-lg-2">
-                  <img
-                    style="width: 20px; height: 20px"
-                    src="./專題作品圖/car.png"
-                    alt=""
-                  />加入購物車
-                </button>
-              </div>
-            </swiper-slide>
-            <swiper-slide>
-              <div id="swiper-car">
-                <div id="swiper-car-img">
-                  <img src="./專題作品圖/雞腿排.png" alt="" />
-                </div>
-                <dt class="my-2 fs-4">微風鐵板燒-雞腿排餐</dt>
-                <p>
-                  商品描述:焦香雞腿加上奶油味的鮮甜高麗菜，簡直是最完美的套餐。
-                </p>
-                <p>營業時段:</p>
-                <p>一到日 : 11:00~13:30，17:00~21:00</p>
+                <p>一到日 :{{ WantEatProduct.content }}</p>
                 <button
                   type="button"
                   class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
@@ -556,7 +496,45 @@ export default {
           role="tabpanel"
           aria-labelledby="western-food-tab"
         >
-          西餐
+        <Swiper
+            :breakpoints="swiperOptions.breakpoints"
+            :modules="modules"
+            :centeredSlides="false"
+            navigation
+            :autoplay="{
+              delay: 5000,
+              disableOnInteraction: false,
+            }"
+          >
+            <swiper-slide v-for="WantEatProduct in WantEatProduct" :key="WantEatProduct.id">
+              <div id="swiper-car">
+                <div id="swiper-car-img">
+                  <img :src=WantEatProduct.imageUrl alt="" />
+                </div>
+                <dt class="my-2 fs-4">{{ WantEatProduct.title }}</dt>
+                <p>商品描述:<span>{{ WantEatProduct.description }}</span></p>
+                <p>營業時段:</p>
+                <p>一到日 :{{ WantEatProduct.content }}</p>
+                <button
+                  type="button"
+                  class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
+                >
+                  <img
+                    style="width: 20px; height: 20px"
+                    src="./專題作品圖/love.png"
+                    alt=""
+                  />收藏
+                </button>
+                <button type="button" class="btn btn-secondary p-1 p-lg-2">
+                  <img
+                    style="width: 20px; height: 20px"
+                    src="./專題作品圖/car.png"
+                    alt=""
+                  />加入購物車
+                </button>
+              </div>
+            </swiper-slide>
+          </Swiper>
         </div>
         <div
           class="tab-pane fade"
@@ -564,15 +542,45 @@ export default {
           role="tabpanel"
           aria-labelledby="sweets-tab"
         >
-          甜食
-        </div>
-        <div
-          class="tab-pane fade"
-          id="breakfast"
-          role="tabpanel"
-          aria-labelledby="breakfast-tab"
-        >
-          早餐
+        <Swiper
+            :breakpoints="swiperOptions.breakpoints"
+            :modules="modules"
+            :centeredSlides="false"
+            navigation
+            :autoplay="{
+              delay: 5000,
+              disableOnInteraction: false,
+            }"
+          >
+            <swiper-slide v-for="WantEatProduct in WantEatProduct" :key="WantEatProduct.id">
+              <div id="swiper-car">
+                <div id="swiper-car-img">
+                  <img :src=WantEatProduct.imageUrl alt="" />
+                </div>
+                <dt class="my-2 fs-4">{{ WantEatProduct.title }}</dt>
+                <p>商品描述:<span>{{ WantEatProduct.description }}</span></p>
+                <p>營業時段:</p>
+                <p>一到日 :{{ WantEatProduct.content }}</p>
+                <button
+                  type="button"
+                  class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
+                >
+                  <img
+                    style="width: 20px; height: 20px"
+                    src="./專題作品圖/love.png"
+                    alt=""
+                  />收藏
+                </button>
+                <button type="button" class="btn btn-secondary p-1 p-lg-2">
+                  <img
+                    style="width: 20px; height: 20px"
+                    src="./專題作品圖/car.png"
+                    alt=""
+                  />加入購物車
+                </button>
+              </div>
+            </swiper-slide>
+          </Swiper>
         </div>
         <div
           class="tab-pane fade"
@@ -580,7 +588,45 @@ export default {
           role="tabpanel"
           aria-labelledby="chinese-style-tab"
         >
-          中式
+        <Swiper
+            :breakpoints="swiperOptions.breakpoints"
+            :modules="modules"
+            :centeredSlides="false"
+            navigation
+            :autoplay="{
+              delay: 5000,
+              disableOnInteraction: false,
+            }"
+          >
+            <swiper-slide v-for="WantEatProduct in WantEatProduct" :key="WantEatProduct.id">
+              <div id="swiper-car">
+                <div id="swiper-car-img">
+                  <img :src=WantEatProduct.imageUrl alt="" />
+                </div>
+                <dt class="my-2 fs-4">{{ WantEatProduct.title }}</dt>
+                <p>商品描述:<span>{{ WantEatProduct.description }}</span></p>
+                <p>營業時段:</p>
+                <p>一到日 :{{ WantEatProduct.content }}</p>
+                <button
+                  type="button"
+                  class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
+                >
+                  <img
+                    style="width: 20px; height: 20px"
+                    src="./專題作品圖/love.png"
+                    alt=""
+                  />收藏
+                </button>
+                <button type="button" class="btn btn-secondary p-1 p-lg-2">
+                  <img
+                    style="width: 20px; height: 20px"
+                    src="./專題作品圖/car.png"
+                    alt=""
+                  />加入購物車
+                </button>
+              </div>
+            </swiper-slide>
+          </Swiper>
         </div>
       </div>
     </section>
