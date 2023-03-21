@@ -14,6 +14,7 @@ export default {
   data() {
     return {
       modules: [Navigation, Pagination, Autoplay],
+      // swiper的RWD功能
       swiperOptions: {
         breakpoints: {
           280: {
@@ -31,6 +32,7 @@ export default {
         },
       },
       product:[],
+      type:"大慶站",
     };
   },
   components: {
@@ -47,11 +49,20 @@ export default {
         console.log(this.product);
       }
       );
+    },
+    changeType(item){
+      this.type = item;
+      console.log(this.type);
     }
   },
   mounted(){
     this.getProduct();
-  }
+  },
+  computed:{
+    typeProduct(){
+      return this.product.filter(item=>item.unit === this.type);
+    }
+  },
 };
 </script>
 
@@ -118,7 +129,6 @@ export default {
       </div>
     </div>
   </article>
-
   <article class="container">
     <!-- 美食超人在此幫您解決下一餐的問題 -->
     <section id="solution" class="row justify-content-center">
@@ -163,6 +173,7 @@ export default {
               role="tab"
               aria-controls="pills-home"
               aria-selected="true"
+              @click="changeType('大慶站')"
             >
               大慶站
             </button>
@@ -177,6 +188,7 @@ export default {
               role="tab"
               aria-controls="pills-profile"
               aria-selected="false"
+              @click="changeType('文心崇德站')"
             >
               文心崇德
             </button>
@@ -191,6 +203,7 @@ export default {
               role="tab"
               aria-controls="pills-contact"
               aria-selected="false"
+              @click="changeType('豐樂公園站')"
             >
               豐樂公園
             </button>
@@ -218,9 +231,8 @@ export default {
                   disableOnInteraction: false,
                 }"
               >
-              <swiper-slide>
-              <div id="swiper-car" class="d-inline" v-for="item in product" :key="item.id">
-                <div v-if="item.unit == `大慶站`">
+              <swiper-slide v-for="item in typeProduct" :key="item.id">
+              <div id="swiper-car">
                 <div id="swiper-car-img" >
                   <img :src=item.imageUrl alt="" />
                 </div>
@@ -230,67 +242,6 @@ export default {
                 </p>
                 <p>營業時段:</p>
                 <p>{{ item.content }}</p>
-                <button
-                  type="button"
-                  class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
-                >
-                  <img
-                    style="width: 20px; height: 20px"
-                    src="./專題作品圖/love.png"
-                    alt=""
-                  />收藏
-                </button>
-                <button type="button" class="btn btn-secondary p-1 p-lg-2">
-                  <img
-                    style="width: 20px; height: 20px"
-                    src="./專題作品圖/car.png"
-                    alt=""
-                  />加入購物車
-                </button>
-              </div>
-              </div>
-            </swiper-slide>
-            <swiper-slide>
-              <div id="swiper-car">
-                <div id="swiper-car-img">
-                  <img src="./專題作品圖/牛排.png" alt="" />
-                </div>
-                <dt class="my-2 fs-4">來一客牛排-厚切牛排</dt>
-                <p>
-                  商品描述:平價牛排，搭配特殊醬料，感覺像是牛排整個帶動起來~~
-                </p>
-                <p>營業時段:</p>
-                <p>一到日 : 11:00~13:30，17:00~21:00</p>
-                <button
-                  type="button"
-                  class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
-                >
-                  <img
-                    style="width: 20px; height: 20px"
-                    src="./專題作品圖/love.png"
-                    alt=""
-                  />收藏
-                </button>
-                <button type="button" class="btn btn-secondary p-1 p-lg-2">
-                  <img
-                    style="width: 20px; height: 20px"
-                    src="./專題作品圖/car.png"
-                    alt=""
-                  />加入購物車
-                </button>
-              </div>
-            </swiper-slide>
-            <swiper-slide>
-              <div id="swiper-car">
-                <div id="swiper-car-img">
-                  <img src="./專題作品圖/牛排.png" alt="" />
-                </div>
-                <dt class="my-2 fs-4">來一客牛排-厚切牛排</dt>
-                <p>
-                  商品描述:平價牛排，搭配特殊醬料，感覺像是牛排整個帶動起來~~
-                </p>
-                <p>營業時段:</p>
-                <p>一到日 : 11:00~13:30，17:00~21:00</p>
                 <button
                   type="button"
                   class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
@@ -329,77 +280,17 @@ export default {
               disableOnInteraction: false,
             }"
           >
-            <swiper-slide>
+          <swiper-slide v-for="item in typeProduct" :key="item.id">
               <div id="swiper-car">
-                <div id="swiper-car-img">
-                  <img src="./專題作品圖/芭樂.png" alt="" />
+                <div id="swiper-car-img" >
+                  <img :src=item.imageUrl alt="" />
                 </div>
-                <dt class="my-2 fs-4">芭樂撞檸檬</dt>
+                <dt class="my-2 fs-4">{{ item.title }}</dt>
                 <p>
-                  商品描述:採用芭樂加檸檬的新吃法，提鮮了芭樂的鮮甜跟檸檬的香氣。
+                  商品描述:<span>{{ item.description }}</span>
                 </p>
                 <p>營業時段:</p>
-                <p>三 、五、六、日 : 1700~0000</p>
-                <button
-                  type="button"
-                  class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
-                >
-                  <img
-                    style="width: 20px; height: 20px"
-                    src="./專題作品圖/love.png"
-                    alt=""
-                  />收藏
-                </button>
-                <button type="button" class="btn btn-secondary p-1 p-lg-2">
-                  <img
-                    style="width: 20px; height: 20px"
-                    src="./專題作品圖/car.png"
-                    alt=""
-                  />加入購物車
-                </button>
-              </div>
-            </swiper-slide>
-            <swiper-slide>
-              <div id="swiper-car">
-                <div id="swiper-car-img">
-                  <img src="./專題作品圖/牛排.png" alt="" />
-                </div>
-                <dt class="my-2 fs-4">來一客牛排-厚切牛排</dt>
-                <p>
-                  商品描述:平價牛排，搭配特殊醬料，感覺像是牛排整個帶動起來~~
-                </p>
-                <p>營業時段:</p>
-                <p>一到日 : 11:00~13:30，17:00~21:00</p>
-                <button
-                  type="button"
-                  class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
-                >
-                  <img
-                    style="width: 20px; height: 20px"
-                    src="./專題作品圖/love.png"
-                    alt=""
-                  />收藏
-                </button>
-                <button type="button" class="btn btn-secondary p-1 p-lg-2">
-                  <img
-                    style="width: 20px; height: 20px"
-                    src="./專題作品圖/car.png"
-                    alt=""
-                  />加入購物車
-                </button>
-              </div>
-            </swiper-slide>
-            <swiper-slide>
-              <div id="swiper-car">
-                <div id="swiper-car-img">
-                  <img src="./專題作品圖/牛排.png" alt="" />
-                </div>
-                <dt class="my-2 fs-4">來一客牛排-厚切牛排</dt>
-                <p>
-                  商品描述:平價牛排，搭配特殊醬料，感覺像是牛排整個帶動起來~~
-                </p>
-                <p>營業時段:</p>
-                <p>一到日 : 11:00~13:30，17:00~21:00</p>
+                <p>{{ item.content }}</p>
                 <button
                   type="button"
                   class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
@@ -438,77 +329,17 @@ export default {
               disableOnInteraction: false,
             }"
           >
-            <swiper-slide>
+          <swiper-slide v-for="item in typeProduct" :key="item.id">
               <div id="swiper-car">
-                <div id="swiper-car-img">
-                  <img src="./專題作品圖/芭樂.png" alt="" />
+                <div id="swiper-car-img" >
+                  <img :src=item.imageUrl alt="" />
                 </div>
-                <dt class="my-2 fs-4">芭樂撞檸檬</dt>
+                <dt class="my-2 fs-4">{{ item.title }}</dt>
                 <p>
-                  商品描述:採用芭樂加檸檬的新吃法，提鮮了芭樂的鮮甜跟檸檬的香氣。
+                  商品描述:<span>{{ item.description }}</span>
                 </p>
                 <p>營業時段:</p>
-                <p>三 、五、六、日 : 1700~0000</p>
-                <button
-                  type="button"
-                  class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
-                >
-                  <img
-                    style="width: 20px; height: 20px"
-                    src="./專題作品圖/love.png"
-                    alt=""
-                  />收藏
-                </button>
-                <button type="button" class="btn btn-secondary p-1 p-lg-2">
-                  <img
-                    style="width: 20px; height: 20px"
-                    src="./專題作品圖/car.png"
-                    alt=""
-                  />加入購物車
-                </button>
-              </div>
-            </swiper-slide>
-            <swiper-slide>
-              <div id="swiper-car">
-                <div id="swiper-car-img">
-                  <img src="./專題作品圖/牛排.png" alt="" />
-                </div>
-                <dt class="my-2 fs-4">來一客牛排-厚切牛排</dt>
-                <p>
-                  商品描述:平價牛排，搭配特殊醬料，感覺像是牛排整個帶動起來~~
-                </p>
-                <p>營業時段:</p>
-                <p>一到日 : 11:00~13:30，17:00~21:00</p>
-                <button
-                  type="button"
-                  class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
-                >
-                  <img
-                    style="width: 20px; height: 20px"
-                    src="./專題作品圖/love.png"
-                    alt=""
-                  />收藏
-                </button>
-                <button type="button" class="btn btn-secondary p-1 p-lg-2">
-                  <img
-                    style="width: 20px; height: 20px"
-                    src="./專題作品圖/car.png"
-                    alt=""
-                  />加入購物車
-                </button>
-              </div>
-            </swiper-slide>
-            <swiper-slide>
-              <div id="swiper-car">
-                <div id="swiper-car-img">
-                  <img src="./專題作品圖/牛排.png" alt="" />
-                </div>
-                <dt class="my-2 fs-4">來一客牛排-厚切牛排</dt>
-                <p>
-                  商品描述:平價牛排，搭配特殊醬料，感覺像是牛排整個帶動起來~~
-                </p>
-                <p>營業時段:</p>
-                <p>一到日 : 11:00~13:30，17:00~21:00</p>
+                <p>{{ item.content }}</p>
                 <button
                   type="button"
                   class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
