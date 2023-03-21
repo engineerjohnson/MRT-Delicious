@@ -10,11 +10,12 @@ export default {
 </script>
 
 <template>
-  <banner id="banner" class="bg-dark"></banner>
+  <banner id="banner" class="bg-dark mb-5"></banner>
+  <div class="content">
   <div class="container mt-5">
     <div class="row">
       <div class="col-lg-2 col-md-3 my-5">
-        <div class="list-group" id="list-tab" role="tablist">
+        <div class="list-group sticky-top" id="list-tab" role="tablist" style="top:90px">
           <a
             class="list-group-item list-group-item-action active"
             id="list-home-list"
@@ -76,7 +77,7 @@ export default {
             href="#beitun-terminal"
             role="tab"
             aria-controls="list-settings"
-            >北屯總站</a
+            >松竹站</a
           >
         </div>
       </div>
@@ -166,6 +167,123 @@ export default {
                 </div>
               </div>
               <div class="col-lg-4 col-md-6 mb-4">
+                <div>
+                  <div class="image-hover">
+                    <img src="./專題作品圖/鍋貼.png" alt="" />
+                  </div>
+                  <div class="product_box">
+                    <span class="badge rounded-pill bg-warning fs-6 my-2"
+                      >顯示單位</span
+                    >
+                    <p class="fs-5">小六鍋貼 
+                    <span class="fs-6" style="float: right;">90元</span>
+                    </p>
+                    <p>商品描述</p>
+                    <p>營業時段</p>
+                    <div class="d-flex justify-content-between">
+                      <button
+                        type="button"
+                        class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
+                      >
+                        <img
+                          style="width: 20px; height: 20px"
+                          src="./專題作品圖/love.png"
+                          alt=""
+                        />收藏
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-secondary p-1 p-lg-2"
+                      >
+                        <img
+                          style="width: 20px; height: 20px"
+                          src="./專題作品圖/car.png"
+                          alt=""
+                        />加入購物車
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                            <div class="col-lg-4 col-md-6 mb-4">
+                <div>
+                  <div class="image-hover">
+                    <img src="./專題作品圖/鍋貼.png" alt="" />
+                  </div>
+                  <div class="product_box">
+                    <span class="badge rounded-pill bg-warning fs-6 my-2"
+                      >顯示單位</span
+                    >
+                    <p class="fs-5">小六鍋貼 
+                    <span class="fs-6" style="float: right;">90元</span>
+                    </p>
+                    <p>商品描述</p>
+                    <p>營業時段</p>
+                    <div class="d-flex justify-content-between">
+                      <button
+                        type="button"
+                        class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
+                      >
+                        <img
+                          style="width: 20px; height: 20px"
+                          src="./專題作品圖/love.png"
+                          alt=""
+                        />收藏
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-secondary p-1 p-lg-2"
+                      >
+                        <img
+                          style="width: 20px; height: 20px"
+                          src="./專題作品圖/car.png"
+                          alt=""
+                        />加入購物車
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                            <div class="col-lg-4 col-md-6 mb-4">
+                <div>
+                  <div class="image-hover">
+                    <img src="./專題作品圖/鍋貼.png" alt="" />
+                  </div>
+                  <div class="product_box">
+                    <span class="badge rounded-pill bg-warning fs-6 my-2"
+                      >顯示單位</span
+                    >
+                    <p class="fs-5">小六鍋貼 
+                    <span class="fs-6" style="float: right;">90元</span>
+                    </p>
+                    <p>商品描述</p>
+                    <p>營業時段</p>
+                    <div class="d-flex justify-content-between">
+                      <button
+                        type="button"
+                        class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
+                      >
+                        <img
+                          style="width: 20px; height: 20px"
+                          src="./專題作品圖/love.png"
+                          alt=""
+                        />收藏
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-secondary p-1 p-lg-2"
+                      >
+                        <img
+                          style="width: 20px; height: 20px"
+                          src="./專題作品圖/car.png"
+                          alt=""
+                        />加入購物車
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                            <div class="col-lg-4 col-md-6 mb-4">
                 <div>
                   <div class="image-hover">
                     <img src="./專題作品圖/鍋貼.png" alt="" />
@@ -296,6 +414,7 @@ export default {
         </div>
       </div>
     </div>
+  </div>
   </div>
   <footerComponter id="footer"></footerComponter>
 </template>

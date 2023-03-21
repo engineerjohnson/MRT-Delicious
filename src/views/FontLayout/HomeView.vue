@@ -8,6 +8,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
+// import { onMounted } from "vue";
+const {VITE_APP_API, VITE_APP_PATH } = import.meta.env;
 export default {
   data() {
     return {
@@ -28,6 +30,7 @@ export default {
           },
         },
       },
+      product:[],
     };
   },
   components: {
@@ -36,6 +39,19 @@ export default {
     SwiperSlide,
     footerComported,
   },
+  methods:{
+    getProduct(){
+      this.$http.get(`${VITE_APP_API}/v2/api/${VITE_APP_PATH}/products/all`)
+      .then ((res)=>{
+        this.product = res.data.products;
+        console.log(this.product);
+      }
+      );
+    }
+  },
+  mounted(){
+    this.getProduct();
+  }
 };
 </script>
 
@@ -43,30 +59,7 @@ export default {
   <!-- 表頭 -->
   <header class="background">
     <div>
-      <!-- navbar -->
       <banner></banner>
-      <!-- <nav class="navbar navbar-dark navbar-expand-lg navbar-light px-5">
-    <RouterLink to="Home" class="navbar-brand"><img src="./專題作品圖/logo.png" alt="MRT-Delicious"></RouterLink>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end " id="navbarNav">
-      <div class="navbar-nav ps-2">
-          <RouterLink to="Stand" class="nav-link nav-item text-white me-4" data-toggle>
-              各站美食
-          </RouterLink>
-          <RouterLink to="Cart" class="nav-link nav-item text-white me-4" data-toggle>
-            <img src="./專題作品圖/car.png" alt="cashopping cartt">
-            購物車
-            <span class="badge rounded-pill bg-danger py-2">10</span>
-          </RouterLink>
-          <RouterLink to="Keep" class="nav-link nav-item text-white me-4" data-toggle>
-            <img src="./專題作品圖/love.png" alt="Keep">
-            收藏
-          </RouterLink>
-      </div>
-    </div>
-</nav> -->
     </div>
     <div class="caption d-flex justify-content-center align-items-center">
       <div>
@@ -208,33 +201,35 @@ export default {
         class="tab-content d-flex justify-content-center"
         id="pills-tabContent"
       >
+      <!-- 大慶站美食 -->
         <div
           class="tab-pane fade show active"
           id="pills-daqing"
           role="tabpanel"
           aria-labelledby="pills-home-tab"
         >
-          <Swiper
-            :breakpoints="swiperOptions.breakpoints"
-            :modules="modules"
-            :centeredSlides="false"
-            navigation
-            :autoplay="{
-              delay: 9000,
-              disableOnInteraction: false,
-            }"
-          >
-            <swiper-slide>
-              <div id="swiper-car">
-                <div id="swiper-car-img">
-                  <img src="./專題作品圖/芭樂.png" alt="" />
+              <Swiper
+                :breakpoints="swiperOptions.breakpoints"
+                :modules="modules"
+                :centeredSlides="false"
+                navigation
+                :autoplay="{
+                  delay: 9000,
+                  disableOnInteraction: false,
+                }"
+              >
+              <swiper-slide>
+              <div id="swiper-car" class="d-inline" v-for="item in product" :key="item.id">
+                <div v-if="item.unit == `大慶站`">
+                <div id="swiper-car-img" >
+                  <img :src=item.imageUrl alt="" />
                 </div>
-                <dt class="my-2 fs-4">芭樂撞檸檬</dt>
+                <dt class="my-2 fs-4">{{ item.title }}</dt>
                 <p>
-                  商品描述:採用芭樂加檸檬的新吃法，提鮮了芭樂的鮮甜跟檸檬的香氣。
+                  商品描述:<span>{{ item.description }}</span>
                 </p>
                 <p>營業時段:</p>
-                <p>三 、五、六、日 : 1700~0000</p>
+                <p>{{ item.content }}</p>
                 <button
                   type="button"
                   class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
@@ -252,6 +247,7 @@ export default {
                     alt=""
                   />加入購物車
                 </button>
+              </div>
               </div>
             </swiper-slide>
             <swiper-slide>
@@ -314,8 +310,9 @@ export default {
                 </button>
               </div>
             </swiper-slide>
-          </Swiper>
+              </Swiper>
         </div>
+        <!-- 文心崇德站美食 -->
         <div
           class="tab-pane fade"
           id="pills-wenxin-chongde"
@@ -424,6 +421,7 @@ export default {
             </swiper-slide>
           </Swiper>
         </div>
+        <!-- 豐樂公園站美食 -->
         <div
           class="tab-pane fade"
           id="pills-fengle-park"

@@ -158,7 +158,7 @@ h3 {
     background-size: 120% 130%;
 }
 
-#swiper-car-img:hover img {
+#swiper-car:hover img {
     transform: scale(1.1);
 }
 
