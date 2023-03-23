@@ -9,7 +9,9 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
 // import { onMounted } from "vue";
-const {VITE_APP_API, VITE_APP_PATH } = import.meta.env;
+// const {VITE_APP_API, VITE_APP_PATH } = import.meta.env;
+import { mapState,mapActions } from "pinia";
+import produceStore from "../../stores/product.js";
 export default {
   data() {
     return {
@@ -31,9 +33,6 @@ export default {
           },
         },
       },
-      product:[],
-      standType:"大慶站",
-      wantEatType:"日式",
     };
   },
   components: {
@@ -43,35 +42,16 @@ export default {
     footerComported,
   },
   methods:{
-    getProduct(){
-      this.$http.get(`${VITE_APP_API}/v2/api/${VITE_APP_PATH}/products/all`)
-      .then ((res)=>{
-        this.product = res.data.products;
-        console.log(this.product);
-      }
-      );
-    },
-    //變更「standType」篩選內容
-    changeStandType(item){
-      this.standType = item;
-    },
-    //變更「wantEatType」篩選內容
-    changeWantEatType(item){
-      this.wantEatType = item;
-    }
+    //從produceStore(product.js pinia)取出以下方法或參數
+    ...mapActions(produceStore,["getProduct","changeStandType","changeWantEatType"]),
+
   },
   mounted(){
     this.getProduct();
   },
   computed:{
-    //篩選「美食前三站商品」
-    standProduct(){
-      return this.product.filter(item => item.unit === this.standType);
-    },
-    //篩選「想吃什麼」
-    WantEatProduct(){
-      return this.product.filter(item => item.category === this.wantEatType);
-    }
+    //從produceStore(product.js pinia)取出以下方法或參數
+    ...mapState(produceStore,["product","standType","wantEatType","standProduct","WantEatProduct"]),
   },
 };
 </script>

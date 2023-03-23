@@ -62,7 +62,7 @@ export default {
                 <VField
                   id="tel"
                   name="電話"
-                  type="text"
+                  type="tel"
                   :rules="isPhone"
                   class="form-control"
                   :class="{ 'is-invalid': errors['電話'] }"
