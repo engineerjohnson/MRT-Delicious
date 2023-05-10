@@ -44,6 +44,7 @@ export default {
   methods:{
     //從produceStore(product.js pinia)從pinia取出方法actions  
     //...mapActions(store名稱, ['要取得的方法名稱'])
+    //將資料寫入 Store ，寫入資料要從「@click="changeStandType('data')"」data設定要寫入的資料
     ...mapActions(produceStore,["getProduct","changeStandType","changeWantEatType"]),
 
   },
