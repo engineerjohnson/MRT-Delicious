@@ -42,7 +42,7 @@ export default {
     footerComported,
   },
   methods:{
-    //從produceStore(product.js pinia)匯入以下方法或參數
+    //從produceStore(product.js pinia)匯入以下方法或參數(mapActions表示從pinia匯入資料到vue)
     ...mapActions(produceStore,["getProduct","changeStandType","changeWantEatType"]),
 
   },
@@ -50,7 +50,7 @@ export default {
     this.getProduct();
   },
   computed:{
-    //從produceStore(product.js pinia)匯出以下方法或參數
+    //從produceStore(product.js pinia)匯出以下方法或參數(mapActions表示從vue匯出資料到pinia)
     ...mapState(produceStore,["product","standType","wantEatType","standProduct","WantEatProduct"]),
   },
 };
