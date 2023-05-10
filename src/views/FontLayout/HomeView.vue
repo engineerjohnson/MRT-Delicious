@@ -42,7 +42,9 @@ export default {
     footerComported,
   },
   methods:{
-    //從produceStore(product.js pinia)取出以下方法或參數
+    //從produceStore(product.js pinia)從pinia取出方法actions  
+    //...mapActions(store名稱, ['要取得的方法名稱'])
+    //將資料寫入 Store ，寫入資料要從「@click="changeStandType('data')"」data設定要寫入的資料
     ...mapActions(produceStore,["getProduct","changeStandType","changeWantEatType"]),
 
   },
@@ -50,7 +52,8 @@ export default {
     this.getProduct();
   },
   computed:{
-    //從produceStore(product.js pinia)取出以下方法或參數
+    //從produceStore(product.js pinia)從pinia取出getters、state
+    // ...mapState(store名稱, ['要取得的值'])
     ...mapState(produceStore,["product","standType","wantEatType","standProduct","WantEatProduct"]),
   },
 };
