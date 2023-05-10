@@ -52,6 +52,7 @@ export default {
   },
   computed:{
     //從produceStore(product.js pinia)從pinia取出getters、state
+    // ...mapState(store名稱, ['要取得的值'])
     ...mapState(produceStore,["product","standType","wantEatType","standProduct","WantEatProduct"]),
   },
 };
