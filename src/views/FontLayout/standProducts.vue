@@ -1,420 +1,468 @@
 <script>
 import banner from "../../components/bannerComponent.vue";
 import footerComponter from "../../components/footerComponter.vue";
+import productsStore from "../../stores/products.js";
+import { mapState,mapActions } from "pinia";
 export default {
+  data() {
+    return {
+    };
+  },
   components: {
     banner,
     footerComponter,
   },
+  methods: {
+
+    ...mapActions(productsStore,["getProducts","filterProducts"])
+  },
+  mounted(){
+    this.getProducts();
+  },
+  computed:{
+    ...mapState(productsStore,["products","standProduct"])
+  }
 };
 </script>
 
 <template>
   <banner id="banner" class="bg-dark mb-5"></banner>
   <div class="content">
-  <div class="container mt-5">
-    <div class="row">
-      <div class="col-lg-2 col-md-3 my-5">
-        <div class="list-group sticky-top" id="list-tab" role="tablist" style="top:90px">
-          <a
-            class="list-group-item list-group-item-action active"
-            id="list-home-list"
-            data-bs-toggle="list"
-            href="#list-home"
-            role="tab"
-            aria-controls="list-home"
-            >所有商品</a
-          >
-          <a
-            class="list-group-item list-group-item-action"
-            id="list-daqing"
-            data-bs-toggle="list"
-            href="#daqing"
-            role="tab"
-            aria-controls="list-profile"
-            >大慶站</a
-          >
-          <a
-            class="list-group-item list-group-item-action"
-            id="list-fengle-park"
-            data-bs-toggle="list"
-            href="#fengle-park"
-            role="tab"
-            aria-controls="list-messages"
-            >豐樂公園</a
-          >
-          <a
-            class="list-group-item list-group-item-action"
-            id="list-suan-palace"
-            data-bs-toggle="list"
-            href="#suan-palace"
-            role="tab"
-            aria-controls="list-settings"
-            >水安宮</a
-          >
-          <a
-            class="list-group-item list-group-item-action"
-            id="list-wenhua-high-school"
-            data-bs-toggle="list"
-            href="#wenhua-high-school"
-            role="tab"
-            aria-controls="list-profile"
-            >文華高中</a
-          >
-          <a
-            class="list-group-item list-group-item-action"
-            id="list-wenxin-chongde"
-            data-bs-toggle="list"
-            href="#wenxin-chongde"
-            role="tab"
-            aria-controls="list-messages"
-            >文心崇德</a
-          >
-          <a
-            class="list-group-item list-group-item-action"
-            id="list-beitun-terminal"
-            data-bs-toggle="list"
-            href="#beitun-terminal"
-            role="tab"
-            aria-controls="list-settings"
-            >松竹站</a
-          >
-        </div>
-      </div>
-      <div class="col my-5">
-        <div class="tab-content" id="nav-tabContent">
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-lg-2 col-md-3 my-5">
           <div
-            class="tab-pane fade show active"
-            id="list-home"
-            role="tabpanel"
-            aria-labelledby="list-home-list"
+            class="list-group sticky-top"
+            id="list-tab"
+            role="tablist"
+            style="top: 90px"
           >
-            <div class="row">
-              <div class="col-lg-4 col-md-6 mb-4">
-                <div>
-                  <div class="image-hover">
-                    <img src="./專題作品圖/鍋貼.png" alt="" />
-                  </div>
-                  <div class="product_box">
-                    <span class="badge rounded-pill bg-warning fs-6 my-2">顯示單位</span>
-                    <p class="fs-5">小六鍋貼 
-                    <span class="fs-6" style="float: right;">90元</span>
-                    </p>
-                    <p>商品描述</p>
-                    <p>營業時段</p>
-                    <div class="d-flex justify-content-between">
-                      <button
-                        type="button"
-                        class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
+            <a
+              class="list-group-item list-group-item-action active"
+              id="list-home-list"
+              data-bs-toggle="list"
+              href="#list-home"
+              role="tab"
+              aria-controls="list-home"
+              >所有商品</a
+            >
+            <a
+              class="list-group-item list-group-item-action"
+              id="list-daqing"
+              data-bs-toggle="list"
+              data-ref="大慶站"
+              href="#daqing"
+              role="tab"
+              aria-controls="list-profile"
+              @click="filterProducts($event)"
+              >大慶站</a
+            >
+            <a
+              class="list-group-item list-group-item-action"
+              id="list-fengle-park"
+              data-bs-toggle="list"
+              data-ref="豐樂公園"
+              href="#fengle-park"
+              role="tab"
+              aria-controls="list-messages"
+              @click="filterProducts($event)"
+              >豐樂公園站</a
+            >
+            <a
+              class="list-group-item list-group-item-action"
+              id="list-suan-palace"
+              data-bs-toggle="list"
+              data-ref="水安宮"
+              href="#suan-palace"
+              role="tab"
+              aria-controls="list-settings"
+              @click="filterProducts($event)"
+              >水安宮站</a
+            >
+            <a
+              class="list-group-item list-group-item-action"
+              id="list-wenhua-high-school"
+              data-bs-toggle="list"
+              data-ref="文華高中"
+              href="#wenhua-high-school"
+              role="tab"
+              aria-controls="list-profile"
+              @click="filterProducts($event)"
+              >文華高中站</a
+            >
+            <a
+              class="list-group-item list-group-item-action"
+              id="list-wenxin-chongde"
+              data-bs-toggle="list"
+              data-ref="文心崇德"
+              href="#wenxin-chongde"
+              role="tab"
+              aria-controls="list-messages"
+              @click="filterProducts($event)"
+              >文心崇德站</a
+            >
+            <a
+              class="list-group-item list-group-item-action"
+              id="list-beitun-terminal"
+              data-bs-toggle="list"
+              data-ref="松竹站"
+              href="#beitun-terminal"
+              role="tab"
+              aria-controls="list-settings"
+              @click="filterProducts($event)"
+              >松竹站</a
+            >
+          </div>
+        </div>
+        <div class="col my-5">
+          <div class="tab-content" id="nav-tabContent">
+            <div
+              class="tab-pane fade show active"
+              id="list-home"
+              role="tabpanel"
+              aria-labelledby="list-home-list"
+            >
+              <div class="row card-group" >
+                <div class="col-lg-4 col-md-6 mb-4 card pb-5" v-for="products in products" :key="products.id">
+                  <div> 
+                    <div class="image-hover">
+                      <img :src=products.imageUrl :alt=products.title >
+                    </div>
+                    <div class="product_box">
+                      <span class="badge rounded-pill bg-warning fs-6 my-2"
+                        >{{ products.unit }}</span
                       >
-                        <img
-                          style="width: 20px; height: 20px"
-                          src="./專題作品圖/love.png"
-                          alt=""
-                        />收藏
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-secondary p-1 p-lg-2"
-                      >
-                        <img
-                          style="width: 20px; height: 20px"
-                          src="./專題作品圖/car.png"
-                          alt=""
-                        />加入購物車
-                      </button>
+                      <p class="fs-5">
+                        {{ products.title }}
+                        <span class="fs-6" style="float: right">{{ products.price }}元</span>
+                      </p>
+                      <p>{{ products.description }}</p>
+                      <p>{{ products.content }}</p>
+                      <div class="d-flex justify-content-between" id="button">
+                        <button
+                          type="button"
+                          class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
+                        >
+                          <img
+                            style="width: 20px; height: 20px"
+                            src="./專題作品圖/love.png"
+                            alt=""
+                          />收藏
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-secondary p-1 p-lg-2"
+                        >
+                          <img
+                            style="width: 20px; height: 20px"
+                            src="./專題作品圖/car.png"
+                            alt=""
+                          />加入購物車
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-lg-4 col-md-6 mb-4">
-                <div>
-                  <div class="image-hover">
-                    <img src="./專題作品圖/鍋貼.png" alt="" />
-                  </div>
-                  <div class="product_box">
-                    <span class="badge rounded-pill bg-warning fs-6 my-2"
-                      >顯示單位</span
-                    >
-                    <p class="fs-5">小六鍋貼 
-                    <span class="fs-6" style="float: right;">90元</span>
-                    </p>
-                    <p>商品描述</p>
-                    <p>營業時段</p>
-                    <div class="d-flex justify-content-between">
-                      <button
-                        type="button"
-                        class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
+            </div>
+            <div
+              class="tab-pane fade"
+              id="daqing"
+              role="tabpanel"
+              aria-labelledby="list-profile-list"
+            >
+            <div class="row card-group" >
+                <div class="col-lg-4 col-md-6 mb-4 card pb-5" v-for="products in standProduct" :key="products.id">
+                  <div> 
+                    <div class="image-hover">
+                      <img :src=products.imageUrl :alt=products.title >
+                    </div>
+                    <div class="product_box">
+                      <span class="badge rounded-pill bg-warning fs-6 my-2"
+                        >{{ products.unit }}</span
                       >
-                        <img
-                          style="width: 20px; height: 20px"
-                          src="./專題作品圖/love.png"
-                          alt=""
-                        />收藏
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-secondary p-1 p-lg-2"
-                      >
-                        <img
-                          style="width: 20px; height: 20px"
-                          src="./專題作品圖/car.png"
-                          alt=""
-                        />加入購物車
-                      </button>
+                      <p class="fs-5">
+                        {{ products.title }}
+                        <span class="fs-6" style="float: right">{{ products.price }}元</span>
+                      </p>
+                      <p>{{ products.description }}</p>
+                      <p>{{ products.content }}</p>
+                      <div class="d-flex justify-content-between" id="button">
+                        <button
+                          type="button"
+                          class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
+                        >
+                          <img
+                            style="width: 20px; height: 20px"
+                            src="./專題作品圖/love.png"
+                            alt=""
+                          />收藏
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-secondary p-1 p-lg-2"
+                        >
+                          <img
+                            style="width: 20px; height: 20px"
+                            src="./專題作品圖/car.png"
+                            alt=""
+                          />加入購物車
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-lg-4 col-md-6 mb-4">
-                <div>
-                  <div class="image-hover">
-                    <img src="./專題作品圖/鍋貼.png" alt="" />
-                  </div>
-                  <div class="product_box">
-                    <span class="badge rounded-pill bg-warning fs-6 my-2"
-                      >顯示單位</span
-                    >
-                    <p class="fs-5">小六鍋貼 
-                    <span class="fs-6" style="float: right;">90元</span>
-                    </p>
-                    <p>商品描述</p>
-                    <p>營業時段</p>
-                    <div class="d-flex justify-content-between">
-                      <button
-                        type="button"
-                        class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
+            </div>
+            <div
+              class="tab-pane fade"
+              id="fengle-park"
+              role="tabpanel"
+              aria-labelledby="list-messages-list"
+            >
+            <div class="row card-group" >
+                <div class="col-lg-4 col-md-6 mb-4 card pb-5" v-for="products in standProduct" :key="products.id">
+                  <div> 
+                    <div class="image-hover">
+                      <img :src=products.imageUrl :alt=products.title >
+                    </div>
+                    <div class="product_box">
+                      <span class="badge rounded-pill bg-warning fs-6 my-2"
+                        >{{ products.unit }}</span
                       >
-                        <img
-                          style="width: 20px; height: 20px"
-                          src="./專題作品圖/love.png"
-                          alt=""
-                        />收藏
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-secondary p-1 p-lg-2"
-                      >
-                        <img
-                          style="width: 20px; height: 20px"
-                          src="./專題作品圖/car.png"
-                          alt=""
-                        />加入購物車
-                      </button>
+                      <p class="fs-5">
+                        {{ products.title }}
+                        <span class="fs-6" style="float: right">{{ products.price }}元</span>
+                      </p>
+                      <p>{{ products.description }}</p>
+                      <p>{{ products.content }}</p>
+                      <div class="d-flex justify-content-between" id="button">
+                        <button
+                          type="button"
+                          class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
+                        >
+                          <img
+                            style="width: 20px; height: 20px"
+                            src="./專題作品圖/love.png"
+                            alt=""
+                          />收藏
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-secondary p-1 p-lg-2"
+                        >
+                          <img
+                            style="width: 20px; height: 20px"
+                            src="./專題作品圖/car.png"
+                            alt=""
+                          />加入購物車
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-                            <div class="col-lg-4 col-md-6 mb-4">
-                <div>
-                  <div class="image-hover">
-                    <img src="./專題作品圖/鍋貼.png" alt="" />
-                  </div>
-                  <div class="product_box">
-                    <span class="badge rounded-pill bg-warning fs-6 my-2"
-                      >顯示單位</span
-                    >
-                    <p class="fs-5">小六鍋貼 
-                    <span class="fs-6" style="float: right;">90元</span>
-                    </p>
-                    <p>商品描述</p>
-                    <p>營業時段</p>
-                    <div class="d-flex justify-content-between">
-                      <button
-                        type="button"
-                        class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
+            </div>
+            <div
+              class="tab-pane fade"
+              id="suan-palace"
+              role="tabpanel"
+              aria-labelledby="list-settings-list"
+            >
+            <div class="row card-group" >
+                <div class="col-lg-4 col-md-6 mb-4 card pb-5" v-for="products in standProduct" :key="products.id">
+                  <div> 
+                    <div class="image-hover">
+                      <img :src=products.imageUrl :alt=products.title >
+                    </div>
+                    <div class="product_box">
+                      <span class="badge rounded-pill bg-warning fs-6 my-2"
+                        >{{ products.unit }}</span
                       >
-                        <img
-                          style="width: 20px; height: 20px"
-                          src="./專題作品圖/love.png"
-                          alt=""
-                        />收藏
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-secondary p-1 p-lg-2"
-                      >
-                        <img
-                          style="width: 20px; height: 20px"
-                          src="./專題作品圖/car.png"
-                          alt=""
-                        />加入購物車
-                      </button>
+                      <p class="fs-5">
+                        {{ products.title }}
+                        <span class="fs-6" style="float: right">{{ products.price }}元</span>
+                      </p>
+                      <p>{{ products.description }}</p>
+                      <p>{{ products.content }}</p>
+                      <div class="d-flex justify-content-between" id="button">
+                        <button
+                          type="button"
+                          class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
+                        >
+                          <img
+                            style="width: 20px; height: 20px"
+                            src="./專題作品圖/love.png"
+                            alt=""
+                          />收藏
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-secondary p-1 p-lg-2"
+                        >
+                          <img
+                            style="width: 20px; height: 20px"
+                            src="./專題作品圖/car.png"
+                            alt=""
+                          />加入購物車
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-                            <div class="col-lg-4 col-md-6 mb-4">
-                <div>
-                  <div class="image-hover">
-                    <img src="./專題作品圖/鍋貼.png" alt="" />
-                  </div>
-                  <div class="product_box">
-                    <span class="badge rounded-pill bg-warning fs-6 my-2"
-                      >顯示單位</span
-                    >
-                    <p class="fs-5">小六鍋貼 
-                    <span class="fs-6" style="float: right;">90元</span>
-                    </p>
-                    <p>商品描述</p>
-                    <p>營業時段</p>
-                    <div class="d-flex justify-content-between">
-                      <button
-                        type="button"
-                        class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
+            </div>
+            <div
+              class="tab-pane fade"
+              id="wenhua-high-school"
+              role="tabpanel"
+              aria-labelledby="list-profile-list"
+            >
+            <div class="row card-group" >
+                <div class="col-lg-4 col-md-6 mb-4 card pb-5" v-for="products in standProduct" :key="products.id">
+                  <div> 
+                    <div class="image-hover">
+                      <img :src=products.imageUrl :alt=products.title >
+                    </div>
+                    <div class="product_box">
+                      <span class="badge rounded-pill bg-warning fs-6 my-2"
+                        >{{ products.unit }}</span
                       >
-                        <img
-                          style="width: 20px; height: 20px"
-                          src="./專題作品圖/love.png"
-                          alt=""
-                        />收藏
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-secondary p-1 p-lg-2"
-                      >
-                        <img
-                          style="width: 20px; height: 20px"
-                          src="./專題作品圖/car.png"
-                          alt=""
-                        />加入購物車
-                      </button>
+                      <p class="fs-5">
+                        {{ products.title }}
+                        <span class="fs-6" style="float: right">{{ products.price }}元</span>
+                      </p>
+                      <p>{{ products.description }}</p>
+                      <p>{{ products.content }}</p>
+                      <div class="d-flex justify-content-between" id="button">
+                        <button
+                          type="button"
+                          class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
+                        >
+                          <img
+                            style="width: 20px; height: 20px"
+                            src="./專題作品圖/love.png"
+                            alt=""
+                          />收藏
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-secondary p-1 p-lg-2"
+                        >
+                          <img
+                            style="width: 20px; height: 20px"
+                            src="./專題作品圖/car.png"
+                            alt=""
+                          />加入購物車
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-                            <div class="col-lg-4 col-md-6 mb-4">
-                <div>
-                  <div class="image-hover">
-                    <img src="./專題作品圖/鍋貼.png" alt="" />
-                  </div>
-                  <div class="product_box">
-                    <span class="badge rounded-pill bg-warning fs-6 my-2"
-                      >顯示單位</span
-                    >
-                    <p class="fs-5">小六鍋貼 
-                    <span class="fs-6" style="float: right;">90元</span>
-                    </p>
-                    <p>商品描述</p>
-                    <p>營業時段</p>
-                    <div class="d-flex justify-content-between">
-                      <button
-                        type="button"
-                        class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
+            </div>
+            <div
+              class="tab-pane fade"
+              id="wenxin-chongde"
+              role="tabpanel"
+              aria-labelledby="list-messages-list"
+            >
+            <div class="row card-group" >
+                <div class="col-lg-4 col-md-6 mb-4 card pb-5" v-for="products in standProduct" :key="products.id">
+                  <div> 
+                    <div class="image-hover">
+                      <img :src=products.imageUrl :alt=products.title >
+                    </div>
+                    <div class="product_box">
+                      <span class="badge rounded-pill bg-warning fs-6 my-2"
+                        >{{ products.unit }}</span
                       >
-                        <img
-                          style="width: 20px; height: 20px"
-                          src="./專題作品圖/love.png"
-                          alt=""
-                        />收藏
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-secondary p-1 p-lg-2"
-                      >
-                        <img
-                          style="width: 20px; height: 20px"
-                          src="./專題作品圖/car.png"
-                          alt=""
-                        />加入購物車
-                      </button>
+                      <p class="fs-5">
+                        {{ products.title }}
+                        <span class="fs-6" style="float: right">{{ products.price }}元</span>
+                      </p>
+                      <p>{{ products.description }}</p>
+                      <p>{{ products.content }}</p>
+                      <div class="d-flex justify-content-between" id="button">
+                        <button
+                          type="button"
+                          class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
+                        >
+                          <img
+                            style="width: 20px; height: 20px"
+                            src="./專題作品圖/love.png"
+                            alt=""
+                          />收藏
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-secondary p-1 p-lg-2"
+                        >
+                          <img
+                            style="width: 20px; height: 20px"
+                            src="./專題作品圖/car.png"
+                            alt=""
+                          />加入購物車
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-lg-4 col-md-6 mb-4">
-                <div>
-                  <div class="image-hover">
-                    <img src="./專題作品圖/鍋貼.png" alt="" />
-                  </div>
-                  <div class="product_box">
-                    <span class="badge rounded-pill bg-warning fs-6 my-2"
-                      >顯示單位</span
-                    >
-                    <p class="fs-5">小六鍋貼 
-                    <span class="fs-6" style="float: right;">90元</span>
-                    </p>
-                    <p>商品描述</p>
-                    <p>營業時段</p>
-                    <div class="d-flex justify-content-between">
-                      <button
-                        type="button"
-                        class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
+            </div>
+            <div
+              class="tab-pane fade"
+              id="beitun-terminal"
+              role="tabpanel"
+              aria-labelledby="list-settings-list"
+            >
+            <div class="row card-group" >
+                <div class="col-lg-4 col-md-6 mb-4 card pb-5" v-for="products in standProduct" :key="products.id">
+                  <div> 
+                    <div class="image-hover">
+                      <img :src=products.imageUrl :alt=products.title >
+                    </div>
+                    <div class="product_box">
+                      <span class="badge rounded-pill bg-warning fs-6 my-2"
+                        >{{ products.unit }}</span
                       >
-                        <img
-                          style="width: 20px; height: 20px"
-                          src="./專題作品圖/love.png"
-                          alt=""
-                        />收藏
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-secondary p-1 p-lg-2"
-                      >
-                        <img
-                          style="width: 20px; height: 20px"
-                          src="./專題作品圖/car.png"
-                          alt=""
-                        />加入購物車
-                      </button>
+                      <p class="fs-5">
+                        {{ products.title }}
+                        <span class="fs-6" style="float: right">{{ products.price }}元</span>
+                      </p>
+                      <p>{{ products.description }}</p>
+                      <p>{{ products.content }}</p>
+                      <div class="d-flex justify-content-between" id="button">
+                        <button
+                          type="button"
+                          class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
+                        >
+                          <img
+                            style="width: 20px; height: 20px"
+                            src="./專題作品圖/love.png"
+                            alt=""
+                          />收藏
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-secondary p-1 p-lg-2"
+                        >
+                          <img
+                            style="width: 20px; height: 20px"
+                            src="./專題作品圖/car.png"
+                            alt=""
+                          />加入購物車
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div
-            class="tab-pane fade"
-            id="daqing"
-            role="tabpanel"
-            aria-labelledby="list-profile-list"
-          >
-            大慶站
-          </div>
-          <div
-            class="tab-pane fade"
-            id="fengle-park"
-            role="tabpanel"
-            aria-labelledby="list-messages-list"
-          >
-            豐樂公園
-          </div>
-          <div
-            class="tab-pane fade"
-            id="suan-palace"
-            role="tabpanel"
-            aria-labelledby="list-settings-list"
-          >
-            水安宮
-          </div>
-          <div
-            class="tab-pane fade"
-            id="wenhua-high-school"
-            role="tabpanel"
-            aria-labelledby="list-profile-list"
-          >
-            文華高中
-          </div>
-          <div
-            class="tab-pane fade"
-            id="wenxin-chongde"
-            role="tabpanel"
-            aria-labelledby="list-messages-list"
-          >
-            文心崇德
-          </div>
-          <div
-            class="tab-pane fade"
-            id="beitun-terminal"
-            role="tabpanel"
-            aria-labelledby="list-settings-list"
-          >
-            北屯總站
-          </div>
         </div>
       </div>
     </div>
-  </div>
   </div>
   <footerComponter id="footer"></footerComponter>
 </template>
@@ -440,8 +488,17 @@ img {
 img:hover {
   transform: scale(120%);
 }
-.product_box{
+.product_box {
   width: 85%;
   margin: auto;
+}
+.card-group > .card{
+  flex: none;
+  position: relative;
+  border: 0px;
+}
+#button{
+  position: absolute;
+  bottom: 10px;
 }
 </style>
