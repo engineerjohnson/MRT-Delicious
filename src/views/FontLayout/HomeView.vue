@@ -42,7 +42,8 @@ export default {
     footerComported,
   },
   methods:{
-    //從produceStore(product.js pinia)從pinia取出方法actions
+    //從produceStore(product.js pinia)從pinia取出方法actions  
+    //...mapActions(store名稱, ['要取得的方法名稱'])
     ...mapActions(produceStore,["getProduct","changeStandType","changeWantEatType"]),
 
   },
