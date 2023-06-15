@@ -5,7 +5,7 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" >
         <span class="navbar-toggler-icon"></span>
     </button>
-        <div class="collapse navbar-collapse justify-content-end " id="navbarNav">
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <div class="navbar-nav ps-2">
             <RouterLink to="Stand" class="nav-link nav-item text-white me-4" data-toggle>
                 各站美食

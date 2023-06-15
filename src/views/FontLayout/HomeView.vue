@@ -1,6 +1,8 @@
 <script>
 import banner from "../../components/bannerComponent.vue";
 import footerComported from "../../components/footerComponter.vue";
+import addToCard from "../../components/addToCard.vue";
+import addToKeep from "../../components/addToKeep.vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 //導入swiper的Modules效果 如Autoplay(自動撥放),Pagination(下方顯示剩幾頁),Navigation(箭頭)
 import { Navigation, Pagination, Autoplay } from "swiper";
@@ -40,9 +42,11 @@ export default {
     Swiper,
     SwiperSlide,
     footerComported,
+    addToCard,
+    addToKeep,
   },
   methods:{
-    //從produceStore(product.js pinia)從pinia取出方法actions  
+    //從produceStore(product.js pinia)從pinia取出方法actions
     //...mapActions(store名稱, ['要取得的方法名稱'])
     //將資料寫入 Store ，寫入資料要從「@click="changeStandType('data')"」data設定要寫入的資料
     ...mapActions(produceStore,["getProduct","changeStandType","changeWantEatType"]),
@@ -68,7 +72,7 @@ export default {
     <div class="caption d-flex justify-content-center align-items-center">
       <div>
         <h1 class="text-white display-5">
-          <dt class="text-center pb-2">
+          <dt class="text-left p b - 2 ">
             專屬吃貨的世界，讓您輕鬆搜尋、收藏與訂購美食。
           </dt>
         </h1>
@@ -235,23 +239,8 @@ export default {
                 </p>
                 <p>營業時段:</p>
                 <p>{{ standProduct.content }}</p>
-                <button
-                  type="button"
-                  class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
-                >
-                  <img
-                    style="width: 20px; height: 20px"
-                    src="./專題作品圖/love.png"
-                    alt=""
-                  />收藏
-                </button>
-                <button type="button" class="btn btn-secondary p-1 p-lg-2">
-                  <img
-                    style="width: 20px; height: 20px"
-                    src="./專題作品圖/car.png"
-                    alt=""
-                  />加入購物車
-                </button>
+                <addToKeep></addToKeep>
+                <addToCard></addToCard>
               </div>
             </swiper-slide>
               </Swiper>
@@ -284,23 +273,8 @@ export default {
                 </p>
                 <p>營業時段:</p>
                 <p>{{ standProduct.content }}</p>
-                <button
-                  type="button"
-                  class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
-                >
-                  <img
-                    style="width: 20px; height: 20px"
-                    src="./專題作品圖/love.png"
-                    alt=""
-                  />收藏
-                </button>
-                <button type="button" class="btn btn-secondary p-1 p-lg-2">
-                  <img
-                    style="width: 20px; height: 20px"
-                    src="./專題作品圖/car.png"
-                    alt=""
-                  />加入購物車
-                </button>
+                <addToKeep></addToKeep>
+                <addToCard></addToCard>
               </div>
             </swiper-slide>
           </Swiper>
@@ -333,23 +307,8 @@ export default {
                 </p>
                 <p>營業時段:</p>
                 <p>{{ standProduct.content }}</p>
-                <button
-                  type="button"
-                  class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
-                >
-                  <img
-                    style="width: 20px; height: 20px"
-                    src="./專題作品圖/love.png"
-                    alt=""
-                  />收藏
-                </button>
-                <button type="button" class="btn btn-secondary p-1 p-lg-2">
-                  <img
-                    style="width: 20px; height: 20px"
-                    src="./專題作品圖/car.png"
-                    alt=""
-                  />加入購物車
-                </button>
+                <addToKeep></addToKeep>
+                <addToCard></addToCard>
               </div>
             </swiper-slide>
           </Swiper>
@@ -452,23 +411,8 @@ export default {
                 <p>商品描述:<span>{{ WantEatProduct.description }}</span></p>
                 <p>營業時段:</p>
                 <p>一到日 :{{ WantEatProduct.content }}</p>
-                <button
-                  type="button"
-                  class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
-                >
-                  <img
-                    style="width: 20px; height: 20px"
-                    src="./專題作品圖/love.png"
-                    alt=""
-                  />收藏
-                </button>
-                <button type="button" class="btn btn-secondary p-1 p-lg-2">
-                  <img
-                    style="width: 20px; height: 20px"
-                    src="./專題作品圖/car.png"
-                    alt=""
-                  />加入購物車
-                </button>
+                <addToKeep></addToKeep>
+                <addToCard></addToCard>
               </div>
             </swiper-slide>
           </Swiper>
@@ -498,23 +442,8 @@ export default {
                 <p>商品描述:<span>{{ WantEatProduct.description }}</span></p>
                 <p>營業時段:</p>
                 <p>一到日 :{{ WantEatProduct.content }}</p>
-                <button
-                  type="button"
-                  class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
-                >
-                  <img
-                    style="width: 20px; height: 20px"
-                    src="./專題作品圖/love.png"
-                    alt=""
-                  />收藏
-                </button>
-                <button type="button" class="btn btn-secondary p-1 p-lg-2">
-                  <img
-                    style="width: 20px; height: 20px"
-                    src="./專題作品圖/car.png"
-                    alt=""
-                  />加入購物車
-                </button>
+                <addToKeep></addToKeep>
+                <addToCard></addToCard>
               </div>
             </swiper-slide>
           </Swiper>
@@ -544,23 +473,8 @@ export default {
                 <p>商品描述:<span>{{ WantEatProduct.description }}</span></p>
                 <p>營業時段:</p>
                 <p>一到日 :{{ WantEatProduct.content }}</p>
-                <button
-                  type="button"
-                  class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
-                >
-                  <img
-                    style="width: 20px; height: 20px"
-                    src="./專題作品圖/love.png"
-                    alt=""
-                  />收藏
-                </button>
-                <button type="button" class="btn btn-secondary p-1 p-lg-2">
-                  <img
-                    style="width: 20px; height: 20px"
-                    src="./專題作品圖/car.png"
-                    alt=""
-                  />加入購物車
-                </button>
+                <addToKeep></addToKeep>
+                <addToCard></addToCard>
               </div>
             </swiper-slide>
           </Swiper>
@@ -590,23 +504,8 @@ export default {
                 <p>商品描述:<span>{{ WantEatProduct.description }}</span></p>
                 <p>營業時段:</p>
                 <p>一到日 :{{ WantEatProduct.content }}</p>
-                <button
-                  type="button"
-                  class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
-                >
-                  <img
-                    style="width: 20px; height: 20px"
-                    src="./專題作品圖/love.png"
-                    alt=""
-                  />收藏
-                </button>
-                <button type="button" class="btn btn-secondary p-1 p-lg-2">
-                  <img
-                    style="width: 20px; height: 20px"
-                    src="./專題作品圖/car.png"
-                    alt=""
-                  />加入購物車
-                </button>
+                <addToKeep></addToKeep>
+                <addToCard></addToCard>
               </div>
             </swiper-slide>
           </Swiper>

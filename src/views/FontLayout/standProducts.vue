@@ -1,6 +1,8 @@
 <script>
 import banner from "../../components/bannerComponent.vue";
 import footerComponter from "../../components/footerComponter.vue";
+import addToCard from "../../components/addToCard.vue";
+import addToKeep from "../../components/addToKeep.vue";
 import productsStore from "../../stores/products.js";
 import { mapState,mapActions } from "pinia";
 export default {
@@ -11,6 +13,8 @@ export default {
   components: {
     banner,
     footerComponter,
+    addToCard,
+    addToKeep,
   },
   methods: {
 
@@ -124,7 +128,7 @@ export default {
             >
               <div class="row card-group" >
                 <div class="col-lg-4 col-md-6 mb-4 card pb-5" v-for="products in products" :key="products.id">
-                  <div> 
+                  <div>
                     <div class="image-hover">
                       <img :src=products.imageUrl :alt=products.title >
                     </div>
@@ -139,26 +143,8 @@ export default {
                       <p>{{ products.description }}</p>
                       <p>{{ products.content }}</p>
                       <div class="d-flex justify-content-between" id="button">
-                        <button
-                          type="button"
-                          class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
-                        >
-                          <img
-                            style="width: 20px; height: 20px"
-                            src="./專題作品圖/love.png"
-                            alt=""
-                          />收藏
-                        </button>
-                        <button
-                          type="button"
-                          class="btn btn-secondary p-1 p-lg-2"
-                        >
-                          <img
-                            style="width: 20px; height: 20px"
-                            src="./專題作品圖/car.png"
-                            alt=""
-                          />加入購物車
-                        </button>
+                        <addToKeep></addToKeep>
+                        <addToCard></addToCard>
                       </div>
                     </div>
                   </div>
@@ -173,7 +159,7 @@ export default {
             >
             <div class="row card-group" >
                 <div class="col-lg-4 col-md-6 mb-4 card pb-5" v-for="products in standProduct" :key="products.id">
-                  <div> 
+                  <div>
                     <div class="image-hover">
                       <img :src=products.imageUrl :alt=products.title >
                     </div>
@@ -188,26 +174,8 @@ export default {
                       <p>{{ products.description }}</p>
                       <p>{{ products.content }}</p>
                       <div class="d-flex justify-content-between" id="button">
-                        <button
-                          type="button"
-                          class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
-                        >
-                          <img
-                            style="width: 20px; height: 20px"
-                            src="./專題作品圖/love.png"
-                            alt=""
-                          />收藏
-                        </button>
-                        <button
-                          type="button"
-                          class="btn btn-secondary p-1 p-lg-2"
-                        >
-                          <img
-                            style="width: 20px; height: 20px"
-                            src="./專題作品圖/car.png"
-                            alt=""
-                          />加入購物車
-                        </button>
+                        <addToKeep></addToKeep>
+                        <addToCard></addToCard>
                       </div>
                     </div>
                   </div>
@@ -222,7 +190,7 @@ export default {
             >
             <div class="row card-group" >
                 <div class="col-lg-4 col-md-6 mb-4 card pb-5" v-for="products in standProduct" :key="products.id">
-                  <div> 
+                  <div>
                     <div class="image-hover">
                       <img :src=products.imageUrl :alt=products.title >
                     </div>
@@ -237,26 +205,8 @@ export default {
                       <p>{{ products.description }}</p>
                       <p>{{ products.content }}</p>
                       <div class="d-flex justify-content-between" id="button">
-                        <button
-                          type="button"
-                          class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
-                        >
-                          <img
-                            style="width: 20px; height: 20px"
-                            src="./專題作品圖/love.png"
-                            alt=""
-                          />收藏
-                        </button>
-                        <button
-                          type="button"
-                          class="btn btn-secondary p-1 p-lg-2"
-                        >
-                          <img
-                            style="width: 20px; height: 20px"
-                            src="./專題作品圖/car.png"
-                            alt=""
-                          />加入購物車
-                        </button>
+                        <addToKeep></addToKeep>
+                        <addToCard></addToCard>
                       </div>
                     </div>
                   </div>
@@ -271,7 +221,7 @@ export default {
             >
             <div class="row card-group" >
                 <div class="col-lg-4 col-md-6 mb-4 card pb-5" v-for="products in standProduct" :key="products.id">
-                  <div> 
+                  <div>
                     <div class="image-hover">
                       <img :src=products.imageUrl :alt=products.title >
                     </div>
@@ -286,26 +236,8 @@ export default {
                       <p>{{ products.description }}</p>
                       <p>{{ products.content }}</p>
                       <div class="d-flex justify-content-between" id="button">
-                        <button
-                          type="button"
-                          class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
-                        >
-                          <img
-                            style="width: 20px; height: 20px"
-                            src="./專題作品圖/love.png"
-                            alt=""
-                          />收藏
-                        </button>
-                        <button
-                          type="button"
-                          class="btn btn-secondary p-1 p-lg-2"
-                        >
-                          <img
-                            style="width: 20px; height: 20px"
-                            src="./專題作品圖/car.png"
-                            alt=""
-                          />加入購物車
-                        </button>
+                        <addToKeep></addToKeep>
+                        <addToCard></addToCard>
                       </div>
                     </div>
                   </div>
@@ -320,7 +252,7 @@ export default {
             >
             <div class="row card-group" >
                 <div class="col-lg-4 col-md-6 mb-4 card pb-5" v-for="products in standProduct" :key="products.id">
-                  <div> 
+                  <div>
                     <div class="image-hover">
                       <img :src=products.imageUrl :alt=products.title >
                     </div>
@@ -335,26 +267,8 @@ export default {
                       <p>{{ products.description }}</p>
                       <p>{{ products.content }}</p>
                       <div class="d-flex justify-content-between" id="button">
-                        <button
-                          type="button"
-                          class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
-                        >
-                          <img
-                            style="width: 20px; height: 20px"
-                            src="./專題作品圖/love.png"
-                            alt=""
-                          />收藏
-                        </button>
-                        <button
-                          type="button"
-                          class="btn btn-secondary p-1 p-lg-2"
-                        >
-                          <img
-                            style="width: 20px; height: 20px"
-                            src="./專題作品圖/car.png"
-                            alt=""
-                          />加入購物車
-                        </button>
+                        <addToKeep></addToKeep>
+                        <addToCard></addToCard>
                       </div>
                     </div>
                   </div>
@@ -369,7 +283,7 @@ export default {
             >
             <div class="row card-group" >
                 <div class="col-lg-4 col-md-6 mb-4 card pb-5" v-for="products in standProduct" :key="products.id">
-                  <div> 
+                  <div>
                     <div class="image-hover">
                       <img :src=products.imageUrl :alt=products.title >
                     </div>
@@ -384,26 +298,8 @@ export default {
                       <p>{{ products.description }}</p>
                       <p>{{ products.content }}</p>
                       <div class="d-flex justify-content-between" id="button">
-                        <button
-                          type="button"
-                          class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
-                        >
-                          <img
-                            style="width: 20px; height: 20px"
-                            src="./專題作品圖/love.png"
-                            alt=""
-                          />收藏
-                        </button>
-                        <button
-                          type="button"
-                          class="btn btn-secondary p-1 p-lg-2"
-                        >
-                          <img
-                            style="width: 20px; height: 20px"
-                            src="./專題作品圖/car.png"
-                            alt=""
-                          />加入購物車
-                        </button>
+                        <addToKeep></addToKeep>
+                        <addToCard></addToCard>
                       </div>
                     </div>
                   </div>
@@ -418,7 +314,7 @@ export default {
             >
             <div class="row card-group" >
                 <div class="col-lg-4 col-md-6 mb-4 card pb-5" v-for="products in standProduct" :key="products.id">
-                  <div> 
+                  <div>
                     <div class="image-hover">
                       <img :src=products.imageUrl :alt=products.title >
                     </div>
@@ -433,26 +329,8 @@ export default {
                       <p>{{ products.description }}</p>
                       <p>{{ products.content }}</p>
                       <div class="d-flex justify-content-between" id="button">
-                        <button
-                          type="button"
-                          class="btn btn-danger me-lg-3 me-1 p-1 p-lg-2"
-                        >
-                          <img
-                            style="width: 20px; height: 20px"
-                            src="./專題作品圖/love.png"
-                            alt=""
-                          />收藏
-                        </button>
-                        <button
-                          type="button"
-                          class="btn btn-secondary p-1 p-lg-2"
-                        >
-                          <img
-                            style="width: 20px; height: 20px"
-                            src="./專題作品圖/car.png"
-                            alt=""
-                          />加入購物車
-                        </button>
+                        <addToKeep></addToKeep>
+                        <addToCard></addToCard>
                       </div>
                     </div>
                   </div>
