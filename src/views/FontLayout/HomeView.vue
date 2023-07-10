@@ -240,7 +240,7 @@ export default {
                 <p>營業時段:</p>
                 <p>{{ standProduct.content }}</p>
                 <addToKeep></addToKeep>
-                <addToCard></addToCard>
+                <addToCard :product_id = standProduct.id></addToCard>
               </div>
             </swiper-slide>
               </Swiper>
@@ -274,7 +274,7 @@ export default {
                 <p>營業時段:</p>
                 <p>{{ standProduct.content }}</p>
                 <addToKeep></addToKeep>
-                <addToCard></addToCard>
+                <addToCard :product_id = standProduct.id></addToCard>
               </div>
             </swiper-slide>
           </Swiper>
@@ -308,7 +308,7 @@ export default {
                 <p>營業時段:</p>
                 <p>{{ standProduct.content }}</p>
                 <addToKeep></addToKeep>
-                <addToCard></addToCard>
+                <addToCard :product_id = standProduct.id></addToCard>
               </div>
             </swiper-slide>
           </Swiper>
@@ -412,7 +412,7 @@ export default {
                 <p>營業時段:</p>
                 <p>一到日 :{{ WantEatProduct.content }}</p>
                 <addToKeep></addToKeep>
-                <addToCard></addToCard>
+                <addToCard :product_id = WantEatProduct.id></addToCard>
               </div>
             </swiper-slide>
           </Swiper>
@@ -443,7 +443,7 @@ export default {
                 <p>營業時段:</p>
                 <p>一到日 :{{ WantEatProduct.content }}</p>
                 <addToKeep></addToKeep>
-                <addToCard></addToCard>
+                <addToCard :product_id = WantEatProduct.id></addToCard>
               </div>
             </swiper-slide>
           </Swiper>
@@ -474,7 +474,7 @@ export default {
                 <p>營業時段:</p>
                 <p>一到日 :{{ WantEatProduct.content }}</p>
                 <addToKeep></addToKeep>
-                <addToCard></addToCard>
+                <addToCard :product_id = WantEatProduct.id></addToCard>
               </div>
             </swiper-slide>
           </Swiper>
@@ -505,7 +505,7 @@ export default {
                 <p>營業時段:</p>
                 <p>一到日 :{{ WantEatProduct.content }}</p>
                 <addToKeep></addToKeep>
-                <addToCard></addToCard>
+                <addToCard :product_id = WantEatProduct.id></addToCard>
               </div>
             </swiper-slide>
           </Swiper>
