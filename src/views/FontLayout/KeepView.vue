@@ -37,7 +37,7 @@ export default {
                 <td class="align-middle text-center">
                   <div>
                     <button type="button" class="btn">
-                      <img src="./專題作品圖/shopping-cart.png" alt="" />
+                      <font-awesome-icon icon="cart-shopping" />
                     </button>
                   </div>
                 </td>
@@ -54,7 +54,7 @@ export default {
                 <td class="align-middle text-center">
                   <div>
                     <button type="button" class="btn">
-                      <img src="./專題作品圖/shopping-cart.png" alt="" />
+                      <font-awesome-icon icon="cart-shopping" />
                     </button>
                   </div>
                 </td>
@@ -71,7 +71,7 @@ export default {
                 <td class="align-middle text-center">
                   <div>
                     <button type="button" class="btn">
-                      <img src="./專題作品圖/shopping-cart.png" alt="" />
+                      <font-awesome-icon icon="cart-shopping" />
                     </button>
                   </div>
                 </td>
