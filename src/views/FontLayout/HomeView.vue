@@ -239,7 +239,7 @@ export default {
                 </p>
                 <p>營業時段:</p>
                 <p>{{ standProduct.content }}</p>
-                <addToKeep></addToKeep>
+                <addToKeep :product_id = standProduct.id></addToKeep>
                 <addToCard :product_id = standProduct.id></addToCard>
               </div>
             </swiper-slide>
@@ -273,7 +273,7 @@ export default {
                 </p>
                 <p>營業時段:</p>
                 <p>{{ standProduct.content }}</p>
-                <addToKeep></addToKeep>
+                <addToKeep :product_id = standProduct.id></addToKeep>
                 <addToCard :product_id = standProduct.id></addToCard>
               </div>
             </swiper-slide>
@@ -307,7 +307,7 @@ export default {
                 </p>
                 <p>營業時段:</p>
                 <p>{{ standProduct.content }}</p>
-                <addToKeep></addToKeep>
+                <addToKeep :product_id = standProduct.id></addToKeep>
                 <addToCard :product_id = standProduct.id></addToCard>
               </div>
             </swiper-slide>
@@ -411,7 +411,7 @@ export default {
                 <p>商品描述:<span>{{ WantEatProduct.description }}</span></p>
                 <p>營業時段:</p>
                 <p>一到日 :{{ WantEatProduct.content }}</p>
-                <addToKeep></addToKeep>
+                <addToKeep :product_id = WantEatProduct.id></addToKeep>
                 <addToCard :product_id = WantEatProduct.id></addToCard>
               </div>
             </swiper-slide>
@@ -442,7 +442,7 @@ export default {
                 <p>商品描述:<span>{{ WantEatProduct.description }}</span></p>
                 <p>營業時段:</p>
                 <p>一到日 :{{ WantEatProduct.content }}</p>
-                <addToKeep></addToKeep>
+                <addToKeep :product_id = WantEatProduct.id></addToKeep>
                 <addToCard :product_id = WantEatProduct.id></addToCard>
               </div>
             </swiper-slide>
@@ -473,7 +473,7 @@ export default {
                 <p>商品描述:<span>{{ WantEatProduct.description }}</span></p>
                 <p>營業時段:</p>
                 <p>一到日 :{{ WantEatProduct.content }}</p>
-                <addToKeep></addToKeep>
+                <addToKeep :product_id = WantEatProduct.id></addToKeep>
                 <addToCard :product_id = WantEatProduct.id></addToCard>
               </div>
             </swiper-slide>
@@ -504,7 +504,7 @@ export default {
                 <p>商品描述:<span>{{ WantEatProduct.description }}</span></p>
                 <p>營業時段:</p>
                 <p>一到日 :{{ WantEatProduct.content }}</p>
-                <addToKeep></addToKeep>
+                <addToKeep :product_id = WantEatProduct.id></addToKeep>
                 <addToCard :product_id = WantEatProduct.id></addToCard>
               </div>
             </swiper-slide>

@@ -11,12 +11,14 @@
                 各站美食
             </RouterLink>
             <RouterLink to="/Cart" class="nav-link nav-item text-white me-4" data-toggle>
-                <img src="../views/FontLayout/專題作品圖/car.png" alt="cashopping cartt">
+                <font-awesome-icon icon="cart-shopping" />
                 購物車
                 <span class="badge rounded-pill bg-danger py-2">10</span>
             </RouterLink>
             <RouterLink to="/Keep" class="nav-link nav-item text-white me-4" data-toggle>
-                <img src="../views/FontLayout/專題作品圖/love.png" alt="Keep">收藏</RouterLink>
+                <font-awesome-icon icon="heart" />
+                收藏
+            </RouterLink>
         </div>
         </div>
     </nav>
