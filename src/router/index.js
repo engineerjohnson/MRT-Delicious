@@ -9,7 +9,6 @@ const routes =[
       path :"",
       name:"Home",
       component:()=>import("../views/FontLayout/HomeView.vue"),
-      children:[]
       },
       {
         path:"Cart",
