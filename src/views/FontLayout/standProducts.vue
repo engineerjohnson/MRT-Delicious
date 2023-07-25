@@ -1,6 +1,4 @@
 <script>
-import banner from "../../components/bannerComponent.vue";
-import footerComponter from "../../components/footerComponter.vue";
 import addToCard from "../../components/addToCard.vue";
 import addToKeep from "../../components/addToKeep.vue";
 import productsStore from "../../stores/products.js";
@@ -11,8 +9,6 @@ export default {
     };
   },
   components: {
-    banner,
-    footerComponter,
     addToCard,
     addToKeep,
   },
@@ -30,7 +26,6 @@ export default {
 </script>
 
 <template>
-  <banner id="banner" class="bg-dark mb-5"></banner>
   <div class="content">
     <div class="container mt-5">
       <div class="row">
@@ -342,7 +337,6 @@ export default {
       </div>
     </div>
   </div>
-  <footerComponter id="footer"></footerComponter>
 </template>
 
 <style>

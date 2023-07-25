@@ -1,15 +1,10 @@
 <script>
-import banner from "../../components/bannerComponent.vue";
-import footerComponter from "../../components/footerComponter.vue";
 export default {
   components: {
-    banner,
-    footerComponter,
   },
 };
 </script>
 <template>
-  <banner class="bg-black" id="banner"></banner>
   <div class="content">
     <div class="container">
       <div class="pt-5">
@@ -92,7 +87,6 @@ export default {
         <button class="btn btn-warning text-white py-3 px-5">結帳</button>
     </div>
   </div>
-  <footerComponter id="footer"></footerComponter>
 </template>
 <style>
 #Cart-img {

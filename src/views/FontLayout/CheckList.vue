@@ -1,10 +1,6 @@
 <script>
-import banner from "../../components/bannerComponent.vue";
-import footerComponter from "../../components/footerComponter.vue";
 export default {
   components: {
-    banner,
-    footerComponter,
   },
   methods: {
     isPhone(value) {
@@ -18,7 +14,6 @@ export default {
 };
 </script>
 <template>
-  <banner class="bg-dark" id="banner"></banner>
   <div class="content">
     <div class="container">
       <div class="row justify-content-center">
@@ -105,5 +100,4 @@ export default {
       </div>
     </div>
   </div>
-  <footerComponter id="footer"></footerComponter>
 </template>

@@ -1,6 +1,4 @@
 <script>
-import banner from "../../components/bannerComponent.vue";
-import footerComported from "../../components/footerComponter.vue";
 import addToCard from "../../components/addToCard.vue";
 import addToKeep from "../../components/addToKeep.vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
@@ -38,10 +36,8 @@ export default {
     };
   },
   components: {
-    banner,
     Swiper,
     SwiperSlide,
-    footerComported,
     addToCard,
     addToKeep,
   },
@@ -67,7 +63,6 @@ export default {
   <!-- 表頭 -->
   <header class="background">
     <div>
-      <banner></banner>
     </div>
     <div class="caption d-flex justify-content-center align-items-center">
       <div>
@@ -535,5 +530,4 @@ export default {
       </div>
     </div>
   </section>
-  <footerComported id="footer"></footerComported>
 </template>

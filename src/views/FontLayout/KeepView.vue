@@ -1,16 +1,11 @@
 <script>
-import banner from "../../components/bannerComponent.vue";
-import footerComponter from "../../components/footerComponter.vue";
 export default {
   components: {
-    banner,
-    footerComponter,
   },
 };
 </script>
 
 <template>
-  <banner class="bg-dark" id="banner"></banner>
   <div class="content">
   <div class="container my-5">
     <div class="row justify-content-center">
@@ -86,5 +81,4 @@ export default {
     </div>
   </div>
   </div>
-  <footerComponter id="footer"></footerComponter>
 </template>

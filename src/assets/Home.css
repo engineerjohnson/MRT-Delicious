@@ -2,6 +2,10 @@
     --swiper-navigation-size: 25px;
 }
 
+.background{
+    margin-top: 74px;
+}
+
 .swiper {
     max-width: 1296px;
 }
@@ -215,7 +219,7 @@ h3 {
     .coupon-button {
         justify-content: center;
     }
-    
+
     #coupon-percent,
     #coupon-cash {
         font-size: 22px;
