@@ -6,6 +6,7 @@ export default defineStore("cartStore", {
     //對應data
     state: () => ({
       cart_data : "",
+      cart_length : "",
     }),
     //對應compute
     getters: { },
@@ -29,6 +30,8 @@ export default defineStore("cartStore", {
           axios.get(`${VITE_APP_API}/v2/api/${VITE_APP_PATH}/cart`)
           .then((res)=>{
             this.cart_data = res.data.data;
+            this.cart_length = this.cart_data.carts.length
+            console.log(this.cart_data.carts == '')
           })
           .catch((err)=>{
             console.log(err);
@@ -59,14 +62,18 @@ export default defineStore("cartStore", {
           });
         },
         deleteCartAll(){
-          axios.delete(`${VITE_APP_API}/v2/api/${VITE_APP_PATH}/carts`)
-          .then(()=>{
-            alert("已刪除全部品項");
-            this.getCart();
-          })
-          .catch((err)=>{
-            alert(err.data.message);
-          });
+          if(this.cart_data.carts.length != 0){
+            axios.delete(`${VITE_APP_API}/v2/api/${VITE_APP_PATH}/carts`)
+            .then(()=>{
+              alert("已刪除全部品項");
+              this.getCart();
+            })
+            .catch((err)=>{
+              alert(err.response.data.message);
+            });
+          }else{
+            alert("購物車內沒東西");
+          }
         }
     }
 });

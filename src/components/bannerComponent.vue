@@ -7,7 +7,7 @@ export default{
         };
     },
     computed:{
-        ...mapState(cartStore,["cart_data"])
+        ...mapState(cartStore,["cart_data","cart_length"])
     },
     methods:{
         ...mapActions(cartStore,["getCart"]),
@@ -33,7 +33,9 @@ export default{
             <RouterLink to="/Cart" class="nav-link nav-item text-white me-4 cart" data-toggle>
                 購物車
                 <font-awesome-icon icon="cart-shopping" />
-                <span  v-if="this.cart_data.carts" class="badge rounded-pill bg-danger cart-badge">{{ this.cart_data.carts.length }}</span>
+                <span class="badge rounded-pill bg-danger cart-badge">
+                    {{ cart_data.carts == '' ? '' : cart_length }}
+                </span>
             </RouterLink>
             <RouterLink to="/Keep" class="nav-link nav-item text-white me-4" data-toggle>
                 收藏
