@@ -17,22 +17,22 @@ export default defineStore("cartStore", {
             qty,
           };
             axios.post(`${VITE_APP_API}/v2/api/${VITE_APP_PATH}/cart`, { data })
-                .then((res) => {
-                    console.log(res);
-                })
-                .catch((err)=>{
-                  console.log(err);
-                });
+            .then((res) => {
+              alert(res.data.message);
+              this.getCart();
+            })
+            .catch((err)=>{
+              alert(err.data.message);
+            });
         },
         getCart(){
           axios.get(`${VITE_APP_API}/v2/api/${VITE_APP_PATH}/cart`)
-            .then((res)=>{
-              this.cart_data = res.data.data;
-              console.log(this.cart_data);
-            })
-            .catch((err)=>{
-              console.log(err);
-            });
+          .then((res)=>{
+            this.cart_data = res.data.data;
+          })
+          .catch((err)=>{
+            console.log(err);
+          });
         },
         updateCart(cart){
           const data = {
@@ -40,13 +40,33 @@ export default defineStore("cartStore", {
             "qty" : cart.qty
           };
           axios.put(`${VITE_APP_API}/v2/api/${VITE_APP_PATH}/cart/${cart.id}`, { data })
-            .then((res)=>{
-              console.log(res);
-              this.getCart();
-            })
-            .catch((err)=>{
-              console.log(err);
-            });
+          .then((res)=>{
+            alert(res.data.message);
+            this.getCart();
+          })
+          .catch((err)=>{
+            alert(err);
+          });
+        },
+        deleteCart(cart){
+          axios.delete(`${VITE_APP_API}/v2/api/${VITE_APP_PATH}/cart/${cart.id}`)
+          .then(()=>{
+            alert(`已將「${cart.product.title}」品項刪除`);
+            this.getCart();
+          })
+          .catch((err)=>{
+            alert(err);
+          });
+        },
+        deleteCartAll(){
+          axios.delete(`${VITE_APP_API}/v2/api/${VITE_APP_PATH}/carts`)
+          .then(()=>{
+            alert("已刪除全部品項");
+            this.getCart();
+          })
+          .catch((err)=>{
+            alert(err.data.message);
+          });
         }
     }
 });

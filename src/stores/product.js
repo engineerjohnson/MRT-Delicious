@@ -24,10 +24,10 @@ export default defineStore("produceStore", {
     actions: {
         getProduct() {
             axios.get(`${VITE_APP_API}/v2/api/${VITE_APP_PATH}/products/all`)
-                .then((res) => {
-                    this.product = res.data.products;
-                }
-                );
+            .then((res) => {
+                this.product = res.data.products;
+            }
+            );
         },
         //變更「standType」篩選內容
         changeStandType(item) {

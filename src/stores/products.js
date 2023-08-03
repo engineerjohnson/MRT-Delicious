@@ -18,10 +18,10 @@ export default defineStore("productsStore", {
     actions: {
         getProducts() {
             axios.get(`${VITE_APP_API}/v2/api/${VITE_APP_PATH}/products/all`)
-                .then((res) => {
-                    this.products = res.data.products;
-                    console.log(this.products);
-                });
+            .then((res) => {
+                this.products = res.data.products;
+                console.log(this.products);
+            });
         },
         filterProducts(event) {
             this.standProducts = event.target.innerHTML;

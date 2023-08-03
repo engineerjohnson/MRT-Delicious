@@ -18,7 +18,7 @@ export default {
     Stand() {
       this.$router.push("/Stand");
     },
-    ...mapActions(cartStore,["getCart","updateCart"]),
+    ...mapActions(cartStore,["getCart","updateCart","deleteCart","deleteCartAll"]),
     formatPrice(price){
       if(price == null){
         return "";
@@ -57,7 +57,7 @@ export default {
               >
                 <p class="w-50 py-md-2 py-1 fs-3 mb-0">購物車</p>
                 <div>
-                  <button type="button" class="btn fs-1">X</button>
+                  <button type="button" class="btn fs-1" @click="deleteCartAll()">X</button>
                 </div>
               </div>
               <table class="table align-middle bg-lightOrange">
@@ -65,8 +65,8 @@ export default {
                   <tr class="bg-warning">
                     <th>圖片</th>
                     <th>商品名稱</th>
-                    <th>價格</th>
                     <th>數量</th>
+                    <th>單品總價</th>
                     <th></th>
                   </tr>
                 </thead>
@@ -78,7 +78,6 @@ export default {
                       </div>
                     </td>
                     <td>{{ cart.product.title }}</td>
-                    <td>${{ formatPrice(cart.total) }}</td>
                     <td>
                       <select class="form-select" v-model="cart.qty" @change="updateCart(cart)">
                         <option :value="i" v-for="i in 50" :key="i + 1">
@@ -86,8 +85,9 @@ export default {
                         </option>
                       </select>
                     </td>
+                    <td>${{ formatPrice(cart.total) }}</td>
                     <td>
-                      <button type="button" class="btn">X</button>
+                      <button type="button" class="btn" @click="deleteCart(cart)">X</button>
                     </td>
                   </tr>
                 </tbody>
