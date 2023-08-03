@@ -13,7 +13,6 @@ export default {
     addToKeep,
   },
   methods: {
-
     ...mapActions(productsStore,["getProducts","filterProducts"])
   },
   mounted(){
@@ -139,7 +138,7 @@ export default {
                       <p>{{ products.content }}</p>
                       <div class="d-flex justify-content-between" id="button">
                         <addToKeep></addToKeep>
-                        <addToCard></addToCard>
+                        <addToCard :product_id = products.id></addToCard>
                       </div>
                     </div>
                   </div>
@@ -170,7 +169,7 @@ export default {
                       <p>{{ products.content }}</p>
                       <div class="d-flex justify-content-between" id="button">
                         <addToKeep></addToKeep>
-                        <addToCard></addToCard>
+                        <addToCard :product_id = products.id></addToCard>
                       </div>
                     </div>
                   </div>
@@ -201,7 +200,7 @@ export default {
                       <p>{{ products.content }}</p>
                       <div class="d-flex justify-content-between" id="button">
                         <addToKeep></addToKeep>
-                        <addToCard></addToCard>
+                        <addToCard :product_id = products.id></addToCard>
                       </div>
                     </div>
                   </div>
@@ -232,7 +231,7 @@ export default {
                       <p>{{ products.content }}</p>
                       <div class="d-flex justify-content-between" id="button">
                         <addToKeep></addToKeep>
-                        <addToCard></addToCard>
+                        <addToCard :product_id = products.id></addToCard>
                       </div>
                     </div>
                   </div>
@@ -263,7 +262,7 @@ export default {
                       <p>{{ products.content }}</p>
                       <div class="d-flex justify-content-between" id="button">
                         <addToKeep></addToKeep>
-                        <addToCard></addToCard>
+                        <addToCard :product_id = products.id></addToCard>
                       </div>
                     </div>
                   </div>
@@ -294,7 +293,7 @@ export default {
                       <p>{{ products.content }}</p>
                       <div class="d-flex justify-content-between" id="button">
                         <addToKeep></addToKeep>
-                        <addToCard></addToCard>
+                        <addToCard :product_id = products.id></addToCard>
                       </div>
                     </div>
                   </div>
@@ -325,7 +324,7 @@ export default {
                       <p>{{ products.content }}</p>
                       <div class="d-flex justify-content-between" id="button">
                         <addToKeep></addToKeep>
-                        <addToCard></addToCard>
+                        <addToCard :product_id = products.id></addToCard>
                       </div>
                     </div>
                   </div>

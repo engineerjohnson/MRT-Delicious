@@ -26,7 +26,6 @@ export default defineStore("produceStore", {
             axios.get(`${VITE_APP_API}/v2/api/${VITE_APP_PATH}/products/all`)
                 .then((res) => {
                     this.product = res.data.products;
-                    console.log(this.product);
                 }
                 );
         },

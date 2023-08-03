@@ -1,6 +1,13 @@
 <script>
+import { mapState, mapActions } from "pinia";//暫時不會用到mapState
+import cartStore from "../../stores/cart.js";
 export default {
-  components: {
+  data(){
+    return{
+    };
+  },
+  computed: {
+    ...mapState(cartStore,["cart_data"]),
   },
   methods: {
     //去填寫資料
@@ -11,7 +18,17 @@ export default {
     Stand() {
       this.$router.push("/Stand");
     },
+    ...mapActions(cartStore,["getCart","updateCart"]),
+    formatPrice(price){
+      if(price == null){
+        return "";
+      }
+      return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
   },
+  mounted(){
+    this.getCart();
+  }
 };
 </script>
 
@@ -54,17 +71,17 @@ export default {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr v-for="cart in cart_data.carts" :key="cart">
                     <td>
                       <div id="Cart-img">
-                        <img src="./專題作品圖/鍋貼.png" alt="" />
+                        <img :src="cart.product.imageUrl" alt="" />
                       </div>
                     </td>
-                    <td>小六鍋貼</td>
-                    <td>90元</td>
+                    <td>{{ cart.product.title }}</td>
+                    <td>${{ formatPrice(cart.total) }}</td>
                     <td>
-                      <select class="form-select">
-                        <option :value="i" v-for="i in 10" :key="i + 1">
+                      <select class="form-select" v-model="cart.qty" @change="updateCart(cart)">
+                        <option :value="i" v-for="i in 50" :key="i + 1">
                           {{ i }}
                         </option>
                       </select>
@@ -75,7 +92,7 @@ export default {
                   </tr>
                 </tbody>
               </table>
-              <p class="text-end fs-4">總計:</p>
+              <p class="text-end fs-4">總計:{{ formatPrice(cart_data.total) }}元</p>
             </div>
             <div class="d-flex justify-content-around mt-5">
               <button
