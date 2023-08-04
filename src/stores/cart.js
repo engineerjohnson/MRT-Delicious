@@ -30,8 +30,7 @@ export default defineStore("cartStore", {
           axios.get(`${VITE_APP_API}/v2/api/${VITE_APP_PATH}/cart`)
           .then((res)=>{
             this.cart_data = res.data.data;
-            this.cart_length = this.cart_data.carts.length
-            console.log(this.cart_data.carts == '')
+            this.cart_length = this.cart_data.carts.length;
           })
           .catch((err)=>{
             console.log(err);

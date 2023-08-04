@@ -21,23 +21,23 @@ export default{
 <template>
         <!-- navbar -->
         <nav class="navbar navbar-dark navbar-expand-lg navbar-light ">
-    <RouterLink :to='{name:"Home"}' class="navbar-brand"><img src="../views/FontLayout/專題作品圖/logo.png" alt="MRT-Delicious"></RouterLink>
+    <RouterLink :to='{name:"Home"}' class="navbar-brand MRT ms-4"><font-awesome-icon icon="utensils" /> 台中MRT美食</RouterLink>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" >
         <span class="navbar-toggler-icon"></span>
     </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <div class="navbar-nav ps-2">
-            <RouterLink to="Stand" class="nav-link nav-item text-white me-4" data-toggle>
+            <RouterLink to="Stand" class="nav-link nav-item me-4 delicious" data-toggle>
                 各站美食
             </RouterLink>
-            <RouterLink to="/Cart" class="nav-link nav-item text-white me-4 cart" data-toggle>
+            <RouterLink to="/Cart" class="nav-link nav-item me-4 cart" data-toggle>
                 購物車
                 <font-awesome-icon icon="cart-shopping" />
                 <span class="badge rounded-pill bg-danger cart-badge">
                     {{ cart_data.carts == '' ? '' : cart_length }}
                 </span>
             </RouterLink>
-            <RouterLink to="/Keep" class="nav-link nav-item text-white me-4" data-toggle>
+            <RouterLink to="/Keep" class="nav-link nav-item me-4 keep" data-toggle>
                 收藏
                 <font-awesome-icon icon="heart" />
             </RouterLink>
@@ -55,5 +55,17 @@ export default{
     position: absolute;
     top: -3px;
     right: -10px;
+}
+
+.delicious,.cart,.keep,.MRT{
+    transition: .3s;
+}
+
+.delicious:hover,.cart:hover,.keep:hover,.MRT:hover{
+    transform: scale(1.2);
+}
+
+.navbar-nav .active{
+    border-bottom: solid rgb(228, 145, 48) 4px;
 }
 </style>

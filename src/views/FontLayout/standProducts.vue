@@ -354,7 +354,7 @@ export default {
 img {
   max-width: 100%;
   max-height: 100%;
-  transition: 0.7s;
+  transition: 0.3s;
 }
 img:hover {
   transform: scale(120%);
