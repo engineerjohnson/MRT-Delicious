@@ -8,6 +8,7 @@ export default defineStore("produceStore", {
         product: [],
         standType: "大慶站",
         wantEatType: "日式",
+        isLoading : false,
     }),
     //對應 computed
     getters: {
@@ -23,9 +24,11 @@ export default defineStore("produceStore", {
     //對應 methods
     actions: {
         getProduct() {
+            this.isLoading = true;
             axios.get(`${VITE_APP_API}/v2/api/${VITE_APP_PATH}/products/all`)
             .then((res) => {
                 this.product = res.data.products;
+                this.isLoading = false;
             }
             );
         },

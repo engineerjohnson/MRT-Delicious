@@ -3,28 +3,33 @@ import addToCard from "../../components/addToCard.vue";
 import addToKeep from "../../components/addToKeep.vue";
 import productsStore from "../../stores/products.js";
 import { mapState,mapActions } from "pinia";
+// 載入loading
+import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/css/index.css";
 export default {
   data() {
     return {
     };
   },
+  computed:{
+    ...mapState(productsStore,["products","standProduct","isLoading"])
+  },
   components: {
     addToCard,
     addToKeep,
+    Loading
   },
   methods: {
     ...mapActions(productsStore,["getProducts","filterProducts"])
   },
   mounted(){
     this.getProducts();
-  },
-  computed:{
-    ...mapState(productsStore,["products","standProduct"])
   }
 };
 </script>
 
 <template>
+  <Loading v-model:active="isLoading" :loader="'dots'"/>
   <div class="content">
     <div class="container mt-5">
       <div class="row">

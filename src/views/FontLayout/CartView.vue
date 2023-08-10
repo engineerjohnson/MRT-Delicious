@@ -1,13 +1,19 @@
 <script>
 import { mapState, mapActions } from "pinia";//暫時不會用到mapState
 import cartStore from "../../stores/cart.js";
+// 載入loading
+import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/css/index.css";
 export default {
   data(){
     return{
     };
   },
   computed: {
-    ...mapState(cartStore,["cart_data"]),
+    ...mapState(cartStore,["cart_data", "isLoading"]),
+  },
+  components:{
+    Loading,
   },
   methods: {
     //去填寫資料
@@ -33,6 +39,7 @@ export default {
 </script>
 
 <template>
+  <Loading v-model:active="isLoading" :loader="'dots'"/>
   <div class="content">
     <div class="container">
       <div class="row justify-content-center">

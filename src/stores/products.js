@@ -7,6 +7,7 @@ export default defineStore("productsStore", {
     state: () => ({
         products: [],
         standProducts :"",
+        isLoading : false,
     }),
     //對應compute
     getters: {
@@ -17,15 +18,15 @@ export default defineStore("productsStore", {
     //對應methods
     actions: {
         getProducts() {
+            this.isLoading = true;
             axios.get(`${VITE_APP_API}/v2/api/${VITE_APP_PATH}/products/all`)
             .then((res) => {
                 this.products = res.data.products;
-                console.log(this.products);
+                this.isLoading = false;
             });
         },
         filterProducts(event) {
             this.standProducts = event.target.innerHTML;
-            console.log(this.standProducts);
         }
     }
 });

@@ -8,6 +8,7 @@ export default defineStore("cartStore", {
     state: () => ({
       cart_data : "",
       cart_length : "",
+      isLoading : false,
     }),
     //對應compute
     getters: { },
@@ -34,12 +35,15 @@ export default defineStore("cartStore", {
             });
         },
         getCart(){
+          this.isLoading = true;
           axios.get(`${VITE_APP_API}/v2/api/${VITE_APP_PATH}/cart`)
           .then((res)=>{
             this.cart_data = res.data.data;
             this.cart_length = this.cart_data.carts.length;
+            this.isLoading = false;
           })
           .catch((err)=>{
+            this.isLoading = false;
             Toast.fire({
               title : err.data.message,
               icon : "error",

@@ -12,6 +12,9 @@ import "swiper/css/autoplay";
 // const {VITE_APP_API, VITE_APP_PATH } = import.meta.env;
 import { mapState,mapActions } from "pinia";
 import produceStore from "../../stores/product.js";
+// 載入loading
+import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/css/index.css";
 export default {
   data() {
     return {
@@ -35,16 +38,17 @@ export default {
       },
     };
   },
+  computed:{
+    //從produceStore(product.js pinia)從pinia取出getters、state
+    // ...mapState(store名稱, ['要取得的值'])
+    ...mapState(produceStore,["standProduct","WantEatProduct","isLoading"]),
+  },
   components: {
     Swiper,
     SwiperSlide,
     addToCard,
     addToKeep,
-  },
-  computed:{
-    //從produceStore(product.js pinia)從pinia取出getters、state
-    // ...mapState(store名稱, ['要取得的值'])
-    ...mapState(produceStore,["standProduct","WantEatProduct"]),
+    Loading,
   },
   methods:{
     //從produceStore(product.js pinia)從pinia取出方法actions
@@ -59,6 +63,7 @@ export default {
 </script>
 
 <template>
+  <Loading v-model:active="isLoading" :loader="'dots'"/>
   <!-- 表頭 -->
   <header class="background">
     <div class="caption d-flex justify-content-center align-items-center">
