@@ -18,10 +18,12 @@
     "bootstrap": "^5.2.3",
     "pinia": "^2.0.32",
     "slick-carousel": "^1.8.1",
+    "sweetalert2": "^11.7.21",
     "swiper": "^9.1.0",
     "vee-validate": "^4.7.4",
     "vue": "^3.2.47",
     "vue-axios": "^3.5.2",
+    "vue-loading-overlay": "6.0",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {

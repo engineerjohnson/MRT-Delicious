@@ -95,18 +95,10 @@ export default {
               <p class="text-end fs-4">總計:{{ formatPrice(cart_data.total) }}元</p>
             </div>
             <div class="d-flex justify-content-around mt-5">
-              <button
-                type="button"
-                class="btn btn-warning text-white"
-                @click="Stand()"
-              >
+              <button type="button" class="btn btn-warning text-white" @click="Stand()">
                 繼續選購
               </button>
-              <button
-                type="button"
-                class="btn btn-warning text-white"
-                @click="Check()"
-              >
+              <button type="button" class="btn btn-warning text-white" @click="Check()">
                 填寫資料
               </button>
             </div>

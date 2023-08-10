@@ -10,6 +10,10 @@ export default {
     createOrder() {
       this.$router.push("/Checkouts");
     },
+    //繼續選購
+    Cart() {
+      this.$router.push("/Cart");
+    },
   },
 };
 </script>
@@ -89,7 +93,10 @@ export default {
                 />
                 <ErrorMessage name="留言" class="invalid-feedback" />
               </div>
-              <div class="d-flex justify-content-center mt-5">
+              <div class="d-flex justify-content-around mt-5">
+                <button type="button" class="btn btn-warning text-white mb-5" @click="Cart()">
+                  回購物車
+                </button>
                 <button type="submit" class="btn btn-warning text-white mb-5">
                   送出訂單
                 </button>

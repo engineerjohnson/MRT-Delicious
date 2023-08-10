@@ -137,7 +137,7 @@ export default {
                       <p>{{ products.description }}</p>
                       <p>{{ products.content }}</p>
                       <div class="d-flex justify-content-between" id="button">
-                        <addToKeep></addToKeep>
+                        <addToKeep :product_id = products.id :product_name = products.title></addToKeep>
                         <addToCard :product_id = products.id></addToCard>
                       </div>
                     </div>
@@ -168,7 +168,7 @@ export default {
                       <p>{{ products.description }}</p>
                       <p>{{ products.content }}</p>
                       <div class="d-flex justify-content-between" id="button">
-                        <addToKeep></addToKeep>
+                        <addToKeep :product_id = products.id :product_name = products.title></addToKeep>
                         <addToCard :product_id = products.id></addToCard>
                       </div>
                     </div>
@@ -199,7 +199,7 @@ export default {
                       <p>{{ products.description }}</p>
                       <p>{{ products.content }}</p>
                       <div class="d-flex justify-content-between" id="button">
-                        <addToKeep></addToKeep>
+                        <addToKeep :product_id = products.id :product_name = products.title></addToKeep>
                         <addToCard :product_id = products.id></addToCard>
                       </div>
                     </div>
@@ -230,7 +230,7 @@ export default {
                       <p>{{ products.description }}</p>
                       <p>{{ products.content }}</p>
                       <div class="d-flex justify-content-between" id="button">
-                        <addToKeep></addToKeep>
+                        <addToKeep :product_id = products.id :product_name = products.title></addToKeep>
                         <addToCard :product_id = products.id></addToCard>
                       </div>
                     </div>
@@ -261,7 +261,7 @@ export default {
                       <p>{{ products.description }}</p>
                       <p>{{ products.content }}</p>
                       <div class="d-flex justify-content-between" id="button">
-                        <addToKeep></addToKeep>
+                        <addToKeep :product_id = products.id :product_name = products.title></addToKeep>
                         <addToCard :product_id = products.id></addToCard>
                       </div>
                     </div>
@@ -292,7 +292,7 @@ export default {
                       <p>{{ products.description }}</p>
                       <p>{{ products.content }}</p>
                       <div class="d-flex justify-content-between" id="button">
-                        <addToKeep></addToKeep>
+                        <addToKeep :product_id = products.id :product_name = products.title></addToKeep>
                         <addToCard :product_id = products.id></addToCard>
                       </div>
                     </div>
@@ -323,7 +323,7 @@ export default {
                       <p>{{ products.description }}</p>
                       <p>{{ products.content }}</p>
                       <div class="d-flex justify-content-between" id="button">
-                        <addToKeep></addToKeep>
+                        <addToKeep :product_id = products.id :product_name = products.title></addToKeep>
                         <addToCard :product_id = products.id></addToCard>
                       </div>
                     </div>

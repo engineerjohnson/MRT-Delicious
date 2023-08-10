@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 // pinia不能用this.http 而是要用axios 所以要import axios近來
 import axios from "axios";
 const { VITE_APP_API, VITE_APP_PATH } = import.meta.env;
+import Toast from "../utils/Toast.js";
 export default defineStore("cartStore", {
     //對應data
     state: () => ({
@@ -19,11 +20,17 @@ export default defineStore("cartStore", {
           };
             axios.post(`${VITE_APP_API}/v2/api/${VITE_APP_PATH}/cart`, { data })
             .then((res) => {
-              alert(res.data.message);
+              Toast.fire({
+                title : res.data.message,
+                icon : "success",
+              });
               this.getCart();
             })
             .catch((err)=>{
-              alert(err.data.message);
+              Toast.fire({
+                title : err.data.message,
+                icon : "error",
+              });
             });
         },
         getCart(){
@@ -33,45 +40,69 @@ export default defineStore("cartStore", {
             this.cart_length = this.cart_data.carts.length;
           })
           .catch((err)=>{
-            console.log(err);
+            Toast.fire({
+              title : err.data.message,
+              icon : "error",
+            });
           });
         },
         updateCart(cart){
           const data = {
             "product_id" : cart.id,
-            "qty" : cart.qty
+            "qty" : cart.qty,
           };
           axios.put(`${VITE_APP_API}/v2/api/${VITE_APP_PATH}/cart/${cart.id}`, { data })
           .then((res)=>{
-            alert(res.data.message);
+            Toast.fire({
+              title : res.data.message,
+              icon : "success",
+            });
             this.getCart();
           })
           .catch((err)=>{
-            alert(err);
+            Toast.fire({
+              title : err.data.message,
+              icon : "error",
+            });
           });
         },
         deleteCart(cart){
           axios.delete(`${VITE_APP_API}/v2/api/${VITE_APP_PATH}/cart/${cart.id}`)
           .then(()=>{
-            alert(`已將「${cart.product.title}」品項刪除`);
+            Toast.fire({
+              title : `已將「${cart.product.title}」品項刪除`,
+              icon : "success",
+            });
             this.getCart();
           })
-          .catch((err)=>{
-            alert(err);
+          .catch(()=>{
+            Toast.fire({
+              title : `無法將「${cart.product.title}」品項刪除`,
+              icon : "error",
+            });
           });
         },
         deleteCartAll(){
           if(this.cart_data.carts.length != 0){
             axios.delete(`${VITE_APP_API}/v2/api/${VITE_APP_PATH}/carts`)
             .then(()=>{
-              alert("已刪除全部品項");
+              Toast.fire({
+                title : "已將全部品項刪除",
+                icon : "success",
+              });
               this.getCart();
             })
             .catch((err)=>{
-              alert(err.response.data.message);
+              Toast.fire({
+                title : err.response.data.message,
+                icon : "error",
+              });
             });
           }else{
-            alert("購物車內沒東西");
+            Toast.fire({
+              title : "購物車內沒東西",
+              icon : "error",
+            });
           }
         }
     }
