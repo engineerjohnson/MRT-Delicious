@@ -67,7 +67,7 @@ export default {
                   <button type="button" class="btn fs-1" @click="deleteCartAll()">X</button>
                 </div>
               </div>
-              <table class="table align-middle bg-lightOrange">
+              <!-- <table class="table align-middle bg-lightOrange">
                 <thead>
                   <tr class="bg-warning">
                     <th>圖片</th>
@@ -98,10 +98,29 @@ export default {
                     </td>
                   </tr>
                 </tbody>
-              </table>
+              </table> -->
+              <div>
+                <div v-for="cart in cart_data.carts" :key="cart" class="row justify-content-center cart_border mb-2">
+                  <div id="Cart-img" class="col-4 me-4">
+                    <img :src="cart.product.imageUrl" alt="" />
+                  </div>
+                  <div class="col-8">
+                    <div class="d-flex justify-content-between">
+                      <p class="mb-0 d-inline-block fs-5">{{ cart.product.title }}</p>
+                      <button type="button" class="btn card_btn" @click="deleteCart(cart)">X</button>
+                    </div>
+                    <select class="form-select" v-model="cart.qty" @change="updateCart(cart)">
+                      <option :value="i" v-for="i in 50" :key="i + 1">
+                        {{ i }}
+                      </option>
+                    </select>
+                    <p class="text-end my-2 cart_total">單品總計${{ formatPrice(cart.total) }}</p>
+                  </div>
+                </div>
+              </div>
               <p class="text-end fs-4">總計:{{ formatPrice(cart_data.total) }}元</p>
             </div>
-            <div class="d-flex justify-content-around mt-5">
+            <div class="d-flex justify-content-around my-5">
               <button type="button" class="btn btn-warning text-white" @click="Stand()">
                 繼續選購
               </button>
@@ -120,12 +139,20 @@ export default {
 #Cart-img {
   width: 130px;
   max-height: 130px;
+  margin: auto 0;
 }
 img {
-  max-width: 100%;
+  height: 60px;
 }
 tbody {
   border-color: black;
+}
+.cart_border{
+  border-bottom: 1px solid black;
+}
+.card_btn{
+  padding-top: 0;
+  padding-bottom: 0;
 }
 @media(max-width:576px){
   #Cart-img{
