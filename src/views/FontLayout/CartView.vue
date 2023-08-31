@@ -141,9 +141,6 @@ export default {
   max-height: 130px;
   margin: auto 0;
 }
-img {
-  height: 60px;
-}
 tbody {
   border-color: black;
 }
