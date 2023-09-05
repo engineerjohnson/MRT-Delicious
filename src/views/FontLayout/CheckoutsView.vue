@@ -2,6 +2,11 @@
 export default {
   components: {
   },
+  methods: {
+    Cart() {
+      this.$router.push("/Cart");
+    },
+  }
 };
 </script>
 <template>
@@ -83,8 +88,13 @@ export default {
         </div>
       </div>
     </div>
-    <div class="d-flex justify-content-center mb-5">
-        <button class="btn btn-warning text-white py-3 px-5">結帳</button>
+    <div class="d-flex justify-content-around mt-5">
+      <button type="button" class="btn btn-warning text-white mb-5" @click="Cart()">
+        回購物車
+      </button>
+      <button type="button" class="btn btn-warning text-white mb-5">
+        結帳
+      </button>
     </div>
   </div>
 </template>
