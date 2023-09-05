@@ -67,38 +67,6 @@ export default {
                   <button type="button" class="btn fs-1" @click="deleteCartAll()">X</button>
                 </div>
               </div>
-              <!-- <table class="table align-middle bg-lightOrange">
-                <thead>
-                  <tr class="bg-warning">
-                    <th>圖片</th>
-                    <th>商品名稱</th>
-                    <th>數量</th>
-                    <th>單品總價</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="cart in cart_data.carts" :key="cart">
-                    <td>
-                      <div id="Cart-img">
-                        <img :src="cart.product.imageUrl" alt="" />
-                      </div>
-                    </td>
-                    <td>{{ cart.product.title }}</td>
-                    <td>
-                      <select class="form-select" v-model="cart.qty" @change="updateCart(cart)">
-                        <option :value="i" v-for="i in 50" :key="i + 1">
-                          {{ i }}
-                        </option>
-                      </select>
-                    </td>
-                    <td>${{ formatPrice(cart.total) }}</td>
-                    <td>
-                      <button type="button" class="btn" @click="deleteCart(cart)">X</button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table> -->
               <div>
                 <div v-for="cart in cart_data.carts" :key="cart" class="row justify-content-center cart_border mb-2">
                   <div id="Cart-img" class="col-4 me-4">
@@ -150,6 +118,14 @@ tbody {
 .card_btn{
   padding-top: 0;
   padding-bottom: 0;
+}
+img {
+  max-width: 100%;
+  max-height: 100%;
+  transition: 0.3s;
+}
+img:hover {
+  transform: scale(120%);
 }
 @media(max-width:576px){
   #Cart-img{
