@@ -1,19 +1,22 @@
 <script>
-import { mapState, mapActions } from "pinia";//暫時不會用到mapState
+import { mapState, mapActions } from "pinia";
 import cartStore from "../../stores/cart.js";
+import cartNavbar from "../../components/cartNavbar.vue";
 // 載入loading
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/css/index.css";
 export default {
   data(){
     return{
+      location:"Cart"
     };
   },
   computed: {
-    ...mapState(cartStore,["cart_data", "isLoading"]),
+    ...mapState(cartStore,["cart_data", "isLoading", "cart_length"]),
   },
   components:{
     Loading,
+    cartNavbar
   },
   methods: {
     //去填寫資料
@@ -42,56 +45,41 @@ export default {
   <Loading v-model:active="isLoading" :loader="'dots'"/>
   <div class="content">
     <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-10 pt-5">
-          <div class="breadcrumb mt-5">
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item text-warning active fs-5 fw-bold">
-                  購物車資料
-                </li>
-                <li class="breadcrumb-item fs-5">填寫訂單資料</li>
-                <li class="breadcrumb-item fs-5" aria-current="page">結帳</li>
-              </ol>
-            </nav>
-          </div>
-        </div>
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-lg-9 mt-4 bg-lightOrange">
-              <div
-                class="d-flex justify-content-between align-items-center bg-lightOrange"
-              >
-                <p class="w-50 py-md-2 py-1 fs-3 mb-0">購物車</p>
-                <div>
-                  <button type="button" class="btn fs-1" @click="deleteCartAll()">X</button>
-                </div>
-              </div>
+        <cartNavbar :cartLocation = "location"></cartNavbar>
+        <div class="row justify-content-center">
+          <div class="col-lg-9 mt-4 bg-lightOrange">
+            <div class="d-flex justify-content-between align-items-center bg-lightOrange">
+              <h2 class="w-50 py-md-2 py-1 mb-0">購物車</h2>
               <div>
-                <div v-for="cart in cart_data.carts" :key="cart" class="row justify-content-center cart_border mb-2">
-                  <div id="Cart-img" class="col-4 me-4">
-                    <img :src="cart.product.imageUrl" alt="" />
+                <button type="button" class="btn fs-1" @click="deleteCartAll()">X</button>
+              </div>
+            </div>
+            <div>
+              <div v-for="cart in cart_data.carts" :key="cart" class="row justify-content-center cart_border mb-2">
+                <div id="Cart-img" class="col-4 me-4">
+                  <img :src="cart.product.imageUrl" alt="" />
+                </div>
+                <div class="col-8">
+                  <div class="d-flex justify-content-between">
+                    <p class="mb-0 d-inline-block fs-5">{{ cart.product.title }}</p>
+                    <button type="button" class="btn card_btn" @click="deleteCart(cart)">X</button>
                   </div>
-                  <div class="col-8">
-                    <div class="d-flex justify-content-between">
-                      <p class="mb-0 d-inline-block fs-5">{{ cart.product.title }}</p>
-                      <button type="button" class="btn card_btn" @click="deleteCart(cart)">X</button>
-                    </div>
-                    <select class="form-select" v-model="cart.qty" @change="updateCart(cart)">
-                      <option :value="i" v-for="i in 50" :key="i + 1">
-                        {{ i }}
-                      </option>
-                    </select>
-                    <p class="text-end my-2 cart_total">單品總計${{ formatPrice(cart.total) }}</p>
-                  </div>
+                  <select class="form-select" v-model="cart.qty" @change="updateCart(cart)">
+                    <option :value="i" v-for="i in 50" :key="i + 1">
+                      {{ i }}
+                    </option>
+                  </select>
+                  <p class="text-end my-2 cart_total">單品總計${{ formatPrice(cart.total) }}</p>
                 </div>
               </div>
-              <p class="text-end fs-4">總計:{{ formatPrice(cart_data.total) }}元</p>
             </div>
-            <div class="d-flex justify-content-around my-5">
-              <button type="button" class="btn btn-warning text-white" @click="Stand()">
-                繼續選購
-              </button>
+            <p class="text-end fs-4">總計:{{ formatPrice(cart_data.total) }}元</p>
+          </div>
+          <div class="d-flex justify-content-around my-5">
+            <button type="button" class="btn btn-warning text-white" @click="Stand()">
+              繼續選購
+            </button>
+            <div v-if="cart_length != 0">
               <button type="button" class="btn btn-warning text-white" @click="Check()">
                 填寫資料
               </button>
@@ -99,7 +87,6 @@ export default {
           </div>
         </div>
       </div>
-    </div>
   </div>
 </template>
 

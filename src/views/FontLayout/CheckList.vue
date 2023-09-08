@@ -1,6 +1,18 @@
 <script>
+import { mapState } from "pinia";
+import formStore from "../../stores/formData.js";
+import cartNavbar from "../../components/cartNavbar.vue";
 export default {
+  data(){
+    return{
+      location:"Check"
+    };
+  },
+  computed:{
+    ...mapState(formStore,["form"]),
+  },
   components: {
+    cartNavbar
   },
   methods: {
     isPhone(value) {
@@ -15,31 +27,18 @@ export default {
       this.$router.push("/Cart");
     },
   },
+  mounted(){
+
+  }
 };
 </script>
 <template>
   <div class="content">
     <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-10">
-          <div class="pt-5">
-            <div class="breadcrumb mt-5">
-              <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item fs-5">購物車資料</li>
-                  <li class="breadcrumb-item fs-5 text-warning active fw-bold">
-                    填寫訂單資料
-                  </li>
-                  <li class="breadcrumb-item fs-5" aria-current="page">結帳</li>
-                </ol>
-              </nav>
-            </div>
-          </div>
-        </div>
-      </div>
+      <cartNavbar  :cartLocation = "location"></cartNavbar>
       <!-- 表單 -->
       <div class="row justify-content-center">
-        <h2 class="text-center">填寫訂購資料</h2>
+        <h2 class="text-center">訂單資料</h2>
         <div class="col-10">
           <div class="d-flex justify-content-center">
             <VForm v-slot="{ errors }" class="col-md-6" @submit="createOrder">
@@ -53,6 +52,7 @@ export default {
                   class="form-control"
                   :class="{ 'is-invalid': errors['姓名'] }"
                   placeholder="請輸入姓名"
+                  v-model="form.name"
                 />
                 <ErrorMessage name="姓名" class="invalid-feedback" />
               </div>
@@ -66,6 +66,7 @@ export default {
                   class="form-control"
                   :class="{ 'is-invalid': errors['電話'] }"
                   placeholder="請輸入電話"
+                  v-model="form.phoneNumber"
                 />
                 <ErrorMessage name="電話" class="invalid-feedback" />
               </div>
@@ -79,6 +80,7 @@ export default {
                   class="form-control"
                   :class="{ 'is-invalid': errors['信箱'] }"
                   placeholder="請輸入信箱"
+                  v-model="form.Email"
                 />
                 <ErrorMessage name="信箱" class="invalid-feedback" />
               </div>
@@ -90,6 +92,7 @@ export default {
                   type="text"
                   class="form-control py-5"
                   :class="{ 'is-invalid': errors['留言'] }"
+                  v-model="form.message"
                 />
                 <ErrorMessage name="留言" class="invalid-feedback" />
               </div>
