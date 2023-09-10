@@ -1,6 +1,6 @@
 <script>
 import { mapState } from "pinia";
-import formStore from "../../stores/formData.js";
+import cartStore from "../../stores/cart.js";
 import cartNavbar from "../../components/cartNavbar.vue";
 export default {
   data(){
@@ -9,7 +9,7 @@ export default {
     };
   },
   computed:{
-    ...mapState(formStore,["form"]),
+    ...mapState(cartStore,["form"]),
   },
   components: {
     cartNavbar
@@ -52,7 +52,7 @@ export default {
                   class="form-control"
                   :class="{ 'is-invalid': errors['姓名'] }"
                   placeholder="請輸入姓名"
-                  v-model="form.name"
+                  v-model="form.user.name"
                 />
                 <ErrorMessage name="姓名" class="invalid-feedback" />
               </div>
@@ -66,7 +66,7 @@ export default {
                   class="form-control"
                   :class="{ 'is-invalid': errors['電話'] }"
                   placeholder="請輸入電話"
-                  v-model="form.phoneNumber"
+                  v-model="form.user.tel"
                 />
                 <ErrorMessage name="電話" class="invalid-feedback" />
               </div>
@@ -80,21 +80,35 @@ export default {
                   class="form-control"
                   :class="{ 'is-invalid': errors['信箱'] }"
                   placeholder="請輸入信箱"
-                  v-model="form.Email"
+                  v-model="form.user.email"
                 />
                 <ErrorMessage name="信箱" class="invalid-feedback" />
               </div>
               <div class="mb-3">
-                <label for="massage" class="form-label">歡迎留言~</label>
+                <label for="address" class="form-label">請輸入地址</label>
                 <VField
-                  id="massage"
-                  name="留言"
+                  id="address"
+                  name="地址"
                   type="text"
-                  class="form-control py-5"
-                  :class="{ 'is-invalid': errors['留言'] }"
-                  v-model="form.message"
+                  rules="required"
+                  class="form-control"
+                  :class="{ 'is-invalid': errors['地址'] }"
+                  placeholder="請輸入地址"
+                  v-model="form.user.address"
                 />
-                <ErrorMessage name="留言" class="invalid-feedback" />
+                <ErrorMessage name="地址" class="invalid-feedback" />
+              </div>
+              <div class="mb-3">
+                <label for="massage" class="form-label">歡迎留言~</label>
+                <textarea
+                name="留言"
+                id="massage"
+                cols="30"
+                rows="5"
+                class="form-control"
+                style="resize: none;"
+                v-model="form.message"
+                ></textarea>
               </div>
               <div class="d-flex justify-content-around mt-5">
                 <button type="button" class="btn btn-warning text-white mb-5" @click="Cart()">

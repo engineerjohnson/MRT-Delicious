@@ -1,35 +1,39 @@
 <script>
-import { mapState } from "pinia";
-import formStore from "../../stores/formData.js";
+import { mapState, mapActions } from "pinia";
+import cartStore from "../../stores/cart.js";
 import cartNavbar from "../../components/cartNavbar.vue";
-// 載入sweetalert2 可以不用載入css
+// 自定義樣式 所以載入scss
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import "sweetalert2/src/sweetalert2.scss";
+// 載入loading
+import Loading from "vue-loading-overlay";
 export default {
   data(){
     return{
-      location:"Checkouts"
+      location:"Checkouts",
     };
   },
   computed:{
-    ...mapState(formStore,["form"])
+    ...mapState(cartStore,["form", "isLoading"])
   },
   components: {
-    cartNavbar
+    cartNavbar,
+    Loading
   },
   methods: {
+    ...mapActions(cartStore,["payment"]),
     Cart() {
       this.$router.push("/Cart");
     },
   },
   mounted(){
-    if(this.form.name == ""){
+    if(this.form.user.name == "" || this.form.user.phoneNumber == "" || this.form.user.Email == ""){
       Swal.fire({
         icon: "error",
-        title: "請填寫訂單資料",
-        text: "「訂單資料」需要填寫才能送出訂單，謝謝!!",
+        title: "訂單資料未完成",
+        text: "「訂單資料」需要填寫完成才能確認訂單資料哦!!",
       }).then((result)=>{
-        if(result.isConfirmed){
+        if(result.isConfirmed || result.isDismissed){ //點擊OK或視窗外 就會跳到「訂單資料」頁
           this.$router.push("/Check");
         }
       });
@@ -38,6 +42,7 @@ export default {
 };
 </script>
 <template>
+  <Loading v-model:active="isLoading" :loader="'dots'"/>
   <div class="content">
     <div class="container">
       <cartNavbar :cartLocation = "location"></cartNavbar>
@@ -78,19 +83,23 @@ export default {
           <div class="text-center py-md-2 py-1 mb-0 fw-bold"></div>
           <ul class="row text-center align-items-center justify-content-center">
             <li class="fs-5 col-4">姓名:</li>
-            <li class="col-4 ms-5 ms-lg-0">{{ form.name }}</li>
+            <li class="col-4 ms-5 ms-lg-0">{{ form.user.name }}</li>
           </ul>
           <ul class="row text-center justify-content-center">
             <li class="fs-5 col-4">電話:</li>
-            <li class="col-4 ms-5 ms-lg-0">{{ form.phoneNumber }}</li>
+            <li class="col-4 ms-5 ms-lg-0">{{ form.user.tel }}</li>
           </ul>
           <ul class="row text-center justify-content-center">
             <li class="fs-5 col-4">信箱:</li>
-            <li class="col-4 ms-5 ms-lg-0">{{ form.Email }}</li>
+            <li class="col-4 ms-5 ms-lg-0">{{ form.user.email }}</li>
+          </ul>
+          <ul class="row text-center justify-content-center">
+            <li class="fs-5 col-4">地址:</li>
+            <li class="col-4 ms-5 ms-lg-0">{{ form.user.address }}</li>
           </ul>
           <ul class="row text-center justify-content-center">
             <li class="fs-5 col-4">留言:</li>
-            <li class="col-4 ms-5 ms-lg-0">{{ form.message }}</li>
+            <li class="col-4 ms-5 ms-lg-0" style="overflow-wrap: break-word;">{{ form.message }}</li>
           </ul>
         </div>
       </div>
@@ -99,7 +108,7 @@ export default {
       <button type="button" class="btn btn-warning text-white mb-5" @click="Cart()">
         回購物車
       </button>
-      <button type="button" class="btn btn-warning text-white mb-5">
+      <button type="button" class="btn btn-warning text-white mb-5" @click="payment(form)">
         結帳
       </button>
     </div>
