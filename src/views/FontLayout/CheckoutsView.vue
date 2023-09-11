@@ -37,7 +37,6 @@ export default {
         this.getCart();
         this.orderData = res.data.order;
         this.isLoading = false;
-        console.log(this.orderData);
       })
       .catch((err)=>{
         this.isLoading = false;
