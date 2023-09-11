@@ -2,6 +2,9 @@
 import { mapState } from "pinia";
 import cartStore from "../../stores/cart.js";
 import cartNavbar from "../../components/cartNavbar.vue";
+// 自定義樣式 所以載入scss
+import Swal from "sweetalert2/dist/sweetalert2.js";
+import "sweetalert2/src/sweetalert2.scss";
 export default {
   data(){
     return{
@@ -9,7 +12,7 @@ export default {
     };
   },
   computed:{
-    ...mapState(cartStore,["form"]),
+    ...mapState(cartStore,["form", "cart_length"]),
   },
   components: {
     cartNavbar
@@ -28,7 +31,17 @@ export default {
     },
   },
   mounted(){
-
+    if(this.cart_length == 0){
+      Swal.fire({
+        icon: "error",
+        title: "購物車沒有產品",
+        text: "購物車內沒有產品，需要先將產品加入購物車哦!!",
+      }).then((result)=>{
+        if(result.isConfirmed || result.isDismissed){ //點擊OK或視窗外 就會跳到「購物車」頁
+          this.$router.push("/Stand");
+        }
+      });
+    }
   }
 };
 </script>
