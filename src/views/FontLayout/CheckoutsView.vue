@@ -47,6 +47,12 @@ export default {
         });
       });
     },
+    formatPrice(price){
+      if(price == null){
+        return "";
+      }
+      return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    },
   },
   mounted(){
     if(this.$route.params.orderId == "null"){
@@ -84,20 +90,20 @@ export default {
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <tr v-for="item in orderData?.products" :key="item.id">
                   <td>
                     <div id="Cart-img">
-                      <img src="./專題作品圖/鍋貼.png" alt="" />
+                      <img :src="item.product.imageUrl" alt="" />
                     </div>
                   </td>
-                  <td>小六鍋貼</td>
-                  <td>90元</td>
-                  <td class="text-center">1</td>
+                  <td>{{ item.product.title }}</td>
+                  <td>{{ item.product.price }}</td>
+                  <td class="text-center">{{ item.qty }}</td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <p class="text-end fs-4">總計:90</p>
+          <p class="text-end fs-4">總計:{{ formatPrice(orderData?.total) }}</p>
         </div>
       </div>
     </div>

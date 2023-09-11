@@ -6,9 +6,10 @@ import Toast from "../utils/Toast.js";
 export default defineStore("cartStore", {
     //對應data
     state: () => ({
-      cart_data : "",
-      cart_length : "",
-      isLoading : false,
+      cart_data: "",
+      cart_length: "",
+      orderId: "",
+      isLoading: false,
       form:{
         user: {
           name: "",
@@ -50,7 +51,6 @@ export default defineStore("cartStore", {
           this.cart_data = res.data.data;
           this.cart_length = this.cart_data.carts.length;
           this.isLoading = false;
-          return "1";
         })
         .catch((err)=>{
           this.isLoading = false;
@@ -119,5 +119,26 @@ export default defineStore("cartStore", {
           });
         }
       },
+      createOrder(){
+        this.isLoading = true;
+        const data = this.form;
+        axios.post(`${VITE_APP_API}/v2/api/${VITE_APP_PATH}/order`, {data})
+        .then((res)=>{
+          this.getCart();
+          this.isLoading = false;
+          Toast.fire({
+            title : res.data.message,
+            icon : "success",
+          });
+          this.orderId = res.data.orderId;
+        })
+        .catch((err)=>{
+          this.isLoading = false;
+          Toast.fire({
+            title : err.message,
+            icon : "error",
+          });
+        });
+      }
     }
 });

@@ -1,7 +1,13 @@
 <script>
+import { mapState, mapActions } from "pinia";
+import cartStore from "../stores/cart.js";
   export default{
     props : ["cartLocation"],
+    computed:{
+      ...mapState(cartStore,["orderId"]),
+    },
     methods:{
+      ...mapActions(cartStore,["createOrder"]),
       addClickStyle(cartLocation){ //也可以改成@click="addClickStyle" 但不能用@click="addClickStyle()"
         const cart_target = document.querySelector(".Cart");
         const check_target = document.querySelector(".Check");
@@ -14,6 +20,13 @@
           checkouts_target.classList.add("text-warning", "fw-bold");
         }
       },
+      pushCheckouts(){
+        this.createOrder();
+        this.$router.push(`/Checkouts/${this.orderId}`);
+      },
+      test(){
+        this.$router.push("/Cart");
+      }
     },
     mounted(){
       this.addClickStyle(this.cartLocation);
@@ -35,7 +48,7 @@
               <RouterLink to="/Check" class="nav-link nav-item Check">訂單資料</RouterLink>
             </li>
             <li class="breadcrumb-item fs-5 breadcrumbS-style">
-              <RouterLink to="/Checkouts/null" class="nav-link nav-item Checkouts">確認訂單資料</RouterLink>
+              <button type="button" class="btn nav-link nav-item Checkouts" @click="pushCheckouts()">確認訂單資料</button>
             </li>
           </ol>
         </nav>

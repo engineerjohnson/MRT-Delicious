@@ -11,7 +11,7 @@ export default{
         ...mapState(cartStore,["cart_data","cart_length"])
     },
     methods:{
-        ...mapActions(cartStore,["getCart"]),
+        ...mapActions(cartStore,["getCart","createOrder"]),
         closeNavbar(){
         }
     },
