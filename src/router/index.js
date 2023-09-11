@@ -31,7 +31,7 @@ const routes =[
         component:()=>import("../views/FontLayout/CheckList.vue")
       },
       {
-        path:"Checkouts",
+        path:"Checkouts/:orderId",
         name:"Checkouts",
         component:()=>import("../views/FontLayout/CheckoutsView.vue")
       }

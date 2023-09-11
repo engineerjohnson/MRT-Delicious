@@ -29,13 +29,13 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item fs-5 breadcrumbS-style">
-              <RouterLink to="Cart" class="nav-link nav-item Cart">購物車</RouterLink>
+              <RouterLink to="/Cart" class="nav-link nav-item Cart">購物車</RouterLink>
             </li>
             <li class="breadcrumb-item fs-5 breadcrumbS-style">
-              <RouterLink to="Check" class="nav-link nav-item Check">訂單資料</RouterLink>
+              <RouterLink to="/Check" class="nav-link nav-item Check">訂單資料</RouterLink>
             </li>
             <li class="breadcrumb-item fs-5 breadcrumbS-style">
-              <RouterLink to="Checkouts" class="nav-link nav-item Checkouts">確認訂單資料</RouterLink>
+              <RouterLink to="/Checkouts/null" class="nav-link nav-item Checkouts">確認訂單資料</RouterLink>
             </li>
           </ol>
         </nav>

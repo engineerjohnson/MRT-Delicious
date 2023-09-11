@@ -2,6 +2,9 @@
 import { mapState, mapActions } from "pinia";
 import cartStore from "../../stores/cart.js";
 import cartNavbar from "../../components/cartNavbar.vue";
+import axios from "axios";
+const { VITE_APP_API, VITE_APP_PATH } = import.meta.env;
+import Toast from "../../utils/Toast.js";
 // 自定義樣式 所以載入scss
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import "sweetalert2/src/sweetalert2.scss";
@@ -11,23 +14,42 @@ export default {
   data(){
     return{
       location:"Checkouts",
+      orderData:{},
+      isLoading:false
     };
   },
   computed:{
-    ...mapState(cartStore,["form", "isLoading"])
+    ...mapState(cartStore,["form"])
   },
   components: {
     cartNavbar,
-    Loading
+    Loading,
   },
   methods: {
-    ...mapActions(cartStore,["payment"]),
+    ...mapActions(cartStore,["getCart"]),
     Cart() {
       this.$router.push("/Cart");
     },
+    getOrder() {
+      this.isLoading = true;
+      axios.get(`${VITE_APP_API}/v2/api/${VITE_APP_PATH}/order/${this.$route.params.orderId}`)
+      .then((res)=>{
+        this.getCart();
+        this.orderData = res.data.order;
+        this.isLoading = false;
+        console.log(this.orderData);
+      })
+      .catch((err)=>{
+        this.isLoading = false;
+        Toast.fire({
+          title : err.message,
+          icon : "error",
+        });
+      });
+    },
   },
   mounted(){
-    if(this.form.user.name == "" || this.form.user.phoneNumber == "" || this.form.user.Email == ""){
+    if(this.$route.params.orderId == "null"){
       Swal.fire({
         icon: "error",
         title: "訂單資料未完成",
@@ -37,7 +59,9 @@ export default {
           this.$router.push("/Check");
         }
       });
+      return;
     }
+    this.getOrder();
   }
 };
 </script>
@@ -45,7 +69,7 @@ export default {
   <Loading v-model:active="isLoading" :loader="'dots'"/>
   <div class="content">
     <div class="container">
-      <cartNavbar :cartLocation = "location"></cartNavbar>
+      <cartNavbar :cartLocation="location"></cartNavbar>
       <div class="row justify-content-center">
         <div class="col-lg-9 mt-4 bg-lightOrange">
           <h2 class="text-center py-md-2 py-1 mb-0 fw-bold">確認訂單資料</h2>
@@ -83,23 +107,23 @@ export default {
           <div class="text-center py-md-2 py-1 mb-0 fw-bold"></div>
           <ul class="row text-center align-items-center justify-content-center">
             <li class="fs-5 col-4">姓名:</li>
-            <li class="col-4 ms-5 ms-lg-0">{{ form.user.name }}</li>
+            <li class="col-4 ms-5 ms-lg-0">{{ orderData.user?.name }}</li>
           </ul>
           <ul class="row text-center justify-content-center">
             <li class="fs-5 col-4">電話:</li>
-            <li class="col-4 ms-5 ms-lg-0">{{ form.user.tel }}</li>
+            <li class="col-4 ms-5 ms-lg-0">{{ orderData.user?.tel }}</li>
           </ul>
           <ul class="row text-center justify-content-center">
             <li class="fs-5 col-4">信箱:</li>
-            <li class="col-4 ms-5 ms-lg-0">{{ form.user.email }}</li>
+            <li class="col-4 ms-5 ms-lg-0">{{ orderData.user?.email }}</li>
           </ul>
           <ul class="row text-center justify-content-center">
             <li class="fs-5 col-4">地址:</li>
-            <li class="col-4 ms-5 ms-lg-0">{{ form.user.address }}</li>
+            <li class="col-4 ms-5 ms-lg-0">{{ orderData.user?.address }}</li>
           </ul>
           <ul class="row text-center justify-content-center">
             <li class="fs-5 col-4">留言:</li>
-            <li class="col-4 ms-5 ms-lg-0" style="overflow-wrap: break-word;">{{ form.message }}</li>
+            <li class="col-4 ms-5 ms-lg-0" style="overflow-wrap: break-word;">{{ orderData?.message }}</li>
           </ul>
         </div>
       </div>
@@ -108,7 +132,7 @@ export default {
       <button type="button" class="btn btn-warning text-white mb-5" @click="Cart()">
         回購物車
       </button>
-      <button type="button" class="btn btn-warning text-white mb-5" @click="payment(form)">
+      <button type="button" class="btn btn-warning text-white mb-5">
         結帳
       </button>
     </div>

@@ -1,36 +1,63 @@
 <script>
-import { mapState } from "pinia";
+import { mapState, mapActions } from "pinia";
 import cartStore from "../../stores/cart.js";
 import cartNavbar from "../../components/cartNavbar.vue";
+import axios from "axios";
+const { VITE_APP_API, VITE_APP_PATH } = import.meta.env;
+import Toast from "../../utils/Toast.js";
 // 自定義樣式 所以載入scss
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import "sweetalert2/src/sweetalert2.scss";
+// 載入loading
+import Loading from "vue-loading-overlay";
 export default {
   data(){
     return{
-      location:"Check"
+      location:"Check",
+      isLoading:false
     };
   },
   computed:{
     ...mapState(cartStore,["form", "cart_length"]),
   },
   components: {
-    cartNavbar
+    cartNavbar,
+    Loading,
   },
   methods: {
+    ...mapActions(cartStore,["getCart"]),
     isPhone(value) {
       const phoneNumber = /^(09)[0-9]{8}$/;
       return phoneNumber.test(value) ? true : "需要正確的電話號碼";
-    },
-    createOrder() {
-      this.$router.push("/Checkouts");
     },
     //繼續選購
     Cart() {
       this.$router.push("/Cart");
     },
+    createOrder() {
+      this.isLoading = true;
+      const data = this.form;
+      axios.post(`${VITE_APP_API}/v2/api/${VITE_APP_PATH}/order`, {data})
+      .then((res)=>{
+        this.getCart();
+        this.isLoading = false;
+        Toast.fire({
+          title : res.data.message,
+          icon : "success",
+        });
+        this.$router.push(`/Checkouts/${res.data.orderId}`);
+      })
+      .catch((err)=>{
+        this.isLoading = false;
+        Toast.fire({
+          title : err.message,
+          icon : "error",
+        });
+      });
+    }
   },
   mounted(){
+    this.getCart();
     if(this.cart_length == 0){
       Swal.fire({
         icon: "error",
@@ -46,6 +73,7 @@ export default {
 };
 </script>
 <template>
+  <Loading v-model:active="isLoading" :loader="'dots'"/>
   <div class="content">
     <div class="container">
       <cartNavbar  :cartLocation = "location"></cartNavbar>
@@ -54,7 +82,7 @@ export default {
         <h2 class="text-center">訂單資料</h2>
         <div class="col-10">
           <div class="d-flex justify-content-center">
-            <VForm v-slot="{ errors }" class="col-md-6" @submit="createOrder">
+            <VForm v-slot="{ errors }" class="col-md-6" @submit="createOrder()">
               <div class="mb-3">
                 <label for="name" class="form-label">請輸入姓名</label>
                 <VField
@@ -114,13 +142,12 @@ export default {
               <div class="mb-3">
                 <label for="massage" class="form-label">歡迎留言~</label>
                 <textarea
-                name="留言"
-                id="massage"
-                cols="30"
-                rows="5"
+                id="message"
                 class="form-control"
-                style="resize: none;"
+                cols="30"
+                rows="10"
                 v-model="form.message"
+                style="resize: none;"
                 ></textarea>
               </div>
               <div class="d-flex justify-content-around mt-5">

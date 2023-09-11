@@ -37,7 +37,7 @@ export default{
                 購物車
                 <font-awesome-icon icon="cart-shopping" />
                 <span class="badge rounded-pill bg-danger cart-badge">
-                    {{ cart_data.carts == '' ? '' : cart_length }}
+                    {{ cart_data.carts == '' ? 0 : cart_length }}
                 </span>
             </RouterLink>
             <RouterLink to="/Keep" class="nav-link nav-item me-4 keep" data-toggle @click="isNavbarCollapsed = !isNavbarCollapsed">

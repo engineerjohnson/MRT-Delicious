@@ -20,7 +20,7 @@ export default defineStore("cartStore", {
       }
     }),
     //對應compute
-    getters: { },
+    getters: {},
     //對應methods
     actions: {
       addToCart(id, qty = 1) {
@@ -50,6 +50,7 @@ export default defineStore("cartStore", {
           this.cart_data = res.data.data;
           this.cart_length = this.cart_data.carts.length;
           this.isLoading = false;
+          return "1";
         })
         .catch((err)=>{
           this.isLoading = false;
@@ -118,25 +119,5 @@ export default defineStore("cartStore", {
           });
         }
       },
-      payment(formData) {
-        this.isLoading = true;
-        const data = formData;
-        axios.post(`${VITE_APP_API}/v2/api/${VITE_APP_PATH}/order`, {data})
-        .then((res)=>{
-          this.isLoading = false;
-          Toast.fire({
-            title : res.data.message,
-            icon : "success",
-          });
-          this.getCart();
-        })
-        .catch((err)=>{
-          this.isLoading = false;
-          Toast.fire({
-            title : err.data.message,
-            icon : "error",
-          });
-        });
-      }
     }
 });
