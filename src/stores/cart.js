@@ -122,7 +122,6 @@ export default defineStore("cartStore", {
       createOrder(){
         this.isLoading = true;
         const data = this.form;
-        console.log(this.form)
         axios.post(`${VITE_APP_API}/v2/api/${VITE_APP_PATH}/order`, {data})
         .then((res)=>{
           this.getCart();
@@ -132,6 +131,11 @@ export default defineStore("cartStore", {
             icon : "success",
           });
           this.orderId = res.data.orderId;
+          this.form.user.name = "";
+          this.form.user.email = "";
+          this.form.user.tel = "";
+          this.form.user.address = "";
+          this.form.message = "";
         })
         .catch((err)=>{
           this.isLoading = false;

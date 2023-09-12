@@ -7,7 +7,7 @@ import "sweetalert2/src/sweetalert2.scss";
   export default{
     props : ["cartLocation"],
     computed:{
-      ...mapState(cartStore,["cart_length", "orderId"]),
+      ...mapState(cartStore,["cart_length", "form"]),
     },
     methods:{
       ...mapActions(cartStore,["createOrder"]),
@@ -24,7 +24,8 @@ import "sweetalert2/src/sweetalert2.scss";
         }
       },
       pushCheckouts(){
-        if(this.cart_length == 0 || this.orderId == ""){
+        const _form_target = this.form.user;
+        if(this.cart_length == 0){
           Swal.fire({
             icon: "error",
             title: "購物車沒有產品",
@@ -35,13 +36,21 @@ import "sweetalert2/src/sweetalert2.scss";
             }
           });
           return;
+        } else if(_form_target.name == "" || _form_target.email == "" || _form_target.tel == "" || _form_target.address == ""){ //判斷訂單資料是否填寫完
+          Swal.fire({
+            icon: "error",
+            title: "訂單資料未完成",
+            text: "「訂單資料」需要填寫完成才能確認訂單資料哦!!",
+          }).then((result)=>{
+            if(result.isConfirmed || result.isDismissed){ //點擊OK或視窗外 就會跳到「訂單資料」頁
+              this.$router.push("/Check");
+            }
+          });
+          return;
         } else {
           this.createOrder();
         }
       },
-      test(){
-        this.$router.push("/Cart");
-      }
     },
     watch:{
       orderId(val){ //監聽orderId 當完成createOrder()觸發
@@ -70,7 +79,7 @@ import "sweetalert2/src/sweetalert2.scss";
               <RouterLink to="/Check" class="nav-link nav-item Check">訂單資料</RouterLink>
             </li>
             <li class="breadcrumb-item fs-5 breadcrumbS-style">
-              <button type="button" class="btn nav-link nav-item Checkouts" @click="pushCheckouts()">確認訂單資料</button>
+              <button type="button" class="btn nav-link nav-item Checkouts" @click="pushCheckouts()">送出訂單資料</button>
             </li>
           </ol>
         </nav>

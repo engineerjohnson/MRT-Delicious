@@ -5,9 +5,6 @@ import cartNavbar from "../../components/cartNavbar.vue";
 import axios from "axios";
 const { VITE_APP_API, VITE_APP_PATH } = import.meta.env;
 import Toast from "../../utils/Toast.js";
-// 自定義樣式 所以載入scss
-import Swal from "sweetalert2/dist/sweetalert2.js";
-import "sweetalert2/src/sweetalert2.scss";
 // 載入loading
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/css/index.css";
@@ -55,18 +52,6 @@ export default {
     },
   },
   mounted(){
-    if(this.$route.params.orderId == "null"){ //判斷網址是否有id
-      Swal.fire({
-        icon: "error",
-        title: "訂單資料未完成",
-        text: "「訂單資料」需要填寫完成才能確認訂單資料哦!!",
-      }).then((result)=>{
-        if(result.isConfirmed || result.isDismissed){ //點擊OK或視窗外 就會跳到「訂單資料」頁
-          this.$router.push("/Check");
-        }
-      });
-      return;
-    }
     this.getOrder();
   }
 };
