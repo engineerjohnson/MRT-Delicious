@@ -7,6 +7,7 @@ import Swal from "sweetalert2/dist/sweetalert2.js";
 import "sweetalert2/src/sweetalert2.scss";
 // 載入loading
 import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/css/index.css";
 export default {
   data(){
     return{
@@ -53,9 +54,12 @@ export default {
   },
   mounted(){
     this.getCart();
-    setTimeout(() => { //暫時用settimeout 因為pinia載入比mounted慢 所以refresh會先觸發checkCartData 但實際上是有data的
+    const cartPiniaStore = cartStore(); //區域註冊pinia
+    cartPiniaStore.$subscribe((mutation, state) => { //監聽pinia的狀態變化
+      console.log(mutation)
+      console.log(state)
       this.checkCartData();
-    }, 1000);
+    });
   }
 };
 </script>
