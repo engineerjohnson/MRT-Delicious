@@ -55,7 +55,7 @@ export default {
     },
   },
   mounted(){
-    if(this.$route.params.orderId == "null"){
+    if(this.$route.params.orderId == "null"){ //判斷網址是否有id
       Swal.fire({
         icon: "error",
         title: "訂單資料未完成",

@@ -36,10 +36,9 @@ export default {
       this.isLoading = true;
       this.createOrder();
       this.isLoading = false;
-      this.$router.push(`/Checkouts/${this.orderId}`);
     },
     checkCartData(){ //確認購物車是否有無資料
-      if(this.cart_length == ""){
+      if(this.cart_length === 0){ //要嚴格 因為'' == 0 也會是true
       Swal.fire({
         icon: "error",
         title: "購物車沒有產品",
@@ -52,14 +51,21 @@ export default {
     }
     }
   },
+  watch:{
+    cart_length(val){ //監聽cart_length 避免refresh都觸發
+      if(val){
+        this.checkCartData();
+      }
+    },
+    orderId(val){ //監聽orderId 當完成createOrder()觸發
+      if(val){
+        this.$router.push(`/Checkouts/${this.orderId}`);
+      }
+    }
+  },
   mounted(){
     this.getCart();
-    const cartPiniaStore = cartStore(); //區域註冊pinia
-    cartPiniaStore.$subscribe((mutation, state) => { //監聽pinia的狀態變化
-      console.log(mutation)
-      console.log(state)
-      this.checkCartData();
-    });
+    this.checkCartData();
   }
 };
 </script>

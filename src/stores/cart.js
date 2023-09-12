@@ -122,6 +122,7 @@ export default defineStore("cartStore", {
       createOrder(){
         this.isLoading = true;
         const data = this.form;
+        console.log(this.form)
         axios.post(`${VITE_APP_API}/v2/api/${VITE_APP_PATH}/order`, {data})
         .then((res)=>{
           this.getCart();

@@ -1,10 +1,13 @@
 <script>
 import { mapState, mapActions } from "pinia";
 import cartStore from "../stores/cart.js";
+// 自定義樣式 所以載入scss
+import Swal from "sweetalert2/dist/sweetalert2.js";
+import "sweetalert2/src/sweetalert2.scss";
   export default{
     props : ["cartLocation"],
     computed:{
-      ...mapState(cartStore,["orderId"]),
+      ...mapState(cartStore,["cart_length", "orderId"]),
     },
     methods:{
       ...mapActions(cartStore,["createOrder"]),
@@ -21,11 +24,30 @@ import cartStore from "../stores/cart.js";
         }
       },
       pushCheckouts(){
-        this.createOrder();
-        this.$router.push(`/Checkouts/${this.orderId}`);
+        if(this.cart_length == 0 || this.orderId == ""){
+          Swal.fire({
+            icon: "error",
+            title: "購物車沒有產品",
+            text: "購物車內沒有產品，需要先將產品加入購物車哦!!",
+          }).then((result)=>{
+            if(result.isConfirmed || result.isDismissed){ //點擊OK或視窗外 就會跳到「購物車」頁
+              this.$router.push("/Stand");
+            }
+          });
+          return;
+        } else {
+          this.createOrder();
+        }
       },
       test(){
         this.$router.push("/Cart");
+      }
+    },
+    watch:{
+      orderId(val){ //監聽orderId 當完成createOrder()觸發
+        if(val){
+          this.$router.push(`/Checkouts/${this.orderId}`);
+        }
       }
     },
     mounted(){
