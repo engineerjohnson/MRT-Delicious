@@ -11,16 +11,20 @@ import "sweetalert2/src/sweetalert2.scss";
     },
     methods:{
       ...mapActions(cartStore,["createOrder"]),
-      addClickStyle(cartLocation){ //也可以改成@click="addClickStyle" 但不能用@click="addClickStyle()"
+      addClickStyle(cartLocation){ //y做css屬性設定
         const cart_target = document.querySelector(".Cart");
         const check_target = document.querySelector(".Check");
         const checkouts_target = document.querySelector(".Checkouts");
-        if (cartLocation == "Cart"){
-          cart_target.classList.add("text-warning", "fw-bold");
-        } else if(cartLocation == "Check"){
-          check_target.classList.add("text-warning", "fw-bold");
-        } else if(cartLocation == "Checkouts"){
-          checkouts_target.classList.add("text-warning", "fw-bold");
+        switch (cartLocation){
+          case "Cart" :
+            cart_target.classList.add("text-warning", "fw-bold");
+            break;
+          case "Check" :
+            check_target.classList.add("text-warning", "fw-bold");
+            break;
+          case "Checkouts" :
+            checkouts_target.classList.add("text-warning", "fw-bold");
+            break;
         }
       },
       pushCheckouts(){
@@ -92,5 +96,8 @@ import "sweetalert2/src/sweetalert2.scss";
 <style>
   .breadcrumbS-style{
     display: contents;
+  }
+  .Checkouts:active{
+    border: none;
   }
 </style>
