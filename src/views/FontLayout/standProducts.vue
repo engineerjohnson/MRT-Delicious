@@ -8,18 +8,18 @@ import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/css/index.css";
 export default {
   data() {
-    return {
+    return{
     };
   },
   computed:{
     ...mapState(productsStore,["products","standProduct","isLoading"])
   },
-  components: {
+  components:{
     addToCard,
     addToKeep,
     Loading
   },
-  methods: {
+  methods:{
     ...mapActions(productsStore,["getProducts","filterProducts"])
   },
   mounted(){

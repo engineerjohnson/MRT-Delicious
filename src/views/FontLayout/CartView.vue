@@ -11,14 +11,14 @@ export default {
       location:"Cart"
     };
   },
-  computed: {
+  computed:{
     ...mapState(cartStore,["cart_data", "isLoading", "cart_length"]),
   },
   components:{
     Loading,
     cartNavbar
   },
-  methods: {
+  methods:{
     //去填寫資料
     Check() {
       this.$router.push("/Check");

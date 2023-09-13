@@ -18,11 +18,11 @@ export default {
   computed:{
     ...mapState(cartStore,["form", "cart_length", "orderId"]),
   },
-  components: {
+  components:{
     cartNavbar,
     Loading,
   },
-  methods: {
+  methods:{
     ...mapActions(cartStore,["getCart", "createOrder"]),
     isPhone(value) {
       const phoneNumber = /^(09)[0-9]{8}$/;

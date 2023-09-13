@@ -11,12 +11,9 @@ export default{
         ...mapState(cartStore,["cart_data","cart_length"])
     },
     methods:{
-        ...mapActions(cartStore,["getCart","createOrder"]),
-        closeNavbar(){
-        }
+        ...mapActions(cartStore,["createOrder"]),
     },
-    mounted(){
-        this.getCart();
+    mounted(){ //在banner有gerCart 所以這裡不用再一次了
     }
 };
 </script>

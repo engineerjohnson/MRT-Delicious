@@ -16,8 +16,8 @@ import produceStore from "../../stores/product.js";
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/css/index.css";
 export default {
-  data() {
-    return {
+  data(){
+    return{
       modules: [Navigation, Pagination, Autoplay],
       // swiper的RWD功能
       swiperOptions: {
@@ -43,7 +43,7 @@ export default {
     // ...mapState(store名稱, ['要取得的值'])
     ...mapState(produceStore,["standProduct","WantEatProduct","isLoading"]),
   },
-  components: {
+  components:{
     Swiper,
     SwiperSlide,
     addToCard,

@@ -19,11 +19,11 @@ export default {
   computed:{
     ...mapState(cartStore,["form"])
   },
-  components: {
+  components:{
     cartNavbar,
     Loading,
   },
-  methods: {
+  methods:{
     ...mapActions(cartStore,["getCart"]),
     Cart() {
       this.$router.push("/Cart");
