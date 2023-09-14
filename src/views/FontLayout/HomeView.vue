@@ -216,6 +216,7 @@ export default {
           aria-labelledby="pills-home-tab"
         >
               <Swiper
+                :initialSlide="1"
                 :effect="'coverflow'"
                 :grabCursor="true"
                 :centeredSlides="true"
@@ -231,7 +232,7 @@ export default {
                 :breakpoints="swiperOptions.breakpoints"
                 :modules="modules"
                 :autoplay="{
-                  delay: 9000,
+                  delay: 5000,
                   disableOnInteraction: false,
                 }"
               >
@@ -260,6 +261,7 @@ export default {
           aria-labelledby="pills-profile-tab"
         >
           <Swiper
+            :initialSlide="1"
             :effect="'coverflow'"
             :grabCursor="true"
             :centeredSlides="true"
@@ -275,9 +277,8 @@ export default {
             :breakpoints="swiperOptions.breakpoints"
             :modules="modules"
             :autoplay="{
-              delay: 9000,
+              delay: 5000,
               disableOnInteraction: false,
-              arrows: false,
             }"
           >
           <swiper-slide v-for="standProduct in standProduct" :key="standProduct.id">
@@ -305,6 +306,7 @@ export default {
           aria-labelledby="pills-contact-tab"
         >
           <Swiper
+            :initialSlide="1"
             :effect="'coverflow'"
             :grabCursor="true"
             :centeredSlides="true"
@@ -322,7 +324,6 @@ export default {
             :autoplay="{
               delay: 5000,
               disableOnInteraction: false,
-              arrows: false,
             }"
           >
           <swiper-slide v-for="standProduct in standProduct" :key="standProduct.id">
@@ -421,27 +422,27 @@ export default {
           role="tabpanel"
           aria-labelledby="japanese-style-tab"
         >
-          <Swiper
-            :effect="'coverflow'"
-            :grabCursor="true"
-            :centeredSlides="true"
-            :slidesPerView="'auto'"
-            :coverflowEffect="{
-              rotate: 50,
-              stretch: 0,
-              depth: 100,
-              modifier: 1,
-              slideShadows: true,
-            }"
-            :pagination="false"
-            :breakpoints="swiperOptions.breakpoints"
-            :modules="modules"
-            :autoplay="{
-              delay: 9000,
-              disableOnInteraction: false,
-              arrows: false,
-            }"
-          >
+        <Swiper
+          :initialSlide="1"
+          :effect="'coverflow'"
+          :grabCursor="true"
+          :centeredSlides="true"
+          :slidesPerView="'auto'"
+          :coverflowEffect="{
+            rotate: 50,
+            stretch: 0,
+            depth: 100,
+            modifier: 1,
+            slideShadows: true,
+          }"
+          :pagination="false"
+          :breakpoints="swiperOptions.breakpoints"
+          :modules="modules"
+          :autoplay="{
+            delay: 5000,
+            disableOnInteraction: false,
+          }"
+        >
             <swiper-slide v-for="WantEatProduct in WantEatProduct" :key="WantEatProduct.id">
               <div id="swiper-car">
                 <div id="swiper-car-img">
@@ -464,26 +465,26 @@ export default {
           aria-labelledby="western-food-tab"
         >
         <Swiper
-            :effect="'coverflow'"
-            :grabCursor="true"
-            :centeredSlides="true"
-            :slidesPerView="'auto'"
-            :coverflowEffect="{
-              rotate: 50,
-              stretch: 0,
-              depth: 100,
-              modifier: 1,
-              slideShadows: true,
-            }"
-            :pagination="false"
-            :breakpoints="swiperOptions.breakpoints"
-            :modules="modules"
-            :autoplay="{
-              delay: 9000,
-              disableOnInteraction: false,
-              arrows: false,
-            }"
-          >
+          :initialSlide="1"
+          :effect="'coverflow'"
+          :grabCursor="true"
+          :centeredSlides="true"
+          :slidesPerView="'auto'"
+          :coverflowEffect="{
+            rotate: 50,
+            stretch: 0,
+            depth: 100,
+            modifier: 1,
+            slideShadows: true,
+          }"
+          :pagination="false"
+          :breakpoints="swiperOptions.breakpoints"
+          :modules="modules"
+          :autoplay="{
+            delay: 5000,
+            disableOnInteraction: false,
+          }"
+        >
             <swiper-slide v-for="WantEatProduct in WantEatProduct" :key="WantEatProduct.id">
               <div id="swiper-car">
                 <div id="swiper-car-img">
@@ -506,26 +507,26 @@ export default {
           aria-labelledby="sweets-tab"
         >
         <Swiper
-            :effect="'coverflow'"
-            :grabCursor="true"
-            :centeredSlides="true"
-            :slidesPerView="'auto'"
-            :coverflowEffect="{
-              rotate: 50,
-              stretch: 0,
-              depth: 100,
-              modifier: 1,
-              slideShadows: true,
-            }"
-            :pagination="false"
-            :breakpoints="swiperOptions.breakpoints"
-            :modules="modules"
-            :autoplay="{
-              delay: 9000,
-              disableOnInteraction: false,
-              arrows: false,
-            }"
-          >
+          :initialSlide="1"
+          :effect="'coverflow'"
+          :grabCursor="true"
+          :centeredSlides="true"
+          :slidesPerView="'auto'"
+          :coverflowEffect="{
+            rotate: 50,
+            stretch: 0,
+            depth: 100,
+            modifier: 1,
+            slideShadows: true,
+          }"
+          :pagination="false"
+          :breakpoints="swiperOptions.breakpoints"
+          :modules="modules"
+          :autoplay="{
+            delay: 5000,
+            disableOnInteraction: false,
+          }"
+        >
             <swiper-slide v-for="WantEatProduct in WantEatProduct" :key="WantEatProduct.id">
               <div id="swiper-car">
                 <div id="swiper-car-img">
@@ -548,6 +549,7 @@ export default {
           aria-labelledby="chinese-style-tab"
         >
         <Swiper
+          :initialSlide="1"
           :effect="'coverflow'"
           :grabCursor="true"
           :centeredSlides="true"
@@ -560,10 +562,11 @@ export default {
             slideShadows: true,
           }"
           :pagination="false"
+          :breakpoints="swiperOptions.breakpoints"
+          :modules="modules"
           :autoplay="{
             delay: 5000,
             disableOnInteraction: false,
-            arrows: false,
           }"
         >
             <swiper-slide v-for="WantEatProduct in WantEatProduct" :key="WantEatProduct.id">
