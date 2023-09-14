@@ -2,12 +2,12 @@
 import addToCard from "../../components/addToCard.vue";
 import addToKeep from "../../components/addToKeep.vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
-//導入swiper的Modules效果 如Autoplay(自動撥放),Pagination(下方顯示剩幾頁),Navigation(箭頭)
-import { Navigation, Pagination, Autoplay } from "swiper";
+//導入swiper的Modules效果 如Autoplay(自動撥放),Pagination(下方顯示剩幾頁),EffectCoverflow(輪播效果)
+import { Pagination, Autoplay, EffectCoverflow } from "swiper";
 import "swiper/css";
-import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
+import "swiper/css/effect-coverflow";
 // import { onMounted } from "vue";
 // const {VITE_APP_API, VITE_APP_PATH } = import.meta.env;
 import { mapState,mapActions } from "pinia";
@@ -18,7 +18,7 @@ import "vue-loading-overlay/dist/css/index.css";
 export default {
   data(){
     return{
-      modules: [Navigation, Pagination, Autoplay],
+      modules: [Pagination, Autoplay, EffectCoverflow],
       // swiper的RWD功能
       swiperOptions: {
         breakpoints: {
@@ -216,10 +216,20 @@ export default {
           aria-labelledby="pills-home-tab"
         >
               <Swiper
+                :effect="'coverflow'"
+                :grabCursor="true"
+                :centeredSlides="true"
+                :slidesPerView="'auto'"
+                :coverflowEffect="{
+                  rotate: 50,
+                  stretch: 0,
+                  depth: 100,
+                  modifier: 1,
+                  slideShadows: true,
+                }"
+                :pagination="false"
                 :breakpoints="swiperOptions.breakpoints"
                 :modules="modules"
-                :centeredSlides="false"
-                navigation
                 :autoplay="{
                   delay: 9000,
                   disableOnInteraction: false,
@@ -250,13 +260,24 @@ export default {
           aria-labelledby="pills-profile-tab"
         >
           <Swiper
+            :effect="'coverflow'"
+            :grabCursor="true"
+            :centeredSlides="true"
+            :slidesPerView="'auto'"
+            :coverflowEffect="{
+              rotate: 50,
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: true,
+            }"
+            :pagination="false"
             :breakpoints="swiperOptions.breakpoints"
             :modules="modules"
-            :centeredSlides="false"
-            navigation
             :autoplay="{
               delay: 9000,
               disableOnInteraction: false,
+              arrows: false,
             }"
           >
           <swiper-slide v-for="standProduct in standProduct" :key="standProduct.id">
@@ -284,13 +305,24 @@ export default {
           aria-labelledby="pills-contact-tab"
         >
           <Swiper
+            :effect="'coverflow'"
+            :grabCursor="true"
+            :centeredSlides="true"
+            :slidesPerView="'auto'"
+            :coverflowEffect="{
+              rotate: 50,
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: true,
+            }"
+            :pagination="false"
             :breakpoints="swiperOptions.breakpoints"
             :modules="modules"
-            :centeredSlides="false"
-            navigation
             :autoplay="{
               delay: 5000,
               disableOnInteraction: false,
+              arrows: false,
             }"
           >
           <swiper-slide v-for="standProduct in standProduct" :key="standProduct.id">
@@ -390,13 +422,24 @@ export default {
           aria-labelledby="japanese-style-tab"
         >
           <Swiper
+            :effect="'coverflow'"
+            :grabCursor="true"
+            :centeredSlides="true"
+            :slidesPerView="'auto'"
+            :coverflowEffect="{
+              rotate: 50,
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: true,
+            }"
+            :pagination="false"
             :breakpoints="swiperOptions.breakpoints"
             :modules="modules"
-            :centeredSlides="false"
-            navigation
             :autoplay="{
-              delay: 5000,
+              delay: 9000,
               disableOnInteraction: false,
+              arrows: false,
             }"
           >
             <swiper-slide v-for="WantEatProduct in WantEatProduct" :key="WantEatProduct.id">
@@ -421,13 +464,24 @@ export default {
           aria-labelledby="western-food-tab"
         >
         <Swiper
+            :effect="'coverflow'"
+            :grabCursor="true"
+            :centeredSlides="true"
+            :slidesPerView="'auto'"
+            :coverflowEffect="{
+              rotate: 50,
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: true,
+            }"
+            :pagination="false"
             :breakpoints="swiperOptions.breakpoints"
             :modules="modules"
-            :centeredSlides="false"
-            navigation
             :autoplay="{
-              delay: 5000,
+              delay: 9000,
               disableOnInteraction: false,
+              arrows: false,
             }"
           >
             <swiper-slide v-for="WantEatProduct in WantEatProduct" :key="WantEatProduct.id">
@@ -452,13 +506,24 @@ export default {
           aria-labelledby="sweets-tab"
         >
         <Swiper
+            :effect="'coverflow'"
+            :grabCursor="true"
+            :centeredSlides="true"
+            :slidesPerView="'auto'"
+            :coverflowEffect="{
+              rotate: 50,
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: true,
+            }"
+            :pagination="false"
             :breakpoints="swiperOptions.breakpoints"
             :modules="modules"
-            :centeredSlides="false"
-            navigation
             :autoplay="{
-              delay: 5000,
+              delay: 9000,
               disableOnInteraction: false,
+              arrows: false,
             }"
           >
             <swiper-slide v-for="WantEatProduct in WantEatProduct" :key="WantEatProduct.id">
@@ -483,15 +548,24 @@ export default {
           aria-labelledby="chinese-style-tab"
         >
         <Swiper
-            :breakpoints="swiperOptions.breakpoints"
-            :modules="modules"
-            :centeredSlides="false"
-            navigation
-            :autoplay="{
-              delay: 5000,
-              disableOnInteraction: false,
-            }"
-          >
+          :effect="'coverflow'"
+          :grabCursor="true"
+          :centeredSlides="true"
+          :slidesPerView="'auto'"
+          :coverflowEffect="{
+            rotate: 50,
+            stretch: 0,
+            depth: 100,
+            modifier: 1,
+            slideShadows: true,
+          }"
+          :pagination="false"
+          :autoplay="{
+            delay: 5000,
+            disableOnInteraction: false,
+            arrows: false,
+          }"
+        >
             <swiper-slide v-for="WantEatProduct in WantEatProduct" :key="WantEatProduct.id">
               <div id="swiper-car">
                 <div id="swiper-car-img">
@@ -533,3 +607,10 @@ export default {
     </div>
   </section>
 </template>
+
+
+<style>
+.nav-link.rounded-pill{
+  color: rgb(228, 145, 48);
+}
+</style>

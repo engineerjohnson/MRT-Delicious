@@ -1,7 +1,7 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 
-import App from "./FrontLayout.vue";
+import App from "./app.vue";
 import router from "./router";
 import "bootstrap";
 // 引入 VeeValidate 元件跟功能

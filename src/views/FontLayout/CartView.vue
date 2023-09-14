@@ -27,7 +27,7 @@ export default {
     Stand() {
       this.$router.push("/Stand");
     },
-    ...mapActions(cartStore,["getCart","updateCart","deleteCart","deleteCartAll"]),
+    ...mapActions(cartStore,["updateCart","deleteCart","deleteCartAll"]),
     formatPrice(price){
       if(price == null){
         return "";
@@ -35,8 +35,7 @@ export default {
       return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },
   },
-  mounted(){
-    this.getCart();
+  mounted(){ //在banner有gerCart 所以這裡不用再一次了
   }
 };
 </script>
