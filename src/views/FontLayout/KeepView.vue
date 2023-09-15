@@ -1,13 +1,31 @@
 <script>
+import { mapState, mapActions } from "pinia";
+import keepStore from "../../stores/keep.js";
+import cartStore from "../../stores/cart.js";
 export default {
-  components:{},
+  data(){
+    return{
+
+    };
+  },
+  computed:{
+    ...mapState(keepStore,["productList"]),
+  },
+  methods:{
+    ...mapActions(keepStore,["toggleToKeep","getKeep"]),
+    ...mapActions(cartStore,["addToCart"])
+  },
+  mounted(){
+    this.getKeep();
+    console.log(this.productList);
+  }
 };
 </script>
 
 <template>
   <div class="content">
   <div class="container my-5">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center" v-if="productList.length != 0">
       <div class="col-lg-10 py-5">
         <h1>收藏</h1>
         <div class="table-responsive-lg mt-5">
@@ -22,61 +40,30 @@ export default {
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr v-for="KeepList in productList" :key="KeepList.id">
                 <td class="align-middle text-center">
-                  <strong>小六鍋貼</strong>
+                  <strong>{{ KeepList.title }}</strong>
                 </td>
-                <td class="align-middle text-center">文華高中站</td>
-                <td class="align-middle text-center">90</td>
+                <td class="align-middle text-center">{{ KeepList.unit }}</td>
+                <td class="align-middle text-center">{{ KeepList.price }}</td>
                 <td class="align-middle text-center">
                   <div>
-                    <button type="button" class="btn">
+                    <button type="button" class="btn" @click="addToCart(KeepList.id)">
                       <font-awesome-icon icon="cart-shopping" />
                     </button>
                   </div>
                 </td>
                 <td class="align-middle text-center">
-                  <button type="button" class="btn">X</button>
-                </td>
-              </tr>
-              <tr>
-                <td class="align-middle text-center">
-                  <strong>檸檬撞芭樂</strong>
-                </td>
-                <td class="align-middle text-center">大慶站</td>
-                <td class="align-middle text-center">80</td>
-                <td class="align-middle text-center">
-                  <div>
-                    <button type="button" class="btn">
-                      <font-awesome-icon icon="cart-shopping" />
-                    </button>
-                  </div>
-                </td>
-                <td class="align-middle text-center">
-                  <button type="button" class="btn">X</button>
-                </td>
-              </tr>
-              <tr>
-                <td class="align-middle text-center">
-                  <strong>來一客牛排</strong>
-                </td>
-                <td class="align-middle text-center">大慶站</td>
-                <td class="align-middle text-center">130</td>
-                <td class="align-middle text-center">
-                  <div>
-                    <button type="button" class="btn">
-                      <font-awesome-icon icon="cart-shopping" />
-                    </button>
-                  </div>
-                </td>
-                <td class="align-middle text-center">
-                  <button type="button" class="btn">X</button>
+                  <button type="button" class="btn" @click="toggleToKeep(KeepList)">X</button>
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
+    </div>
+    <div v-else class="py-5">
+      <h3 class="fw-bolder mt-5">收藏內目前沒有商品，快去前往收藏吧!!</h3>
     </div>
   </div>
   </div>
