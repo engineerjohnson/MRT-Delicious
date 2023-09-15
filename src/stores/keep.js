@@ -13,8 +13,6 @@ export default defineStore("KeepStore", {
     actions: {
       toggleToKeep(product){
         const target_ID = this.productID.indexOf(product.id);
-        console.log(this.productID)
-        console.log(product.id)
         if(target_ID == -1){//沒有加入最愛
           this.productID.push(product.id);
             this.productList.push(product);

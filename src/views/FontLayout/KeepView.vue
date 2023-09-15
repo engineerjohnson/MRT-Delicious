@@ -17,7 +17,6 @@ export default {
   },
   mounted(){
     this.getKeep();
-    console.log(this.productList);
   }
 };
 </script>
