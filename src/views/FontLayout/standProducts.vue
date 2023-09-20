@@ -2,6 +2,7 @@
 import addToCard from "../../components/addToCard.vue";
 import addToKeep from "../../components/addToKeep.vue";
 import productsStore from "../../stores/products.js";
+import keepStore from "../../stores/keep.js";
 import { mapState,mapActions } from "pinia";
 // 載入loading
 import Loading from "vue-loading-overlay";
@@ -20,10 +21,12 @@ export default {
     Loading
   },
   methods:{
-    ...mapActions(productsStore,["getProducts","filterProducts"])
+    ...mapActions(productsStore,["getProducts","filterProducts"]),
+    ...mapActions(keepStore,["getKeep"])
   },
   mounted(){
     this.getProducts();
+    this.getKeep();
   }
 };
 </script>

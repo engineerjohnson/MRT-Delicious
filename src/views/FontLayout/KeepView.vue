@@ -23,46 +23,48 @@ export default {
 
 <template>
   <div class="content">
-  <div class="container my-5">
-    <div class="row justify-content-center" v-if="productList.length != 0">
-      <div class="col-lg-10 py-5">
-        <h1>收藏</h1>
-        <div class="table-responsive-lg mt-5">
-          <table class="table table-hover table-striped">
-            <thead>
-              <tr>
-                <th scope="col" class="text-center">品名</th>
-                <th scope="col" class="text-center">分類</th>
-                <th scope="col" class="text-center">價格</th>
-                <th scope="col" class="text-center">購買</th>
-                <th scope="col" class="text-center">取消</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="KeepList in productList" :key="KeepList.id">
-                <td class="align-middle text-center">
-                  <strong>{{ KeepList.title }}</strong>
-                </td>
-                <td class="align-middle text-center">{{ KeepList.unit }}</td>
-                <td class="align-middle text-center">{{ KeepList.price }}</td>
-                <td class="align-middle text-center">
-                  <div>
-                    <button type="button" class="btn" @click="addToCart(KeepList.id)">
-                      <font-awesome-icon icon="cart-shopping" />
-                    </button>
-                  </div>
-                </td>
-                <td class="align-middle text-center">
-                  <button type="button" class="btn" @click="toggleToKeep(KeepList)">X</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+  <div class="container">
+    <div class="pt-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-10 py-5" v-if="productList.length != 0">
+          <h1>收藏</h1>
+          <div class="table-responsive-lg mt-5">
+            <table class="table table-hover table-striped">
+              <thead>
+                <tr>
+                  <th scope="col" class="text-center">品名</th>
+                  <th scope="col" class="text-center">分類</th>
+                  <th scope="col" class="text-center">價格</th>
+                  <th scope="col" class="text-center">購買</th>
+                  <th scope="col" class="text-center">取消</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="KeepList in productList" :key="KeepList.id">
+                  <td class="align-middle text-center">
+                    <strong>{{ KeepList.title }}</strong>
+                  </td>
+                  <td class="align-middle text-center">{{ KeepList.unit }}</td>
+                  <td class="align-middle text-center">{{ KeepList.price }}</td>
+                  <td class="align-middle text-center">
+                    <div>
+                      <button type="button" class="btn" @click="addToCart(KeepList.id)">
+                        <font-awesome-icon icon="cart-shopping" />
+                      </button>
+                    </div>
+                  </td>
+                  <td class="align-middle text-center">
+                    <button type="button" class="btn" @click="toggleToKeep(KeepList)">X</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div v-else class="col-lg-10 py-5">
+          <h3 class="fw-bolder">收藏內目前沒有商品，快去前往收藏吧!!</h3>
         </div>
       </div>
-    </div>
-    <div v-else class="py-5">
-      <h3 class="fw-bolder mt-5">收藏內目前沒有商品，快去前往收藏吧!!</h3>
     </div>
   </div>
   </div>

@@ -51,7 +51,7 @@ export default {
               <div class="d-flex justify-content-between align-items-center bg-lightOrange">
                 <h2 class="w-50 py-md-2 py-1 mb-0">購物車</h2>
                 <div>
-                  <button type="button" class="btn fs-1" @click="deleteCartAll()">X</button>
+                  <button type="button" class="btn fs-2" @click="deleteCartAll()">X</button>
                 </div>
               </div>
               <div>

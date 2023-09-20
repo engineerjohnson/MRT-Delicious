@@ -2,6 +2,8 @@
 import addToCard from "../../components/addToCard.vue";
 import addToKeep from "../../components/addToKeep.vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
+import produceStore from "../../stores/product.js";
+import keepStore from "../../stores/keep.js";
 //導入swiper的Modules效果 如Autoplay(自動撥放),Pagination(下方顯示剩幾頁),EffectCoverflow(輪播效果)
 import { Pagination, Autoplay, EffectCoverflow } from "swiper";
 import "swiper/css";
@@ -11,7 +13,6 @@ import "swiper/css/effect-coverflow";
 // import { onMounted } from "vue";
 // const {VITE_APP_API, VITE_APP_PATH } = import.meta.env;
 import { mapState,mapActions } from "pinia";
-import produceStore from "../../stores/product.js";
 // 載入loading
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/css/index.css";
@@ -55,9 +56,11 @@ export default {
     //...mapActions(store名稱, ['要取得的方法名稱'])
     //將資料寫入 Store ，寫入資料要從「@click="changeStandType('data')"」data設定要寫入的資料
     ...mapActions(produceStore,["getProduct","changeStandType","changeWantEatType"]),
+    ...mapActions(keepStore,["getKeep"])
   },
   mounted(){
     this.getProduct();
+    this.getKeep();
   },
 };
 </script>
@@ -222,7 +225,7 @@ export default {
                 :centeredSlides="true"
                 :slidesPerView="'auto'"
                 :coverflowEffect="{
-                  rotate: 50,
+                  rotate: 30,
                   stretch: 0,
                   depth: 100,
                   modifier: 1,
@@ -232,7 +235,7 @@ export default {
                 :breakpoints="swiperOptions.breakpoints"
                 :modules="modules"
                 :autoplay="{
-                  delay: 5000,
+                  delay: 4000,
                   disableOnInteraction: false,
                 }"
               >
