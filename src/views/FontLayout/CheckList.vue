@@ -53,7 +53,8 @@ export default {
   },
   watch:{
     cart_length(val){ //監聽cart_length 避免refresh都觸發
-      if(val){
+      console.log(val)
+      if(val === 0){
         this.checkCartData();
       }
     },
