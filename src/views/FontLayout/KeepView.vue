@@ -8,7 +8,11 @@ export default {
   },
   methods : {
     ...mapActions(keepStore,["toggleToKeep","getKeep"]),
-    ...mapActions(cartStore,["addToCart"])
+    ...mapActions(cartStore,["addToCart"]),
+    //繼續選購
+    toStand() {
+    this.$router.push("/Stand");
+    },
   },
   mounted() {
     this.getKeep();
@@ -58,6 +62,11 @@ export default {
       <div v-else class="col-lg-10 py-5">
         <h3 class="fw-bolder">收藏內目前沒有商品，快去前往收藏吧!!</h3>
       </div>
+    </div>
+    <div class="d-flex justify-content-around my-5">
+      <button v-if="productList == ''" type="button" class="btn btn-warning text-white" @click="toStand()">
+        繼續選購
+      </button>
     </div>
   </div>
   </div>

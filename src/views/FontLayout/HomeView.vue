@@ -218,6 +218,7 @@ export default {
           aria-labelledby="pills-home-tab"
         >
           <Swiper
+            :initialSlide="1"
             :grabCursor="true"
             :centeredSlides="true"
             :slidesPerView="'auto'"
@@ -261,6 +262,7 @@ export default {
           aria-labelledby="pills-profile-tab"
         >
           <Swiper
+            :initialSlide="1"
             :grabCursor="true"
             :centeredSlides="true"
             :slidesPerView="'auto'"
@@ -304,6 +306,7 @@ export default {
           aria-labelledby="pills-contact-tab"
         >
           <Swiper
+            :initialSlide="1"
             :grabCursor="true"
             :centeredSlides="true"
             :slidesPerView="'auto'"
@@ -419,6 +422,7 @@ export default {
           aria-labelledby="japanese-style-tab"
         >
           <Swiper
+            :initialSlide="1"
             :grabCursor="true"
             :centeredSlides="true"
             :slidesPerView="'auto'"
@@ -461,6 +465,7 @@ export default {
           aria-labelledby="western-food-tab"
         >
           <Swiper
+            :initialSlide="1"
             :grabCursor="true"
             :centeredSlides="true"
             :slidesPerView="'auto'"
@@ -503,6 +508,7 @@ export default {
           aria-labelledby="sweets-tab"
         >
           <Swiper
+            :initialSlide="1"
             :grabCursor="true"
             :centeredSlides="true"
             :slidesPerView="'auto'"
@@ -545,6 +551,7 @@ export default {
           aria-labelledby="chinese-style-tab"
         >
           <Swiper
+            :initialSlide="1"
             :grabCursor="true"
             :centeredSlides="true"
             :slidesPerView="'auto'"

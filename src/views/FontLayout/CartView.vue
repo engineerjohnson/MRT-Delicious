@@ -20,11 +20,11 @@ export default {
   },
   methods : {
     //去填寫資料
-    Check() {
+    toCheck() {
       this.$router.push("/Check");
     },
     //繼續選購
-    Stand() {
+    toStand() {
       this.$router.push("/Stand");
     },
     ...mapActions(cartStore,["updateCart","deleteCart","deleteCartAll"]),
@@ -80,11 +80,11 @@ export default {
             <h3 class="fw-bolder">購物車內目前沒有商品，快去前往選購吧!!</h3>
           </div>
           <div class="d-flex justify-content-around my-5">
-            <button type="button" class="btn btn-warning text-white" @click="Stand()">
+            <button type="button" class="btn btn-warning text-white" @click="toStand()">
               繼續選購
             </button>
             <div v-if="cart_length != 0">
-              <button type="button" class="btn btn-warning text-white" @click="Check()">
+              <button type="button" class="btn btn-warning text-white" @click="toCheck()">
                 填寫資料
               </button>
             </div>
