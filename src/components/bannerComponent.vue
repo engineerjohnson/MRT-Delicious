@@ -7,10 +7,10 @@ export default{
             isNavbarCollapsed: true
         };
     },
-    computed:{
+    computed : {
         ...mapState(cartStore,["cart_data","cart_length"])
     },
-    methods:{
+    methods : {
         ...mapActions(cartStore,["getCart","createOrder"]),
     },
     mounted(){

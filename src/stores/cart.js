@@ -5,7 +5,7 @@ const { VITE_APP_API, VITE_APP_PATH } = import.meta.env;
 import Toast from "../utils/Toast.js";
 export default defineStore("cartStore", {
     //對應data
-    state: () => ({
+    state : () => ({
       cart_data: "",
       cart_length: "",
       orderId: "",
@@ -21,9 +21,9 @@ export default defineStore("cartStore", {
       }
     }),
     //對應compute
-    getters: {},
+    getters : {},
     //對應methods
-    actions: {
+    actions : {
       addToCart(id, qty = 1) {
         const data = {
           "product_id" : id,

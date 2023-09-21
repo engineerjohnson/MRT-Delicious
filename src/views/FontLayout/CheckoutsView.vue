@@ -9,21 +9,21 @@ import Toast from "../../utils/Toast.js";
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/css/index.css";
 export default {
-  data(){
-    return{
+  data() {
+    return {
       location:"Checkouts",
       orderData:{},
       isLoading:false
     };
   },
-  computed:{
+  computed : {
     ...mapState(cartStore,["form"])
   },
-  components:{
+  components : {
     cartNavbar,
     Loading,
   },
-  methods:{
+  methods : {
     ...mapActions(cartStore,["getCart"]),
     Cart() {
       this.$router.push("/Cart");
@@ -44,14 +44,14 @@ export default {
         });
       });
     },
-    formatPrice(price){
+    formatPrice(price) {
       if(price == null){
         return "";
       }
       return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },
   },
-  mounted(){
+  mounted() {
     this.getOrder();
   }
 };

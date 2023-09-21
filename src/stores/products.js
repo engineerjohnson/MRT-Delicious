@@ -4,19 +4,19 @@ import axios from "axios";
 const { VITE_APP_API, VITE_APP_PATH } = import.meta.env;
 export default defineStore("productsStore", {
     //對應data
-    state: () => ({
+    state : () => ({
         products: [],
         standProducts :"",
         isLoading : false,
     }),
     //對應compute
-    getters: {
+    getters : {
         standProduct() {
             return this.products.filter(item => item.unit == this.standProducts);
         },
     },
     //對應methods
-    actions: {
+    actions : {
         getProducts() {
             this.isLoading = true;
             axios.get(`${VITE_APP_API}/v2/api/${VITE_APP_PATH}/products/all`)

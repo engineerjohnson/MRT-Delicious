@@ -6,10 +6,10 @@ import Swal from "sweetalert2/dist/sweetalert2.js";
 import "sweetalert2/src/sweetalert2.scss";
   export default{
     props : ["cartLocation"],
-    computed:{
+    computed : {
       ...mapState(cartStore,["cart_length", "form"]),
     },
-    methods:{
+    methods : {
       ...mapActions(cartStore,["createOrder"]),
       addClickStyle(cartLocation){ //y做css屬性設定
         const cart_target = document.querySelector(".Cart");
@@ -56,7 +56,7 @@ import "sweetalert2/src/sweetalert2.scss";
         }
       },
     },
-    watch:{
+    watch : {
       orderId(val){ //監聽orderId 當完成createOrder()觸發
         if(val){
           this.$router.push(`/Checkouts/${this.orderId}`);

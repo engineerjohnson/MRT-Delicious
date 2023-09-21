@@ -4,14 +4,14 @@ const { VITE_APP_API, VITE_APP_PATH } = import.meta.env;
 import axios from "axios";
 export default defineStore("produceStore", {
     //對應 data
-    state: () => ({
+    state : () => ({
         product: [],
         standType: "大慶站",
         wantEatType: "日式",
         isLoading : false,
     }),
     //對應 computed
-    getters: {
+    getters : {
         //篩選「美食前三站商品」
         standProduct() {
             return this.product.filter(item => item.unit === this.standType);
@@ -22,7 +22,7 @@ export default defineStore("produceStore", {
         }
     },
     //對應 methods
-    actions: {
+    actions : {
         getProduct() {
             this.isLoading = true;
             axios.get(`${VITE_APP_API}/v2/api/${VITE_APP_PATH}/products/all`)

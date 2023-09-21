@@ -9,20 +9,20 @@ import "sweetalert2/src/sweetalert2.scss";
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/css/index.css";
 export default {
-  data(){
-    return{
+  data() {
+    return {
       location:"Check",
       isLoading:false,
     };
   },
-  computed:{
+  computed : {
     ...mapState(cartStore,["form", "cart_length", "orderId"]),
   },
-  components:{
+  components : {
     cartNavbar,
     Loading,
   },
-  methods:{
+  methods : {
     ...mapActions(cartStore,["getCart", "createOrder"]),
     isPhone(value) {
       const phoneNumber = /^(09)[0-9]{8}$/;
@@ -51,20 +51,19 @@ export default {
     }
     }
   },
-  watch:{
-    cart_length(val){ //監聽cart_length 避免refresh都觸發
-      console.log(val)
+  watch : {
+    cart_length(val) { //監聽cart_length 避免refresh都觸發
       if(val === 0){
         this.checkCartData();
       }
     },
-    orderId(val){ //監聽orderId 當完成createOrder()觸發
+    orderId(val) { //監聽orderId 當完成createOrder()觸發
       if(val){
         this.$router.push(`/Checkouts/${this.orderId}`);
       }
     }
   },
-  mounted(){
+  mounted() {
     this.getCart();
     this.checkCartData();
   }

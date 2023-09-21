@@ -6,7 +6,7 @@
         data(){
             return{};
         },
-        methods:{
+        methods : {
             ...mapActions(cartStore, ["addToCart"])
         },
         mounted(){}

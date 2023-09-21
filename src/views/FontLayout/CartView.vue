@@ -6,19 +6,19 @@ import cartNavbar from "../../components/cartNavbar.vue";
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/css/index.css";
 export default {
-  data(){
-    return{
+  data() {
+    return {
       location:"Cart"
     };
   },
-  computed:{
+  computed : {
     ...mapState(cartStore,["cart_data", "isLoading", "cart_length"]),
   },
-  components:{
+  components : {
     Loading,
     cartNavbar
   },
-  methods:{
+  methods : {
     //去填寫資料
     Check() {
       this.$router.push("/Check");
@@ -35,7 +35,7 @@ export default {
       return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },
   },
-  mounted(){ //在banner有gerCart 所以這裡不用再一次了
+  mounted() { //在banner有gerCart 所以這裡不用再一次了
   }
 };
 </script>

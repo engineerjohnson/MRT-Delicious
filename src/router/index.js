@@ -26,6 +26,11 @@ const routes =[
         component:()=>import("../views/FontLayout/standProducts.vue")
       },
       {
+        path:"Product/:productId",
+        name:"Product",
+        component:()=>import("../views/FontLayout/productView.vue")
+      },
+      {
         path:"Check",
         name:"Check",
         component:()=>import("../views/FontLayout/CheckList.vue")
