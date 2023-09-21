@@ -29,8 +29,10 @@ export default {
   <Loading v-model:active="isLoading" :loader="'dots'"/>
   <div class="content">
     <div class="container">
-      <div>
-
+      <div class="pt-5">
+        <div class="py-5">
+          <h1>單頁商品</h1>
+        </div>
       </div>
     </div>
   </div>

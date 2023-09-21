@@ -125,9 +125,9 @@ export default {
               aria-labelledby="list-home-list"
             >
               <div class="row card-group" >
-                <div class="col-lg-4 col-md-6 mb-4 pb-5 h-100" v-for="products in products" :key="products.id">
-                  <div class=" card">
-                    <RouterLink class="text-decoration-none text-dark" :to="`Product/${products.id}`">
+                <div class="col-lg-4 col-md-6 mb-4 pb-5" v-for="products in products" :key="products.id">
+                  <RouterLink class="text-decoration-none text-dark product-link" :to="`Product/${products.id}`">
+                    <div class="card h-100">
                       <div class="image-hover">
                         <img class="card-img-top" :src=products.imageUrl :alt=products.title>
                       </div>
@@ -150,27 +150,8 @@ export default {
                           <addToCard :product_id = products.id></addToCard>
                         </div>
                       </div>
-
-                      <!-- <div class="image-hover">
-                        <img :src=products.imageUrl :alt=products.title>
-                      </div>
-                      <div class="product_box">
-                        <span class="badge rounded-pill bg-warning fs-6 my-2"
-                          >{{ products.unit }}</span
-                        >
-                        <p class="fs-5">
-                          {{ products.title }}
-                          <span class="fs-6" style="float: right">{{ products.price }}元</span>
-                        </p>
-                        <p>{{ products.description }}</p>
-                        <p>{{ products.content }}</p>
-                        <div class="d-flex justify-content-between card-footer" id="button">
-                          <addToKeep :product = products></addToKeep>
-                          <addToCard :product_id = products.id></addToCard>
-                        </div>
-                      </div> -->
-                    </RouterLink>
-                  </div>
+                    </div>
+                  </RouterLink>
                 </div>
               </div>
             </div>
@@ -181,27 +162,33 @@ export default {
               aria-labelledby="list-profile-list"
             >
             <div class="row card-group" >
-                <div class="col-lg-4 col-md-6 mb-4 card pb-5" v-for="products in standProduct" :key="products.id">
-                  <div>
-                    <div class="image-hover">
-                      <img :src=products.imageUrl :alt=products.title >
-                    </div>
-                    <div class="product_box">
-                      <span class="badge rounded-pill bg-warning fs-6 my-2"
-                        >{{ products.unit }}</span
-                      >
-                      <p class="fs-5">
-                        {{ products.title }}
-                        <span class="fs-6" style="float: right">{{ products.price }}元</span>
-                      </p>
-                      <p>{{ products.description }}</p>
-                      <p>{{ products.content }}</p>
-                      <div class="d-flex justify-content-between" id="button">
-                        <addToKeep :product = products></addToKeep>
-                        <addToCard :product_id = products.id></addToCard>
+                <div class="col-lg-4 col-md-6 mb-4 pb-5" v-for="products in standProduct" :key="products.id">
+                  <RouterLink class="text-decoration-none text-dark product-link" :to="`Product/${products.id}`">
+                    <div class="card h-100">
+                      <div class="image-hover">
+                        <img class="card-img-top" :src=products.imageUrl :alt=products.title>
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title">
+                          <span class="badge rounded-pill bg-warning fs-6 my-2">
+                            {{ products.unit }}
+                          </span>
+                          <p class="fs-5">
+                            {{ products.title }}
+                            <span class="fs-6" style="float: right">{{ products.price }}元</span>
+                          </p>
+                        </h5>
+                        <p class="card-text">{{ products.description }}</p>
+                        <p class="card-text">{{ products.content }}</p>
+                      </div>
+                      <div class="card-footer">
+                        <div class="d-flex justify-content-between" id="button">
+                          <addToKeep :product = products></addToKeep>
+                          <addToCard :product_id = products.id></addToCard>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </RouterLink>
                 </div>
               </div>
             </div>
@@ -212,27 +199,33 @@ export default {
               aria-labelledby="list-messages-list"
             >
             <div class="row card-group" >
-                <div class="col-lg-4 col-md-6 mb-4 card pb-5" v-for="products in standProduct" :key="products.id">
-                  <div>
-                    <div class="image-hover">
-                      <img :src=products.imageUrl :alt=products.title >
-                    </div>
-                    <div class="product_box">
-                      <span class="badge rounded-pill bg-warning fs-6 my-2"
-                        >{{ products.unit }}</span
-                      >
-                      <p class="fs-5">
-                        {{ products.title }}
-                        <span class="fs-6" style="float: right">{{ products.price }}元</span>
-                      </p>
-                      <p>{{ products.description }}</p>
-                      <p>{{ products.content }}</p>
-                      <div class="d-flex justify-content-between" id="button">
-                        <addToKeep :product = products></addToKeep>
-                        <addToCard :product_id = products.id></addToCard>
+                <div class="col-lg-4 col-md-6 mb-4 pb-5" v-for="products in standProduct" :key="products.id">
+                  <RouterLink class="text-decoration-none text-dark product-link" :to="`Product/${products.id}`">
+                    <div class="card h-100">
+                      <div class="image-hover">
+                        <img class="card-img-top" :src=products.imageUrl :alt=products.title>
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title">
+                          <span class="badge rounded-pill bg-warning fs-6 my-2">
+                            {{ products.unit }}
+                          </span>
+                          <p class="fs-5">
+                            {{ products.title }}
+                            <span class="fs-6" style="float: right">{{ products.price }}元</span>
+                          </p>
+                        </h5>
+                        <p class="card-text">{{ products.description }}</p>
+                        <p class="card-text">{{ products.content }}</p>
+                      </div>
+                      <div class="card-footer">
+                        <div class="d-flex justify-content-between" id="button">
+                          <addToKeep :product = products></addToKeep>
+                          <addToCard :product_id = products.id></addToCard>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </RouterLink>
                 </div>
               </div>
             </div>
@@ -243,27 +236,33 @@ export default {
               aria-labelledby="list-settings-list"
             >
             <div class="row card-group" >
-                <div class="col-lg-4 col-md-6 mb-4 card pb-5" v-for="products in standProduct" :key="products.id">
-                  <div>
-                    <div class="image-hover">
-                      <img :src=products.imageUrl :alt=products.title >
-                    </div>
-                    <div class="product_box">
-                      <span class="badge rounded-pill bg-warning fs-6 my-2"
-                        >{{ products.unit }}</span
-                      >
-                      <p class="fs-5">
-                        {{ products.title }}
-                        <span class="fs-6" style="float: right">{{ products.price }}元</span>
-                      </p>
-                      <p>{{ products.description }}</p>
-                      <p>{{ products.content }}</p>
-                      <div class="d-flex justify-content-between" id="button">
-                        <addToKeep :product = products></addToKeep>
-                        <addToCard :product_id = products.id></addToCard>
+                <div class="col-lg-4 col-md-6 mb-4 pb-5" v-for="products in standProduct" :key="products.id">
+                  <RouterLink class="text-decoration-none text-dark product-link" :to="`Product/${products.id}`">
+                    <div class="card h-100">
+                      <div class="image-hover">
+                        <img class="card-img-top" :src=products.imageUrl :alt=products.title>
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title">
+                          <span class="badge rounded-pill bg-warning fs-6 my-2">
+                            {{ products.unit }}
+                          </span>
+                          <p class="fs-5">
+                            {{ products.title }}
+                            <span class="fs-6" style="float: right">{{ products.price }}元</span>
+                          </p>
+                        </h5>
+                        <p class="card-text">{{ products.description }}</p>
+                        <p class="card-text">{{ products.content }}</p>
+                      </div>
+                      <div class="card-footer">
+                        <div class="d-flex justify-content-between" id="button">
+                          <addToKeep :product = products></addToKeep>
+                          <addToCard :product_id = products.id></addToCard>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </RouterLink>
                 </div>
               </div>
             </div>
@@ -274,27 +273,33 @@ export default {
               aria-labelledby="list-profile-list"
             >
             <div class="row card-group" >
-                <div class="col-lg-4 col-md-6 mb-4 card pb-5" v-for="products in standProduct" :key="products.id">
-                  <div>
-                    <div class="image-hover">
-                      <img :src=products.imageUrl :alt=products.title >
-                    </div>
-                    <div class="product_box">
-                      <span class="badge rounded-pill bg-warning fs-6 my-2"
-                        >{{ products.unit }}</span
-                      >
-                      <p class="fs-5">
-                        {{ products.title }}
-                        <span class="fs-6" style="float: right">{{ products.price }}元</span>
-                      </p>
-                      <p>{{ products.description }}</p>
-                      <p>{{ products.content }}</p>
-                      <div class="d-flex justify-content-between" id="button">
-                        <addToKeep :product = products></addToKeep>
-                        <addToCard :product_id = products.id></addToCard>
+                <div class="col-lg-4 col-md-6 mb-4 pb-5" v-for="products in standProduct" :key="products.id">
+                  <RouterLink class="text-decoration-none text-dark product-link" :to="`Product/${products.id}`">
+                    <div class="card h-100">
+                      <div class="image-hover">
+                        <img class="card-img-top" :src=products.imageUrl :alt=products.title>
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title">
+                          <span class="badge rounded-pill bg-warning fs-6 my-2">
+                            {{ products.unit }}
+                          </span>
+                          <p class="fs-5">
+                            {{ products.title }}
+                            <span class="fs-6" style="float: right">{{ products.price }}元</span>
+                          </p>
+                        </h5>
+                        <p class="card-text">{{ products.description }}</p>
+                        <p class="card-text">{{ products.content }}</p>
+                      </div>
+                      <div class="card-footer">
+                        <div class="d-flex justify-content-between" id="button">
+                          <addToKeep :product = products></addToKeep>
+                          <addToCard :product_id = products.id></addToCard>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </RouterLink>
                 </div>
               </div>
             </div>
@@ -305,27 +310,33 @@ export default {
               aria-labelledby="list-messages-list"
             >
             <div class="row card-group" >
-                <div class="col-lg-4 col-md-6 mb-4 card pb-5" v-for="products in standProduct" :key="products.id">
-                  <div>
-                    <div class="image-hover">
-                      <img :src=products.imageUrl :alt=products.title >
-                    </div>
-                    <div class="product_box">
-                      <span class="badge rounded-pill bg-warning fs-6 my-2"
-                        >{{ products.unit }}</span
-                      >
-                      <p class="fs-5">
-                        {{ products.title }}
-                        <span class="fs-6" style="float: right">{{ products.price }}元</span>
-                      </p>
-                      <p>{{ products.description }}</p>
-                      <p>{{ products.content }}</p>
-                      <div class="d-flex justify-content-between" id="button">
-                        <addToKeep :product = products></addToKeep>
-                        <addToCard :product_id = products.id></addToCard>
+                <div class="col-lg-4 col-md-6 mb-4 pb-5" v-for="products in standProduct" :key="products.id">
+                  <RouterLink class="text-decoration-none text-dark product-link" :to="`Product/${products.id}`">
+                    <div class="card h-100">
+                      <div class="image-hover">
+                        <img class="card-img-top" :src=products.imageUrl :alt=products.title>
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title">
+                          <span class="badge rounded-pill bg-warning fs-6 my-2">
+                            {{ products.unit }}
+                          </span>
+                          <p class="fs-5">
+                            {{ products.title }}
+                            <span class="fs-6" style="float: right">{{ products.price }}元</span>
+                          </p>
+                        </h5>
+                        <p class="card-text">{{ products.description }}</p>
+                        <p class="card-text">{{ products.content }}</p>
+                      </div>
+                      <div class="card-footer">
+                        <div class="d-flex justify-content-between" id="button">
+                          <addToKeep :product = products></addToKeep>
+                          <addToCard :product_id = products.id></addToCard>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </RouterLink>
                 </div>
               </div>
             </div>
@@ -336,27 +347,33 @@ export default {
               aria-labelledby="list-settings-list"
             >
             <div class="row card-group" >
-                <div class="col-lg-4 col-md-6 mb-4 card pb-5" v-for="products in standProduct" :key="products.id">
-                  <div>
-                    <div class="image-hover">
-                      <img :src=products.imageUrl :alt=products.title >
-                    </div>
-                    <div class="product_box">
-                      <span class="badge rounded-pill bg-warning fs-6 my-2"
-                        >{{ products.unit }}</span
-                      >
-                      <p class="fs-5">
-                        {{ products.title }}
-                        <span class="fs-6" style="float: right">{{ products.price }}元</span>
-                      </p>
-                      <p>{{ products.description }}</p>
-                      <p>{{ products.content }}</p>
-                      <div class="d-flex justify-content-between" id="button">
-                        <addToKeep :product = products></addToKeep>
-                        <addToCard :product_id = products.id></addToCard>
+                <div class="col-lg-4 col-md-6 mb-4 pb-5" v-for="products in standProduct" :key="products.id">
+                  <RouterLink class="text-decoration-none text-dark product-link" :to="`Product/${products.id}`">
+                    <div class="card h-100">
+                      <div class="image-hover">
+                        <img class="card-img-top" :src=products.imageUrl :alt=products.title>
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title">
+                          <span class="badge rounded-pill bg-warning fs-6 my-2">
+                            {{ products.unit }}
+                          </span>
+                          <p class="fs-5">
+                            {{ products.title }}
+                            <span class="fs-6" style="float: right">{{ products.price }}元</span>
+                          </p>
+                        </h5>
+                        <p class="card-text">{{ products.description }}</p>
+                        <p class="card-text">{{ products.content }}</p>
+                      </div>
+                      <div class="card-footer">
+                        <div class="d-flex justify-content-between" id="button">
+                          <addToKeep :product = products></addToKeep>
+                          <addToCard :product_id = products.id></addToCard>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </RouterLink>
                 </div>
               </div>
             </div>
@@ -378,8 +395,8 @@ img {
   max-height: 100%;
   transition: 0.3s;
 }
-img:hover {
-  transform: scale(120%);
+.product-link:hover img {
+  transform: scale(1.2);
 }
 .product_box {
   width: 90%;
@@ -390,8 +407,8 @@ img:hover {
   position: relative;
   border: 0px;
 }
-.card-footer{
+.card, .card-footer{
   background:none;
-  border-top:none;
+  border:none;
 }
 </style>

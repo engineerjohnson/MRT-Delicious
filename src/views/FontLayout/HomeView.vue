@@ -4,12 +4,11 @@ import addToKeep from "../../components/addToKeep.vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import produceStore from "../../stores/product.js";
 import keepStore from "../../stores/keep.js";
-//導入swiper的Modules效果 如Autoplay(自動撥放),Pagination(下方顯示剩幾頁),EffectCoverflow(輪播效果)
-import { Pagination, Autoplay, EffectCoverflow } from "swiper";
+//導入swiper的Modules效果 如Autoplay(自動撥放),Pagination(下方顯示剩幾頁)
+import { Pagination, Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
-import "swiper/css/effect-coverflow";
 // import { onMounted } from "vue";
 // const {VITE_APP_API, VITE_APP_PATH } = import.meta.env;
 import { mapState,mapActions } from "pinia";
@@ -19,7 +18,7 @@ import "vue-loading-overlay/dist/css/index.css";
 export default {
   data() {
     return {
-      modules: [Pagination, Autoplay, EffectCoverflow],
+      modules: [Pagination, Autoplay],
       // swiper的RWD功能
       swiperOptions: {
         breakpoints: {
@@ -28,12 +27,12 @@ export default {
             spaceBetween: 10,
           },
           1310: {
-            slidesPerView: 3,
+            slidesPerView: 4,
             spaceBetween: 20,
           },
           577: {
             slidesPerView: 2,
-            spaceBetween: 50,
+            spaceBetween: 15,
           },
         },
       },
@@ -72,7 +71,7 @@ export default {
     <div class="caption d-flex justify-content-center align-items-center">
       <div>
         <h1 class="text-white display-5">
-          <dt class="text-left pb-2 mx-1">
+          <dt class="text-center pb-2 mx-1">
             專屬吃貨的世界，讓您輕鬆搜尋、收藏與訂購美食。
           </dt>
         </h1>
@@ -208,7 +207,7 @@ export default {
         </ul>
       </div>
       <div
-        class="tab-content d-flex justify-content-center"
+        class="tab-content"
         id="pills-tabContent"
       >
       <!-- 大慶站美食 -->
@@ -218,43 +217,41 @@ export default {
           role="tabpanel"
           aria-labelledby="pills-home-tab"
         >
-              <Swiper
-                :initialSlide="1"
-                :effect="'coverflow'"
-                :grabCursor="true"
-                :centeredSlides="true"
-                :slidesPerView="'auto'"
-                :coverflowEffect="{
-                  rotate: 30,
-                  stretch: 0,
-                  depth: 100,
-                  modifier: 1,
-                  slideShadows: true,
-                }"
-                :pagination="false"
-                :breakpoints="swiperOptions.breakpoints"
-                :modules="modules"
-                :autoplay="{
-                  delay: 4000,
-                  disableOnInteraction: false,
-                }"
-              >
-              <swiper-slide v-for="standProduct in standProduct" :key="standProduct.id">
+          <Swiper
+            :grabCursor="true"
+            :centeredSlides="true"
+            :slidesPerView="'auto'"
+            :pagination="true"
+            :breakpoints="swiperOptions.breakpoints"
+            :modules="modules"
+            :autoplay="{
+              delay: 5000,
+              disableOnInteraction: false,
+            }"
+          >
+            <swiper-slide v-for="products in standProduct" :key="products.id" class="mb-5">
               <div id="swiper-car">
-                <div id="swiper-car-img" >
-                  <img :src=standProduct.imageUrl alt="" />
-                </div>
-                <dt class="my-2 fs-4">{{ standProduct.title }}</dt>
-                <p>
-                  商品描述:<span>{{ standProduct.description }}</span>
-                </p>
-                <p>營業時段:</p>
-                <p>{{ standProduct.content }}</p>
-                <addToKeep :product = standProduct></addToKeep>
-                <addToCard :product_id = standProduct.id></addToCard>
+                <RouterLink class="text-decoration-none text-dark product-link" :to="`Product/${products.id}`">
+                  <div class="card h-100">
+                    <div id="swiper-car-img">
+                      <img class="card-img-top" :src=products.imageUrl :alt=products.title>
+                    </div>
+                    <div class="card-body">
+                      <span class="badge rounded-pill bg-warning fs-6 my-2">{{ products.unit }}</span>
+                      <h6 class="card-title fw-bold">{{ products.title }}</h6>
+                      <p class="fs-6" style="float: right">{{ products.price }}元</p>
+                    </div>
+                    <div class="card-footer">
+                      <div class="d-flex justify-content-between" id="button">
+                        <addToKeep :product = products></addToKeep>
+                        <addToCard :product_id = products.id></addToCard>
+                      </div>
+                    </div>
+                  </div>
+                </RouterLink>
               </div>
             </swiper-slide>
-              </Swiper>
+          </Swiper>
         </div>
         <!-- 文心崇德站美食 -->
         <div
@@ -264,19 +261,10 @@ export default {
           aria-labelledby="pills-profile-tab"
         >
           <Swiper
-            :initialSlide="1"
-            :effect="'coverflow'"
             :grabCursor="true"
             :centeredSlides="true"
             :slidesPerView="'auto'"
-            :coverflowEffect="{
-              rotate: 50,
-              stretch: 0,
-              depth: 100,
-              modifier: 1,
-              slideShadows: true,
-            }"
-            :pagination="false"
+            :pagination="true"
             :breakpoints="swiperOptions.breakpoints"
             :modules="modules"
             :autoplay="{
@@ -284,22 +272,29 @@ export default {
               disableOnInteraction: false,
             }"
           >
-          <swiper-slide v-for="standProduct in standProduct" :key="standProduct.id">
-              <div id="swiper-car">
-                <div id="swiper-car-img" >
-                  <img :src=standProduct.imageUrl alt="" />
-                </div>
-                <dt class="my-2 fs-4">{{ standProduct.title }}</dt>
-                <p>
-                  商品描述:<span>{{ standProduct.description }}</span>
-                </p>
-                <p>營業時段:</p>
-                <p>{{ standProduct.content }}</p>
-                <addToKeep :product = standProduct></addToKeep>
-                <addToCard :product_id = standProduct.id></addToCard>
-              </div>
-            </swiper-slide>
-          </Swiper>
+          <swiper-slide v-for="products in standProduct" :key="products.id" class="mb-5">
+            <div id="swiper-car">
+                <RouterLink class="text-decoration-none text-dark product-link" :to="`Product/${products.id}`">
+                  <div class="card h-100">
+                    <div id="swiper-car-img">
+                      <img class="card-img-top" :src=products.imageUrl :alt=products.title>
+                    </div>
+                    <div class="card-body">
+                      <span class="badge rounded-pill bg-warning fs-6 my-2">{{ products.unit }}</span>
+                      <h6 class="card-title fw-bold">{{ products.title }}</h6>
+                      <p class="fs-6" style="float: right">{{ products.price }}元</p>
+                    </div>
+                    <div class="card-footer">
+                      <div class="d-flex justify-content-between" id="button">
+                        <addToKeep :product = products></addToKeep>
+                        <addToCard :product_id = products.id></addToCard>
+                      </div>
+                    </div>
+                  </div>
+                </RouterLink>
+            </div>
+          </swiper-slide>
+        </Swiper>
         </div>
         <!-- 豐樂公園站美食 -->
         <div
@@ -309,19 +304,10 @@ export default {
           aria-labelledby="pills-contact-tab"
         >
           <Swiper
-            :initialSlide="1"
-            :effect="'coverflow'"
             :grabCursor="true"
             :centeredSlides="true"
             :slidesPerView="'auto'"
-            :coverflowEffect="{
-              rotate: 50,
-              stretch: 0,
-              depth: 100,
-              modifier: 1,
-              slideShadows: true,
-            }"
-            :pagination="false"
+            :pagination="true"
             :breakpoints="swiperOptions.breakpoints"
             :modules="modules"
             :autoplay="{
@@ -329,22 +315,29 @@ export default {
               disableOnInteraction: false,
             }"
           >
-          <swiper-slide v-for="standProduct in standProduct" :key="standProduct.id">
-              <div id="swiper-car">
-                <div id="swiper-car-img" >
-                  <img :src=standProduct.imageUrl alt="" />
-                </div>
-                <dt class="my-2 fs-4">{{ standProduct.title }}</dt>
-                <p>
-                  商品描述:<span>{{ standProduct.description }}</span>
-                </p>
-                <p>營業時段:</p>
-                <p>{{ standProduct.content }}</p>
-                <addToKeep :product = standProduct></addToKeep>
-                <addToCard :product_id = standProduct.id></addToCard>
-              </div>
-            </swiper-slide>
-          </Swiper>
+          <swiper-slide v-for="products in standProduct" :key="products.id" class="mb-5">
+            <div id="swiper-car">
+                <RouterLink class="text-decoration-none text-dark product-link" :to="`Product/${products.id}`">
+                  <div class="card h-100">
+                    <div id="swiper-car-img">
+                      <img class="card-img-top" :src=products.imageUrl :alt=products.title>
+                    </div>
+                    <div class="card-body">
+                      <span class="badge rounded-pill bg-warning fs-6 my-2">{{ products.unit }}</span>
+                      <h6 class="card-title fw-bold">{{ products.title }}</h6>
+                      <p class="fs-6" style="float: right">{{ products.price }}元</p>
+                    </div>
+                    <div class="card-footer">
+                      <div class="d-flex justify-content-between" id="button">
+                        <addToKeep :product = products></addToKeep>
+                        <addToCard :product_id = products.id></addToCard>
+                      </div>
+                    </div>
+                  </div>
+                </RouterLink>
+            </div>
+          </swiper-slide>
+        </Swiper>
         </div>
       </div>
     </section>
@@ -416,7 +409,7 @@ export default {
         </ul>
       </div>
       <div
-        class="tab-content d-flex justify-content-center"
+        class="tab-content"
         id="pills-tabContent"
       >
         <div
@@ -425,41 +418,41 @@ export default {
           role="tabpanel"
           aria-labelledby="japanese-style-tab"
         >
-        <Swiper
-          :initialSlide="1"
-          :effect="'coverflow'"
-          :grabCursor="true"
-          :centeredSlides="true"
-          :slidesPerView="'auto'"
-          :coverflowEffect="{
-            rotate: 50,
-            stretch: 0,
-            depth: 100,
-            modifier: 1,
-            slideShadows: true,
-          }"
-          :pagination="false"
-          :breakpoints="swiperOptions.breakpoints"
-          :modules="modules"
-          :autoplay="{
-            delay: 5000,
-            disableOnInteraction: false,
-          }"
-        >
-            <swiper-slide v-for="WantEatProduct in WantEatProduct" :key="WantEatProduct.id">
-              <div id="swiper-car">
-                <div id="swiper-car-img">
-                  <img :src=WantEatProduct.imageUrl alt="" />
+          <Swiper
+            :grabCursor="true"
+            :centeredSlides="true"
+            :slidesPerView="'auto'"
+            :pagination="true"
+            :breakpoints="swiperOptions.breakpoints"
+            :modules="modules"
+            :autoplay="{
+              delay: 5000,
+              disableOnInteraction: false,
+            }"
+          >
+          <swiper-slide v-for="products in WantEatProduct" :key="products.id" class="mb-5">
+            <div id="swiper-car">
+              <RouterLink class="text-decoration-none text-dark product-link" :to="`Product/${products.id}`">
+                <div class="card h-100">
+                  <div id="swiper-car-img">
+                    <img class="card-img-top" :src=products.imageUrl :alt=products.title>
+                  </div>
+                  <div class="card-body">
+                    <span class="badge rounded-pill bg-warning fs-6 my-2">{{ products.unit }}</span>
+                    <h6 class="card-title fw-bold">{{ products.title }}</h6>
+                    <p class="fs-6" style="float: right">{{ products.price }}元</p>
+                  </div>
+                  <div class="card-footer">
+                    <div class="d-flex justify-content-between" id="button">
+                      <addToKeep :product = products></addToKeep>
+                      <addToCard :product_id = products.id></addToCard>
+                    </div>
+                  </div>
                 </div>
-                <dt class="my-2 fs-4">{{ WantEatProduct.title }}</dt>
-                <p>商品描述:<span>{{ WantEatProduct.description }}</span></p>
-                <p>營業時段:</p>
-                <p>一到日 :{{ WantEatProduct.content }}</p>
-                <addToKeep :product = WantEatProduct></addToKeep>
-                <addToCard :product_id = WantEatProduct.id></addToCard>
-              </div>
-            </swiper-slide>
-          </Swiper>
+              </RouterLink>
+            </div>
+          </swiper-slide>
+        </Swiper>
         </div>
         <div
           class="tab-pane fade"
@@ -467,41 +460,41 @@ export default {
           role="tabpanel"
           aria-labelledby="western-food-tab"
         >
-        <Swiper
-          :initialSlide="1"
-          :effect="'coverflow'"
-          :grabCursor="true"
-          :centeredSlides="true"
-          :slidesPerView="'auto'"
-          :coverflowEffect="{
-            rotate: 50,
-            stretch: 0,
-            depth: 100,
-            modifier: 1,
-            slideShadows: true,
-          }"
-          :pagination="false"
-          :breakpoints="swiperOptions.breakpoints"
-          :modules="modules"
-          :autoplay="{
-            delay: 5000,
-            disableOnInteraction: false,
-          }"
-        >
-            <swiper-slide v-for="WantEatProduct in WantEatProduct" :key="WantEatProduct.id">
-              <div id="swiper-car">
-                <div id="swiper-car-img">
-                  <img :src=WantEatProduct.imageUrl alt="" />
+          <Swiper
+            :grabCursor="true"
+            :centeredSlides="true"
+            :slidesPerView="'auto'"
+            :pagination="true"
+            :breakpoints="swiperOptions.breakpoints"
+            :modules="modules"
+            :autoplay="{
+              delay: 5000,
+              disableOnInteraction: false,
+            }"
+          >
+          <swiper-slide v-for="products in WantEatProduct" :key="products.id" class="mb-5">
+            <div id="swiper-car">
+              <RouterLink class="text-decoration-none text-dark product-link" :to="`Product/${products.id}`">
+                <div class="card h-100">
+                  <div id="swiper-car-img">
+                    <img class="card-img-top" :src=products.imageUrl :alt=products.title>
+                  </div>
+                  <div class="card-body">
+                    <span class="badge rounded-pill bg-warning fs-6 my-2">{{ products.unit }}</span>
+                    <h6 class="card-title fw-bold">{{ products.title }}</h6>
+                    <p class="fs-6" style="float: right">{{ products.price }}元</p>
+                  </div>
+                  <div class="card-footer">
+                    <div class="d-flex justify-content-between" id="button">
+                      <addToKeep :product = products></addToKeep>
+                      <addToCard :product_id = products.id></addToCard>
+                    </div>
+                  </div>
                 </div>
-                <dt class="my-2 fs-4">{{ WantEatProduct.title }}</dt>
-                <p>商品描述:<span>{{ WantEatProduct.description }}</span></p>
-                <p>營業時段:</p>
-                <p>一到日 :{{ WantEatProduct.content }}</p>
-                <addToKeep :product = WantEatProduct></addToKeep>
-                <addToCard :product_id = WantEatProduct.id></addToCard>
-              </div>
-            </swiper-slide>
-          </Swiper>
+              </RouterLink>
+            </div>
+          </swiper-slide>
+        </Swiper>
         </div>
         <div
           class="tab-pane fade"
@@ -509,41 +502,41 @@ export default {
           role="tabpanel"
           aria-labelledby="sweets-tab"
         >
-        <Swiper
-          :initialSlide="1"
-          :effect="'coverflow'"
-          :grabCursor="true"
-          :centeredSlides="true"
-          :slidesPerView="'auto'"
-          :coverflowEffect="{
-            rotate: 50,
-            stretch: 0,
-            depth: 100,
-            modifier: 1,
-            slideShadows: true,
-          }"
-          :pagination="false"
-          :breakpoints="swiperOptions.breakpoints"
-          :modules="modules"
-          :autoplay="{
-            delay: 5000,
-            disableOnInteraction: false,
-          }"
-        >
-            <swiper-slide v-for="WantEatProduct in WantEatProduct" :key="WantEatProduct.id">
-              <div id="swiper-car">
-                <div id="swiper-car-img">
-                  <img :src=WantEatProduct.imageUrl alt="" />
+          <Swiper
+            :grabCursor="true"
+            :centeredSlides="true"
+            :slidesPerView="'auto'"
+            :pagination="true"
+            :breakpoints="swiperOptions.breakpoints"
+            :modules="modules"
+            :autoplay="{
+              delay: 5000,
+              disableOnInteraction: false,
+            }"
+          >
+          <swiper-slide v-for="products in WantEatProduct" :key="products.id" class="mb-5">
+            <div id="swiper-car">
+              <RouterLink class="text-decoration-none text-dark product-link" :to="`Product/${products.id}`">
+                <div class="card h-100">
+                  <div id="swiper-car-img">
+                    <img class="card-img-top" :src=products.imageUrl :alt=products.title>
+                  </div>
+                  <div class="card-body">
+                    <span class="badge rounded-pill bg-warning fs-6 my-2">{{ products.unit }}</span>
+                    <h6 class="card-title fw-bold">{{ products.title }}</h6>
+                    <p class="fs-6" style="float: right">{{ products.price }}元</p>
+                  </div>
+                  <div class="card-footer">
+                    <div class="d-flex justify-content-between" id="button">
+                      <addToKeep :product = products></addToKeep>
+                      <addToCard :product_id = products.id></addToCard>
+                    </div>
+                  </div>
                 </div>
-                <dt class="my-2 fs-4">{{ WantEatProduct.title }}</dt>
-                <p>商品描述:<span>{{ WantEatProduct.description }}</span></p>
-                <p>營業時段:</p>
-                <p>一到日 :{{ WantEatProduct.content }}</p>
-                <addToKeep :product = WantEatProduct></addToKeep>
-                <addToCard :product_id = WantEatProduct.id></addToCard>
-              </div>
-            </swiper-slide>
-          </Swiper>
+              </RouterLink>
+            </div>
+          </swiper-slide>
+        </Swiper>
         </div>
         <div
           class="tab-pane fade"
@@ -551,41 +544,41 @@ export default {
           role="tabpanel"
           aria-labelledby="chinese-style-tab"
         >
-        <Swiper
-          :initialSlide="1"
-          :effect="'coverflow'"
-          :grabCursor="true"
-          :centeredSlides="true"
-          :slidesPerView="'auto'"
-          :coverflowEffect="{
-            rotate: 50,
-            stretch: 0,
-            depth: 100,
-            modifier: 1,
-            slideShadows: true,
-          }"
-          :pagination="false"
-          :breakpoints="swiperOptions.breakpoints"
-          :modules="modules"
-          :autoplay="{
-            delay: 5000,
-            disableOnInteraction: false,
-          }"
-        >
-            <swiper-slide v-for="WantEatProduct in WantEatProduct" :key="WantEatProduct.id">
-              <div id="swiper-car">
-                <div id="swiper-car-img">
-                  <img :src=WantEatProduct.imageUrl alt="" />
+          <Swiper
+            :grabCursor="true"
+            :centeredSlides="true"
+            :slidesPerView="'auto'"
+            :pagination="true"
+            :breakpoints="swiperOptions.breakpoints"
+            :modules="modules"
+            :autoplay="{
+              delay: 5000,
+              disableOnInteraction: false,
+            }"
+          >
+          <swiper-slide v-for="products in WantEatProduct" :key="products.id" class="mb-5">
+            <div id="swiper-car">
+              <RouterLink class="text-decoration-none text-dark product-link" :to="`Product/${products.id}`">
+                <div class="card h-100">
+                  <div id="swiper-car-img">
+                    <img class="card-img-top" :src=products.imageUrl :alt=products.title>
+                  </div>
+                  <div class="card-body">
+                    <span class="badge rounded-pill bg-warning fs-6 my-2">{{ products.unit }}</span>
+                    <h6 class="card-title fw-bold">{{ products.title }}</h6>
+                    <p class="fs-6" style="float: right">{{ products.price }}元</p>
+                  </div>
+                  <div class="card-footer">
+                    <div class="d-flex justify-content-between" id="button">
+                      <addToKeep :product = products></addToKeep>
+                      <addToCard :product_id = products.id></addToCard>
+                    </div>
+                  </div>
                 </div>
-                <dt class="my-2 fs-4">{{ WantEatProduct.title }}</dt>
-                <p>商品描述:<span>{{ WantEatProduct.description }}</span></p>
-                <p>營業時段:</p>
-                <p>一到日 :{{ WantEatProduct.content }}</p>
-                <addToKeep :product = WantEatProduct></addToKeep>
-                <addToCard :product_id = WantEatProduct.id></addToCard>
-              </div>
-            </swiper-slide>
-          </Swiper>
+              </RouterLink>
+            </div>
+          </swiper-slide>
+        </Swiper>
         </div>
       </div>
     </section>
@@ -618,5 +611,20 @@ export default {
 <style>
 .nav-link.rounded-pill{
   color: rgb(228, 145, 48);
+}
+.card, .card-footer{
+  background:none;
+  border:none;
+}
+.card{
+  box-shadow: 0 0 3px rgba(0,0,0,.1), 3px 3px 3px rgba(0,0,0,.2);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.card-title{
+  font-size: 1.2rem;
+}
+.swiper-slide{
+  height: 410px;
 }
 </style>
