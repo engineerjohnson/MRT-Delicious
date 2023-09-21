@@ -67,20 +67,20 @@ export default{
 }
 
 .navbar-nav .active{
-    border-bottom: solid rgb(228, 145, 48) 4px;
+    border-bottom: solid rgb(228, 145, 48) 2px;
 }
 
 @media(max-width:1200px){
     .delicious,.cart,.keep,.MRT{
     transition: 0s;
-}
+    }
 
-.delicious:hover,.cart:hover,.keep:hover,.MRT:hover{
-    transform: scale(1);
-}
+    .delicious:hover,.cart:hover,.keep:hover,.MRT:hover{
+        transform: scale(1);
+    }
 
-.navbar-nav .active{
-    border-bottom: none;
-}
+    .navbar-nav .active{
+        border-bottom: none;
+    }
 }
 </style>
