@@ -26,17 +26,11 @@ configure({
   validateOnInput: true,
 });
 setLocale("zh_TW");
-// 載入formAwesome
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fas } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-library.add(fas);
 const app = createApp(App);
 import axios from "axios";
 import VueAxios from "vue-axios";
 import "./assets/all.scss";
 app.use(VueAxios,axios);
-app.component("font-awesome-icon", FontAwesomeIcon);
 app.use(createPinia());
 app.use(router);
 // 掛載 Global 的 VeeValidate 元件

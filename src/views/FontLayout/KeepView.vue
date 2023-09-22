@@ -47,7 +47,7 @@ export default {
                 <td class="align-middle text-center">
                   <div>
                     <button type="button" class="btn" @click="addToCart(KeepList.id)">
-                      <font-awesome-icon icon="cart-shopping" />
+                      <img src="../../views/FontLayout/專題作品圖/購物車黑.png" alt="購物車" width="18">
                     </button>
                   </div>
                 </td>

@@ -115,9 +115,6 @@ img {
   max-height: 100%;
   transition: 0.3s;
 }
-img:hover {
-  transform: scale(120%);
-}
 @media(max-width:576px){
   #Cart-img{
     width:80px;

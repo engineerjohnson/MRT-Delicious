@@ -395,7 +395,7 @@ img {
   max-height: 100%;
   transition: 0.3s;
 }
-.product-link:hover img {
+.product-link:hover .card-img-top {
   transform: scale(1.2);
 }
 .product_box {
