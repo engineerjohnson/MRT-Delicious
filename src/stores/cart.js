@@ -24,10 +24,10 @@ export default defineStore("cartStore", {
     getters : {},
     //對應methods
     actions : {
-      addToCart(id, qty = 1) {
+      addToCart(id, qty) {
         const data = {
           "product_id" : id,
-          qty,
+          "qty" :  qty == null ? 1 : qty,
         };
           axios.post(`${VITE_APP_API}/v2/api/${VITE_APP_PATH}/cart`, { data })
           .then((res) => {
@@ -60,10 +60,10 @@ export default defineStore("cartStore", {
           });
         });
       },
-      updateCart(cart){
+      updateCart(cart, qty){
         const data = {
           "product_id" : cart.id,
-          "qty" : cart.qty,
+          "qty" : qty == null ? cart.qty : qty,
         };
         axios.put(`${VITE_APP_API}/v2/api/${VITE_APP_PATH}/cart/${cart.id}`, { data })
         .then((res)=>{

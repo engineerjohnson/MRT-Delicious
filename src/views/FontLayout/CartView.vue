@@ -64,11 +64,14 @@ export default {
                       <p class="mb-0 d-inline-block fs-5">{{ cart.product.title }}</p>
                       <button type="button" class="btn card_btn" @click="deleteCart(cart)">X</button>
                     </div>
-                    <select class="form-select" v-model="cart.qty" @change="updateCart(cart)">
-                      <option :value="i" v-for="i in 50" :key="i + 1">
-                        {{ i }}
-                      </option>
-                    </select>
+                    <div class="d-flex align-items-center mb-2">
+                      <span>數量：</span>
+                      <div class="border border-dark bg-light">
+                        <button type="button" class="btn" @click.prevent="updateCart(cart, cart.qty - 1)"> - </button>
+                        <input type="number" class="text-center border-0" v-model="cart.qty" @change="updateCart(cart)">
+                        <button type="button" class="btn" @click.prevent="updateCart(cart, cart.qty + 1)"> + </button>
+                      </div>
+                    </div>
                     <p class="text-end my-2 cart_total">單品總計${{ formatPrice(cart.total) }}</p>
                   </div>
                 </div>

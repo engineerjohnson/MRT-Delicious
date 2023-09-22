@@ -34,7 +34,7 @@ export default{
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <RouterLink to="Stand" class="nav-link nav-item me-4 delicious" data-toggle @click="closeCollapse()">
+                        <RouterLink to="/Stand" class="nav-link nav-item me-4 delicious" data-toggle @click="closeCollapse()">
                             各站美食
                         </RouterLink>
                     </li>

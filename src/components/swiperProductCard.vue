@@ -1,42 +1,3 @@
-<template>
-  <Swiper
-    :initialSlide="1"
-    :grabCursor="true"
-    :centeredSlides="true"
-    :slidesPerView="'auto'"
-    :pagination="true"
-    :breakpoints="swiperOptions.breakpoints"
-    :modules="modules"
-    :autoplay="{
-      delay: 50000000,
-      disableOnInteraction: false,
-    }"
-  >
-    <swiper-slide v-for="products in products" :key="products.id" class="mb-5">
-      <div id="swiper-car" class="card-group">
-        <RouterLink class="text-decoration-none text-dark product-link" :to="`Product/${products.id}`">
-          <div class="card h-100">
-            <div id="swiper-car-img">
-              <img class="card-img-top" :src=products.imageUrl :alt=products.title>
-            </div>
-            <div class="card-body">
-              <span class="badge rounded-pill bg-warning fs-6 my-2">{{ products.unit }}</span>
-              <h6 class="card-title fw-bold">{{ products.title }}</h6>
-              <p class="fs-6" style="float: right">{{ products.price }}元</p>
-            </div>
-            <div class="card-footer">
-              <div class="d-flex justify-content-between" id="button">
-                <addToKeep :product = products></addToKeep>
-                <addToCard :product_id = products.id></addToCard>
-              </div>
-            </div>
-          </div>
-        </RouterLink>
-      </div>
-    </swiper-slide>
-  </Swiper>
-</template>
-
 <script>
 import addToCard from "../components/addToCard.vue";
 import addToKeep from "../components/addToKeep.vue";
@@ -77,6 +38,45 @@ export default {
   }
 };
 </script>
+
+<template>
+  <Swiper
+    :initialSlide="1"
+    :grabCursor="true"
+    :centeredSlides="true"
+    :slidesPerView="'auto'"
+    :pagination="true"
+    :breakpoints="swiperOptions.breakpoints"
+    :modules="modules"
+    :autoplay="{
+      delay: 50000000,
+      disableOnInteraction: false,
+    }"
+  >
+    <swiper-slide v-for="products in products" :key="products.id" class="mb-5">
+      <div id="swiper-car" class="card-group">
+        <RouterLink class="text-decoration-none text-dark product-link" :to="`Product/${products.id}`">
+          <div class="card h-100">
+            <div id="swiper-car-img">
+              <img class="card-img-top" :src=products.imageUrl :alt=products.title>
+            </div>
+            <div class="card-body">
+              <span class="badge rounded-pill bg-warning fs-6 my-2">{{ products.unit }}</span>
+              <h6 class="card-title fw-bold">{{ products.title }}</h6>
+              <p class="fs-6" style="float: right">{{ products.price }}元</p>
+            </div>
+            <div class="card-footer">
+              <div class="d-flex justify-content-between" id="button">
+                <addToKeep :product = products></addToKeep>
+                <addToCard :product_id = products.id></addToCard>
+              </div>
+            </div>
+          </div>
+        </RouterLink>
+      </div>
+    </swiper-slide>
+  </Swiper>
+</template>
 
 <style>
 .card, .card-footer{

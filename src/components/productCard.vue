@@ -1,5 +1,17 @@
+<script>
+  import addToCard from "../components/addToCard.vue";
+  import addToKeep from "../components/addToKeep.vue";
+  export default {
+    props:["products"],
+    components: {
+      addToCard,
+      addToKeep,
+    }
+  };
+</script>
+
 <template>
-  <div class="col-lg-4 col-md-6 mb-4 pb-5" v-for="products in products" :key="products.id">
+  <div class="col-xl-4 col-md-6 mb-4 pb-5" v-for="products in products" :key="products.id">
     <RouterLink class="text-decoration-none text-dark product-link" :to="`Product/${products.id}`">
       <div class="card h-100">
         <div class="image-hover">
@@ -28,15 +40,3 @@
     </RouterLink>
   </div>
 </template>
-
-<script>
-  import addToCard from "../components/addToCard.vue";
-  import addToKeep from "../components/addToKeep.vue";
-  export default {
-    props:["products"],
-    components: {
-      addToCard,
-      addToKeep,
-    }
-  };
-</script>
