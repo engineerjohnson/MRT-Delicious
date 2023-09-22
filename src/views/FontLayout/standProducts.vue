@@ -411,4 +411,9 @@ img {
   background:none;
   border:none;
 }
+.card{
+  box-shadow: 0 0 3px rgba(0,0,0,.1), 3px 3px 3px rgba(0,0,0,.2);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
 </style>
