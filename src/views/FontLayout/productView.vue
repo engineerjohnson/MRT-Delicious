@@ -11,7 +11,7 @@ export default {
     return {
       isLoading : false,
       product : {},
-      cart_qty : "1",
+      cart_qty : 1,
     };
   },
   components : {
@@ -33,6 +33,19 @@ export default {
           icon : "error",
         });
       });
+    },
+  },
+  watch: {
+    cart_qty(val) {
+      //input的值是E或e時 value會是"" 所以才會val == "" 就是判斷e或E
+      if(val < 0 || val == ""){
+        Toast.fire({
+          title: "「請輸入1以上的數字」",
+          icon: "error"
+        });
+        this.local_qty = 1;
+      }
+      this.$emit("update:qty", this.local_qty); // local_qty更改時傳到父元件
     }
   },
   mounted() {
@@ -59,9 +72,9 @@ export default {
               <div class="d-flex align-items-center mb-2">
                 <span>數量：</span>
                 <div class="border border-dark bg-light">
-                  <button type="button" class="btn" @click="this.cart_qty--"> - </button>
-                  <input type="number" class="text-center border-0" v-model="this.cart_qty">
-                  <button type="button" class="btn" @click="this.cart_qty++"> + </button>
+                  <button type="button" class="btn px-2 py-0" @click="cart_qty --"> - </button>
+                  <input type="number" class="text-center border-0" v-model="cart_qty">
+                  <button type="button" class="btn px-2 py-0" @click="cart_qty ++"> + </button>
                 </div>
               </div>
               <div class="d-flex justify-content-between align-items-center">
@@ -83,5 +96,12 @@ export default {
 <style>
   .radius-img{
     border-radius: 10px;
+  }
+  /* 隐藏 input type="number" 的箭头按钮 */
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
   }
 </style>

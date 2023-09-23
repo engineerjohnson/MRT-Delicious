@@ -1,4 +1,5 @@
 <script>
+import Toast from "../../utils/Toast.js";
 import { mapState, mapActions } from "pinia";
 import cartStore from "../../stores/cart.js";
 import cartNavbar from "../../components/cartNavbar.vue";
@@ -15,10 +16,11 @@ export default {
     ...mapState(cartStore,["cart_data", "isLoading", "cart_length"]),
   },
   components : {
+    cartNavbar,
     Loading,
-    cartNavbar
   },
   methods : {
+    ...mapActions(cartStore,["updateCart","deleteCart","deleteCartAll"]),
     //去填寫資料
     toCheck() {
       this.$router.push("/Check");
@@ -27,13 +29,35 @@ export default {
     toStand() {
       this.$router.push("/Stand");
     },
-    ...mapActions(cartStore,["updateCart","deleteCart","deleteCartAll"]),
-    formatPrice(price){
+    formatPrice(price) {
       if(price == null){
         return "";
       }
       return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },
+    checkUpdateCart(data, qty) {
+      if(qty < 1 || qty == ""){
+        Toast.fire({
+          title: "「請輸入1以上的數字」",
+          icon: "error"
+        });
+      } else {
+        this.updateCart(data, qty);
+      }
+    },
+  },
+  watch: {
+    cart_qty(val) {
+      //input的值是E或e時 value會是"" 所以才會val == "" 就是判斷e或E
+      if(val < 0 || val == ""){
+        Toast.fire({
+          title: "「請輸入1以上的數字」",
+          icon: "error"
+        });
+        this.local_qty = 1;
+      }
+      this.$emit("update:qty", this.local_qty); // local_qty更改時傳到父元件
+    }
   },
   mounted() { //在banner有gerCart 所以這裡不用再一次了
   }
@@ -44,7 +68,7 @@ export default {
   <Loading v-model:active="isLoading" :loader="'dots'"/>
   <div class="content">
     <div class="container">
-        <cartNavbar :cartLocation = "location"></cartNavbar>
+        <cart-navbar :cartLocation = "location"></cart-navbar>
         <div class="row justify-content-center">
           <div v-if="cart_length != 0" class="col-lg-9 mt-4 bg-lightOrange">
             <div>
@@ -67,9 +91,9 @@ export default {
                     <div class="d-flex align-items-center mb-2">
                       <span>數量：</span>
                       <div class="border border-dark bg-light">
-                        <button type="button" class="btn" @click.prevent="updateCart(cart, cart.qty - 1)"> - </button>
-                        <input type="number" class="text-center border-0" v-model="cart.qty" @change="updateCart(cart)">
-                        <button type="button" class="btn" @click.prevent="updateCart(cart, cart.qty + 1)"> + </button>
+                        <button type="button" class="btn px-2 py-0" @click.prevent="checkUpdateCart(cart, cart.qty - 1)"> - </button>
+                        <input type="number" class="text-center border-0" v-model="cart.qty" @change="checkUpdateCart(cart, cart.qty)">
+                        <button type="button" class="btn px-2 py-0" @click.prevent="checkUpdateCart(cart, cart.qty + 1)"> + </button>
                       </div>
                     </div>
                     <p class="text-end my-2 cart_total">單品總計${{ formatPrice(cart.total) }}</p>
@@ -98,27 +122,34 @@ export default {
 </template>
 
 <style>
-#Cart-img {
-  width: 130px;
-  max-height: 130px;
-  margin: auto 0;
-}
-tbody {
-  border-color: black;
-}
-.cart_border{
-  border-bottom: 1px solid black;
-}
-.card_btn{
-  padding-top: 0;
-  padding-bottom: 0;
-}
-img {
-  max-width: 100%;
-  max-height: 100%;
-  transition: 0.3s;
-}
-@media(max-width:576px){
+  #Cart-img {
+    width: 130px;
+    max-height: 130px;
+    margin: auto 0;
+  }
+  tbody {
+    border-color: black;
+  }
+  .cart_border{
+    border-bottom: 1px solid black;
+  }
+  .card_btn{
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    transition: 0.3s;
+  }
+  /* 隐藏 input type="number" 的箭头按钮 */
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+  }
+  @media(max-width:576px){
   #Cart-img{
     width:80px;
     max-height:80px;

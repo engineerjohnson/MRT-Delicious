@@ -39,7 +39,7 @@ export default {
       .catch((err)=>{
         this.isLoading = false;
         Toast.fire({
-          title : err.message,
+          title : `${err.response.data.message}`,
           icon : "error",
         });
       });
