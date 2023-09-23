@@ -35,6 +35,9 @@ export default {
     SwiperSlide,
     addToCard,
     addToKeep
+  },
+  mounted(){
+    this.products
   }
 };
 </script>
@@ -55,7 +58,7 @@ export default {
   >
     <swiper-slide v-for="products in products" :key="products.id" class="mb-5">
       <div id="swiper-car" class="card-group">
-        <RouterLink class="text-decoration-none text-dark product-link" :to="`Product/${products.id}`">
+        <RouterLink class="text-decoration-none text-dark product-link w-100" :to="`/Product/${products.id}`">
           <div class="card h-100">
             <div id="swiper-car-img">
               <img class="card-img-top" :src=products.imageUrl :alt=products.title>

@@ -1,6 +1,9 @@
 <script>
 import addToCard from "../../components/addToCard.vue";
+import swiperProductCard from "../../components/swiperProductCard.vue";
+import produceStore from "../../stores/product.js";
 import Toast from "../../utils/Toast.js";
+import { mapState,mapActions } from "pinia";
 import axios from "axios";
 const { VITE_APP_API, VITE_APP_PATH } = import.meta.env;
 // 載入loading
@@ -14,8 +17,12 @@ export default {
       cart_qty : 1,
     };
   },
+  computed : {
+    ...mapState(produceStore,["standProduct"]),
+  },
   components : {
     addToCard,
+    swiperProductCard,
     Loading
   },
   methods : {
@@ -34,6 +41,7 @@ export default {
         });
       });
     },
+    ...mapActions(produceStore,["changeStandType", "getProducts"]),
   },
   watch: {
     cart_qty(val) {
@@ -46,6 +54,19 @@ export default {
         this.local_qty = 1;
       }
       this.$emit("update:qty", this.local_qty); // local_qty更改時傳到父元件
+    },
+    product(val){
+      this.getProducts();
+      this.changeStandType(val.unit);
+    },
+    "$route":{
+      handler(newProduct, oldProduct){
+        const new_productId = newProduct.params.productId;
+        const old_productId = oldProduct.params.productId;
+        if(newProduct.name == oldProduct.name && new_productId != old_productId){
+          this.getProduct();
+        }
+      }
     }
   },
   mounted() {
@@ -58,7 +79,7 @@ export default {
   <Loading v-model:active="isLoading" :loader="'dots'"/>
   <div class="content">
     <div class="container py-5">
-      <div class="row pt-5 justify-content-center">
+      <div class="row py-5 justify-content-center">
         <div class="col-lg-5">
           <img :src="this.product.imageUrl" :alt="this.product.title" class="w-100 radius-img">
         </div>
@@ -71,7 +92,7 @@ export default {
               <p>營業時段 {{ this.product.content }}</p>
               <div class="d-flex align-items-center mb-2">
                 <span>數量：</span>
-                <div class="border border-dark bg-light">
+                <div class="border border-2 bg-light">
                   <button type="button" class="btn px-2 py-0" @click="cart_qty --"> - </button>
                   <input type="number" class="text-center border-0" v-model="cart_qty">
                   <button type="button" class="btn px-2 py-0" @click="cart_qty ++"> + </button>
@@ -89,6 +110,12 @@ export default {
           </div>
         </div>
       </div>
+        <div class="border-bottom border-2">
+          <h4 class="fw-bold">鄰近美食</h4>
+        </div>
+        <div class="tab-content mt-5">
+          <swiper-product-card :products = standProduct></swiper-product-card>
+        </div>
     </div>
   </div>
 </template>
@@ -103,5 +130,19 @@ export default {
     -webkit-appearance: none;
     appearance: none;
     margin: 0;
+  }
+  .card, .card-footer{
+    background:none;
+    border:none;
+  }
+  .card{
+    box-shadow: 0 0 3px rgba(0,0,0,.1), 3px 3px 3px rgba(0,0,0,.2);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  .image-hover {
+    overflow: hidden;
+    object-fit: cover;
+    border-radius: 10px;
   }
 </style>

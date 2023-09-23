@@ -5,6 +5,9 @@ import cartNavbar from "../../components/cartNavbar.vue";
 import axios from "axios";
 const { VITE_APP_API, VITE_APP_PATH } = import.meta.env;
 import Toast from "../../utils/Toast.js";
+// 載入sweetalert2 可以不用載入css
+import Swal from "sweetalert2/dist/sweetalert2.js";
+import "sweetalert2/src/sweetalert2.scss";
 // 載入loading
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/css/index.css";
@@ -13,6 +16,7 @@ export default {
     return {
       location:"Checkouts",
       orderData:{},
+      PaymentState:"",
       isLoading:false
     };
   },
@@ -50,6 +54,27 @@ export default {
       }
       return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },
+    Payment() {
+      axios.post(`${VITE_APP_API}/v2/api/${VITE_APP_PATH}/pay/${this.orderData.id}121313`)
+      .then((res)=>{
+        this.PaymentState = true;
+        Swal.fire({
+          icon: "success",
+          title: `${res.data.message}`,
+          confirmButtonText: "回首頁"
+        }).then((result)=>{
+          if(result.isConfirmed || result.isDismissed){ //點擊OK或視窗外 就會跳到「購物車」頁
+            this.$router.push("/");
+          }
+        });
+      })
+      .catch((err)=>{
+        Toast.fire({
+          title : `${err.response.data.message}`,
+          icon : "error",
+        });
+      });
+    },
   },
   mounted() {
     this.getOrder();
@@ -78,7 +103,7 @@ export default {
                 <tr v-for="item in orderData?.products" :key="item.id">
                   <td>
                     <div id="Cart-img">
-                      <img :src="item.product.imageUrl" alt="" />
+                      <img :src="item.product.imageUrl" :alt="item.product.title" />
                     </div>
                   </td>
                   <td>{{ item.product.title }}</td>
@@ -123,7 +148,7 @@ export default {
       <button type="button" class="btn btn-warning text-white mb-5" @click="Cart()">
         回購物車
       </button>
-      <button type="button" class="btn btn-warning text-white mb-5">
+      <button type="button" class="btn btn-warning text-white mb-5" @click="Payment()">
         結帳
       </button>
     </div>

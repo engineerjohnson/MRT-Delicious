@@ -81,7 +81,7 @@ export default {
               <div>
                 <div v-for="cart in cart_data.carts" :key="cart" class="row justify-content-center cart_border mb-2">
                   <div id="Cart-img" class="col-4 me-4">
-                    <img :src="cart.product.imageUrl" alt="" />
+                    <img :src="cart.product.imageUrl" :alt="cart.product.title" />
                   </div>
                   <div class="col-8">
                     <div class="d-flex justify-content-between">
@@ -90,9 +90,9 @@ export default {
                     </div>
                     <div class="d-flex align-items-center mb-2">
                       <span>數量：</span>
-                      <div class="border border-dark bg-light">
+                      <div class="border border-2 bg-light">
                         <button type="button" class="btn px-2 py-0" @click.prevent="checkUpdateCart(cart, cart.qty - 1)"> - </button>
-                        <input type="number" class="text-center border-0" v-model="cart.qty" @change="checkUpdateCart(cart, cart.qty)">
+                        <input type="number" class="text-center border-0" v-model="cart.qty" @keyup="checkUpdateCart(cart, cart.qty)">
                         <button type="button" class="btn px-2 py-0" @click.prevent="checkUpdateCart(cart, cart.qty + 1)"> + </button>
                       </div>
                     </div>

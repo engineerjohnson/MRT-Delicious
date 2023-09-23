@@ -6,8 +6,8 @@ export default defineStore("produceStore", {
     //對應 data
     state : () => ({
         product: [],
-        standType: "大慶站",
-        wantEatType: "日式",
+        standType: "",
+        wantEatType: "",
         isLoading : false,
     }),
     //對應 computed
@@ -23,7 +23,7 @@ export default defineStore("produceStore", {
     },
     //對應 methods
     actions : {
-        getProduct() {
+        getProducts() {
             this.isLoading = true;
             axios.get(`${VITE_APP_API}/v2/api/${VITE_APP_PATH}/products/all`)
             .then((res) => {

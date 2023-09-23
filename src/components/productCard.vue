@@ -12,7 +12,7 @@
 
 <template>
   <div class="col-xl-4 col-md-6 mb-4 pb-5" v-for="products in products" :key="products.id">
-    <RouterLink class="text-decoration-none text-dark product-link" :to="`Product/${products.id}`">
+    <RouterLink class="text-decoration-none text-dark product-link" :to="`/Product/${products.id}`">
       <div class="card h-100">
         <div class="image-hover">
           <img class="card-img-top" :src=products.imageUrl :alt=products.title>
@@ -31,7 +31,7 @@
           <p class="card-text">{{ products.content }}</p>
         </div>
         <div class="card-footer">
-          <div class="d-flex justify-content-between" id="button">
+          <div class="d-flex justify-content-between align-items-center" id="button">
             <addToKeep :product = products></addToKeep>
             <addToCard :product_id = products.id></addToCard>
           </div>

@@ -22,12 +22,14 @@ export default {
     //從produceStore(product.js pinia)從pinia取出方法actions
     //...mapActions(store名稱, ['要取得的方法名稱'])
     //將資料寫入 Store ，寫入資料要從「@click="changeStandType('data')"」data設定要寫入的資料
-    ...mapActions(produceStore,["getProduct","changeStandType","changeWantEatType"]),
+    ...mapActions(produceStore,["getProducts","changeStandType","changeWantEatType"]),
     ...mapActions(keepStore,["getKeep"])
   },
   mounted() {
-    this.getProduct();
+    this.getProducts();
     this.getKeep();
+    this.changeStandType("大慶站");
+    this.changeWantEatType("日式")
   },
 };
 </script>
@@ -51,7 +53,7 @@ export default {
         <div class="d-flex justify-content-center">
           <button type="button" class="fs-4 px-5 py-2 btn btn-warning">
             <RouterLink
-              to="Stand"
+              to="/Stand"
               class="nav-link nav-item text-white"
               data-toggle
             >
