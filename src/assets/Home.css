@@ -59,7 +59,7 @@ h3 {
     min-height: 493px;
 }
 
-#solution,#top-3,#want-eat {
+#solution,#stand-eat,#want-eat {
     margin-top: 120px;
 }
 
@@ -290,7 +290,7 @@ h3 {
     }
 
     #solution,
-    #top-3,
+    #stand-eat,
     #want-eat{
         margin-top: 60px;
     }

@@ -14,11 +14,11 @@ export default defineStore("produceStore", {
     getters : {
         //篩選「美食前三站商品」
         standProduct() {
-            return this.product.filter(item => item.unit === this.standType);
+            return this.product.filter(item => this.standType == item.unit);
         },
         //篩選「想吃什麼」
         WantEatProduct() {
-            return this.product.filter(item => item.category === this.wantEatType);
+            return this.product.filter(item => item.category == this.wantEatType);
         }
     },
     //對應 methods

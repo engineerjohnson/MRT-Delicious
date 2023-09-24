@@ -12,13 +12,19 @@ export default {
   computed : {
     //從produceStore(product.js pinia)從pinia取出getters、state
     // ...mapState(store名稱, ['要取得的值'])
-    ...mapState(produceStore,["standProduct","WantEatProduct","isLoading"]),
+    ...mapState(produceStore,["standProduct","WantEatProduct","isLoading","product"]),
   },
   components : {
     Loading,
     swiperProductCard
   },
   methods : {
+    initSwiperData(){
+      let initStandEat = document.querySelector("#stand-eat .nav-item .active");
+      this.changeStandType(initStandEat.textContent);
+      let initWantEat = document.querySelector("#want-eat .nav-item .active");
+      this.changeWantEatType(initWantEat.textContent);
+    },
     //從produceStore(product.js pinia)從pinia取出方法actions
     //...mapActions(store名稱, ['要取得的方法名稱'])
     //將資料寫入 Store ，寫入資料要從「@click="changeStandType('data')"」data設定要寫入的資料
@@ -28,8 +34,7 @@ export default {
   mounted() {
     this.getProducts();
     this.getKeep();
-    this.changeStandType("大慶站");
-    this.changeWantEatType("日式")
+    this.initSwiperData();
   },
 };
 </script>
@@ -125,7 +130,7 @@ export default {
       </div>
     </section>
     <!-- 推薦美食前三站 -->
-    <section id="top-3">
+    <section id="stand-eat">
       <h3 class="text-center">推薦美食前三站</h3>
       <div class="d-flex justify-content-center">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -140,9 +145,7 @@ export default {
               aria-controls="pills-home"
               aria-selected="true"
               @click="changeStandType('大慶站')"
-            >
-              大慶站
-            </button>
+            >大慶站</button>
           </li>
           <li class="nav-item" role="presentation">
             <button
@@ -155,9 +158,7 @@ export default {
               aria-controls="pills-profile"
               aria-selected="false"
               @click="changeStandType('文心崇德站')"
-            >
-              文心崇德
-            </button>
+            >文心崇德</button>
           </li>
           <li class="nav-item" role="presentation">
             <button
@@ -170,9 +171,7 @@ export default {
               aria-controls="pills-contact"
               aria-selected="false"
               @click="changeStandType('豐樂公園站')"
-            >
-              豐樂公園
-            </button>
+            >豐樂公園</button>
           </li>
         </ul>
       </div>
@@ -225,9 +224,7 @@ export default {
               aria-controls="japanese-style"
               aria-selected="true"
               @click="changeWantEatType('日式')"
-            >
-              日式
-            </button>
+            >日式</button>
           </li>
           <li class="nav-item" role="presentation">
             <button
@@ -240,9 +237,7 @@ export default {
               aria-controls="western-food"
               aria-selected="false"
               @click="changeWantEatType('西餐')"
-            >
-              西餐
-            </button>
+            >西餐</button>
           </li>
           <li class="nav-item" role="presentation">
             <button
@@ -255,9 +250,7 @@ export default {
               aria-controls="sweets"
               aria-selected="false"
               @click="changeWantEatType('甜食')"
-            >
-              甜食
-            </button>
+            >甜食</button>
           </li>
           <li class="nav-item" role="presentation">
             <button
@@ -270,9 +263,7 @@ export default {
               aria-controls="chinese-style"
               aria-selected="false"
               @click="changeWantEatType('中式')"
-            >
-              中式
-            </button>
+            >中式</button>
           </li>
         </ul>
       </div>

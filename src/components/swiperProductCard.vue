@@ -35,9 +35,6 @@ export default {
     SwiperSlide,
     addToCard,
     addToKeep
-  },
-  mounted(){
-    this.products
   }
 };
 </script>
@@ -52,7 +49,7 @@ export default {
     :breakpoints="swiperOptions.breakpoints"
     :modules="modules"
     :autoplay="{
-      delay: 50000000,
+      delay: 5000,
       disableOnInteraction: false,
     }"
   >
@@ -69,7 +66,7 @@ export default {
               <p class="fs-6" style="float: right">{{ products.price }}元</p>
             </div>
             <div class="card-footer">
-              <div class="d-flex justify-content-between" id="button">
+              <div class="d-flex justify-content-between align-items-center" id="button">
                 <addToKeep :product = products></addToKeep>
                 <addToCard :product_id = products.id></addToCard>
               </div>
