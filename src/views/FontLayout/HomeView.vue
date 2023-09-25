@@ -209,7 +209,7 @@ export default {
       </div>
     </section>
     <!-- 想吃什麼 -->
-    <section id="want-eat">
+    <section id="want-eat" class="mb-5">
       <h3 class="text-center">想吃什麼</h3>
       <div class="d-flex justify-content-center">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -305,29 +305,31 @@ export default {
         </div>
       </div>
     </section>
+  </article>
+  <div v-if="false">
     <!-- 獲取優惠券 -->
     <h3 id="coupon-text" class="text-center mt-sm-5 mt-3">獲取優惠券</h3>
-  </article>
-  <section id="coupon" class="bg-warning">
-    <div class="row d-flex justify-content-center gx-0">
-      <div id="coupon-percent" class="col-sm-5 rounded me-sm-3 mb-3">
-        <p class="mt-5 text-center">首次訂購打9折</p>
-        <div class="coupon-button">
-          <button type="button" class="btn btn-light px-4 py-2 me-md-5">
-            領取
-          </button>
+    <section id="coupon" class="bg-warning">
+      <div class="row d-flex justify-content-center gx-0">
+        <div id="coupon-percent" class="col-sm-5 rounded me-sm-3 mb-3">
+          <p class="mt-5 text-center">首次訂購打9折</p>
+          <div class="coupon-button">
+            <button type="button" class="btn btn-light px-4 py-2 me-md-5">
+              領取
+            </button>
+          </div>
+        </div>
+        <div id="coupon-cash" class="col-sm-5 rounded mb-3">
+          <p class="mt-5 text-center">訂購滿100元折10元</p>
+          <div class="coupon-button">
+            <button type="button" class="btn btn-light px-4 py-2 me-md-5">
+              領取
+            </button>
+          </div>
         </div>
       </div>
-      <div id="coupon-cash" class="col-sm-5 rounded mb-3">
-        <p class="mt-5 text-center">訂購滿100元折10元</p>
-        <div class="coupon-button">
-          <button type="button" class="btn btn-light px-4 py-2 me-md-5">
-            領取
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </template>
 
 

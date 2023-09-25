@@ -8,37 +8,37 @@ const routes =[
       {
       path :"",
       name:"Home",
-      component:()=>import(/* webpackChunkName: "Home" */ "../views/FontLayout/HomeView.vue"),
+      component:()=>import( "../views/FontLayout/HomeView.vue"),
       },
       {
         path:"Cart",
         name:"Cart",
-        component:()=>import(/* webpackChunkName: "Cart" */"../views/FontLayout/CartView.vue")
+        component:()=>import("../views/FontLayout/CartView.vue")
       },
       {
         path:"Keep",
         name:"Keep",
-        component:()=>import(/* webpackChunkName: "Keep" */"../views/FontLayout/KeepView.vue")
+        component:()=>import("../views/FontLayout/KeepView.vue")
       },
       {
         path:"Stand",
         name:"Stand",
-        component:()=>import(/* webpackChunkName: "Stand" */"../views/FontLayout/standProducts.vue")
+        component:()=>import("../views/FontLayout/standProducts.vue")
       },
       {
         path:"Product/:productId",
         name:"Product",
-        component:()=>import(/* webpackChunkName: "Product" */"../views/FontLayout/productView.vue")
+        component:()=>import("../views/FontLayout/productView.vue")
       },
       {
         path:"Check",
         name:"Check",
-        component:()=>import(/* webpackChunkName: "Check" */"../views/FontLayout/CheckList.vue")
+        component:()=>import("../views/FontLayout/CheckList.vue")
       },
       {
         path:"Checkouts/:orderId",
         name:"Checkouts",
-        component:()=>import(/* webpackChunkName: "Checkouts" */"../views/FontLayout/CheckoutsView.vue")
+        component:()=>import("../views/FontLayout/CheckoutsView.vue")
       }
     ]
   },
