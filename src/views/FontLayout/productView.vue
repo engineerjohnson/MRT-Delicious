@@ -41,6 +41,13 @@ export default {
         });
       });
     },
+    buttonReduce(value) {
+      if(value == 1) {
+        return true;
+      } else {
+        return false;
+      }
+    },
     ...mapActions(produceStore,["changeStandType", "getProducts"]),
   },
   watch: {
@@ -51,7 +58,7 @@ export default {
           title: "「請輸入1以上的數字」",
           icon: "error"
         });
-        this.local_qty = 1;
+        this.cart_qty = 1;
       }
       this.$emit("update:qty", this.local_qty); // local_qty更改時傳到父元件
     },
@@ -90,13 +97,10 @@ export default {
             <div>
               <p class="mb-2">商品描述：{{ this.product.description }}</p>
               <p>營業時段 {{ this.product.content }}</p>
-              <div class="d-flex align-items-center mb-2">
-                <span>數量：</span>
-                <div class="border border-2 bg-light">
-                  <button type="button" class="btn px-2 py-0" @click="cart_qty --"> - </button>
-                  <input type="number" class="text-center border-0" v-model="cart_qty">
-                  <button type="button" class="btn px-2 py-0" @click="cart_qty ++"> + </button>
-                </div>
+              <div class="border border-2 bg-light d-flex align-items-center mb-2 w-100">
+                <button type="button" class="btn px-0 border-0 width-10 buttonStyle" @click="cart_qty --" :disabled="buttonReduce(cart_qty)"> - </button>
+                <input type="number" class="text-center border-0 width-90" v-model="cart_qty">
+                <button type="button" class="btn px-0 border-0 width-10 buttonStyle" @click="cart_qty ++"> + </button>
               </div>
               <div class="d-flex justify-content-between align-items-center">
                 <div>

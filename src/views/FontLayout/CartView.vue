@@ -9,7 +9,8 @@ import "vue-loading-overlay/dist/css/index.css";
 export default {
   data() {
     return {
-      location:"Cart"
+      location:"Cart",
+      cart_qty:"",
     };
   },
   computed : {
@@ -45,19 +46,13 @@ export default {
         this.updateCart(data, qty);
       }
     },
-  },
-  watch: {
-    cart_qty(val) {
-      //input的值是E或e時 value會是"" 所以才會val == "" 就是判斷e或E
-      if(val < 0 || val == ""){
-        Toast.fire({
-          title: "「請輸入1以上的數字」",
-          icon: "error"
-        });
-        this.local_qty = 1;
+    buttonReduce(value) {
+      if(value == 0) {
+        return true;
+      } else {
+        return false;
       }
-      this.$emit("update:qty", this.local_qty); // local_qty更改時傳到父元件
-    }
+    },
   },
   mounted() { //在banner有gerCart 所以這裡不用再一次了
   }
@@ -80,7 +75,7 @@ export default {
               </div>
               <div>
                 <div v-for="cart in cart_data.carts" :key="cart" class="row justify-content-center cart_border mb-2">
-                  <div id="Cart-img" class="col-4 me-4">
+                  <div id="Cart-img" class="col-4">
                     <img :src="cart.product.imageUrl" :alt="cart.product.title" />
                   </div>
                   <div class="col-8">
@@ -88,12 +83,11 @@ export default {
                       <p class="mb-0 d-inline-block fs-5">{{ cart.product.title }}</p>
                       <button type="button" class="btn card_btn" @click="deleteCart(cart)">X</button>
                     </div>
-                    <div class="d-flex align-items-center mb-2">
-                      <span>數量：</span>
-                      <div class="border border-2 bg-light">
-                        <button type="button" class="btn px-2 py-0" @click.prevent="checkUpdateCart(cart, cart.qty - 1)"> - </button>
-                        <input type="number" class="text-center border-0" v-model="cart.qty" @keyup="checkUpdateCart(cart, cart.qty)">
-                        <button type="button" class="btn px-2 py-0" @click.prevent="checkUpdateCart(cart, cart.qty + 1)"> + </button>
+                    <div class="my-2 w-100 d-flex justify-content-center">
+                      <div class="border border-2 bg-light d-flex align-items-center w-75">
+                        <button type="button" class="btn px-0 width-10 border-0 buttonStyle" @click.prevent="checkUpdateCart(cart, cart.qty - 1)" :disabled="buttonReduce(cart.qty - 1)"> - </button>
+                        <input type="number" class="text-center border-0 width-90" v-model="cart.qty" @keyup="checkUpdateCart(cart, cart.qty)">
+                        <button type="button" class="btn px-0 width-10 border-0 buttonStyle" @click.prevent="checkUpdateCart(cart, cart.qty + 1)"> + </button>
                       </div>
                     </div>
                     <p class="text-end my-2 cart_total">單品總計${{ formatPrice(cart.total) }}</p>
@@ -151,7 +145,7 @@ export default {
   }
   @media(max-width:576px){
   #Cart-img{
-    width:80px;
+    width:120px;
     max-height:80px;
   }
 }

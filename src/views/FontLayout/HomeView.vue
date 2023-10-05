@@ -78,21 +78,21 @@ export default {
       <div class="row d-flex justify-content-center">
         <div
           id="question-box"
-          class="col-lg w-75 text-center mx-lg-3 bg-light rounded mb-4"
+          class="col-lg w-75 text-center mx-lg-3 bg-light rounded mb-4 rotate"
         >
           <img class="my-4" src="./專題作品圖/sentiment.png" />
           <p>想了很久卻怕不好吃?</p>
         </div>
         <div
           id="question-box"
-          class="col-lg w-75 text-center mx-lg-3 bg-light rounded mb-4"
+          class="col-lg w-75 text-center mx-lg-3 bg-light rounded mb-4 rotate"
         >
           <img class="my-4" src="./專題作品圖/paid.png" />
           <p>害怕美食昂貴?</p>
         </div>
         <div
           id="question-box"
-          class="col-lg w-75 text-center mx-lg-3 bg-light rounded mb-4"
+          class="col-lg w-75 text-center mx-lg-3 bg-light rounded mb-4 rotate"
         >
           <img class="my-4" src="./專題作品圖/watch.png" />
           <p>總是在等待排隊等待美食?</p>
@@ -114,7 +114,7 @@ export default {
         id="solution-box-noodle"
         class="col-md-5 mx-2 my-3 p-0 rounded d-flex align-items-center justify-content-center"
       >
-        <p>想的美食種類</p>
+        <p>美食種類</p>
       </div>
       <div
         id="solution-box-Parmesan"
@@ -336,5 +336,16 @@ export default {
 <style>
 .nav-link.rounded-pill{
   color: rgb(228, 145, 48);
+}
+.rotate:hover img{
+  animation: rotateX 0.5s linear 4 alternate;
+}
+@keyframes rotateX{
+  0% {
+    transform: rotateY(0deg); /* 初始状态，不旋转 */
+  }
+  100% {
+    transform: rotateY(180deg); /* 最终状态，沿Y轴旋转180度 */
+  }
 }
 </style>

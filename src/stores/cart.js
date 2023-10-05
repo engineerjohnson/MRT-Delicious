@@ -10,6 +10,7 @@ export default defineStore("cartStore", {
       cart_length: "",
       orderId: "",
       isLoading: false,
+      cartButton:"",
       form:{
         user: {
           name: "",
@@ -25,6 +26,7 @@ export default defineStore("cartStore", {
     //對應methods
     actions : {
       addToCart(id, qty) {
+        this.cartButton = id;
         const data = {
           "product_id" : id,
           "qty" :  qty == null ? 1 : qty,
@@ -36,6 +38,7 @@ export default defineStore("cartStore", {
               icon : "success",
             });
             this.getCart();
+            this.cartButton = "";
           })
           .catch((err)=>{
             Toast.fire({
