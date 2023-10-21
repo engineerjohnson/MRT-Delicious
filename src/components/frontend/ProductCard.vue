@@ -1,6 +1,6 @@
 <script>
-  import addToCard from "../components/addToCard.vue";
-  import addToKeep from "../components/addToKeep.vue";
+  import addToCard from "../frontend/AddToCard.vue";
+  import addToKeep from "../frontend/AddToKeep.vue";
   export default {
     props:["products"],
     components: {

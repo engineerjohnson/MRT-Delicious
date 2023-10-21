@@ -1,6 +1,6 @@
 <script>
 import { mapActions, mapState } from "pinia";//暫時不會用到mapState
-import cartStore from "../stores/cart.js";
+import cartStore from "../../stores/CartStore.js";
 export default{
     computed : {
         ...mapState(cartStore,["cart_data","cart_length"])
@@ -27,7 +27,7 @@ export default{
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
-            <RouterLink :to='{name:"Home"}' class="navbar-brand MRT ms-4 d-flex align-items-center"><img src="../views/FontLayout/專題作品圖/刀叉.png" alt="刀叉" width="18" class="ms-1"> 台中MRT美食</RouterLink>
+            <RouterLink :to='{name:"Home"}' class="navbar-brand MRT ms-4 d-flex align-items-center"><img src="../../assets/image/刀叉.png" alt="刀叉" width="18" class="ms-1"> 台中MRT美食</RouterLink>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

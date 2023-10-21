@@ -32,7 +32,7 @@
 
 .background {
     min-height: 820px;
-    background-image: url("../views/FontLayout/專題作品圖/ethan-chan.png");
+    background-image: url("../assets/image/ethan-chan.png");
     background-size: cover;
     background-position: center;
 }
@@ -72,7 +72,7 @@ h3 {
 
 #solution-box-sushi {
     height: 200px;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../views/FontLayout/專題作品圖/壽司.png');
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/image//壽司.png');
     background-size: 100% 110%;
     background-position: center;
     background-repeat: no-repeat;
@@ -82,7 +82,7 @@ h3 {
 }
 #solution-box-noodle {
     height: 200px;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../views/FontLayout/專題作品圖/鮮蝦麵.png');
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/image//鮮蝦麵.png');
     background-size: 100% 110%;
     background-position: center;
     background-repeat: no-repeat;
@@ -93,7 +93,7 @@ h3 {
 
 #solution-box-Parmesan {
     height: 200px;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../views/FontLayout/專題作品圖/帕瑪森.png');
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/image//帕瑪森.png');
     background-size: 100% 110%;
     background-position: center;
     background-repeat: no-repeat;
@@ -104,7 +104,7 @@ h3 {
 
 #solution-box-cookie {
     height: 200px;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../views/FontLayout/專題作品圖/蔬果餅乾.png');
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/image//蔬果餅乾.png');
     background-size: 100% 110%;
     background-position: center;
     background-repeat: no-repeat;
@@ -131,7 +131,7 @@ h3 {
 
 #coupon-percent {
     height: 200px;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../views/FontLayout/專題作品圖/折扣.png');
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/image//折扣.png');
     background-size: 100% 110%;
     background-position: center;
     background-repeat: no-repeat;
@@ -142,7 +142,7 @@ h3 {
 
 #coupon-cash {
     height: 200px;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../views/FontLayout/專題作品圖/折讓.png');
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/image//折讓.png');
     background-size: 100% 110%;
     background-position: center;
     background-repeat: no-repeat;

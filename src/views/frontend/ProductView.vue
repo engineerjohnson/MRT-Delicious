@@ -1,7 +1,7 @@
 <script>
-import addToCard from "../../components/addToCard.vue";
-import swiperProductCard from "../../components/swiperProductCard.vue";
-import produceStore from "../../stores/product.js";
+import addToCard from "../../components/frontend/AddToCard.vue";
+import swiperProductCard from "../../components/frontend/SwiperProductCard.vue";
+import produceStore from "../../stores/ProductStore.js";
 import Toast from "../../utils/Toast.js";
 import { mapState,mapActions } from "pinia";
 import axios from "axios";

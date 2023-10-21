@@ -1,7 +1,7 @@
 <script>
 import { mapState, mapActions } from "pinia";
-import cartStore from "../../stores/cart.js";
-import cartNavbar from "../../components/cartNavbar.vue";
+import cartStore from "../../stores/CartStore.js";
+import cartNavbar from "../../components/frontend/CartNavbar.vue";
 import axios from "axios";
 const { VITE_APP_API, VITE_APP_PATH } = import.meta.env;
 import Toast from "../../utils/Toast.js";

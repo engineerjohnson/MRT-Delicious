@@ -1,6 +1,6 @@
 <script>
     import { mapState, mapActions } from "pinia";
-    import cartStore from "../stores/cart.js";
+    import cartStore from "../../stores/CartStore.js";
     export default{
         props : ["product_id", "qty"],
         computed : {

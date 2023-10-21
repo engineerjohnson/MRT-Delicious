@@ -1,7 +1,7 @@
 <script>
 import { mapState, mapActions } from "pinia";
-import keepStore from "../../stores/keep.js";
-import cartStore from "../../stores/cart.js";
+import keepStore from "../../stores/KeepStore.js";
+import cartStore from "../../stores/CartStore.js";
 export default {
   computed : {
     ...mapState(keepStore,["productList"]),

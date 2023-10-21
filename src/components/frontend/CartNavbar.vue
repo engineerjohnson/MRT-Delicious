@@ -1,6 +1,6 @@
 <script>
 import { mapState, mapActions } from "pinia";
-import cartStore from "../stores/cart.js";
+import cartStore from "../../stores/CartStore.js";
 // 自定義樣式 所以載入scss
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import "sweetalert2/src/sweetalert2.scss";

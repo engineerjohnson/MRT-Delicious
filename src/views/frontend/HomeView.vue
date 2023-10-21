@@ -1,7 +1,7 @@
 <script>
-import swiperProductCard from "../../components/swiperProductCard.vue";
-import produceStore from "../../stores/product.js";
-import keepStore from "../../stores/keep.js";
+import swiperProductCard from "../../components/frontend/SwiperProductCard.vue";
+import produceStore from "../../stores/ProductStore.js";
+import keepStore from "../../stores/KeepStore.js";
 // import { onMounted } from "vue";
 // const {VITE_APP_API, VITE_APP_PATH } = import.meta.env;
 import { mapState,mapActions } from "pinia";
@@ -10,7 +10,7 @@ import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/css/index.css";
 export default {
   computed : {
-    //從produceStore(product.js pinia)從pinia取出getters、state
+    //從produceStore(ProductStore.js pinia)從pinia取出getters、state
     // ...mapState(store名稱, ['要取得的值'])
     ...mapState(produceStore,["standProduct","WantEatProduct","isLoading","product"]),
   },
@@ -25,7 +25,7 @@ export default {
       let initWantEat = document.querySelector("#want-eat .nav-item .active");
       this.changeWantEatType(initWantEat.textContent);
     },
-    //從produceStore(product.js pinia)從pinia取出方法actions
+    //從produceStore(ProductStore.js pinia)從pinia取出方法actions
     //...mapActions(store名稱, ['要取得的方法名稱'])
     //將資料寫入 Store ，寫入資料要從「@click="changeStandType('data')"」data設定要寫入的資料
     ...mapActions(produceStore,["getProducts","changeStandType","changeWantEatType"]),
@@ -80,21 +80,21 @@ export default {
           id="question-box"
           class="col-lg w-75 text-center mx-lg-3 bg-light rounded mb-4 rotate"
         >
-          <img class="my-4" src="./專題作品圖/sentiment.png" />
+          <img class="my-4" src="../../assets/image/sentiment.png" />
           <p>想了很久卻怕不好吃?</p>
         </div>
         <div
           id="question-box"
           class="col-lg w-75 text-center mx-lg-3 bg-light rounded mb-4 rotate"
         >
-          <img class="my-4" src="./專題作品圖/paid.png" />
+          <img class="my-4" src="../../assets/image/paid.png" />
           <p>害怕美食昂貴?</p>
         </div>
         <div
           id="question-box"
           class="col-lg w-75 text-center mx-lg-3 bg-light rounded mb-4 rotate"
         >
-          <img class="my-4" src="./專題作品圖/watch.png" />
+          <img class="my-4" src="../../assets/image/watch.png" />
           <p>總是在等待排隊等待美食?</p>
         </div>
       </div>

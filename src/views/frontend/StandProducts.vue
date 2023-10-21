@@ -1,7 +1,7 @@
 <script>
-import productCard from "../../components/productCard.vue";
-import productsStore from "../../stores/products.js";
-import keepStore from "../../stores/keep.js";
+import productCard from "../../components/frontend/ProductCard.vue";
+import productsStore from "../../stores/ProductsStore.js";
+import keepStore from "../../stores/KeepStore.js";
 import { mapState,mapActions } from "pinia";
 // 載入loading
 import Loading from "vue-loading-overlay";

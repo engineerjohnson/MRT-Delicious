@@ -1,7 +1,7 @@
 <script >
 import { RouterView } from "vue-router";
-import banner from "../src/components/bannerComponent.vue";
-import footerComported from "../src/components/footerComponter.vue";
+import banner from "../src/components/frontend/BannerComponent.vue";
+import footerComported from "../src/components/frontend/FooterComponter.vue";
 export default {
   components : {
     RouterView,

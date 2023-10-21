@@ -2,7 +2,7 @@
 
 import { mapActions, mapState } from "pinia";
 
-import keepStore from "../stores/keep.js";
+import keepStore from "../../stores/KeepStore.js";
     export default{
         props : ["product"],
         data(){

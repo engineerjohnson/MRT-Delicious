@@ -1,7 +1,7 @@
 <script>
 import { mapState, mapActions } from "pinia";
-import cartStore from "../../stores/cart.js";
-import cartNavbar from "../../components/cartNavbar.vue";
+import cartStore from "../../stores/CartStore.js";
+import cartNavbar from "../../components/frontend/CartNavbar.vue";
 // 自定義樣式 所以載入scss
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import "sweetalert2/src/sweetalert2.scss";

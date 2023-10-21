@@ -1,6 +1,6 @@
 <script>
-import addToCard from "../components/addToCard.vue";
-import addToKeep from "../components/addToKeep.vue";
+import addToCard from "../frontend/AddToCard.vue";
+import addToKeep from "../frontend/AddToKeep.vue";
 import { Swiper, SwiperSlide } from "swiper/vue";//導入swiper的Modules效果 如Autoplay(自動撥放),Pagination(下方顯示剩幾頁)
 import { Pagination, Autoplay } from "swiper";
 import "swiper/css";

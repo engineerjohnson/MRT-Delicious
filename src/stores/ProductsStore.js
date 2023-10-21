@@ -6,13 +6,13 @@ export default defineStore("productsStore", {
     //對應data
     state : () => ({
         products: [],
-        standProducts :"",
+        StandProducts :"",
         isLoading : false,
     }),
     //對應compute
     getters : {
         standProduct() {
-            return this.products.filter(item => item.unit == this.standProducts);
+            return this.products.filter(item => item.unit == this.StandProducts);
         },
     },
     //對應methods
@@ -26,7 +26,7 @@ export default defineStore("productsStore", {
             });
         },
         filterProducts(event) {
-            this.standProducts = event.target.innerHTML;
+            this.StandProducts = event.target.innerHTML;
         }
     }
 });

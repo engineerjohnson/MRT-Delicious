@@ -1,8 +1,8 @@
 <script>
 import Toast from "../../utils/Toast.js";
 import { mapState, mapActions } from "pinia";
-import cartStore from "../../stores/cart.js";
-import cartNavbar from "../../components/cartNavbar.vue";
+import cartStore from "../../stores/CartStore.js";
+import cartNavbar from "../../components/frontend/CartNavbar.vue";
 // 載入loading
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/css/index.css";
