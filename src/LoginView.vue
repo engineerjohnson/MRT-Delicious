@@ -26,7 +26,7 @@ import { useRouter } from "vue-router";
 </script>
 
 <template>
-  <div class="container h-100vh text-center mt-5">
+  <div class="container h-100vh text-center pt-5">
     <div class="w-50 m-auto">
       <h1>登入</h1>
       <VForm class="form-signin" v-slot="{ errors }" @submit="signIn">
