@@ -72,6 +72,7 @@ export default {
         const old_productId = oldProduct.params.productId;
         if(newProduct.name == oldProduct.name && new_productId != old_productId){
           this.getProduct();
+          this.cart_qty = 1;
         }
       }
     }
@@ -97,7 +98,7 @@ export default {
             <div>
               <p class="mb-2">商品描述：{{ this.product.description }}</p>
               <p>營業時段 {{ this.product.content }}</p>
-              <div class="border border-2 bg-light d-flex align-items-center mb-2 w-100">
+              <div class="bg-light d-flex align-items-center mb-2 w-100">
                 <button type="button" class="btn px-0 border-0 width-10 buttonStyle" @click="cart_qty --" :disabled="buttonReduce(cart_qty)"> - </button>
                 <input type="number" class="text-center border-0 width-90" v-model="cart_qty">
                 <button type="button" class="btn px-0 border-0 width-10 buttonStyle" @click="cart_qty ++"> + </button>
@@ -124,7 +125,7 @@ export default {
   </div>
 </template>
 
-<style>
+<style scoped>
   .radius-img{
     border-radius: 10px;
   }
@@ -148,5 +149,15 @@ export default {
     overflow: hidden;
     object-fit: cover;
     border-radius: 10px;
+  }
+
+  input[type="number"] {
+    -webkit-appearance: textfield; /* For webkit browsers like Chrome and Safari */
+    -moz-appearance: textfield; /* For Mozilla Firefox */
+  }
+
+  input:focus-visible {
+    outline: rgb(163, 163, 163) auto 1px;
+    outline-offset: 0px;
   }
 </style>
