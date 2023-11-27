@@ -14,17 +14,17 @@ export default {
       // swiper的RWD功能
       swiperOptions: {
         breakpoints: {
-          280: {
-            slidesPerView: 1,
-            spaceBetween: 10,
-          },
           1310: {
-            slidesPerView: 4,
+            slidesPerView: 3,
             spaceBetween: 20,
           },
           577: {
             slidesPerView: 2,
             spaceBetween: 15,
+          },
+          280: {
+            slidesPerView: 1,
+            spaceBetween: 10,
           },
         },
       },
@@ -41,17 +41,13 @@ export default {
 
 <template>
   <Swiper
-    :initialSlide="1"
-    :grabCursor="true"
-    :centeredSlides="true"
-    :slidesPerView="'auto'"
-    :pagination="true"
+    :autoplay="{ delay: 5000, disableOnInteraction: false }"
     :breakpoints="swiperOptions.breakpoints"
-    :modules="modules"
-    :autoplay="{
-      delay: 5000,
-      disableOnInteraction: false,
+    :pagination="{
+      clickable: true,
     }"
+    :modules="modules"
+    class="mySwiper"
   >
     <swiper-slide v-for="products in products" :key="products.id" class="mb-5">
       <div id="swiper-car" class="card-group">

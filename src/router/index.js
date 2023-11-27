@@ -48,9 +48,15 @@ const routes =[
     component: () => import("../LoginView.vue")
   },
   {
-    path: "/admin/products",
-   name: "admin/products",
-   component: () => import("../views/backend/AdminProducts.vue")
+    path: "/backend",
+    component:()=>import("../BackendView.vue"),
+    children:[
+      {
+        path :"product",
+        name:"product",
+        component:()=>import( "../views/backend/AdminProducts.vue"),
+      },
+    ]
   },
   {
     path: "/:pathMatch(.*)*",

@@ -14,12 +14,13 @@ import { useRouter } from "vue-router";
         title : `${res.data.message}`,
         icon : "success",
       });
-      router.push("/admin/products");
+      router.push("/backend/products");
     })
     .catch((err) => {
+      console.log(err.response.data.message)
       Toast.fire({
-        title : `${err.data.message}`,
-        icon : "success",
+        title : `${err.response.data.message}`,
+        icon : "error",
       });
     });
   }
@@ -31,9 +32,9 @@ import { useRouter } from "vue-router";
       <h1>登入</h1>
       <VForm class="form-signin" v-slot="{ errors }" @submit="signIn">
         <div class="form-floating mb-3">
-          <VField :class="{ 'is-invalid': errors['email'] }" rules="required|email" label="信箱" name="username" type="email" class="form-control" id="floatingInput" placeholder="name@example.com"></VField>
+          <VField :class="{ 'is-invalid': errors['username'] }" rules="required|email" label="信箱" name="username" type="email" class="form-control" id="floatingInput" placeholder="name@example.com"></VField>
           <label for="floatingInput">請填寫email</label>
-          <ErrorMessage name="email" class="invalid-feedback mt-3" />
+          <ErrorMessage name="username" class="invalid-feedback mt-3" />
         </div>
         <div class="form-floating mb-3">
           <VField :class="{ 'is-invalid': errors['password'] }" rules="required" label="密碼" name="password" type="password" class="form-control" id="floatingPassword" placeholder="password"></VField>
