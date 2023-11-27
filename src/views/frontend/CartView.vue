@@ -84,7 +84,7 @@ export default {
                       <button type="button" class="btn card_btn" @click="deleteCart(cart)">X</button>
                     </div>
                     <div class="my-2 w-100 d-flex justify-content-center">
-                      <div class="border border-2 bg-light d-flex align-items-center w-75">
+                      <div class="bg-light d-flex align-items-center w-75">
                         <button type="button" class="btn px-0 width-10 border-0 buttonStyle" @click.prevent="checkUpdateCart(cart, cart.qty - 1)" :disabled="buttonReduce(cart.qty - 1)"> - </button>
                         <input type="number" class="text-center border-0 width-90" v-model="cart.qty" @keyup="checkUpdateCart(cart, cart.qty)">
                         <button type="button" class="btn px-0 width-10 border-0 buttonStyle" @click.prevent="checkUpdateCart(cart, cart.qty + 1)"> + </button>
@@ -115,27 +115,31 @@ export default {
   </div>
 </template>
 
-<style>
+<style scoped>
   #Cart-img {
     width: 130px;
     max-height: 130px;
     margin: auto 0;
   }
+
   tbody {
     border-color: black;
   }
   .cart_border{
     border-bottom: 1px solid black;
   }
+
   .card_btn{
     padding-top: 0;
     padding-bottom: 0;
   }
+
   img {
     max-width: 100%;
     max-height: 100%;
     transition: 0.3s;
   }
+
   /* 隐藏 input type="number" 的箭头按钮 */
   input[type="number"]::-webkit-inner-spin-button,
   input[type="number"]::-webkit-outer-spin-button {
@@ -143,10 +147,21 @@ export default {
     appearance: none;
     margin: 0;
   }
+
   @media(max-width:576px){
   #Cart-img{
     width:120px;
     max-height:80px;
   }
-}
+  }
+
+  input[type="number"] {
+    -webkit-appearance: textfield; /* For webkit browsers like Chrome and Safari */
+    -moz-appearance: textfield; /* For Mozilla Firefox */
+  }
+  
+  input:focus-visible {
+    outline: rgb(163, 163, 163) auto 1px;
+    outline-offset: 0px;
+  }
 </style>
