@@ -14,7 +14,7 @@ import { useRouter } from "vue-router";
         title : `${res.data.message}`,
         icon : "success",
       });
-      router.push("/backend/products");
+      router.push("/backend/product");
     })
     .catch((err) => {
       console.log(err.response.data.message)
