@@ -20,7 +20,7 @@ onMounted(()=>{
     x.value = window.innerWidth;
   };
   window.addEventListener("resize", xSize);
-  setSidebarSize(x);
+  setSidebarSize(x.value);
 });
 
 watch((x),(newValue)=>{
