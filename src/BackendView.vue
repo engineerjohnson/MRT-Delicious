@@ -1,9 +1,19 @@
 <script setup>
 import { onMounted, ref, watch } from "vue";
 import { RouterView } from "vue-router";
+import { UseCheckLogin } from "./composable/UseCheckLogin.js";
 
+const { checkLogin } = UseCheckLogin();
 const x = ref(window.innerWidth);
 const sidebar_PC = ref(Boolean);
+
+  function setSidebarSize(size){
+    if(size > 992) {
+      sidebar_PC.value = true;
+    } else {
+      sidebar_PC.value = false;
+    }
+  }
 
 onMounted(()=>{
   const xSize = ()=>{
@@ -17,13 +27,9 @@ watch((x),(newValue)=>{
   setSidebarSize(newValue);
 });
 
-function setSidebarSize(size){
-  if(size > 992) {
-    sidebar_PC.value = true;
-  } else {
-    sidebar_PC.value = false;
-  }
-}
+onMounted(()=>{
+  checkLogin();
+});
 </script>
 
 <template>

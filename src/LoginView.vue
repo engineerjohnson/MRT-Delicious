@@ -3,27 +3,26 @@ import axios from "axios";
 import Toast from "./utils/Toast.js";
 import { useRouter } from "vue-router";
 
-  const router = useRouter();
+const router = useRouter();
 
-  function signIn(value){
-    axios.post(`${import.meta.env.VITE_APP_API}/v2/admin/signin`,value)
-    .then((res) => {
-      const{ token,expired } = res.data;
-      document.cookie = `${import.meta.env.VITE_APP_PATH}=${token};expires=${new Date(expired)}; path=/`;
-      Toast.fire({
-        title : `${res.data.message}`,
-        icon : "success",
-      });
-      router.push("/backend/product");
-    })
-    .catch((err) => {
-      console.log(err.response.data.message)
-      Toast.fire({
-        title : `${err.response.data.message}`,
-        icon : "error",
-      });
+function signIn(value){
+  axios.post(`${import.meta.env.VITE_APP_API}/v2/admin/signin`,value)
+  .then((res) => {
+    const{ token,expired } = res.data;
+    document.cookie = `${import.meta.env.VITE_APP_PATH}=${token};expires=${new Date(expired)}; path=/`;
+    Toast.fire({
+      title : `${res.data.message}`,
+      icon : "success",
     });
-  }
+    router.push("/backend");
+  })
+  .catch((err) => {
+    Toast.fire({
+      title : `${err.response.data.message}`,
+      icon : "error",
+    });
+  });
+}
 </script>
 
 <template>
