@@ -30,6 +30,17 @@ const app = createApp(App);
 import axios from "axios";
 import VueAxios from "vue-axios";
 import "./assets/all.scss";
+// vue-tooltip
+import FloatingVue from "floating-vue";
+const FloatingVueConfig = {
+  themes: {
+    tooltip: {
+      delay: {
+        show: 0,
+      }
+    }
+  }
+};
 app.use(VueAxios,axios);
 app.use(createPinia());
 app.use(router);
@@ -37,4 +48,5 @@ app.use(router);
 app.component("VField", Field);
 app.component("VForm", Form);
 app.component("ErrorMessage", ErrorMessage);
+app.use(FloatingVue, FloatingVueConfig);
 app.mount("#app");

@@ -5,7 +5,6 @@ import { useRouter } from "vue-router";
 export function UseCheckLogin(){
 
   const router = useRouter();
-  console.log(router)
   const token = document.cookie.replace(/(?:(?:^|.*;\s*)deliciousfood\s*=\s*([^;]*).*$)|^.*$/,"$1",);//取得cookie的deliciousfood值
     axios.defaults.headers.common.Authorization = token;
   // this.$http 通常是一個指向 HTTP 請求，如 Axios。
@@ -23,6 +22,7 @@ export function UseCheckLogin(){
         icon : "error",
       });
       router.push("/login");
+      return;
     });
   }
   return { checkLogin };

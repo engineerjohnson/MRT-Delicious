@@ -33,11 +33,11 @@ onMounted(()=>{
 </script>
 
 <template>
-  <div class="row mx-0" style="height: 100vh;">
-    <div v-if="sidebar_PC" class="col-4 d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="max-width: 280px;">
+  <div class="d-flex mx-0" style="height: 100vh;">
+    <div v-if="sidebar_PC" class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 30vh;">
       <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
         <img class="me-2" src="../src/assets/image/刀叉.png" alt="logo">
-        <span class="fs-4">捷運美食管理後台</span>
+        <span class="fs-4">MRT管理後台</span>
       </a>
       <hr>
       <ul class="nav nav-pills flex-column mb-auto">
@@ -83,9 +83,9 @@ onMounted(()=>{
         </ul>
       </div>
     </div>
-    <div v-else class="col-4 d-flex flex-column flex-shrink-0 bg-dark" style="width: 4.5rem;">
+    <div v-else class="d-flex flex-column flex-shrink-0 bg-dark" style="width: 10vh;">
       <a href="/" class="d-block p-3 link-dark text-decoration-none" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
-        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M96 0C43 0 0 43 0 96V352c0 48 35.2 87.7 81.1 94.9l-46 46C28.1 499.9 33.1 512 43 512H82.7c8.5 0 16.6-3.4 22.6-9.4L160 448H288l54.6 54.6c6 6 14.1 9.4 22.6 9.4H405c10 0 15-12.1 7.9-19.1l-46-46c46-7.1 81.1-46.9 81.1-94.9V96c0-53-43-96-96-96H96zM64 128c0-17.7 14.3-32 32-32h80c17.7 0 32 14.3 32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V128zM272 96h80c17.7 0 32 14.3 32 32v96c0 17.7-14.3 32-32 32H272c-17.7 0-32-14.3-32-32V128c0-17.7 14.3-32 32-32zM64 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm288-32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>
+        <img class="me-2" src="../src/assets/image/刀叉.png" alt="logo">
       </a>
       <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
         <li class="nav-item">
@@ -123,7 +123,7 @@ onMounted(()=>{
         </ul>
       </div>
     </div>
-    <div class="col-8">
+    <div class="px-2" :style="{ width: '100vh' }">
       <RouterView></RouterView>
     </div>
   </div>
