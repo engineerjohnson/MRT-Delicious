@@ -31,3 +31,8 @@ width: 90%;
 .buttonStyle:hover{
     background-color: rgb(160, 160, 160) !important;
 }
+.btn-icon{
+    background-color: transparent;
+    display: inline-block;
+    border: none;
+}

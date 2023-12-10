@@ -25,6 +25,6 @@ export function UseCheckLogin(){
       return;
     });
   }
-  return { checkLogin };
 
+  return { checkLogin };
 }

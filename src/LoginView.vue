@@ -1,11 +1,14 @@
 <script setup>
+import { ref } from "vue";
 import axios from "axios";
 import Toast from "./utils/Toast.js";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
+const loginBtnLoading = ref(false);
 
 function signIn(value){
+  loginBtnLoading.value = true;
   axios.post(`${import.meta.env.VITE_APP_API}/v2/admin/signin`,value)
   .then((res) => {
     const{ token,expired } = res.data;
@@ -21,6 +24,9 @@ function signIn(value){
       title : `${err.response.data.message}`,
       icon : "error",
     });
+  })
+  .finally(()=>{
+  loginBtnLoading.value = false;
   });
 }
 </script>
@@ -40,7 +46,10 @@ function signIn(value){
           <label for="floatingPassword">請填寫密碼</label>
           <ErrorMessage name="password" class="invalid-feedback" />
         </div>
-        <button type="submit" class="btn btn-lg btn-primary w-100 mt-3" >登入</button>
+        <button type="submit" class="btn btn-lg btn-primary w-100 mt-3" >
+          <span v-if="loginBtnLoading" class="spinner-border spinner-border-sm me-2" role="status"></span>
+          登入
+        </button>
       </VForm>
     </div>
   </div>

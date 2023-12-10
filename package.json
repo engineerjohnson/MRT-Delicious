@@ -19,7 +19,6 @@
     "bootstrap": "^5.2.3",
     "floating-vue": "^2.0.0-beta.24",
     "pinia": "^2.0.32",
-    "slick-carousel": "^1.8.1",
     "sweetalert2": "^11.7.21",
     "swiper": "^9.1.0",
     "vee-validate": "^4.7.4",
