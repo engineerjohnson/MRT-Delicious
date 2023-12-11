@@ -3,10 +3,12 @@ import axios from "axios";
 import { onMounted, ref } from "vue";
 import { UseCheckLogin } from "../../composable/UseCheckLogin.js";
 import Toast from "../../utils/Toast.js";
+import ModalView from "../../components/backend/ModalView.vue";
+import { useModalStore } from "../../stores/backend/ModalStore.js";
 
+const modal = useModalStore();
 const { checkLogin } = UseCheckLogin();
 const pageData = ref("");
-const modalState = ref(true)
 
 function getProduct(){
   axios.get(`${import.meta.env.VITE_APP_API}/v2/api/${import.meta.env.VITE_APP_PATH}/admin/products`)
@@ -63,7 +65,7 @@ onMounted(()=>{
                 <button class="p-0 me-2 btn-icon" type="button" v-tooltip="'編輯'">
                   <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><path d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z"/></svg>
                 </button>
-                <button class="btn-icon p-0" type="button" v-tooltip="'刪除'">
+                <button class="btn-icon p-0" type="button" v-tooltip="'刪除'" @click.stop="modal.modalShow">
                   <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><path d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0H284.2c12.1 0 23.2 6.8 28.6 17.7L320 32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 96 0 81.7 0 64S14.3 32 32 32h96l7.2-14.3zM32 128H416V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V128zm96 64c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16z"/></svg>
                 </button>
               </td>
@@ -72,27 +74,15 @@ onMounted(()=>{
         </tbody>
       </table>
     </div>
-    <transition name="modal" :duration="200">
-      <div v-if="modalState" class="modal">
-        <div class="border rounded w-75 bg-white">
-          <div class="d-flex justify-content-between border-bottom p-3">
-            <h5>Modal</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="modalState = false"></button>
-          </div>
-          <div class="border-bottom p-3">
-            <p>確定要刪除嗎?</p>
-          </div>
-          <div class="p-3 text-end">
-            <button class="btn btn-secondary me-2" type="button" @click="modalState = false">Close</button>
-            <button class="btn btn-primary" type="button">Save</button>
-          </div>
-        </div>
-      </div>
-    </transition>
   </div>
-  <transition name="model-bg">
-    <div class="model-bg"></div>
-  </transition>
+  <ModalView>
+    <template #modal-head>
+      <h5 class="m-0">刪除商品</h5>
+    </template>
+    <template #modal-body>
+      <p class="m-0">是否要刪除商品?!</p>
+    </template>
+  </ModalView>
 </template>
 
 <style>
@@ -103,28 +93,6 @@ td{
   white-space: nowrap;
 }
 .modal-outside-style{
-  position: relative;
   height: 100vh;
-}
-.modal{
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-.modal-enter-active, .modal-leave-active {
-  transition: all 0.2s ease;
-}
-.modal-enter-from, .modal-leave-to {
-  transform: translateY(75%);
-}
-.model-bg{
-  background-color: black;
-  opacity: 0.5;
-  height: 100%;
-  width: 100%;
-  position: absolute;
 }
 </style>
