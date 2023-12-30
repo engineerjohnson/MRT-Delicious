@@ -84,10 +84,10 @@ export default {
                       <button type="button" class="btn card_btn" @click="deleteCart(cart)">X</button>
                     </div>
                     <div class="my-2 w-100 d-flex justify-content-center">
-                      <div class="bg-light d-flex align-items-center w-75">
-                        <button type="button" class="btn px-0 width-10 border-0 buttonStyle" @click.prevent="checkUpdateCart(cart, cart.qty - 1)" :disabled="buttonReduce(cart.qty - 1)"> - </button>
-                        <input type="number" class="text-center border-0 width-90" v-model="cart.qty" @keyup="checkUpdateCart(cart, cart.qty)">
-                        <button type="button" class="btn px-0 width-10 border-0 buttonStyle" @click.prevent="checkUpdateCart(cart, cart.qty + 1)"> + </button>
+                      <div class="d-flex align-items-center w-75">
+                        <button type="button" class="btn px-0 border-0 button-style" @click.prevent="checkUpdateCart(cart, cart.qty - 1)" :disabled="buttonReduce(cart.qty - 1)"> - </button>
+                        <input type="number" class="text-center border-0 width-90 input-style" v-model="cart.qty" @keyup.enter="checkUpdateCart(cart, cart.qty)">
+                        <button type="button" class="btn px-0 border-0 button-style" @click.prevent="checkUpdateCart(cart, cart.qty + 1)"> + </button>
                       </div>
                     </div>
                     <p class="text-end my-2 cart_total">單品總計${{ formatPrice(cart.total) }}</p>
@@ -121,12 +121,8 @@ export default {
     max-height: 130px;
     margin: auto 0;
   }
-
-  tbody {
-    border-color: black;
-  }
   .cart_border{
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
   }
 
   .card_btn{
@@ -148,6 +144,18 @@ export default {
     margin: 0;
   }
 
+.button-style{
+    background-color: rgb(200, 200, 200) !important;
+    border-radius: inherit !important;
+    width: 10%;
+}
+.button-style:hover{
+    background-color: rgb(160, 160, 160) !important;
+}
+
+.input-style{
+  height: 36px;
+}
   @media(max-width:576px){
   #Cart-img{
     width:120px;
@@ -155,13 +163,12 @@ export default {
   }
   }
 
-  input[type="number"] {
-    -webkit-appearance: textfield; /* For webkit browsers like Chrome and Safari */
-    -moz-appearance: textfield; /* For Mozilla Firefox */
-  }
-  
+
   input:focus-visible {
     outline: rgb(163, 163, 163) auto 1px;
     outline-offset: 0px;
+  }
+  .button-style{
+    width: 20%;
   }
 </style>

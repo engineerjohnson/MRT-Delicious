@@ -14,7 +14,7 @@ export default {
 
 
 <template>
-  <banner class="bg-dark" id="banner"></banner>
+  <banner id="banner"></banner>
   <RouterView></RouterView>
   <footerComported id="footer"></footerComported>
 </template>

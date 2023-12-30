@@ -24,13 +24,6 @@ th, td {
 .width-90{
 width: 90%;
 }
-.buttonStyle{
-    background-color: rgb(200, 200, 200) !important;
-    border-radius: inherit !important;
-}
-.buttonStyle:hover{
-    background-color: rgb(160, 160, 160) !important;
-}
 .btn-icon{
     background-color: transparent;
     display: inline-block;

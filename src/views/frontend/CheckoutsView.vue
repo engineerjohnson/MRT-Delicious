@@ -154,7 +154,7 @@ export default {
     </div>
   </div>
 </template>
-<style>
+<style scoped>
 #Cart-img {
   width: 130px;
   max-height: 130px;

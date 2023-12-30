@@ -1,18 +1,23 @@
 <script>
   import addToCard from "../frontend/AddToCard.vue";
   import addToKeep from "../frontend/AddToKeep.vue";
+  import cartStore from "../../stores/CartStore.js";
+  import { mapState } from "pinia";
   export default {
     props:["products"],
     components: {
       addToCard,
       addToKeep,
-    }
+    },
+    computed : {
+        ...mapState(cartStore,["cartButton"])
+    },
   };
 </script>
 
 <template>
   <div class="col-xl-4 col-md-6 mb-4 pb-5" v-for="products in products" :key="products.id">
-    <RouterLink class="text-decoration-none text-dark product-link" :to="`/Product/${products.id}`">
+    <RouterLink class="text-decoration-none text-dark product-link" :to="products.id == cartButton ? '' :`/Product/${products.id}`">
       <div class="card h-100">
         <div class="image-hover">
           <img class="card-img-top" :src=products.imageUrl :alt=products.title>

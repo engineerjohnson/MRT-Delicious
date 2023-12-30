@@ -53,17 +53,19 @@ export default defineStore("cartStore", {
         .then((res)=>{
           this.cart_data = res.data.data;
           this.cart_length = this.cart_data.carts.length;
-          this.isLoading = false;
         })
         .catch((err)=>{
-          this.isLoading = false;
           Toast.fire({
             title : `${err.response.data.message}`,
             icon : "error",
           });
+        })
+        .finally(()=>{
+          this.isLoading = false;
         });
       },
       updateCart(cart, qty){
+        this.isLoading = true;
         const data = {
           "product_id" : cart.product_id,
           "qty" : qty == null ? cart.qty : qty,
@@ -81,6 +83,7 @@ export default defineStore("cartStore", {
             title : `${err.response.data.message}`,
             icon : "error",
           });
+          this.isLoading = false;
         });
       },
       deleteCart(cart){
@@ -128,7 +131,6 @@ export default defineStore("cartStore", {
         axios.post(`${VITE_APP_API}/v2/api/${VITE_APP_PATH}/order`, {data})
         .then((res)=>{
           this.getCart();
-          this.isLoading = false;
           Toast.fire({
             title : res.data.message,
             icon : "success",
@@ -141,11 +143,13 @@ export default defineStore("cartStore", {
           this.form.message = "";
         })
         .catch((err)=>{
-          this.isLoading = false;
           Toast.fire({
             title : `${err.response.data.message}`,
             icon : "error",
           });
+        })
+        .finally(()=>{
+          this.isLoading = false;
         });
       }
     }
