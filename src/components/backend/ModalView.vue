@@ -2,6 +2,10 @@
 import { useModalStore } from "../../stores/backend/ModalStore.js";
 import { vOnClickOutside } from "@vueuse/components";
 
+const props = defineProps({
+  submit: Function
+});
+
 const modal = useModalStore();
 </script>
 
@@ -19,7 +23,7 @@ const modal = useModalStore();
           </div>
           <div class="p-3 text-end">
             <button class="btn btn-secondary me-2" type="button" @click="modal.modalClose">取消</button>
-            <button class="btn btn-primary" type="button">確定</button>
+            <button class="btn btn-primary" type="button" @click="props.submit">確定</button>
           </div>
         </div>
       </div>

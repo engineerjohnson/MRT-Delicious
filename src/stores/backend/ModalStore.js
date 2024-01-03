@@ -12,6 +12,7 @@ export const useModalStore = defineStore("modal",() => {
     modalState.value = false;
   }
 
+  //如果是開啟 就對body新增hidden 避免在開啟時旁邊有滾動軸
   watch(()=>modalState.value,(newValue)=>{
     if(newValue) {
       document.querySelector("body").classList.add("overflow-hidden");

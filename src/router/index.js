@@ -52,10 +52,15 @@ const routes =[
     component:()=>import("../BackendView.vue"),
     children:[
       {
-        path :"product",
-        name:"product",
-        component:()=>import( "../views/backend/AdminProducts.vue"),
+        path :"productList",
+        name:"product/list",
+        component:()=>import( "../views/backend/AdminProductsList.vue"),
       },
+      {
+        path :"addProduct",
+        name:"add/product",
+        component:()=>import( "../views/backend/AdminAddProduct.vue"),
+      }
     ]
   },
   {
