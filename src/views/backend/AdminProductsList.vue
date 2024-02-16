@@ -6,9 +6,11 @@ import Toast from "../../utils/Toast.js";
 import ModalView from "../../components/backend/ModalView.vue";
 import LoadingView from "../../components/backend/LoadingView.vue";
 import { useModalStore } from "../../stores/backend/ModalStore.js";
-import { useRouter } from "vue-router";
+import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/css/index.css";
+import FormGroup from "@/components/backend/form/FormGroup.vue";
 
-const router = useRouter();
+const isLoading = ref(false)
 const modal = useModalStore();
 const { checkLogin } = UseCheckLogin();
 const pageData = ref("");
@@ -49,8 +51,9 @@ function getProduct(page = 1){
 }
 
 function deleteProduct(){
+  isLoading.value = true
   checkLogin();
-  axios.delete(`${import.meta.env.VITE_APP_API}/v2/api/${import.meta.env.VITE_APP_PATH}/admin/product/${modalId.value}`)
+  axios.delete(`${import.meta.env.VITE_APP_API}/v2/api/${import.meta.env.VITE_APP_PATH}/admin/product/${modalDeleteId.value}`)
   .then(ref=>{
     Toast.fire({
       title : `${ref.data.message}`,
@@ -65,22 +68,145 @@ function deleteProduct(){
     });
   })
   .finally(()=>{
+    isLoading.value = false
     modal.modalClose();
   });
 }
 
 /**
- * 開啟modal會給id值 存在這
+ * 開啟刪除modal會給id值 存在這
  */
-const modalId = ref(null);
+const modalDeleteId = ref(null);
 
 /**
  * 儲存id的值 並賦予到deleteProduct上面
  */
 function openDeleteModal(id){
-  modalId.value = id;
+  modalDeleteId.value = id;
   modal.modalShow();
 }
+
+
+/**
+ * 開啟編輯modal會給id值 存在這
+ */
+const modalEditId = ref(null);
+
+function openEditModal(id){
+  modalEditId.value = id;
+  modal.modalShow();
+  console.log(id)
+}
+
+function editProduct(){
+
+}
+
+const formSchema = [
+  {
+    label:"標題",
+    name:"title",
+    placeholder:"請輸入產品名稱",
+    rules:"required",
+    as:"input",
+    type: "text"
+  },
+  {
+    label:"餐飲類型",
+    name:"category",
+    as:"select",
+    value:"日式",
+    options:[
+      {
+        label:"日式",
+        value:"日式"
+      },
+      {
+        label:"西餐",
+        value:"西餐"
+      },
+      {
+        label:"中式",
+        value:"中式"
+      },
+      {
+        label:"甜食",
+        value:"甜食"
+      },
+    ]
+  },
+
+  {
+    label:"站別",
+    name:"unit",
+    as:"select",
+    value:"大慶站",
+    options:[
+      {
+        label:"大慶站",
+        value:"大慶站"
+      },
+      {
+        label:"豐樂公園站",
+        value:"豐樂公園站"
+      },
+      {
+        label:"文華高中",
+        value:"文華高中"
+      },
+      {
+        label:"水安宮站",
+        value:"水安宮站"
+      },
+      {
+        label:"文心崇德站",
+        value:"文心崇德站"
+      },
+      {
+        label:"松竹站",
+        value:"松竹站"
+      },
+    ]
+  },
+  {
+    label:"銷售價",
+    name:"price",
+    rules:"required|integer",
+    as:"input",
+    type: "number"
+  },
+  {
+    label:"原價",
+    name:"origin_price",
+    rules:"required|integer",
+    as:"input",
+    type: "number"
+  },
+  {
+    label:"商品描述",
+    name:"description",
+    as:"input",
+    type: "text"
+  },
+  {
+    label:"商品內容",
+    name:"content",
+    as:"input",
+    type: "text"
+  },
+  {
+    label:"商品圖片",
+    name:"imageUrl",
+    as:"input",
+    type: "text"
+  },
+  {
+    label:"是否啟用",
+    name:"is_enabled",
+    as:"checkbox",
+    type: "checkbox"
+  }
+];
 
 onMounted(()=>{
   getProduct();
@@ -88,11 +214,17 @@ onMounted(()=>{
 </script>
 
 <template>
+  <Loading v-model:active="isLoading" :loader="'dots'"/>
   <div class="modal-outside-style">
     <LoadingView v-if="pageLoading"></LoadingView>
     <template v-else>
       <div class="table-responsive-xl">
         <h5 class="mt-4">產品列表</h5>
+        <div class="text-end me-2">
+          <RouterLink to="/backend/addProduct" class="btn btn-outline-danger ">
+            新增產品
+          </RouterLink>
+        </div>
         <table class="table caption-top">
           <thead>
             <tr>
@@ -106,14 +238,14 @@ onMounted(()=>{
           <tbody class="table-group-divider" v-if="pageData.products">
             <template v-for="data in pageData.products" :key="data.id">
               <tr>
-                <td><span class="badge bg-primary">{{ data.unit }}</span></td>
+                <td><span class="badge bg-secondary">{{ data.unit }}</span></td>
                 <td>{{ data.title }}</td>
                 <td>{{ data.price }}</td>
                 <td>
                   <span v-if="data.is_enabled " class="badge bg-success">已上架</span>
                   <span v-else class="badge bg-danger">未上架</span></td>
                 <td>
-                  <button class="p-0 me-2 btn-icon" type="button" v-tooltip="'編輯'">
+                  <button class="p-0 me-2 btn-icon" type="button" v-tooltip="'編輯'" @click.stop="openEditModal(data.id)">
                     <svg class="svg-opacity" xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><path d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z"/></svg>
                   </button>
                   <button class="btn-icon p-0" type="button" v-tooltip="'刪除'" @click.stop="openDeleteModal(data.id)">
@@ -165,6 +297,16 @@ onMounted(()=>{
     </template>
     <template #modal-body>
       <p class="m-0">是否要刪除商品?!</p>
+    </template>
+  </ModalView>
+  <ModalView :submit="editProduct">
+    <template #modal-head>
+      <h5 class="m-0">編輯商品</h5>
+    </template>
+    <template #modal-body>
+      <VForm @submit="editProduct" class="mt-5">
+        <FormGroup :form-schema="formSchema"/>
+      </VForm>
     </template>
   </ModalView>
 </template>

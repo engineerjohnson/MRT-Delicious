@@ -7,7 +7,11 @@ export default{
     data(){
         return{
             navBg:false,
+            active: false
         };
+    },
+    created() {
+        window.addEventListener("scroll", this.handleScroll);
     },
     computed : {
         ...mapState(cartStore,["cart_data","cart_length"])
@@ -23,18 +27,14 @@ export default{
                 target_btn.classList.add("collapsed");
             }
         },
-        navScrollPlan(){
-            if(window.scrollY > 0){
-                this.navBg = true;
-            } else {
-                this.navBg = false;
-            }
+        handleScroll() {
+            this.navBg = window.scrollY > 0 ? true : false;
         }
     },
     mounted(){
         this.getCart();
         if(this.$route.name == "Home"){
-            this.navScrollPlan();
+            this.handleScroll();
         } else {
             this.navBg = true;
         }
@@ -43,9 +43,9 @@ export default{
         $route(to){
             if(to.name == "Home"){
                 this.navBg = false;
-                window.addEventListener("scroll", this.navScrollPlan);
+                window.addEventListener("scroll", this.handleScroll);
             } else {
-                window.removeEventListener("scroll", this.navScrollPlan);
+                window.removeEventListener("scroll", this.handleScroll);
                 this.navBg = true;
             }
         }
@@ -123,7 +123,6 @@ export default{
     border-bottom: solid rgb(228, 145, 48) 2px;
     position: absolute;
     bottom: 0;
-    height: 3px;
     transform: translateX(-50%);
     left: 50%;
 }
