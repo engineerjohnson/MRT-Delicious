@@ -2,31 +2,31 @@
 import productCard from "../../components/frontend/ProductCard.vue";
 import productsStore from "../../stores/ProductsStore.js";
 import keepStore from "../../stores/KeepStore.js";
-import { mapState,mapActions } from "pinia";
+import { mapState, mapActions } from "pinia";
 // 載入loading
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/css/index.css";
 export default {
-  computed : {
-    ...mapState(productsStore,["products","standProduct","isLoading"])
+  computed: {
+    ...mapState(productsStore, ["products", "standProduct", "isLoading"]),
   },
-  components : {
+  components: {
     productCard,
-    Loading
+    Loading,
   },
-  methods : {
-    ...mapActions(productsStore,["getProducts","filterProducts"]),
-    ...mapActions(keepStore,["getKeep"])
+  methods: {
+    ...mapActions(productsStore, ["getProducts", "filterProducts"]),
+    ...mapActions(keepStore, ["getKeep"]),
   },
   mounted() {
     this.getProducts();
     this.getKeep();
-  }
+  },
 };
 </script>
 
 <template>
-  <Loading v-model:active="isLoading" :loader="'dots'"/>
+  <Loading v-model:active="isLoading" :loader="'dots'" />
   <div class="content">
     <div class="container mt-5">
       <div class="row">
@@ -123,7 +123,7 @@ export default {
               aria-labelledby="list-home-list"
             >
               <div class="row card-group">
-                <productCard :products = products></productCard>
+                <productCard :products="products"></productCard>
               </div>
             </div>
             <div
@@ -133,7 +133,7 @@ export default {
               aria-labelledby="list-profile-list"
             >
               <div class="row card-group">
-                <productCard :products = standProduct></productCard>
+                <productCard :products="standProduct"></productCard>
               </div>
             </div>
             <div
@@ -143,7 +143,7 @@ export default {
               aria-labelledby="list-messages-list"
             >
               <div class="row card-group">
-                <productCard :products = standProduct></productCard>
+                <productCard :products="standProduct"></productCard>
               </div>
             </div>
             <div
@@ -152,9 +152,9 @@ export default {
               role="tabpanel"
               aria-labelledby="list-settings-list"
             >
-            <div class="row card-group">
-              <productCard :products = standProduct></productCard>
-            </div>
+              <div class="row card-group">
+                <productCard :products="standProduct"></productCard>
+              </div>
             </div>
             <div
               class="tab-pane fade"
@@ -162,9 +162,9 @@ export default {
               role="tabpanel"
               aria-labelledby="list-profile-list"
             >
-            <div class="row card-group">
-              <productCard :products = standProduct></productCard>
-            </div>
+              <div class="row card-group">
+                <productCard :products="standProduct"></productCard>
+              </div>
             </div>
             <div
               class="tab-pane fade"
@@ -172,9 +172,9 @@ export default {
               role="tabpanel"
               aria-labelledby="list-messages-list"
             >
-            <div class="row card-group">
-              <productCard :products = standProduct></productCard>
-            </div>
+              <div class="row card-group">
+                <productCard :products="standProduct"></productCard>
+              </div>
             </div>
             <div
               class="tab-pane fade"
@@ -182,9 +182,9 @@ export default {
               role="tabpanel"
               aria-labelledby="list-settings-list"
             >
-            <div class="row card-group">
-              <productCard :products = standProduct></productCard>
-            </div>
+              <div class="row card-group">
+                <productCard :products="standProduct"></productCard>
+              </div>
             </div>
           </div>
         </div>
@@ -211,17 +211,18 @@ img {
   width: 90%;
   margin: auto;
 }
-.card-group > .card{
+.card-group > .card {
   flex: none;
   position: relative;
   border: 0px;
 }
-.card, .card-footer{
-  background:none;
-  border:none;
+.card,
+.card-footer {
+  background: none;
+  border: none;
 }
-.card{
-  box-shadow: 0 0 3px rgba(0,0,0,.1), 3px 3px 3px rgba(0,0,0,.2);
+.card {
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1), 3px 3px 3px rgba(0, 0, 0, 0.2);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }

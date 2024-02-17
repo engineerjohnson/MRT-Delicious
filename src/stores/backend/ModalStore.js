@@ -4,6 +4,8 @@ import { ref, watch } from "vue";
 export const useModalStore = defineStore("modal",() => {
   const modalState = ref(false);
 
+  const currentName = ref(null)
+
   function modalShow(){
     modalState.value = true;
   }
@@ -23,5 +25,5 @@ export const useModalStore = defineStore("modal",() => {
     }
   });
 
-  return{ modalState, modalShow, modalClose };
+  return{ modalState, currentName, modalShow, modalClose };
 });

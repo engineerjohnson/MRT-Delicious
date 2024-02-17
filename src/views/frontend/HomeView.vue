@@ -4,22 +4,27 @@ import produceStore from "../../stores/ProductStore.js";
 import keepStore from "../../stores/KeepStore.js";
 // import { onMounted } from "vue";
 // const {VITE_APP_API, VITE_APP_PATH } = import.meta.env;
-import { mapState,mapActions } from "pinia";
+import { mapState, mapActions } from "pinia";
 // 載入loading
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/css/index.css";
 export default {
-  computed : {
+  computed: {
     //從produceStore(ProductStore.js pinia)從pinia取出getters、state
     // ...mapState(store名稱, ['要取得的值'])
-    ...mapState(produceStore,["standProduct","WantEatProduct","isLoading","product"]),
+    ...mapState(produceStore, [
+      "standProduct",
+      "WantEatProduct",
+      "isLoading",
+      "product",
+    ]),
   },
-  components : {
+  components: {
     Loading,
-    swiperProductCard
+    swiperProductCard,
   },
-  methods : {
-    initSwiperData(){
+  methods: {
+    initSwiperData() {
       let initStandEat = document.querySelector("#stand-eat .nav-item .active");
       this.changeStandType(initStandEat.textContent);
       let initWantEat = document.querySelector("#want-eat .nav-item .active");
@@ -28,8 +33,12 @@ export default {
     //從produceStore(ProductStore.js pinia)從pinia取出方法actions
     //...mapActions(store名稱, ['要取得的方法名稱'])
     //將資料寫入 Store ，寫入資料要從「@click="changeStandType('data')"」data設定要寫入的資料
-    ...mapActions(produceStore,["getProducts","changeStandType","changeWantEatType"]),
-    ...mapActions(keepStore,["getKeep"])
+    ...mapActions(produceStore, [
+      "getProducts",
+      "changeStandType",
+      "changeWantEatType",
+    ]),
+    ...mapActions(keepStore, ["getKeep"]),
   },
   mounted() {
     this.getProducts();
@@ -40,7 +49,7 @@ export default {
 </script>
 
 <template>
-  <Loading v-model:active="isLoading" :loader="'dots'"/>
+  <Loading v-model:active="isLoading" :loader="'dots'" />
   <!-- 表頭 -->
   <header class="background">
     <div class="caption d-flex justify-content-center align-items-center">
@@ -145,7 +154,9 @@ export default {
               aria-controls="pills-home"
               aria-selected="true"
               @click="changeStandType('大慶站')"
-            >大慶站</button>
+            >
+              大慶站
+            </button>
           </li>
           <li class="nav-item" role="presentation">
             <button
@@ -158,7 +169,9 @@ export default {
               aria-controls="pills-profile"
               aria-selected="false"
               @click="changeStandType('文心崇德站')"
-            >文心崇德</button>
+            >
+              文心崇德
+            </button>
           </li>
           <li class="nav-item" role="presentation">
             <button
@@ -171,22 +184,21 @@ export default {
               aria-controls="pills-contact"
               aria-selected="false"
               @click="changeStandType('豐樂公園站')"
-            >豐樂公園</button>
+            >
+              豐樂公園
+            </button>
           </li>
         </ul>
       </div>
-      <div
-        class="tab-content"
-        id="pills-tabContent"
-      >
-      <!-- 大慶站美食 -->
+      <div class="tab-content" id="pills-tabContent">
+        <!-- 大慶站美食 -->
         <div
           class="tab-pane fade show active"
           id="pills-daqing"
           role="tabpanel"
           aria-labelledby="pills-home-tab"
         >
-          <swiperProductCard :products = standProduct></swiperProductCard>
+          <swiperProductCard :products="standProduct"></swiperProductCard>
         </div>
         <!-- 文心崇德站美食 -->
         <div
@@ -195,7 +207,7 @@ export default {
           role="tabpanel"
           aria-labelledby="pills-profile-tab"
         >
-          <swiperProductCard :products = standProduct></swiperProductCard>
+          <swiperProductCard :products="standProduct"></swiperProductCard>
         </div>
         <!-- 豐樂公園站美食 -->
         <div
@@ -204,7 +216,7 @@ export default {
           role="tabpanel"
           aria-labelledby="pills-contact-tab"
         >
-          <swiperProductCard :products = standProduct></swiperProductCard>
+          <swiperProductCard :products="standProduct"></swiperProductCard>
         </div>
       </div>
     </section>
@@ -224,7 +236,9 @@ export default {
               aria-controls="japanese-style"
               aria-selected="true"
               @click="changeWantEatType('日式')"
-            >日式</button>
+            >
+              日式
+            </button>
           </li>
           <li class="nav-item" role="presentation">
             <button
@@ -237,7 +251,9 @@ export default {
               aria-controls="western-food"
               aria-selected="false"
               @click="changeWantEatType('西餐')"
-            >西餐</button>
+            >
+              西餐
+            </button>
           </li>
           <li class="nav-item" role="presentation">
             <button
@@ -250,7 +266,9 @@ export default {
               aria-controls="sweets"
               aria-selected="false"
               @click="changeWantEatType('甜食')"
-            >甜食</button>
+            >
+              甜食
+            </button>
           </li>
           <li class="nav-item" role="presentation">
             <button
@@ -263,21 +281,20 @@ export default {
               aria-controls="chinese-style"
               aria-selected="false"
               @click="changeWantEatType('中式')"
-            >中式</button>
+            >
+              中式
+            </button>
           </li>
         </ul>
       </div>
-      <div
-        class="tab-content"
-        id="pills-tabContent"
-      >
+      <div class="tab-content" id="pills-tabContent">
         <div
           class="tab-pane fade show active"
           id="japanese-style"
           role="tabpanel"
           aria-labelledby="japanese-style-tab"
         >
-          <swiperProductCard :products = WantEatProduct></swiperProductCard>
+          <swiperProductCard :products="WantEatProduct"></swiperProductCard>
         </div>
         <div
           class="tab-pane fade"
@@ -285,7 +302,7 @@ export default {
           role="tabpanel"
           aria-labelledby="western-food-tab"
         >
-          <swiperProductCard :products = WantEatProduct></swiperProductCard>
+          <swiperProductCard :products="WantEatProduct"></swiperProductCard>
         </div>
         <div
           class="tab-pane fade"
@@ -293,7 +310,7 @@ export default {
           role="tabpanel"
           aria-labelledby="sweets-tab"
         >
-          <swiperProductCard :products = WantEatProduct></swiperProductCard>
+          <swiperProductCard :products="WantEatProduct"></swiperProductCard>
         </div>
         <div
           class="tab-pane fade"
@@ -301,7 +318,7 @@ export default {
           role="tabpanel"
           aria-labelledby="chinese-style-tab"
         >
-          <swiperProductCard :products = WantEatProduct></swiperProductCard>
+          <swiperProductCard :products="WantEatProduct"></swiperProductCard>
         </div>
       </div>
     </section>
@@ -332,15 +349,14 @@ export default {
   </div>
 </template>
 
-
 <style>
-.nav-link.rounded-pill{
+.nav-link.rounded-pill {
   color: rgb(228, 145, 48);
 }
-.rotate:hover img{
+.rotate:hover img {
   animation: rotateX 0.5s linear 4 alternate;
 }
-@keyframes rotateX{
+@keyframes rotateX {
   0% {
     transform: rotateY(0deg); /* 初始状态，不旋转 */
   }

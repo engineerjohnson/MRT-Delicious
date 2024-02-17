@@ -14,75 +14,82 @@ import "vue-loading-overlay/dist/css/index.css";
 export default {
   data() {
     return {
-      location:"Checkouts",
-      orderData:{},
-      PaymentState:"",
-      isLoading:false
+      location: "Checkouts",
+      orderData: {},
+      PaymentState: "",
+      isLoading: false,
     };
   },
-  computed : {
-    ...mapState(cartStore,["form"])
+  computed: {
+    ...mapState(cartStore, ["form"]),
   },
-  components : {
+  components: {
     cartNavbar,
     Loading,
   },
-  methods : {
-    ...mapActions(cartStore,["getCart"]),
+  methods: {
+    ...mapActions(cartStore, ["getCart"]),
     Cart() {
       this.$router.push("/Cart");
     },
     getOrder() {
       this.isLoading = true;
-      axios.get(`${VITE_APP_API}/v2/api/${VITE_APP_PATH}/order/${this.$route.params.orderId}`)
-      .then((res)=>{
-        this.getCart();
-        this.orderData = res.data.order;
-        this.isLoading = false;
-      })
-      .catch((err)=>{
-        this.isLoading = false;
-        Toast.fire({
-          title : `${err.response.data.message}`,
-          icon : "error",
+      axios
+        .get(
+          `${VITE_APP_API}/v2/api/${VITE_APP_PATH}/order/${this.$route.params.orderId}`
+        )
+        .then((res) => {
+          this.getCart();
+          this.orderData = res.data.order;
+          this.isLoading = false;
+        })
+        .catch((err) => {
+          this.isLoading = false;
+          Toast.fire({
+            title: `${err.response.data.message}`,
+            icon: "error",
+          });
         });
-      });
     },
     formatPrice(price) {
-      if(price == null){
+      if (price == null) {
         return "";
       }
       return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },
     Payment() {
-      axios.post(`${VITE_APP_API}/v2/api/${VITE_APP_PATH}/pay/${this.orderData.id}121313`)
-      .then((res)=>{
-        this.PaymentState = true;
-        Swal.fire({
-          icon: "success",
-          title: `${res.data.message}`,
-          confirmButtonText: "回首頁"
-        }).then((result)=>{
-          if(result.isConfirmed || result.isDismissed){ //點擊OK或視窗外 就會跳到「購物車」頁
-            this.$router.push("/");
-          }
+      axios
+        .post(
+          `${VITE_APP_API}/v2/api/${VITE_APP_PATH}/pay/${this.orderData.id}121313`
+        )
+        .then((res) => {
+          this.PaymentState = true;
+          Swal.fire({
+            icon: "success",
+            title: `${res.data.message}`,
+            confirmButtonText: "回首頁",
+          }).then((result) => {
+            if (result.isConfirmed || result.isDismissed) {
+              //點擊OK或視窗外 就會跳到「購物車」頁
+              this.$router.push("/");
+            }
+          });
+        })
+        .catch((err) => {
+          Toast.fire({
+            title: `${err.response.data.message}`,
+            icon: "error",
+          });
         });
-      })
-      .catch((err)=>{
-        Toast.fire({
-          title : `${err.response.data.message}`,
-          icon : "error",
-        });
-      });
     },
   },
   mounted() {
     this.getOrder();
-  }
+  },
 };
 </script>
 <template>
-  <Loading v-model:active="isLoading" :loader="'dots'"/>
+  <Loading v-model:active="isLoading" :loader="'dots'" />
   <div class="content">
     <div class="container">
       <cartNavbar :cartLocation="location"></cartNavbar>
@@ -103,7 +110,10 @@ export default {
                 <tr v-for="item in orderData?.products" :key="item.id">
                   <td>
                     <div id="Cart-img">
-                      <img :src="item.product.imageUrl" :alt="item.product.title" />
+                      <img
+                        :src="item.product.imageUrl"
+                        :alt="item.product.title"
+                      />
                     </div>
                   </td>
                   <td>{{ item.product.title }}</td>
@@ -139,16 +149,26 @@ export default {
           </ul>
           <ul class="row text-center justify-content-center">
             <li class="fs-5 col-4">留言:</li>
-            <li class="col-4 ms-5 ms-lg-0" style="overflow-wrap: break-word;">{{ orderData?.message }}</li>
+            <li class="col-4 ms-5 ms-lg-0" style="overflow-wrap: break-word">
+              {{ orderData?.message }}
+            </li>
           </ul>
         </div>
       </div>
     </div>
     <div class="d-flex justify-content-around mt-5">
-      <button type="button" class="btn btn-warning text-white mb-5" @click="Cart()">
+      <button
+        type="button"
+        class="btn btn-warning text-white mb-5"
+        @click="Cart()"
+      >
         回購物車
       </button>
-      <button type="button" class="btn btn-warning text-white mb-5" @click="Payment()">
+      <button
+        type="button"
+        class="btn btn-warning text-white mb-5"
+        @click="Payment()"
+      >
         結帳
       </button>
     </div>
@@ -166,8 +186,9 @@ tfoot,
 tbody {
   border-color: black;
 }
-ol,ul {
+ol,
+ul {
   list-style: none;
-  padding-inline-start:0px;
+  padding-inline-start: 0px;
 }
 </style>

@@ -11,19 +11,19 @@ import "vue-loading-overlay/dist/css/index.css";
 export default {
   data() {
     return {
-      location:"Check",
-      isLoading:false,
+      location: "Check",
+      isLoading: false,
     };
   },
-  computed : {
-    ...mapState(cartStore,["form", "cart_length", "orderId"]),
+  computed: {
+    ...mapState(cartStore, ["form", "cart_length", "orderId"]),
   },
-  components : {
+  components: {
     cartNavbar,
     Loading,
   },
-  methods : {
-    ...mapActions(cartStore,["getCart", "createOrder"]),
+  methods: {
+    ...mapActions(cartStore, ["getCart", "createOrder"]),
     isPhone(value) {
       const phoneNumber = /^(09)[0-9]{8}$/;
       return phoneNumber.test(value) ? true : "需要正確的電話號碼";
@@ -37,49 +37,58 @@ export default {
       this.createOrder();
       this.isLoading = false;
     },
-    checkCartData(){ //確認購物車是否有無資料
-      if(this.cart_length === 0){ //要嚴格 因為'' == 0 也會是true
-      Swal.fire({
-        icon: "error",
-        title: "購物車沒有產品",
-        text: "購物車內沒有產品，需要先將產品加入購物車哦!!",
-      }).then((result)=>{
-        if(result.isConfirmed || result.isDismissed){ //點擊OK或視窗外 就會跳到「購物車」頁
-          this.$router.push("/Stand");
-        }
-      });
-    }
-    }
+    checkCartData() {
+      //確認購物車是否有無資料
+      if (this.cart_length === 0) {
+        //要嚴格 因為'' == 0 也會是true
+        Swal.fire({
+          icon: "error",
+          title: "購物車沒有產品",
+          text: "購物車內沒有產品，需要先將產品加入購物車哦!!",
+        }).then((result) => {
+          if (result.isConfirmed || result.isDismissed) {
+            //點擊OK或視窗外 就會跳到「購物車」頁
+            this.$router.push("/Stand");
+          }
+        });
+      }
+    },
   },
-  watch : {
-    cart_length(val) { //監聽cart_length 避免refresh都觸發
-      if(val === 0){
+  watch: {
+    cart_length(val) {
+      //監聽cart_length 避免refresh都觸發
+      if (val === 0) {
         this.checkCartData();
       }
     },
-    orderId(val) { //監聽orderId 當完成createOrder()觸發
-      if(val){
+    orderId(val) {
+      //監聽orderId 當完成createOrder()觸發
+      if (val) {
         this.$router.push(`/Checkouts/${this.orderId}`);
       }
-    }
+    },
   },
   mounted() {
     this.getCart();
     this.checkCartData();
-  }
+  },
 };
 </script>
 <template>
-  <Loading v-model:active="isLoading" :loader="'dots'"/>
+  <Loading v-model:active="isLoading" :loader="'dots'" />
   <div class="content">
     <div class="container">
-      <cartNavbar  :cartLocation = "location"></cartNavbar>
+      <cartNavbar :cartLocation="location"></cartNavbar>
       <!-- 表單 -->
       <div class="row justify-content-center">
         <h2 class="text-center">訂單資料</h2>
         <div class="col-10">
           <div class="d-flex justify-content-center">
-            <VForm v-slot="{ errors }" class="col-md-6" @submit="pushCheckouts()">
+            <VForm
+              v-slot="{ errors }"
+              class="col-md-6"
+              @submit="pushCheckouts()"
+            >
               <div class="mb-3">
                 <label for="name" class="form-label">請輸入姓名</label>
                 <VField
@@ -139,16 +148,20 @@ export default {
               <div class="mb-3">
                 <label for="massage" class="form-label">歡迎留言~</label>
                 <textarea
-                id="message"
-                class="form-control"
-                cols="30"
-                rows="10"
-                v-model="form.message"
-                style="resize: none;"
+                  id="message"
+                  class="form-control"
+                  cols="30"
+                  rows="10"
+                  v-model="form.message"
+                  style="resize: none"
                 ></textarea>
               </div>
               <div class="d-flex justify-content-around mt-5">
-                <button type="button" class="btn btn-warning text-white mb-5" @click="Cart()">
+                <button
+                  type="button"
+                  class="btn btn-warning text-white mb-5"
+                  @click="Cart()"
+                >
                   回購物車
                 </button>
                 <button type="submit" class="btn btn-warning text-white mb-5">
