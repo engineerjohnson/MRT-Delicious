@@ -1,34 +1,35 @@
-html{
-    height: 100%;
+html {
+  height: 100%;
 }
-body{
-    margin: 0;
-    min-height: 100%;
+body {
+  margin: 0;
+  min-height: 100%;
 }
-.content{
-    min-height: calc(100vh - 50px); /*減去footer高度*/
+.content {
+  min-height: calc(100vh - 50px); /*減去footer高度*/
 }
-#banner{
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100%;
-    z-index: 1021;
+#banner {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1021;
 }
-th, td {
-    white-space: normal;
+th,
+td {
+  white-space: normal;
 }
-.width-10{
-    width: 10%;
+.width-10 {
+  width: 10%;
 }
-.width-90{
-width: 90%;
+.width-90 {
+  width: 90%;
 }
-.btn-icon{
-    background-color: transparent;
-    display: inline-block;
-    border: none;
+.btn-icon {
+  background-color: transparent;
+  display: inline-block;
+  border: none;
 }
-.overflow-hidden{
-    overflow: hidden;
+.overflow-hidden {
+  overflow: hidden;
 }

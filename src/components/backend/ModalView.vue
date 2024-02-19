@@ -34,9 +34,10 @@ watch(
 );
 
 function handleSubmit(data) {
-  console.log(data)
+  console.log(data);
   const arr = Object.keys(data);
-  if (arr.length === 0) { //判斷物件裡面有沒有值 沒有就直接執行submit 例:刪除modal
+  if (arr.length === 0) {
+    //判斷物件裡面有沒有值 沒有就直接執行submit 例:刪除modal
     props.submit();
   } else {
     console.log(data);

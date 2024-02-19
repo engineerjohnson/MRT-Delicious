@@ -5,9 +5,7 @@ import App from "./app.vue";
 import router from "./router";
 import "bootstrap";
 // 引入 VeeValidate 元件跟功能
-import {
-  Field, Form, ErrorMessage, defineRule, configure,
-} from "vee-validate";
+import { Field, Form, ErrorMessage, defineRule, configure } from "vee-validate";
 // 引入 VeeValidate 的驗證規則
 import AllRules from "@vee-validate/rules";
 // 引入 VeeValidate 的 i18n 功能
@@ -37,11 +35,11 @@ const FloatingVueConfig = {
     tooltip: {
       delay: {
         show: 0,
-      }
-    }
-  }
+      },
+    },
+  },
 };
-app.use(VueAxios,axios);
+app.use(VueAxios, axios);
 app.use(createPinia());
 app.use(router);
 // 掛載 Global 的 VeeValidate 元件

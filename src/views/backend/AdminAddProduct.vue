@@ -30,7 +30,7 @@ function addProduct(data, actions) {
         title: `${res.data.message}`,
         icon: "success",
       });
-      actions.setValues(formValues);//設定選項 避免便空值validate套件的
+      actions.setValues(formValues); //設定選項 避免便空值validate套件的
     })
     .catch((err) => {
       isLoading.value = false;
