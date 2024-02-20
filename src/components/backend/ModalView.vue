@@ -49,7 +49,10 @@ function handleSubmit(data) {
   <Teleport to="body">
     <transition name="modal" :duration="200">
       <div v-if="props.show" class="modal">
-        <div class="border rounded w-50 bg-white modalOverflow" v-on-click-outside="close">
+        <div
+          class="border rounded w-50 bg-white modalOverflow"
+          v-on-click-outside="close"
+        >
           <div class="d-flex justify-content-between border-bottom p-3">
             <slot name="modal-head"></slot>
             <button
@@ -114,7 +117,7 @@ function handleSubmit(data) {
   top: 0;
   right: 0;
 }
-.modalOverflow{
+.modalOverflow {
   overflow-y: auto;
 }
 </style>
