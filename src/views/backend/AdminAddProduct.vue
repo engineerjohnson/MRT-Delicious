@@ -160,7 +160,7 @@ const formSchema = [
 <template>
   <Loading v-model:active="isLoading" :loader="'dots'" />
   <VForm @submit="addProduct" class="mt-5">
-    <FormGroup :form-schema="formSchema" />
+    <FormGroup :form-schema="formSchema" :pageDate="{}" />
     <div class="text-end mt-5">
       <button type="submit" class="btn btn-danger me-1">
         <span

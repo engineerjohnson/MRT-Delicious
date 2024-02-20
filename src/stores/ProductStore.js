@@ -18,7 +18,9 @@ export default defineStore("produceStore", {
     },
     //篩選「想吃什麼」
     WantEatProduct() {
-      return this.product.filter((item) => item.category == this.wantEatType.trim());
+      return this.product.filter(
+        (item) => item.category == this.wantEatType.trim()
+      );
     },
   },
   //對應 methods

@@ -5,13 +5,11 @@ import { UseCheckLogin } from "../../composable/UseCheckLogin.js";
 import Toast from "../../utils/Toast.js";
 import ModalView from "../../components/backend/ModalView.vue";
 import LoadingView from "../../components/backend/LoadingView.vue";
-import { useModalStore } from "../../stores/backend/ModalStore.js";
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/css/index.css";
 import FormGroup from "@/components/backend/form/FormGroup.vue";
 
 const isLoading = ref(false);
-const modal = useModalStore();
 const { checkLogin } = UseCheckLogin();
 const pageData = ref("");
 const pageLoading = ref(false);
@@ -73,7 +71,6 @@ const deleteModal = ref(false);
  */
 function openDeleteModal(id) {
   modalDeleteId.value = id;
-  // modal.modalShow();
   deleteModal.value = true;
 }
 
@@ -109,18 +106,81 @@ function deleteProduct() {
  * 編輯的視窗狀態
  */
 const editModal = ref(false);
-/**
- * 開啟編輯modal會給id值 存在這
- */
-const modalEditId = ref(null);
 
+/**
+ * 編輯的ID
+ */
+const modalEditId = ref('')
+
+/**
+ * 儲存編輯的資料
+ */
+const editModalDate = ref(null)
+
+/**
+ * 開啟編輯Modal 設定ID跟編輯資料
+ */
 function openEditModal(id) {
-  modalEditId.value = id;
+  modalEditId.value = id
   editModal.value = true;
+  const item = getIdDate(id)[0]
+  editModalDate.value = {
+    title : item?.title,
+    category : item?.category,
+    unit:item?.unit,
+    price:item?.price,
+    origin_price:item?.origin_price,
+    description:item?.description,
+    content:item?.content,
+    imageUrl:item?.imageUrl,
+    is_enabled:item?.is_enabled
+  }
 }
 
-function editProduct() {
-  console.log(1111);
+/**
+ * 篩選對應資料
+ */
+function getIdDate(EditId){
+  return pageData.value.products.filter(item=> item.id === EditId)
+}
+
+/**
+ * 送出編輯API
+ */
+function editProduct(data) {
+  isLoading.value = true;
+  const apiData = {
+    data: {
+      ...data,
+      price: Number(data.price),
+      origin_price: Number(data.origin_price),
+    },
+  };
+  axios
+    .put(
+      `${import.meta.env.VITE_APP_API}/v2/api/${
+        import.meta.env.VITE_APP_PATH
+      }/admin/product/${modalEditId.value}`,apiData
+    )
+    .then((ref) => {
+      console.log(ref)
+      Toast.fire({
+        title: `${ref.data.message}`,
+        icon: "success",
+      });
+      getProduct(nowPage.value);
+    })
+    .catch((err) => {
+      console.log(err)
+      Toast.fire({
+        title: `${err.message}`,
+        icon: "error",
+      });
+    })
+    .finally(() => {
+      isLoading.value = false;
+      editModal.value = false;
+    });
 }
 
 const formSchema = [
@@ -156,7 +216,6 @@ const formSchema = [
       },
     ],
   },
-
   {
     label: "站別",
     name: "unit",
@@ -172,8 +231,8 @@ const formSchema = [
         value: "豐樂公園站",
       },
       {
-        label: "文華高中",
-        value: "文華高中",
+        label: "文華高中站",
+        value: "文華高中站",
       },
       {
         label: "水安宮站",
@@ -206,20 +265,17 @@ const formSchema = [
   {
     label: "商品描述",
     name: "description",
-    as: "input",
-    type: "text",
+    as: "textarea",
   },
   {
     label: "商品內容",
     name: "content",
-    as: "input",
-    type: "text",
+    as: "textarea",
   },
   {
     label: "商品圖片",
     name: "imageUrl",
-    as: "input",
-    type: "text",
+    as: "textarea"
   },
   {
     label: "是否啟用",
@@ -435,7 +491,7 @@ onMounted(() => {
       <h5 class="m-0">編輯商品</h5>
     </template>
     <template #modal-body>
-      <FormGroup :form-schema="formSchema" />
+      <FormGroup v-if="editModalDate" :form-schema="formSchema" :pageDate="editModalDate" />
     </template>
   </ModalView>
 </template>

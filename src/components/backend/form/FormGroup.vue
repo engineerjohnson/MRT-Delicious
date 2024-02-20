@@ -3,8 +3,10 @@ import { ref } from "vue";
 
 const props = defineProps({
   formSchema: null,
+  pageDate:null
 });
 
+const pageDate = ref(props.pageDate)
 const fieldFocus = ref({});
 
 function updateFocus(fieldName, focus) {
@@ -27,6 +29,7 @@ function updateFocus(fieldName, focus) {
           v-slot="{ field, errorMessage }"
           :name="item.name"
           :rules="item.rules"
+          v-model="pageDate[item.name]"
         >
           <div
             class="form-group"
@@ -50,7 +53,8 @@ function updateFocus(fieldName, focus) {
           :class="{ focus: fieldFocus[item.name] }"
         >
           <label :for="item.name">{{ item.label }}</label>
-          <VField :as="item.as" :name="item.name" :value="item.value">
+          <VField :as="item.as" :name="item.name" :value="item.value"
+          v-model="pageDate[item.name]">
             <option
               v-for="(option, optionIndex) in item.options"
               :key="optionIndex"
@@ -65,20 +69,31 @@ function updateFocus(fieldName, focus) {
             :type="item.type"
             v-slot="{ field }"
             :name="item.name"
-            :value="true"
-            :unchecked-value="false"
           >
             <label :for="item.name">
               <input
                 v-bind="field"
                 :type="item.type"
                 :id="item.name"
-                :value="true"
+                :name="item.name"
+                :value="pageDate[item.name] ? true : false"
               />
               {{ item.label }}
             </label>
           </VField>
         </div>
+        <VField
+          v-slot="{ field }"
+          :name="item.name"
+          v-else-if="item.as === 'textarea'"
+          v-model="pageDate[item.name]"
+        >
+        <div class="form-group mb-3">
+          <label :for="item.name">{{ item.label }}</label>
+          <textarea :id="item.name" :name="item.name" :rows="item.name === 'imageUrl' ? 4 : 2 " v-bind="field"></textarea>
+        </div>
+        <img v-if="item.name === 'imageUrl'" :src="pageDate[item.name]" :alt="pageDate.title" class="mb-3">
+        </VField>
       </div>
     </template>
   </div>
@@ -123,5 +138,15 @@ function updateFocus(fieldName, focus) {
 }
 input::placeholder {
   font-size: 14px;
+}
+textarea{
+  width: 100%;
+  border: none;
+}
+label{
+  color: rgba(0, 0, 0, 0.6);
+}
+img{
+  max-width: 100%;
 }
 </style>

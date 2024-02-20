@@ -40,7 +40,6 @@ function handleSubmit(data) {
     //判斷物件裡面有沒有值 沒有就直接執行submit 例:刪除modal
     props.submit();
   } else {
-    console.log(data);
     props.submit(data);
   }
 }
@@ -50,7 +49,7 @@ function handleSubmit(data) {
   <Teleport to="body">
     <transition name="modal" :duration="200">
       <div v-if="props.show" class="modal">
-        <div class="border rounded w-50 bg-white" v-on-click-outside="close">
+        <div class="border rounded w-50 bg-white modalOverflow" v-on-click-outside="close">
           <div class="d-flex justify-content-between border-bottom p-3">
             <slot name="modal-head"></slot>
             <button
@@ -62,7 +61,7 @@ function handleSubmit(data) {
             ></button>
           </div>
           <div class="border-bottom px-3">
-            <VForm @submit="handleSubmit" class="mt-5">
+            <VForm @submit="handleSubmit" class="mt-3">
               <slot name="modal-body"></slot>
               <div class="p-3 text-end">
                 <button
@@ -114,5 +113,8 @@ function handleSubmit(data) {
   position: absolute;
   top: 0;
   right: 0;
+}
+.modalOverflow{
+  overflow-y: auto;
 }
 </style>
