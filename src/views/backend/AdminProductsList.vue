@@ -4,10 +4,11 @@ import { onMounted, ref } from "vue";
 import { UseCheckLogin } from "../../composable/UseCheckLogin.js";
 import Toast from "../../utils/Toast.js";
 import ModalView from "../../components/backend/ModalView.vue";
-import LoadingView from "../../components/backend/LoadingView.vue";
+import LoadingPageView from "../../components/backend/LoadingPageView.vue";
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/css/index.css";
 import FormGroup from "@/components/backend/form/FormGroup.vue";
+import PaginationView from "../../components/backend/PaginationView.vue";
 
 const isLoading = ref(false);
 const { checkLogin } = UseCheckLogin();
@@ -294,7 +295,7 @@ onMounted(() => {
 <template>
   <Loading v-model:active="isLoading" :loader="'dots'" />
   <div class="modal-outside-style">
-    <LoadingView v-if="pageLoading"></LoadingView>
+    <LoadingPageView v-if="pageLoading" />
     <template v-else>
       <div class="table-responsive-xl">
         <h5 class="mt-4">產品列表</h5>
@@ -316,18 +317,18 @@ onMounted(() => {
           <tbody class="table-group-divider" v-if="pageData.products">
             <template v-for="data in pageData.products" :key="data.id">
               <tr>
-                <td>
+                <td class="vertical-align">
                   <span class="badge bg-secondary">{{ data.unit }}</span>
                 </td>
-                <td>{{ data.title }}</td>
-                <td>{{ data.price }}</td>
-                <td>
+                <td class="vertical-align">{{ data.title }}</td>
+                <td class="vertical-align">{{ data.price }}</td>
+                <td class="vertical-align">
                   <span v-if="data.is_enabled" class="badge bg-success"
                     >已上架</span
                   >
                   <span v-else class="badge bg-danger">未上架</span>
                 </td>
-                <td>
+                <td class="vertical-align">
                   <button
                     class="p-0 me-2 btn-icon"
                     type="button"
@@ -370,113 +371,10 @@ onMounted(() => {
           </tbody>
         </table>
       </div>
-      <nav aria-label="Page navigation example" v-if="pageData.pagination">
-        <ul class="pagination justify-content-center mt-4">
-          <li class="page-item">
-            <button
-              type="button"
-              class="page-link"
-              href="#"
-              @click="getProduct(1)"
-            >
-              <svg
-                class="text-info"
-                xmlns="http://www.w3.org/2000/svg"
-                height="16"
-                width="16"
-                viewBox="0 0 512 512"
-                style="fill: #0d6efd"
-              >
-                <path
-                  d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160zm352-160l-160 160c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L301.3 256 438.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0z"
-                />
-              </svg>
-            </button>
-          </li>
-          <li class="page-item">
-            <button
-              type="button"
-              class="page-link"
-              href="#"
-              @click="getProduct(pageData.pagination.current_page - 1)"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="16"
-                width="10"
-                viewBox="0 0 320 512"
-                style="fill: #0d6efd"
-              >
-                <path
-                  d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
-                />
-              </svg>
-            </button>
-          </li>
-          <template v-for="item in pageData.pagination.total_pages" :key="item">
-            <template
-              v-if="
-                item > pageData.pagination.current_page - 3 &&
-                item < pageData.pagination.current_page + 3
-              "
-            >
-              <li class="page-item">
-                <button
-                  class="page-link"
-                  :class="{
-                    disabled: item == pageData.pagination.current_page,
-                  }"
-                  @click="getProduct(item)"
-                  href="#"
-                  :disabled="item == pageData.pagination.current_page"
-                >
-                  {{ item }}
-                </button>
-              </li>
-            </template>
-          </template>
-          <li class="page-item">
-            <button
-              type="button"
-              class="page-link"
-              href="#"
-              @click="getProduct(pageData.pagination.current_page + 1)"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="16"
-                width="10"
-                viewBox="0 0 320 512"
-                style="fill: #0d6efd"
-              >
-                <path
-                  d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"
-                />
-              </svg>
-            </button>
-          </li>
-          <li class="page-item">
-            <button
-              type="button"
-              class="page-link"
-              href="#"
-              @click="getProduct(pageData.pagination.total_pages)"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="16"
-                width="16"
-                viewBox="0 0 512 512"
-                style="fill: #0d6efd"
-              >
-                <path
-                  d="M470.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 256 265.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160zm-352 160l160-160c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L210.7 256 73.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z"
-                />
-              </svg>
-            </button>
-          </li>
-        </ul>
-      </nav>
+      <PaginationView
+        :on-submit="getProduct"
+        :pagination="pageData.pagination"
+      />
     </template>
   </div>
   <ModalView v-model:show="deleteModal" :submit="deleteProduct">

@@ -60,7 +60,7 @@ export default {
     Payment() {
       axios
         .post(
-          `${VITE_APP_API}/v2/api/${VITE_APP_PATH}/pay/${this.orderData.id}121313`
+          `${VITE_APP_API}/v2/api/${VITE_APP_PATH}/pay/${this.orderData.id}`
         )
         .then((res) => {
           this.PaymentState = true;

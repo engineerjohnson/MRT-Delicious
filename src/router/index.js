@@ -58,8 +58,13 @@ const routes = [
       },
       {
         path: "addProduct",
-        name: "add/product",
+        name: "product/add",
         component: () => import("../views/backend/AdminAddProduct.vue"),
+      },
+      {
+        path: "orderList",
+        name: "order/list",
+        component: () => import("../views/backend/AdminOrderList.vue"),
       },
     ],
   },

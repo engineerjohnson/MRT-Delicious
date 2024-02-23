@@ -1,10 +1,6 @@
 <script setup>
 import { onMounted, ref, watch } from "vue";
 import { RouterLink, RouterView } from "vue-router";
-import { UseCheckLogin } from "./composable/UseCheckLogin.js";
-import Loading from "vue-loading-overlay";
-
-const { checkLogin } = UseCheckLogin();
 const x = ref(window.innerWidth);
 const sidebar_PC = ref(Boolean);
 
@@ -55,9 +51,6 @@ watch(x, (newValue) => {
   setSidebarSize(newValue);
 });
 
-onMounted(() => {
-  checkLogin();
-});
 </script>
 
 <template>
@@ -220,7 +213,7 @@ onMounted(() => {
         </li>
         <li class="nav-item">
           <RouterLink
-            to="/backend/order"
+            to="/backend/orderList"
             class="nav-link py-3 border-bottom text-center"
           >
             <svg

@@ -65,15 +65,13 @@ export default {
           </dt>
         </h2>
         <div class="d-flex justify-content-center">
-          <button type="button" class="fs-4 px-5 py-2 btn btn-warning">
-            <RouterLink
-              to="/Stand"
-              class="nav-link nav-item text-white"
-              data-toggle
-            >
-              訂購去
-            </RouterLink>
-          </button>
+          <RouterLink
+            to="/Stand"
+            class="fs-4 px-5 py-2 btn btn-warning nav-link nav-item text-white"
+            data-toggle
+          >
+            訂購去
+          </RouterLink>
         </div>
       </div>
     </div>
